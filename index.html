@@ -200,6 +200,71 @@
   .rev-bar-fill { height: 100%; background: var(--spacejam); border-radius: 4px; }
   .rev-bar-fill.gold { background: var(--sunstar); }
 
+  /* Pilot cards grid */
+  .pilots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .pilot-card {
+    background: var(--galaxy);
+    border-radius: 10px;
+    overflow: hidden;
+    border-left: 4px solid #3a2d50;
+  }
+  .pilot-card.red { border-left-color: var(--red); }
+  .pilot-card.amber { border-left-color: var(--amber); }
+  .pilot-card.green { border-left-color: var(--green); }
+  .pilot-card-header {
+    padding: 14px 16px;
+    background: #1e1430;
+    border-bottom: 1px solid #3a2d50;
+  }
+  .pilot-card-header h4 { font-size: 14px; color: #fff; margin-bottom: 4px; }
+  .pilot-card-header .category { font-size: 11px; color: var(--nebula); }
+  .pilot-card-content { padding: 16px; }
+  .pilot-progress { font-size: 11px; color: var(--mid); margin-bottom: 12px; font-weight: bold; }
+  .pilot-status { font-size: 12px; color: #999; margin-bottom: 12px; font-style: italic; }
+  .pilot-checklist { list-style: none; }
+  .pilot-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 12px;
+    color: #bbb;
+    border-bottom: 1px solid #2a1d3540;
+  }
+  .pilot-checklist li:last-child { border-bottom: none; }
+  .pilot-checklist li.overdue { color: #e74c3c; }
+
+  /* Sales pipeline table */
+  .pipeline-table { width: 100%; border-collapse: collapse; }
+  .pipeline-table th {
+    font-size: 11px; color: var(--mid); text-transform: uppercase; letter-spacing: 1px;
+    padding: 8px 12px; text-align: left; background: #1e1430; border-bottom: 1px solid #3a2d50;
+  }
+  .pipeline-table td { padding: 10px 12px; font-size: 13px; color: #ddd; border-bottom: 1px solid #2a1d3540; }
+  .pipeline-table tr:hover td { background: #2a1d3560; }
+
+  .stage-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .stage-badge.green { background: #27ae6022; color: #2ecc71; }
+  .stage-badge.purple { background: #584ea022; color: #a084e0; }
+  .stage-badge.amber { background: #e67e2222; color: #f39c12; }
+  .stage-badge.red { background: #c0392b22; color: #e74c3c; }
+
+  .lead-name { font-weight: 600; color: #fff; }
+  .lead-note { font-size: 11px; color: #888; margin-top: 2px; }
+
+  /* Green card for recently fixed */
+  .card.green-border {
+    border-left: 4px solid var(--green);
+  }
+
   footer { text-align: center; padding: 32px; color: #3a2d50; font-size: 12px; }
 </style>
 </head>
@@ -211,9 +276,10 @@
 </header>
 
 <div class="tabs">
-  <div class="tab active" onclick="show('product', this)">⚙️ PRODUCT</div>
-  <div class="tab" onclick="show('growth', this)">📈 GROWTH</div>
-  <div class="tab" onclick="show('ops', this)">🗂️ OPS & FINANCE</div>
+  <div class="tab active" onclick="show('product', this)">PRODUCT</div>
+  <div class="tab" onclick="show('pilots', this)">PILOTS</div>
+  <div class="tab" onclick="show('growth', this)">GROWTH</div>
+  <div class="tab" onclick="show('ops', this)">OPS & FINANCE</div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════ PRODUCT ══ -->
@@ -225,47 +291,39 @@
 
   <div class="metrics">
     <div class="metric warn">
-      <div class="num">4</div>
+      <div class="num">5</div>
       <div class="label">Pilots in Program</div>
-      <div class="sub">🟡 Product not yet ready for all</div>
+      <div class="sub">Product not ready for all pilots yet</div>
     </div>
     <div class="metric crit">
-      <div class="num">2</div>
-      <div class="label">Critical Bugs</div>
-      <div class="sub">🔴 Blocking pilots</div>
+      <div class="num">~29</div>
+      <div class="label">Open Bugs</div>
+      <div class="sub">From Asana Shape Up</div>
     </div>
-    <div class="metric warn">
-      <div class="num">5</div>
-      <div class="label">UI Bugs Open</div>
-      <div class="sub">🟡 Fix this sprint</div>
+    <div class="metric crit">
+      <div class="num">1</div>
+      <div class="label">Critical Blocker</div>
+      <div class="sub">Tags — blocks all product flows</div>
     </div>
     <div class="metric">
       <div class="num">Apr</div>
       <div class="label">Next Milestone</div>
-      <div class="sub">2 pilots → paid</div>
+      <div class="sub">2 pilots → paid ($398 MRR)</div>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">🔴 Critical Blockers — Fix First</div>
+    <div class="section-title">🔴 Critical Blocker</div>
     <div class="card">
       <table class="bug-table">
         <thead>
-          <tr><th>Issue</th><th>Why It Matters</th><th>Owner</th><th>Target</th><th>Status</th></tr>
+          <tr><th>Issue</th><th>Why It Matters</th><th>Owner</th><th>Status</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Product tagging broken</strong><br><span style="font-size:11px;color:#888">Tags don't filter results. "All tags" shows empty despite existing tags.</span></td>
-            <td>Blocks Soberish flows + any product recommendation flow</td>
+            <td><strong>Tags not pulling products into flows</strong><br><span style="font-size:11px;color:#888">Kelley confirmed today (Mar 25): building flows but tags aren't routing to products. Tanmay built auto-tagger + scraped Soberish products (Mar 24) but flow-level routing still broken.</span></td>
+            <td>Blocks ALL product recommendation flows. Kelley and Loren can't build Soberish flows until this works.</td>
             <td>Tanmay</td>
-            <td>Thu QA call</td>
-            <td><span class="badge red">CRITICAL</span></td>
-          </tr>
-          <tr>
-            <td><strong>First-page toggle needed</strong><br><span style="font-size:11px;color:#888">Currently mandatory — breaks simple data capture flows for pop-ups.</span></td>
-            <td>Blocks A Bag Concept + high-traffic event use cases</td>
-            <td>Tanmay</td>
-            <td>This week</td>
             <td><span class="badge red">CRITICAL</span></td>
           </tr>
         </tbody>
@@ -274,7 +332,20 @@
   </div>
 
   <div class="section">
-    <div class="section-title">🟡 UI Bugs — Fix This Sprint</div>
+    <div class="section-title">✅ Recently Fixed (March 23)</div>
+    <div class="card green-border">
+      <ul class="checklist">
+        <li><div class="check done"></div> <span>Image sizing — now adjustable</span></li>
+        <li><div class="check done"></div> <span>Arrow icon on button links — removed</span></li>
+        <li><div class="check done"></div> <span>Preview vs real screen UI — now consistent</span></li>
+        <li><div class="check done"></div> <span>Contact form fix — pushed (needs Loren confirmation)</span></li>
+        <li><div class="check done"></div> <span>QR codes — workaround in place (always on internally), proper fix in progress</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🟡 Open Bugs — Pilot Quality</div>
     <div class="card">
       <table class="bug-table">
         <thead>
@@ -282,75 +353,156 @@
         </thead>
         <tbody>
           <tr>
-            <td>Next button not showing on some steps</td>
-            <td>Customer-facing — breaks flow mid-journey</td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">IN PROGRESS</span></td>
-          </tr>
-          <tr>
-            <td>Different button colours: view vs preview</td>
-            <td>Looks broken to brand partners</td>
+            <td><strong>Cross-brand data showing</strong><br><span style="font-size:11px;color:#888">Soberish sees A Bag Concept scans</span></td>
+            <td>Data integrity — trust breaker</td>
             <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
-            <td>Responses not showing in admin panel</td>
-            <td>Brands can't see their data — critical for trust</td>
-            <td>Tanmay</td>
-            <td><span class="badge red">OPEN</span></td>
-          </tr>
-          <tr>
-            <td>Terms & conditions integration</td>
-            <td>Compliance / onboarding blocker</td>
+            <td><strong>Quiz results not pulling from inventory</strong><br><span style="font-size:11px;color:#888">Goes to link instead of products</span></td>
+            <td>Breaks product rec flows</td>
             <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
-            <td>Shopify export issues — Glad & Young</td>
-            <td>Missing data for pilot reporting</td>
+            <td><strong>Images not showing in product results</strong></td>
+            <td>Visual recs broken</td>
             <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Analytics not working / overwhelming for retail owners</strong></td>
+            <td>Brands can't see their data</td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Flows not saving properly</strong><br><span style="font-size:11px;color:#888">Kelley lost 4 steps on Mar 10</span></td>
+            <td>Work lost during building</td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Web page formatting vs mobile</strong><br><span style="font-size:11px;color:#888">Content cut off</span></td>
+            <td>Bad non-mobile experience</td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Customer profile cleanup</strong><br><span style="font-size:11px;color:#888">Reward code, duplicate sections, device type</span></td>
+            <td>Confusing for brands</td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Glad & Young inventory — missing images/tags from Shopify export</strong></td>
+            <td>Can't build G&Y flows</td>
+            <td>Loren/Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Start page mandatory — breaks simple data capture</strong></td>
+            <td>Blocks pop-up use cases</td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Back to customers button broken</strong></td>
+            <td>Navigation issue</td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding: 14px 0 0 0; margin-top: 14px; border-top: 1px solid #2a1d3540; font-size: 12px; color: #888;">~12 additional lower-priority bugs in Asana backlog (links after recs, undo button, multi-select images, pricing on preview, Mirour logo, etc.)</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Product Roadmap — In Progress</div>
+    <div class="card">
+      <table class="bug-table">
+        <thead>
+          <tr><th>Feature</th><th>Stage</th><th>Owner</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Shopify Sync V1</strong><br><span style="font-size:11px;color:#888">Forward sync customer data to brand's Shopify</span></td>
+            <td>Idea (scoped)</td>
+            <td>Tanmay</td>
+            <td>Requested by Madilyn at ABC. Engineering brief done. Est. 1.5-2 days.</td>
+          </tr>
+          <tr>
+            <td><strong>Flow Builder Overhaul</strong><br><span style="font-size:11px;color:#888">Single step creator, Mailchimp-style workflow view, component consolidation</span></td>
+            <td>Build</td>
+            <td>Tanmay</td>
+            <td>Figma wireframes from Kelley. Side-by-side preview already built.</td>
+          </tr>
+          <tr>
+            <td><strong>Quiz System → Tag-Based</strong><br><span style="font-size:11px;color:#888">Switch from point-based to tag matching (like Typeform outcomes)</span></td>
+            <td>Idea</td>
+            <td>Tanmay</td>
+            <td>Current number system too complex. Tags already used for site navigation.</td>
+          </tr>
+          <tr>
+            <td><strong>Analytics Simplification</strong><br><span style="font-size:11px;color:#888">Focus on: total scans, completion rate, engagement, product insights</span></td>
+            <td>Idea</td>
+            <td>—</td>
+            <td>Current analytics too overwhelming for retail owners.</td>
+          </tr>
+          <tr>
+            <td><strong>Initial Brand Template Step</strong><br><span style="font-size:11px;color:#888">First step template for brands</span></td>
+            <td>Idea</td>
+            <td>—</td>
+            <td>Check Figma for reference.</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <div class="two-col">
-    <div class="section">
-      <div class="section-title">✅ What's Working — Don't Break This</div>
+  <div class="section">
+    <div class="section-title">✅ What's Working — Don't Break This</div>
+    <div class="card">
+      <ul class="checklist">
+        <li><div class="check done"></div> <span>AI flow builder — drag/drop, auto-generates quiz frameworks</span></li>
+        <li><div class="check done"></div> <span>Multi-step flows: education → quiz → product recs</span></li>
+        <li><div class="check done"></div> <span>Image carousels, grids, contact capture, rating systems</span></li>
+        <li><div class="check done"></div> <span>THC drinks education flow tested + working</span></li>
+        <li><div class="check done"></div> <span>mirour.me routing live</span></li>
+        <li><div class="check done"></div> <span>Two-flow A/B testing (discount vs. quiz) deployed</span></li>
+        <li><div class="check done"></div> <span>Tanmay's Soberish product scraper + auto-tagger (Mar 24)</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📅 This Week (Mar 25)</div>
+    <div class="three-col">
       <div class="card">
+        <h3>Loren</h3>
         <ul class="checklist">
-          <li><div class="check done"></div>AI flow builder — drag/drop, auto-generates quiz frameworks</li>
-          <li><div class="check done"></div>Multi-step flows: education → quiz → product recs</li>
-          <li><div class="check done"></div>Image carousels, grids, contact capture, rating systems</li>
-          <li><div class="check done"></div>THC drinks education flow tested + working</li>
-          <li><div class="check done"></div>mirour.me routing live</li>
-          <li><div class="check done"></div>Two-flow A/B testing (discount vs. quiz) deployed</li>
+          <li><div class="check"></div> <span>Soberish flows (THC + discount flow for profile)</span></li>
+          <li><div class="check"></div> <span>Waiting for legal docs to send team</span></li>
+          <li><div class="check"></div> <span>Substack / community ecosystem build</span></li>
+          <li><span style="font-size: 11px; color: #666;">Slow to respond during sessions, back late afternoon</span></li>
         </ul>
       </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">📅 This Week</div>
       <div class="card">
-        <p style="font-size:12px;color:var(--nebula);font-weight:bold;margin-bottom:10px;">LOREN</p>
-        <ul class="checklist" style="margin-bottom:16px;">
-          <li><div class="check"></div>Finalise THC drinks flow <span class="owner">Loren</span></li>
-          <li><div class="check"></div>Create profile builder example for Soberish <span class="owner">Loren</span></li>
-          <li><div class="check"></div>Test all flows + send CSV to Tanmay <span class="owner">Loren</span></li>
-          <li><div class="check"></div>Kohl's meeting prep <span class="owner">Loren</span></li>
-        </ul>
-        <p style="font-size:12px;color:var(--nebula);font-weight:bold;margin-bottom:10px;">TANMAY</p>
-        <ul class="checklist" style="margin-bottom:16px;">
-          <li><div class="check"></div>Fix product tagging (Thu QA) <span class="owner">Tanmay</span></li>
-          <li><div class="check"></div>First-page toggle fix <span class="owner">Tanmay</span></li>
-          <li><div class="check"></div>UI bug pass <span class="owner">Tanmay</span></li>
-        </ul>
-        <p style="font-size:12px;color:var(--nebula);font-weight:bold;margin-bottom:10px;">KELLEY</p>
+        <h3>Tanmay</h3>
         <ul class="checklist">
-          <li><div class="check"></div>Build spirits flow for Soberish <span class="owner">Kelley</span></li>
-          <li><div class="check"></div>Consolidate Asana content tasks <span class="owner">Kelley</span></li>
+          <li><div class="check"></div> <span>Fix tag → product routing in flows (PRIORITY #1)</span></li>
+          <li><div class="check"></div> <span>Live walkthrough with Kelley on flow building (tomorrow)</span></li>
+          <li><div class="check"></div> <span>QA testing — asked team for non-technical testing help</span></li>
+          <li><div class="check"></div> <span>Continue bug fixes</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Kelley</h3>
+        <ul class="checklist">
+          <li><div class="check"></div> <span>Building Soberish flows — stuck on tags/product routing</span></li>
+          <li><div class="check"></div> <span>"Real world" user testing / brand alignment (visuals first, then voice)</span></li>
+          <li><div class="check"></div> <span>Social/blog/onboarding resource building</span></li>
         </ul>
       </div>
     </div>
@@ -360,13 +512,13 @@
     <div class="section-title">🗺️ Path to April Milestone</div>
     <div class="card">
       <div class="path">
-        <div class="path-step active">Fix tagging + UI bugs</div>
+        <div class="path-step active">Fix tag routing</div>
         <div class="path-arrow">→</div>
-        <div class="path-step">All 4 pilot flows ready</div>
+        <div class="path-step">All 5 pilot flows ready</div>
         <div class="path-arrow">→</div>
         <div class="path-step">Pilot review sessions</div>
         <div class="path-arrow">→</div>
-        <div class="path-step">2 brands → paid<br>($298 MRR)</div>
+        <div class="path-step">2 brands → paid</div>
         <div class="path-arrow">→</div>
         <div class="path-step">Case study drafted</div>
       </div>
@@ -381,18 +533,199 @@
           <tr><th>Milestone</th><th>Target</th><th>Status</th></tr>
         </thead>
         <tbody>
-          <tr><td>4 pilots in program (flows need QA)</td><td>March</td><td><span class="badge amber">🟡 IN PROGRESS</span></td></tr>
-          <tr><td>All flows bug-free</td><td>March</td><td><span class="badge red">🔴 IN PROGRESS</span></td></tr>
-          <tr><td>2 pilots convert to paid</td><td>April</td><td><span class="badge purple">⏳ PENDING</span></td></tr>
-          <tr><td>Case study drafted</td><td>April</td><td><span class="badge purple">⏳ NOT STARTED</span></td></tr>
-          <tr><td>Self-serve onboarding v1</td><td>April</td><td><span class="badge purple">⏳ NOT STARTED</span></td></tr>
-          <tr><td>F&F raise closes $50k</td><td>April</td><td><span class="badge purple">⏳ NOT STARTED</span></td></tr>
-          <tr><td>Zone education v2</td><td>May</td><td><span style="color:#555;font-size:12px">Not yet</span></td></tr>
-          <tr><td>POS integration scoped</td><td>June</td><td><span style="color:#555;font-size:12px">Not yet</span></td></tr>
+          <tr>
+            <td><strong>5 pilots in program</strong></td>
+            <td>March</td>
+            <td><span class="badge amber">IN PROGRESS</span></td>
+          </tr>
+          <tr>
+            <td><strong>Tag routing + critical bugs fixed</strong></td>
+            <td>March</td>
+            <td><span class="badge red">IN PROGRESS</span></td>
+          </tr>
+          <tr>
+            <td><strong>All flows QA'd and live</strong></td>
+            <td>March-April</td>
+            <td><span class="badge purple">PENDING</span></td>
+          </tr>
+          <tr>
+            <td><strong>2 pilots convert to paid</strong></td>
+            <td>April</td>
+            <td><span class="badge purple">PENDING</span></td>
+          </tr>
+          <tr>
+            <td><strong>Case study drafted</strong></td>
+            <td>April</td>
+            <td><span class="badge purple">NOT STARTED</span></td>
+          </tr>
+          <tr>
+            <td><strong>Self-serve onboarding v1</strong></td>
+            <td>April</td>
+            <td><span class="badge purple">NOT STARTED</span></td>
+          </tr>
+          <tr>
+            <td><strong>F&F raise closes $50k</strong></td>
+            <td>April</td>
+            <td><span class="badge purple">NOT STARTED</span></td>
+          </tr>
+          <tr>
+            <td><strong>Zone education v2</strong></td>
+            <td>May</td>
+            <td><span style="color: #666;">Not yet</span></td>
+          </tr>
+          <tr>
+            <td><strong>POS integration scoped</strong></td>
+            <td>June</td>
+            <td><span style="color: #666;">Not yet</span></td>
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ PILOTS ══ -->
+<div class="content pane" id="pilots">
+
+  <div class="metrics">
+    <div class="metric warn">
+      <div class="num">5</div>
+      <div class="label">Pilots Active</div>
+      <div class="sub">Need all 5 live for April conversions</div>
+    </div>
+    <div class="metric amber">
+      <div class="num">1/5</div>
+      <div class="label">Have Progress</div>
+      <div class="sub">A Bag Concept only</div>
+    </div>
+    <div class="metric crit">
+      <div class="num">0</div>
+      <div class="label">Converted to Paid</div>
+      <div class="sub">Target: 2 by April</div>
+    </div>
+    <div class="metric">
+      <div class="num">Apr</div>
+      <div class="label">Convert Target</div>
+      <div class="sub">$398 MRR (2 × $199)</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Pilot Programs</div>
+    <div class="pilots-grid">
+
+      <!-- A Bag Concept -->
+      <div class="pilot-card green">
+        <div class="pilot-card-header">
+          <h4>A Bag Concept</h4>
+          <div class="category">Accessories / Pop-up</div>
+        </div>
+        <div class="pilot-card-content">
+          <div class="pilot-progress">1/11 complete</div>
+          <div class="pilot-status">First live pilot — launched March 8 pop-up. Flows built.</div>
+          <ul class="pilot-checklist">
+            <li><div class="check done"></div> <span>Posters with QR Codes (Kelley, done Mar 6)</span></li>
+            <li class="overdue"><div class="check"></div> <span>Pilot start 30 days — ⚠️ OVERDUE (was Mar 8)</span></li>
+            <li><div class="check"></div> <span>Contract sent</span></li>
+            <li><div class="check"></div> <span>Contract signed</span></li>
+            <li><div class="check"></div> <span>Merch given</span></li>
+            <li><div class="check"></div> <span>Onboarding</span></li>
+            <li><div class="check"></div> <span>Content taken and published for social</span></li>
+            <li><div class="check"></div> <span>Case study</span></li>
+            <li><div class="check"></div> <span>Pilot end / convert date</span></li>
+            <li><div class="check"></div> <span>Referral asked</span></li>
+            <li><div class="check"></div> <span>Feedback</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Soberish -->
+      <div class="pilot-card amber">
+        <div class="pilot-card-header">
+          <h4>Soberish</h4>
+          <div class="category">Non-alcoholic Beverages</div>
+        </div>
+        <div class="pilot-card-content">
+          <div class="pilot-progress">0/9 complete</div>
+          <div class="pilot-status">Actively building flows. Products scraped + auto-tagged Mar 24. Kelley stuck on tag routing.</div>
+          <ul class="pilot-checklist">
+            <li><div class="check"></div> <span>Contract sent</span></li>
+            <li><div class="check"></div> <span>Contract signed</span></li>
+            <li><div class="check"></div> <span>Merch given</span></li>
+            <li><div class="check"></div> <span>Onboarding</span></li>
+            <li><div class="check"></div> <span>Logins (Kelley)</span></li>
+            <li><div class="check"></div> <span>Content taken and published for social</span></li>
+            <li><div class="check"></div> <span>Case study</span></li>
+            <li><div class="check"></div> <span>Pilot end / convert date</span></li>
+            <li><div class="check"></div> <span>Referral asked</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Glad & Young -->
+      <div class="pilot-card amber">
+        <div class="pilot-card-header">
+          <h4>Glad & Young</h4>
+          <div class="category">Jewelry</div>
+        </div>
+        <div class="pilot-card-content">
+          <div class="pilot-progress">0/9 complete</div>
+          <div class="pilot-status">Inventory issues — missing images/tags from Shopify export. Loren followed up.</div>
+          <ul class="pilot-checklist">
+            <li><div class="check"></div> <span>Contract sent</span></li>
+            <li><div class="check"></div> <span>Contract signed</span></li>
+            <li><div class="check"></div> <span>Merch given</span></li>
+            <li><div class="check"></div> <span>Onboarding</span></li>
+            <li><div class="check"></div> <span>Content taken and published for social</span></li>
+            <li><div class="check"></div> <span>Case study</span></li>
+            <li><div class="check"></div> <span>Pilot end / convert date</span></li>
+            <li><div class="check"></div> <span>Referral asked</span></li>
+            <li><div class="check"></div> <span>Learnings</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Just Add Honey -->
+      <div class="pilot-card amber">
+        <div class="pilot-card-header">
+          <h4>Just Add Honey</h4>
+          <div class="category">Food / Beverage</div>
+        </div>
+        <div class="pilot-card-content">
+          <div class="pilot-progress">0/8 complete</div>
+          <div class="pilot-status">In program. No recent activity.</div>
+          <ul class="pilot-checklist">
+            <li><div class="check"></div> <span>Contract sent</span></li>
+            <li><div class="check"></div> <span>Contract signed</span></li>
+            <li><div class="check"></div> <span>Merch given</span></li>
+            <li><div class="check"></div> <span>Onboarding</span></li>
+            <li><div class="check"></div> <span>Content taken and published for social</span></li>
+            <li><div class="check"></div> <span>Case study</span></li>
+            <li><div class="check"></div> <span>Pilot end / convert date</span></li>
+            <li><div class="check"></div> <span>Referral asked</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- One of Each -->
+      <div class="pilot-card red">
+        <div class="pilot-card-header">
+          <h4>One of Each</h4>
+          <div class="category">NEW</div>
+        </div>
+        <div class="pilot-card-content">
+          <div class="pilot-progress">0/1 complete</div>
+          <div class="pilot-status">Just added. Only onboarding task exists.</div>
+          <ul class="pilot-checklist">
+            <li><div class="check"></div> <span>Onboarding</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 <!-- ═══════════════════════════════════════════════════════ GROWTH ══ -->
@@ -400,14 +733,14 @@
 
   <div class="metrics">
     <div class="metric warn">
-      <div class="num">4</div>
-      <div class="label">Pilots in Program</div>
-      <div class="sub">A Bag Concept · Glad &amp; Young · Soberish · Just Add Honey</div>
+      <div class="num">5</div>
+      <div class="label">Pilots Active</div>
+      <div class="sub">A Bag Concept · Glad & Young · Soberish · Just Add Honey · One of Each</div>
     </div>
     <div class="metric warn">
       <div class="num">2</div>
       <div class="label">Paid Target (Apr)</div>
-      <div class="sub">$298 MRR goal</div>
+      <div class="sub">$398 MRR goal</div>
     </div>
     <div class="metric">
       <div class="num">0</div>
@@ -415,182 +748,331 @@
       <div class="sub">Converting in April</div>
     </div>
     <div class="metric good">
-      <div class="num">Kohl's</div>
-      <div class="label">Biggest Lead</div>
-      <div class="sub">Meeting this week</div>
+      <div class="num">27</div>
+      <div class="label">Pipeline Leads</div>
+      <div class="sub">From Asana Sales Pipeline</div>
     </div>
   </div>
 
-  <div class="two-col">
-    <div class="section">
-      <div class="section-title">🔥 Hot Leads — Act This Week</div>
-      <div class="card">
-        <table class="bug-table">
-          <thead><tr><th>Brand</th><th>Status</th><th>Next Step</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Kohl's</strong></td><td><span class="badge green">MEETING</span></td><td>Prep pitch — this week</td></tr>
-            <tr><td><strong>Highland Diamond (Peyton)</strong></td><td><span class="badge amber">EMAIL SENT</span></td><td>Follow up if no reply in 3 days</td></tr>
-            <tr><td><strong>Jenny (Storinocreative)</strong></td><td><span class="badge amber">WARM</span></td><td>Send remarketing blog post next week</td></tr>
-            <tr><td><strong>Bloomingdale's pop-up</strong></td><td><span class="badge purple">INTRO</span></td><td>Paid pilot — no more free</td></tr>
-            <tr><td><strong>City of Atlanta / World Cup</strong></td><td><span class="badge purple">EXPLORING</span></td><td>Data capture during June event</td></tr>
-          </tbody>
-        </table>
-      </div>
+  <div class="section">
+    <div class="section-title">📊 Sales Pipeline</div>
+    <div class="card">
+      <table class="pipeline-table">
+        <thead>
+          <tr><th colspan="2">Stage</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="3" style="padding: 0;"><span class="stage-badge green">Active Opportunities (3)</span></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Jai Lyle</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">ACE</td>
+            <td>Need to go in store for Stihl</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Aja</td>
+            <td>Agency partner (EWC, Sally Beauty)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="3" style="padding: 0; padding-top: 12px;"><span class="stage-badge purple">Late Stage (1)</span></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Tea</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="3" style="padding: 0; padding-top: 12px;"><span class="stage-badge amber">New Opportunities (19)</span></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Faced the Facial</td>
+            <td>Intro from Hannah Carver</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Americas Mart</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Homegrown</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">offline</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Bloomingdales</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Dillards</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Abbey Glass</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Mailchimp</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Creature Studio</td>
+            <td>Via Amy</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Sibley Creative</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Morrison Agency</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Stellar Bodies Pilates</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Foot Locker / Sarah Faith</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Highland Diamond</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Kohl's</td>
+            <td>Meeting at Shoptalk</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Veronica Beard</td>
+            <td>Met at Shoptalk</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px;">Philip Morris International</td>
+            <td>Met at Shoptalk — Terrence Chung, Manager CX</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="3" style="padding: 0; padding-top: 12px;"><span class="stage-badge red">Closed Lost (1)</span></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 20px; color: #888;">Village Retail</td>
+            <td style="color: #888;">Not interested in moving forward</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 
-    <div class="section">
-      <div class="section-title">📅 April Pipeline (10 confirmed target)</div>
-      <div class="card">
-        <ul class="checklist">
-          <li><div class="check"></div>A Bag Concept <span class="owner">Convert to paid</span></li>
-          <li><div class="check"></div>Glad &amp; Young <span class="owner">Convert to paid</span></li>
-          <li><div class="check"></div>Soberish <span class="owner">Convert to paid</span></li>
-          <li><div class="check"></div>Just Add Honey <span class="owner">Convert to paid</span></li>
-          <li><div class="check"></div>Aja agency (EWC, Sally Beauty) <span class="owner">Warm</span></li>
-          <li><div class="check"></div>Carly / Area 15 <span class="owner">In conversation</span></li>
-          <li><div class="check"></div>Referral + resource hub <span class="owner">Build April</span></li>
-          <li><div class="check"></div>Community / newsletter leads <span class="owner">Build April</span></li>
-          <li><div class="check"></div>10th brand TBD <span class="owner">—</span></li>
-        </ul>
-      </div>
+  <div class="section">
+    <div class="section-title">📅 April Pipeline</div>
+    <div class="card">
+      <ul class="checklist">
+        <li><div class="check"></div> <span>A Bag Concept → Convert to paid</span></li>
+        <li><div class="check"></div> <span>Glad & Young → Convert to paid</span></li>
+        <li><div class="check"></div> <span>Soberish → Convert to paid</span></li>
+        <li><div class="check"></div> <span>Just Add Honey → Convert to paid</span></li>
+        <li><div class="check"></div> <span>One of Each → Convert to paid</span></li>
+        <li><div class="check"></div> <span>Aja agency (EWC, Sally Beauty) → Warm</span></li>
+        <li><div class="check"></div> <span>Carly / Area 15 → In conversation</span></li>
+        <li><div class="check"></div> <span>Referral + resource hub → Build April</span></li>
+        <li><div class="check"></div> <span>Community / newsletter leads → Build April</span></li>
+        <li><div class="check"></div> <span>10th brand TBD</span></li>
+      </ul>
     </div>
   </div>
 
   <div class="section">
     <div class="section-title">💰 Revenue Targets — 2026</div>
     <div class="card">
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px;">
         <div>
-          <div class="rev-bar-label"><span>April</span><span>$298 MRR</span></div>
-          <div class="rev-bar"><div class="rev-bar-fill" style="width:3%"></div></div>
-          <div style="font-size:11px;color:#666;margin-top:4px;">2 paid brands</div>
+          <div style="font-size: 13px; font-weight: bold; margin-bottom: 8px;">April</div>
+          <div style="font-size: 14px; color: var(--sunstar); margin-bottom: 4px;"><strong>$398 MRR</strong></div>
+          <div style="font-size: 11px; color: #888;">2 paid brands</div>
+          <div class="rev-bar" style="margin-top: 8px;">
+            <div class="rev-bar-fill" style="width: 3%;"></div>
+          </div>
         </div>
         <div>
-          <div class="rev-bar-label"><span>June</span><span>$1,491 MRR</span></div>
-          <div class="rev-bar"><div class="rev-bar-fill" style="width:15%"></div></div>
-          <div style="font-size:11px;color:#666;margin-top:4px;">10 paid brands</div>
+          <div style="font-size: 13px; font-weight: bold; margin-bottom: 8px;">June</div>
+          <div style="font-size: 14px; color: var(--sunstar); margin-bottom: 4px;"><strong>$1,491 MRR</strong></div>
+          <div style="font-size: 11px; color: #888;">10 paid brands</div>
+          <div class="rev-bar" style="margin-top: 8px;">
+            <div class="rev-bar-fill" style="width: 15%;"></div>
+          </div>
         </div>
         <div>
-          <div class="rev-bar-label"><span>Sep</span><span>$5,390 MRR</span></div>
-          <div class="rev-bar"><div class="rev-bar-fill gold" style="width:52%"></div></div>
-          <div style="font-size:11px;color:#666;margin-top:4px;">30 paid brands</div>
+          <div style="font-size: 13px; font-weight: bold; margin-bottom: 8px;">Sep</div>
+          <div style="font-size: 14px; color: var(--sunstar); margin-bottom: 4px;"><strong>$5,390 MRR</strong></div>
+          <div style="font-size: 11px; color: #888;">30 paid brands</div>
+          <div class="rev-bar" style="margin-top: 8px;">
+            <div class="rev-bar-fill gold" style="width: 52%;"></div>
+          </div>
         </div>
         <div>
-          <div class="rev-bar-label"><span>Dec</span><span>$8,747 MRR</span></div>
-          <div class="rev-bar"><div class="rev-bar-fill gold" style="width:100%"></div></div>
-          <div style="font-size:11px;color:#666;margin-top:4px;">54 paid · ~$105k ARR</div>
+          <div style="font-size: 13px; font-weight: bold; margin-bottom: 8px;">Dec</div>
+          <div style="font-size: 14px; color: var(--sunstar); margin-bottom: 4px;"><strong>$8,747 MRR</strong></div>
+          <div style="font-size: 11px; color: #888;">54 paid (~$105k ARR)</div>
+          <div class="rev-bar" style="margin-top: 8px;">
+            <div class="rev-bar-fill gold" style="width: 100%;"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>
 
 <!-- ═══════════════════════════════════════════════════════ OPS ══ -->
 <div class="content pane" id="ops">
 
   <div class="metrics">
-    <div class="metric warn">
-      <div class="num">$50k</div>
-      <div class="label">F&F Target</div>
-      <div class="sub">Close April</div>
+    <div class="metric">
+      <div class="num">28</div>
+      <div class="label">Days in Cycle</div>
+      <div class="sub">30-day sprint</div>
+    </div>
+    <div class="metric good">
+      <div class="num">$18K</div>
+      <div class="label">Burn Rate</div>
+      <div class="sub">Conservative</div>
     </div>
     <div class="metric">
-      <div class="num">$250k</div>
-      <div class="label">Angel Target</div>
-      <div class="sub">Close July</div>
+      <div class="num">$82K</div>
+      <div class="label">Remaining</div>
+      <div class="sub">Of $100K runway</div>
     </div>
-    <div class="metric warn">
-      <div class="num">Overdue</div>
-      <div class="label">Financial Model</div>
-      <div class="sub">Was due Mar 7</div>
-    </div>
-    <div class="metric warn">
-      <div class="num">Open</div>
-      <div class="label">Co-Founder Agreements</div>
-      <div class="sub">Need this month</div>
+    <div class="metric">
+      <div class="num">May 2026</div>
+      <div class="label">Runway End</div>
+      <div class="sub">7 weeks</div>
     </div>
   </div>
 
-  <div class="two-col">
-    <div class="section">
-      <div class="section-title">📋 Ops — Must Do in March/April</div>
-      <div class="card">
-        <ul class="checklist">
-          <li><div class="check"></div>Co-founder agreements signed <span class="owner">Loren</span></li>
-          <li><div class="check"></div>New bank account (Mercury) <span class="owner">Loren</span></li>
-          <li><div class="check"></div>Business insurance activated <span class="owner">Loren</span></li>
-          <li><div class="check"></div>WBENC certification filed <span class="owner">Loren</span></li>
-          <li><div class="check"></div>Pilot-to-paid process documented <span class="owner">Loren</span></li>
-          <li><div class="check"></div>First SOPs written <span class="owner">Team</span></li>
-          <li><div class="check"></div>Website live <span class="owner">Kelley</span></li>
-          <li><div class="check"></div>Self-serve pilot application <span class="owner">April</span></li>
-        </ul>
+  <div class="section">
+    <div class="section-title">Burn Rate & Runway</div>
+    <div class="card">
+      <div class="rev-bar-wrap">
+        <div class="rev-bar-label">
+          <span>Current Spend</span>
+          <span>$18K / 30 days</span>
+        </div>
+        <div class="rev-bar">
+          <div class="rev-bar-fill" style="width: 18%"></div>
+        </div>
       </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">💸 Raise Timeline</div>
-      <div class="card">
-        <table class="milestone-table">
-          <thead><tr><th>Milestone</th><th>When</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td>Financial model complete</td><td>ASAP (overdue)</td><td><span class="badge red">OVERDUE</span></td></tr>
-            <tr><td>Angel pitch deck ready</td><td>April</td><td><span class="badge amber">IN PROGRESS</span></td></tr>
-            <tr><td>F&F raise closes ($50k)</td><td>April</td><td><span class="badge purple">NOT STARTED</span></td></tr>
-            <tr><td>Angel raise active ($250k)</td><td>May–July</td><td><span class="badge purple">NOT STARTED</span></td></tr>
-            <tr><td>Angel closes</td><td>July</td><td><span style="color:#555;font-size:12px">Not yet</span></td></tr>
-            <tr><td>Seed deck + data room</td><td>Nov–Dec</td><td><span style="color:#555;font-size:12px">Not yet</span></td></tr>
-          </tbody>
-        </table>
+      <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #3a2d50;">
+        <div style="font-size: 13px; color: #ccc; margin-bottom: 8px;"><strong>Runway: 7 weeks remaining</strong></div>
+        <div class="rev-bar">
+          <div class="rev-bar-fill gold" style="width: 82%"></div>
+        </div>
+        <div class="rev-bar-label" style="margin-top: 6px;">
+          <span>$82K remaining</span>
+          <span>of $100K raised</span>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">💡 What Only Loren Can Do Right Now</div>
+    <div class="section-title">Fundraising</div>
     <div class="card">
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
-        <div style="background:#1e1430;border-radius:8px;padding:16px;">
-          <div style="color:var(--sunstar);font-size:12px;font-weight:bold;margin-bottom:10px;">THIS WEEK</div>
-          <ul style="list-style:none;font-size:13px;color:#ccc;line-height:2;">
-            <li>→ Kohl's pitch</li>
-            <li>→ Peyton (Highland Diamond) follow-up</li>
-            <li>→ Carly in-person meeting</li>
-            <li>→ Soberish flows finalised</li>
-          </ul>
-        </div>
-        <div style="background:#1e1430;border-radius:8px;padding:16px;">
-          <div style="color:var(--nebula);font-size:12px;font-weight:bold;margin-bottom:10px;">APRIL</div>
-          <ul style="list-style:none;font-size:13px;color:#ccc;line-height:2;">
-            <li>→ Convert 2 pilots to paid</li>
-            <li>→ Financial model done</li>
-            <li>→ F&F raise conversations</li>
-            <li>→ Co-founder agreements</li>
-          </ul>
-        </div>
-        <div style="background:#1e1430;border-radius:8px;padding:16px;">
-          <div style="color:#555;font-size:12px;font-weight:bold;margin-bottom:10px;">DELEGATE / LATER</div>
-          <ul style="list-style:none;font-size:13px;color:#666;line-height:2;">
-            <li>→ Blog content (Kelley)</li>
-            <li>→ Product QA (Tanmay)</li>
-            <li>→ SOPs (document once)</li>
-            <li>→ Social posts (Kelley)</li>
-          </ul>
-        </div>
-      </div>
+      <table class="milestone-table">
+        <thead>
+          <tr><th>Target</th><th>Timeline</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Seed Round</strong></td>
+            <td>May 2026</td>
+            <td><span class="badge amber">IN PROGRESS</span></td>
+          </tr>
+          <tr>
+            <td><strong>Revenue Milestone</strong></td>
+            <td>Apr 2026 — $398 MRR</td>
+            <td><span class="badge red">CRITICAL</span></td>
+          </tr>
+          <tr>
+            <td><strong>Proof of Concept</strong></td>
+            <td>2 brands → paid + case studies</td>
+            <td><span class="badge amber">IN PROGRESS</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+
+  <div class="section">
+    <div class="section-title">Team</div>
+    <div class="card">
+      <table class="milestone-table">
+        <thead>
+          <tr><th>Role</th><th>Name</th><th>Focus</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Founder / CEO</strong></td>
+            <td>Loren Mount-O'Brien</td>
+            <td>Product, pilots, fundraising</td>
+          </tr>
+          <tr>
+            <td><strong>CTO / Engineer</strong></td>
+            <td>Tanmay</td>
+            <td>Core platform, bug fixes, QA</td>
+          </tr>
+          <tr>
+            <td><strong>Flow Builder</strong></td>
+            <td>Kelley</td>
+            <td>Pilot flows, content, integrations</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 
-<footer>Mirour Operating System · mirourmirour.com · Updated March 25, 2026</footer>
+<footer>
+  Mirour Operating System · mirourmirour.com · Updated March 25, 2026
+</footer>
 
 <script>
-function show(pane, el) {
-  document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(pane).classList.add('active');
-  el.classList.add('active');
+function show(tabName, element) {
+  const panes = document.querySelectorAll('.pane');
+  panes.forEach(p => p.classList.remove('active'));
+  document.getElementById(tabName).classList.add('active');
+
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(t => t.classList.remove('active'));
+  element.classList.add('active');
 }
 </script>
+
 </body>
 </html>
