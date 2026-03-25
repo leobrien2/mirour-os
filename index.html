@@ -277,6 +277,9 @@
   .feature-card .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; color: #999; background: #2a1d35; margin-right: 6px; margin-bottom: 8px; }
   .feature-card p { font-size: 12px; color: #bbb; line-height: 1.4; }
 
+  /* Bug count summary */
+  .bug-count-summary { font-size: 12px; color: var(--mid); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #3a2d50; }
+
   footer { text-align: center; padding: 32px; color: #3a2d50; font-size: 12px; }
 </style>
 </head>
@@ -304,17 +307,17 @@
     <div class="metric warn">
       <div class="num">5</div>
       <div class="label">Pilots in Program</div>
-      <div class="sub">🟡 Product blocking go-live</div>
+      <div class="sub">A Bag Concept: 3/11 done</div>
     </div>
     <div class="metric crit">
       <div class="num">1</div>
       <div class="label">Critical Blocker</div>
       <div class="sub">🔴 Tags not pulling products</div>
     </div>
-    <div class="metric warn">
-      <div class="num">28</div>
+    <div class="metric good">
+      <div class="num">29</div>
       <div class="label">Open Bugs</div>
-      <div class="sub">🟡 53 incomplete in Shape Up</div>
+      <div class="sub">All triaged with priority + owner</div>
     </div>
     <div class="metric good">
       <div class="num">Apr</div>
@@ -425,86 +428,190 @@
   </div>
 
   <div class="section">
-    <div class="section-title">📋 Open Bugs (28 open in Shape Up)</div>
+    <div class="section-title">📋 Open Bugs (29 triaged)</div>
     <div class="card">
+      <div class="bug-count-summary">2 Critical · 10 High · 10 Medium · 7 Low</div>
       <table class="bug-table">
         <thead>
-          <tr><th>Bug</th><th>Priority</th><th>Status</th></tr>
+          <tr><th>Bug</th><th>Priority</th><th>Owner</th><th>Status</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Quiz end not pulling from inventory (tags)</strong></td>
-            <td>—</td>
+            <td><strong>Quiz end not pulling products from inventory (tags)</strong></td>
+            <td><span class="badge red">CRITICAL</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Tags not routing to products in flows</strong></td>
+            <td><span class="badge red">CRITICAL</span></td>
+            <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
             <td><strong>Analytics not working</strong></td>
-            <td>—</td>
+            <td><span class="badge amber">HIGH</span></td>
+            <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
-            <td><strong>Not showing scans</strong></td>
-            <td>—</td>
+            <td><strong>Analytics (see other notes)</strong></td>
+            <td><span class="badge amber">HIGH</span></td>
+            <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
-            <td><strong>Preview screen different than real screen</strong></td>
-            <td>—</td>
+            <td><strong>Analytics Simplification</strong></td>
+            <td><span class="badge amber">HIGH</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Show scan data + drop-off + click tracking</strong></td>
+            <td><span class="badge amber">HIGH</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Not showing scans in analytics</strong></td>
+            <td><span class="badge amber">HIGH</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Images not showing up in product results</strong></td>
+            <td><span class="badge amber">HIGH</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Preview screen different than live screen</strong></td>
+            <td><span class="badge amber">HIGH</span></td>
+            <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
             <td><strong>Profile skip contact causing issues</strong></td>
-            <td>—</td>
+            <td><span class="badge amber">HIGH</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Submissions: don't show other brands' scans</strong></td>
+            <td><span class="badge amber">HIGH</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>URGENT — needs description</strong></td>
+            <td><span class="badge amber">HIGH</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Links after product recs not working</strong></td>
+            <td><span class="badge purple">MEDIUM</span></td>
+            <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
             <td><strong>Web page formatting vs mobile</strong></td>
-            <td>—</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Back to customers button doesn't work</strong></td>
-            <td>—</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Links after product recs broken</strong></td>
-            <td>—</td>
+            <td><span class="badge purple">MEDIUM</span></td>
+            <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
             <td><strong>New user screen needed</strong></td>
-            <td>—</td>
+            <td><span class="badge purple">MEDIUM</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>URL field needed for products/inventory</strong></td>
+            <td><span class="badge purple">MEDIUM</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Tags dynamic (show on page itself)</strong></td>
+            <td><span class="badge purple">MEDIUM</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Show clicks on links (track clicks)</strong></td>
+            <td><span class="badge purple">MEDIUM</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Back to customers button doesn't work</strong></td>
+            <td><span class="badge purple">MEDIUM</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Profile page issues</strong></td>
+            <td><span class="badge purple">MEDIUM</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Customer profile — check notes</strong></td>
+            <td><span class="badge purple">MEDIUM</span></td>
+            <td>Kelley</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Finish/perk step — how do we edit?</strong></td>
+            <td><span class="badge purple">MEDIUM</span></td>
+            <td>Kelley</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
             <td><strong>Pricing not working on preview</strong></td>
-            <td>—</td>
+            <td><span class="badge green">LOW</span></td>
+            <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
-            <td><strong>Images not showing in results</strong></td>
-            <td>—</td>
+            <td><strong>Start page — remove from build page</strong></td>
+            <td><span class="badge green">LOW</span></td>
+            <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
-            <td><strong>Tags dynamic (tags on page itself)</strong></td>
-            <td>—</td>
+            <td><strong>Add Mirour logo to bottom + link</strong></td>
+            <td><span class="badge green">LOW</span></td>
+            <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
-            <td><strong>Start page remove from build page</strong></td>
-            <td>—</td>
+            <td><strong>Hide profile fields from customers</strong></td>
+            <td><span class="badge green">LOW</span></td>
+            <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
           <tr>
-            <td><strong>URGENT (unnamed)</strong></td>
-            <td>—</td>
+            <td><strong>Add images to multi-select</strong></td>
+            <td><span class="badge green">LOW</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Remove perk from flows</strong></td>
+            <td><span class="badge green">LOW</span></td>
+            <td>Tanmay</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Undo button in flow/step creator</strong></td>
+            <td><span class="badge green">LOW</span></td>
+            <td>Tanmay</td>
             <td><span class="badge amber">OPEN</span></td>
           </tr>
         </tbody>
       </table>
-      <div style="padding: 14px 0 0 0; margin-top: 14px; border-top: 1px solid #2a1d3540; font-size: 12px; color: #888;">+14 more in backlog...</div>
     </div>
   </div>
 
@@ -564,34 +671,34 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>0 of 5 pilots have lifecycle tasks completed</strong></td>
+            <td><strong>A Bag Concept 3/11 done, rest need updating</strong></td>
             <td>Asana → Pilots</td>
             <td>Can't track pilot progress, can't tell what's done</td>
-            <td>Update Asana: check off completed items (contracts, onboarding, etc)</td>
+            <td>Continue checking off completed items</td>
           </tr>
           <tr>
-            <td><strong>22 of 28 open bugs have no priority set</strong></td>
+            <td><strong>All 29 bugs now triaged with priority + owner</strong></td>
             <td>Asana → Shape Up → Bugs/QA</td>
-            <td>Can't triage. Team doesn't know what to fix first</td>
-            <td>Kelley/Loren: assign priority (Critical/High/Med/Low) to each bug</td>
+            <td>Can triage and track priority — team knows what to fix first</td>
+            <td>✅ Done — review weekly</td>
           </tr>
           <tr>
-            <td><strong>22 of 28 open bugs have no owner</strong></td>
+            <td><strong>All 29 bugs now assigned (27 Tanmay, 2 Kelley)</strong></td>
             <td>Asana → Shape Up → Bugs/QA</td>
-            <td>Nobody is accountable for fixing them</td>
-            <td>Assign owner (Tanmay for code bugs, Kelley for UX)</td>
+            <td>Everyone is accountable for fixing their assigned bugs</td>
+            <td>✅ Done — review weekly</td>
           </tr>
           <tr>
-            <td><strong>Meeting notes sitting in Active Sprint</strong></td>
+            <td><strong>Meeting notes archived from Active Sprint</strong></td>
             <td>Asana → Shape Up</td>
-            <td>Pollutes sprint view with non-work items</td>
-            <td>Move meeting notes to a separate section or remove</td>
+            <td>Sprint view now clean, contains only work items</td>
+            <td>✅ Done</td>
           </tr>
           <tr>
-            <td><strong>Shopify Sync has full eng doc but "Needs Plan" status</strong></td>
+            <td><strong>Shopify Sync status updated to 'Plan Proposed'</strong></td>
             <td>Asana → Product Dev</td>
-            <td>Status doesn't match reality — plan exists in Google Doc</td>
-            <td>Update Plan Approval to "Plan Proposed"</td>
+            <td>Status now matches reality — plan exists in Google Doc</td>
+            <td>✅ Done</td>
           </tr>
           <tr>
             <td><strong>Product Dev board: 0/6 tasks completed but work is shipping</strong></td>
@@ -624,7 +731,7 @@
           <tr>
             <td><strong>Product backlog + bugs</strong></td>
             <td>Asana → Shape Up (81 tasks, 53 incomplete)</td>
-            <td><span class="badge amber">⚠️ Needs triage</span></td>
+            <td><span class="badge green">✅ Triaged</span></td>
           </tr>
           <tr>
             <td><strong>New feature pipeline</strong></td>
