@@ -265,6 +265,18 @@
     border-left: 4px solid var(--green);
   }
 
+  /* Feature grid cards */
+  .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .feature-card {
+    background: #1e1430;
+    border-radius: 8px;
+    padding: 16px;
+    border-left: 3px solid var(--spacejam);
+  }
+  .feature-card h4 { font-size: 13px; color: #fff; margin-bottom: 10px; }
+  .feature-card .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; color: #999; background: #2a1d35; margin-right: 6px; margin-bottom: 8px; }
+  .feature-card p { font-size: 12px; color: #bbb; line-height: 1.4; }
+
   footer { text-align: center; padding: 32px; color: #3a2d50; font-size: 12px; }
 </style>
 </head>
@@ -277,7 +289,6 @@
 
 <div class="tabs">
   <div class="tab active" onclick="show('product', this)">PRODUCT</div>
-  <div class="tab" onclick="show('pilots', this)">PILOTS</div>
   <div class="tab" onclick="show('growth', this)">GROWTH</div>
   <div class="tab" onclick="show('ops', this)">OPS & FINANCE</div>
 </div>
@@ -293,19 +304,19 @@
     <div class="metric warn">
       <div class="num">5</div>
       <div class="label">Pilots in Program</div>
-      <div class="sub">Product not ready for all pilots yet</div>
-    </div>
-    <div class="metric crit">
-      <div class="num">~29</div>
-      <div class="label">Open Bugs</div>
-      <div class="sub">From Asana Shape Up</div>
+      <div class="sub">🟡 Product blocking go-live</div>
     </div>
     <div class="metric crit">
       <div class="num">1</div>
       <div class="label">Critical Blocker</div>
-      <div class="sub">Tags — blocks all product flows</div>
+      <div class="sub">🔴 Tags not pulling products</div>
     </div>
-    <div class="metric">
+    <div class="metric warn">
+      <div class="num">28</div>
+      <div class="label">Open Bugs</div>
+      <div class="sub">🟡 53 incomplete in Shape Up</div>
+    </div>
+    <div class="metric good">
       <div class="num">Apr</div>
       <div class="label">Next Milestone</div>
       <div class="sub">2 pilots → paid ($398 MRR)</div>
@@ -313,17 +324,18 @@
   </div>
 
   <div class="section">
-    <div class="section-title">🔴 Critical Blocker</div>
+    <div class="section-title">🔴 Critical Blocker — Fix First</div>
     <div class="card">
       <table class="bug-table">
         <thead>
-          <tr><th>Issue</th><th>Why It Matters</th><th>Owner</th><th>Status</th></tr>
+          <tr><th>Issue</th><th>Why It Matters</th><th>Owner</th><th>Source</th><th>Status</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Tags not pulling products into flows</strong><br><span style="font-size:11px;color:#888">Kelley confirmed today (Mar 25): building flows but tags aren't routing to products. Tanmay built auto-tagger + scraped Soberish products (Mar 24) but flow-level routing still broken.</span></td>
-            <td>Blocks ALL product recommendation flows. Kelley and Loren can't build Soberish flows until this works.</td>
+            <td><strong>Tags not pulling products into flows</strong><br><span style="font-size:11px;color:#888">"All tags" shows empty, tagged steps don't route to products</span></td>
+            <td>Blocks ALL quiz/tag-based flows. Kelley stuck building Soberish flows. Can't demo to brands.</td>
             <td>Tanmay</td>
+            <td>Kelley (daily update Mar 25)</td>
             <td><span class="badge red">CRITICAL</span></td>
           </tr>
         </tbody>
@@ -332,129 +344,32 @@
   </div>
 
   <div class="section">
-    <div class="section-title">✅ Recently Fixed (March 23)</div>
-    <div class="card green-border">
-      <ul class="checklist">
-        <li><div class="check done"></div> <span>Image sizing — now adjustable</span></li>
-        <li><div class="check done"></div> <span>Arrow icon on button links — removed</span></li>
-        <li><div class="check done"></div> <span>Preview vs real screen UI — now consistent</span></li>
-        <li><div class="check done"></div> <span>Contact form fix — pushed (needs Loren confirmation)</span></li>
-        <li><div class="check done"></div> <span>QR codes — workaround in place (always on internally), proper fix in progress</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🟡 Open Bugs — Pilot Quality</div>
+    <div class="section-title">🟢 Recently Shipped (Last 7 Days)</div>
     <div class="card">
       <table class="bug-table">
         <thead>
-          <tr><th>Bug</th><th>Impact</th><th>Owner</th><th>Status</th></tr>
+          <tr><th>What</th><th>When</th><th>Impact</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Cross-brand data showing</strong><br><span style="font-size:11px;color:#888">Soberish sees A Bag Concept scans</span></td>
-            <td>Data integrity — trust breaker</td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
+            <td><strong>Product scraper + auto-tagger for Soberish</strong></td>
+            <td>Mar 24</td>
+            <td>Web scraped all products with images, built algo that auto-tags. CSV shared with team.</td>
           </tr>
           <tr>
-            <td><strong>Quiz results not pulling from inventory</strong><br><span style="font-size:11px;color:#888">Goes to link instead of products</span></td>
-            <td>Breaks product rec flows</td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
+            <td><strong>Flow Builder v2 — side-by-side preview</strong></td>
+            <td>Mar 20</td>
+            <td>Dual-sided flow component, real-time preview as you build</td>
           </tr>
           <tr>
-            <td><strong>Images not showing in product results</strong></td>
-            <td>Visual recs broken</td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
+            <td><strong>Contact capture fixes</strong></td>
+            <td>Mar 23</td>
+            <td>Fixed several bugs flagged during QA</td>
           </tr>
           <tr>
-            <td><strong>Analytics not working / overwhelming for retail owners</strong></td>
-            <td>Brands can't see their data</td>
-            <td>—</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Flows not saving properly</strong><br><span style="font-size:11px;color:#888">Kelley lost 4 steps on Mar 10</span></td>
-            <td>Work lost during building</td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Web page formatting vs mobile</strong><br><span style="font-size:11px;color:#888">Content cut off</span></td>
-            <td>Bad non-mobile experience</td>
-            <td>—</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Customer profile cleanup</strong><br><span style="font-size:11px;color:#888">Reward code, duplicate sections, device type</span></td>
-            <td>Confusing for brands</td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Glad & Young inventory — missing images/tags from Shopify export</strong></td>
-            <td>Can't build G&Y flows</td>
-            <td>Loren/Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Start page mandatory — breaks simple data capture</strong></td>
-            <td>Blocks pop-up use cases</td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Back to customers button broken</strong></td>
-            <td>Navigation issue</td>
-            <td>—</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="padding: 14px 0 0 0; margin-top: 14px; border-top: 1px solid #2a1d3540; font-size: 12px; color: #888;">~12 additional lower-priority bugs in Asana backlog (links after recs, undo button, multi-select images, pricing on preview, Mirour logo, etc.)</div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Product Roadmap — In Progress</div>
-    <div class="card">
-      <table class="bug-table">
-        <thead>
-          <tr><th>Feature</th><th>Stage</th><th>Owner</th><th>Notes</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Shopify Sync V1</strong><br><span style="font-size:11px;color:#888">Forward sync customer data to brand's Shopify</span></td>
-            <td>Idea (scoped)</td>
-            <td>Tanmay</td>
-            <td>Requested by Madilyn at ABC. Engineering brief done. Est. 1.5-2 days.</td>
-          </tr>
-          <tr>
-            <td><strong>Flow Builder Overhaul</strong><br><span style="font-size:11px;color:#888">Single step creator, Mailchimp-style workflow view, component consolidation</span></td>
-            <td>Build</td>
-            <td>Tanmay</td>
-            <td>Figma wireframes from Kelley. Side-by-side preview already built.</td>
-          </tr>
-          <tr>
-            <td><strong>Quiz System → Tag-Based</strong><br><span style="font-size:11px;color:#888">Switch from point-based to tag matching (like Typeform outcomes)</span></td>
-            <td>Idea</td>
-            <td>Tanmay</td>
-            <td>Current number system too complex. Tags already used for site navigation.</td>
-          </tr>
-          <tr>
-            <td><strong>Analytics Simplification</strong><br><span style="font-size:11px;color:#888">Focus on: total scans, completion rate, engagement, product insights</span></td>
-            <td>Idea</td>
-            <td>—</td>
-            <td>Current analytics too overwhelming for retail owners.</td>
-          </tr>
-          <tr>
-            <td><strong>Initial Brand Template Step</strong><br><span style="font-size:11px;color:#888">First step template for brands</span></td>
-            <td>Idea</td>
-            <td>—</td>
-            <td>Check Figma for reference.</td>
+            <td><strong>Flow builder core structure</strong></td>
+            <td>Mar 16</td>
+            <td>Started implementing core flow logic</td>
           </tr>
         </tbody>
       </table>
@@ -462,267 +377,196 @@
   </div>
 
   <div class="section">
-    <div class="section-title">✅ What's Working — Don't Break This</div>
-    <div class="card">
-      <ul class="checklist">
-        <li><div class="check done"></div> <span>AI flow builder — drag/drop, auto-generates quiz frameworks</span></li>
-        <li><div class="check done"></div> <span>Multi-step flows: education → quiz → product recs</span></li>
-        <li><div class="check done"></div> <span>Image carousels, grids, contact capture, rating systems</span></li>
-        <li><div class="check done"></div> <span>THC drinks education flow tested + working</span></li>
-        <li><div class="check done"></div> <span>mirour.me routing live</span></li>
-        <li><div class="check done"></div> <span>Two-flow A/B testing (discount vs. quiz) deployed</span></li>
-        <li><div class="check done"></div> <span>Tanmay's Soberish product scraper + auto-tagger (Mar 24)</span></li>
-      </ul>
+    <div class="section-title">🏗️ What's Being Built</div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4>Flow Builder Overhaul</h4>
+        <div style="margin-bottom: 8px;">
+          <span class="tag">Feature Area: Flow Builder</span>
+          <span class="tag">Build Type: Improvement</span>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <span class="tag">Plan: Approved</span>
+          <span class="tag">Owner: Tanmay</span>
+        </div>
+        <p>Redesign step creator, consolidate product components, add Mailchimp-style workflow visualization. Figma wireframes from Kelley linked.</p>
+      </div>
+
+      <div class="feature-card">
+        <h4>Shopify Sync V1</h4>
+        <div style="margin-bottom: 8px;">
+          <span class="tag">Priority: P1</span>
+          <span class="tag">Feature Area: Integrations</span>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <span class="tag">Build Type: Infrastructure</span>
+          <span class="tag">Owner: Tanmay</span>
+        </div>
+        <p>When customer submits flow, create/update Shopify record so staff can look them up at register. Requested by Madilyn at A Bag Concept. Plan: Needs Plan</p>
+      </div>
+
+      <div class="feature-card">
+        <h4>QA + System Check</h4>
+        <div style="margin-bottom: 8px;">
+          <span class="tag">Build Type: Feature</span>
+          <span class="tag">Effort: M</span>
+        </div>
+        <p>Mobile + desktop testing, flow testing, data verification, edge cases</p>
+      </div>
+
+      <div class="feature-card">
+        <h4>Brand Onboarding Template</h4>
+        <div style="margin-bottom: 8px;">
+          <span class="tag">Initial step for brands</span>
+        </div>
+        <p>Check Figma for reference and design specs.</p>
+      </div>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">📅 This Week (Mar 25)</div>
+    <div class="section-title">📋 Open Bugs (28 open in Shape Up)</div>
+    <div class="card">
+      <table class="bug-table">
+        <thead>
+          <tr><th>Bug</th><th>Priority</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Quiz end not pulling from inventory (tags)</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Analytics not working</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Not showing scans</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Preview screen different than real screen</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Profile skip contact causing issues</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Web page formatting vs mobile</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Back to customers button doesn't work</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Links after product recs broken</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>New user screen needed</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Pricing not working on preview</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Images not showing in results</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Tags dynamic (tags on page itself)</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>Start page remove from build page</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+          <tr>
+            <td><strong>URGENT (unnamed)</strong></td>
+            <td>—</td>
+            <td><span class="badge amber">OPEN</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding: 14px 0 0 0; margin-top: 14px; border-top: 1px solid #2a1d3540; font-size: 12px; color: #888;">+14 more in backlog...</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📡 This Week — Who's Doing What</div>
     <div class="three-col">
       <div class="card">
         <h3>Loren</h3>
         <ul class="checklist">
-          <li><div class="check"></div> <span>Soberish flows (THC + discount flow for profile)</span></li>
-          <li><div class="check"></div> <span>Waiting for legal docs to send team</span></li>
+          <li><div class="check"></div> <span>🏷️ At Shoptalk (learning: low-lift for brands + tie to ROI = no brainer)</span></li>
+          <li><div class="check"></div> <span>Building Soberish flows (THC flow, discount flow for profile)</span></li>
+          <li><div class="check"></div> <span>Waiting on legal docs for co-founder agreements</span></li>
           <li><div class="check"></div> <span>Substack / community ecosystem build</span></li>
-          <li><span style="font-size: 11px; color: #666;">Slow to respond during sessions, back late afternoon</span></li>
         </ul>
       </div>
-      <div class="card">
-        <h3>Tanmay</h3>
-        <ul class="checklist">
-          <li><div class="check"></div> <span>Fix tag → product routing in flows (PRIORITY #1)</span></li>
-          <li><div class="check"></div> <span>Live walkthrough with Kelley on flow building (tomorrow)</span></li>
-          <li><div class="check"></div> <span>QA testing — asked team for non-technical testing help</span></li>
-          <li><div class="check"></div> <span>Continue bug fixes</span></li>
-        </ul>
-      </div>
+
       <div class="card">
         <h3>Kelley</h3>
         <ul class="checklist">
-          <li><div class="check"></div> <span>Building Soberish flows — stuck on tags/product routing</span></li>
-          <li><div class="check"></div> <span>"Real world" user testing / brand alignment (visuals first, then voice)</span></li>
+          <li><div class="check"></div> <span>🔴 STUCK: Tags not pulling products — wants to build a flow live with Tanmay tomorrow</span></li>
+          <li><div class="check"></div> <span>Building Soberish flows + real-world user testing</span></li>
+          <li><div class="check"></div> <span>Brand alignment (visuals first, then voice)</span></li>
           <li><div class="check"></div> <span>Social/blog/onboarding resource building</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Tanmay</h3>
+        <ul class="checklist">
+          <li><div class="check"></div> <span>✅ Built product scraper + auto-tagger (Mar 24)</span></li>
+          <li><div class="check"></div> <span>🔧 Needs QA help from team (asked Mar 24)</span></li>
+          <li><div class="check"></div> <span>Flow builder iteration</span></li>
+          <li><div class="check"></div> <span>Bug fixes from QA testing</span></li>
         </ul>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">🗺️ Path to April Milestone</div>
+    <div class="section-title">📊 Product Roadmap</div>
     <div class="card">
-      <div class="path">
-        <div class="path-step active">Fix tag routing</div>
-        <div class="path-arrow">→</div>
-        <div class="path-step">All 5 pilot flows ready</div>
-        <div class="path-arrow">→</div>
-        <div class="path-step">Pilot review sessions</div>
-        <div class="path-arrow">→</div>
-        <div class="path-step">2 brands → paid</div>
-        <div class="path-arrow">→</div>
-        <div class="path-step">Case study drafted</div>
+      <div style="font-size: 12px; color: #bbb; line-height: 1.6;">
+        <strong>Completed:</strong> THC education flow, Mirour.me routing, Two-flow A/B testing<br><br>
+        <strong>Active Sprint:</strong> Tag routing fix, Flow builder overhaul, QA + system check, Contact capture fixes<br><br>
+        <strong>Next Up:</strong> Shopify sync v1, Brand onboarding template, Customer profile v2, Analytics simplification<br><br>
+        <strong>Backlog (unprioritized, 22 items):</strong> Mixpanel analytics, AI features, Branded colors for paid, Digital version of Mirour, Content cards drag-and-drop, Polls/voting, URL field for products, Templates, Paragraph line breaks in step builder, Heading size consolidation
       </div>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">📊 Milestone Tracker</div>
+    <div class="section-title">🔊 Signals</div>
     <div class="card">
-      <table class="milestone-table">
-        <thead>
-          <tr><th>Milestone</th><th>Target</th><th>Status</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>5 pilots in program</strong></td>
-            <td>March</td>
-            <td><span class="badge amber">IN PROGRESS</span></td>
-          </tr>
-          <tr>
-            <td><strong>Tag routing + critical bugs fixed</strong></td>
-            <td>March</td>
-            <td><span class="badge red">IN PROGRESS</span></td>
-          </tr>
-          <tr>
-            <td><strong>All flows QA'd and live</strong></td>
-            <td>March-April</td>
-            <td><span class="badge purple">PENDING</span></td>
-          </tr>
-          <tr>
-            <td><strong>2 pilots convert to paid</strong></td>
-            <td>April</td>
-            <td><span class="badge purple">PENDING</span></td>
-          </tr>
-          <tr>
-            <td><strong>Case study drafted</strong></td>
-            <td>April</td>
-            <td><span class="badge purple">NOT STARTED</span></td>
-          </tr>
-          <tr>
-            <td><strong>Self-serve onboarding v1</strong></td>
-            <td>April</td>
-            <td><span class="badge purple">NOT STARTED</span></td>
-          </tr>
-          <tr>
-            <td><strong>F&F raise closes $50k</strong></td>
-            <td>April</td>
-            <td><span class="badge purple">NOT STARTED</span></td>
-          </tr>
-          <tr>
-            <td><strong>Zone education v2</strong></td>
-            <td>May</td>
-            <td><span style="color: #666;">Not yet</span></td>
-          </tr>
-          <tr>
-            <td><strong>POS integration scoped</strong></td>
-            <td>June</td>
-            <td><span style="color: #666;">Not yet</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-</div>
-
-<!-- ═══════════════════════════════════════════════════════ PILOTS ══ -->
-<div class="content pane" id="pilots">
-
-  <div class="metrics">
-    <div class="metric warn">
-      <div class="num">5</div>
-      <div class="label">Pilots Active</div>
-      <div class="sub">Need all 5 live for April conversions</div>
-    </div>
-    <div class="metric amber">
-      <div class="num">1/5</div>
-      <div class="label">Have Progress</div>
-      <div class="sub">A Bag Concept only</div>
-    </div>
-    <div class="metric crit">
-      <div class="num">0</div>
-      <div class="label">Converted to Paid</div>
-      <div class="sub">Target: 2 by April</div>
-    </div>
-    <div class="metric">
-      <div class="num">Apr</div>
-      <div class="label">Convert Target</div>
-      <div class="sub">$398 MRR (2 × $199)</div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Pilot Programs</div>
-    <div class="pilots-grid">
-
-      <!-- A Bag Concept -->
-      <div class="pilot-card green">
-        <div class="pilot-card-header">
-          <h4>A Bag Concept</h4>
-          <div class="category">Accessories / Pop-up</div>
-        </div>
-        <div class="pilot-card-content">
-          <div class="pilot-progress">1/11 complete</div>
-          <div class="pilot-status">First live pilot — launched March 8 pop-up. Flows built.</div>
-          <ul class="pilot-checklist">
-            <li><div class="check done"></div> <span>Posters with QR Codes (Kelley, done Mar 6)</span></li>
-            <li class="overdue"><div class="check"></div> <span>Pilot start 30 days — ⚠️ OVERDUE (was Mar 8)</span></li>
-            <li><div class="check"></div> <span>Contract sent</span></li>
-            <li><div class="check"></div> <span>Contract signed</span></li>
-            <li><div class="check"></div> <span>Merch given</span></li>
-            <li><div class="check"></div> <span>Onboarding</span></li>
-            <li><div class="check"></div> <span>Content taken and published for social</span></li>
-            <li><div class="check"></div> <span>Case study</span></li>
-            <li><div class="check"></div> <span>Pilot end / convert date</span></li>
-            <li><div class="check"></div> <span>Referral asked</span></li>
-            <li><div class="check"></div> <span>Feedback</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Soberish -->
-      <div class="pilot-card amber">
-        <div class="pilot-card-header">
-          <h4>Soberish</h4>
-          <div class="category">Non-alcoholic Beverages</div>
-        </div>
-        <div class="pilot-card-content">
-          <div class="pilot-progress">0/9 complete</div>
-          <div class="pilot-status">Actively building flows. Products scraped + auto-tagged Mar 24. Kelley stuck on tag routing.</div>
-          <ul class="pilot-checklist">
-            <li><div class="check"></div> <span>Contract sent</span></li>
-            <li><div class="check"></div> <span>Contract signed</span></li>
-            <li><div class="check"></div> <span>Merch given</span></li>
-            <li><div class="check"></div> <span>Onboarding</span></li>
-            <li><div class="check"></div> <span>Logins (Kelley)</span></li>
-            <li><div class="check"></div> <span>Content taken and published for social</span></li>
-            <li><div class="check"></div> <span>Case study</span></li>
-            <li><div class="check"></div> <span>Pilot end / convert date</span></li>
-            <li><div class="check"></div> <span>Referral asked</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Glad & Young -->
-      <div class="pilot-card amber">
-        <div class="pilot-card-header">
-          <h4>Glad & Young</h4>
-          <div class="category">Jewelry</div>
-        </div>
-        <div class="pilot-card-content">
-          <div class="pilot-progress">0/9 complete</div>
-          <div class="pilot-status">Inventory issues — missing images/tags from Shopify export. Loren followed up.</div>
-          <ul class="pilot-checklist">
-            <li><div class="check"></div> <span>Contract sent</span></li>
-            <li><div class="check"></div> <span>Contract signed</span></li>
-            <li><div class="check"></div> <span>Merch given</span></li>
-            <li><div class="check"></div> <span>Onboarding</span></li>
-            <li><div class="check"></div> <span>Content taken and published for social</span></li>
-            <li><div class="check"></div> <span>Case study</span></li>
-            <li><div class="check"></div> <span>Pilot end / convert date</span></li>
-            <li><div class="check"></div> <span>Referral asked</span></li>
-            <li><div class="check"></div> <span>Learnings</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Just Add Honey -->
-      <div class="pilot-card amber">
-        <div class="pilot-card-header">
-          <h4>Just Add Honey</h4>
-          <div class="category">Food / Beverage</div>
-        </div>
-        <div class="pilot-card-content">
-          <div class="pilot-progress">0/8 complete</div>
-          <div class="pilot-status">In program. No recent activity.</div>
-          <ul class="pilot-checklist">
-            <li><div class="check"></div> <span>Contract sent</span></li>
-            <li><div class="check"></div> <span>Contract signed</span></li>
-            <li><div class="check"></div> <span>Merch given</span></li>
-            <li><div class="check"></div> <span>Onboarding</span></li>
-            <li><div class="check"></div> <span>Content taken and published for social</span></li>
-            <li><div class="check"></div> <span>Case study</span></li>
-            <li><div class="check"></div> <span>Pilot end / convert date</span></li>
-            <li><div class="check"></div> <span>Referral asked</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- One of Each -->
-      <div class="pilot-card red">
-        <div class="pilot-card-header">
-          <h4>One of Each</h4>
-          <div class="category">NEW</div>
-        </div>
-        <div class="pilot-card-content">
-          <div class="pilot-progress">0/1 complete</div>
-          <div class="pilot-status">Just added. Only onboarding task exists.</div>
-          <ul class="pilot-checklist">
-            <li><div class="check"></div> <span>Onboarding</span></li>
-          </ul>
-        </div>
-      </div>
-
+      <ul class="checklist">
+        <li><div class="check"></div> <span>Amy Wister (revshopp.com) engaged on Mirour BTS update, asked about Kohl's contact — warm lead</span></li>
+        <li><div class="check"></div> <span>Nicole Brooks (Founders Live) reached out about Mirour x FL partnership</span></li>
+        <li><div class="check"></div> <span>Faced Facial Studio (Alexis) — excited to learn more, scheduling next week meeting</span></li>
+        <li><div class="check"></div> <span>Coleman Zaimes (Evolution Accelerator) — interested, sent calendar link</span></li>
+        <li><div class="check"></div> <span>Loren's Shoptalk insight: "the more we can make this low lift for brands and tie to ROI, the more chances"</span></li>
+        <li><div class="check"></div> <span>Vitamin Shoppe reference shared in #product — AI search built in Cursor in 2 weeks (competitive intel)</span></li>
+        <li><div class="check"></div> <span>Kelley flagged flow saving issue (Mar 10) — flows not saving properly, had 9 steps got reduced to 5</span></li>
+      </ul>
     </div>
   </div>
 
