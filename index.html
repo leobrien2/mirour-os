@@ -556,11 +556,131 @@
   </div>
 
   <div class="section">
+    <div class="section-title">⚠️ Data Health — What Needs Cleanup</div>
+    <div class="card">
+      <table class="bug-table">
+        <thead>
+          <tr><th>Issue</th><th>Where</th><th>Why It Matters</th><th>Action Needed</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>0 of 5 pilots have lifecycle tasks completed</strong></td>
+            <td>Asana → Pilots</td>
+            <td>Can't track pilot progress, can't tell what's done</td>
+            <td>Update Asana: check off completed items (contracts, onboarding, etc)</td>
+          </tr>
+          <tr>
+            <td><strong>22 of 28 open bugs have no priority set</strong></td>
+            <td>Asana → Shape Up → Bugs/QA</td>
+            <td>Can't triage. Team doesn't know what to fix first</td>
+            <td>Kelley/Loren: assign priority (Critical/High/Med/Low) to each bug</td>
+          </tr>
+          <tr>
+            <td><strong>22 of 28 open bugs have no owner</strong></td>
+            <td>Asana → Shape Up → Bugs/QA</td>
+            <td>Nobody is accountable for fixing them</td>
+            <td>Assign owner (Tanmay for code bugs, Kelley for UX)</td>
+          </tr>
+          <tr>
+            <td><strong>Meeting notes sitting in Active Sprint</strong></td>
+            <td>Asana → Shape Up</td>
+            <td>Pollutes sprint view with non-work items</td>
+            <td>Move meeting notes to a separate section or remove</td>
+          </tr>
+          <tr>
+            <td><strong>Shopify Sync has full eng doc but "Needs Plan" status</strong></td>
+            <td>Asana → Product Dev</td>
+            <td>Status doesn't match reality — plan exists in Google Doc</td>
+            <td>Update Plan Approval to "Plan Proposed"</td>
+          </tr>
+          <tr>
+            <td><strong>Product Dev board: 0/6 tasks completed but work is shipping</strong></td>
+            <td>Asana → Product Dev</td>
+            <td>Tanmay is building but not updating Asana</td>
+            <td>Team: update task status when work ships</td>
+          </tr>
+          <tr>
+            <td><strong>No due dates on any Product Dev tasks</strong></td>
+            <td>Asana → Product Dev</td>
+            <td>No deadlines = no accountability</td>
+            <td>Add target dates, even rough ones</td>
+          </tr>
+          <tr>
+            <td><strong>Kelley listed as assignee on 1 Shape Up task, Tanmay on 4</strong></td>
+            <td>Asana → Shape Up</td>
+            <td>Most tasks unassigned — unclear ownership</td>
+            <td>Assign all active sprint + bug tasks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card" style="margin-top: 20px;">
+      <h3>📊 Sources of Truth</h3>
+      <table class="bug-table">
+        <thead>
+          <tr><th>What</th><th>Source</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Product backlog + bugs</strong></td>
+            <td>Asana → Shape Up (81 tasks, 53 incomplete)</td>
+            <td><span class="badge amber">⚠️ Needs triage</span></td>
+          </tr>
+          <tr>
+            <td><strong>New feature pipeline</strong></td>
+            <td>Asana → New Product Development (6 tasks)</td>
+            <td><span class="badge amber">⚠️ Needs status updates</span></td>
+          </tr>
+          <tr>
+            <td><strong>Pilot lifecycle</strong></td>
+            <td>Asana → Pilots (5 sections, 39 tasks)</td>
+            <td><span class="badge red">🔴 Not being tracked</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sales pipeline</strong></td>
+            <td>Asana → Sales Pipeline</td>
+            <td><span class="badge green">✅ Active (27 leads)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Daily team updates</strong></td>
+            <td>Slack → #dailyupdates</td>
+            <td><span class="badge green">✅ Active</span></td>
+          </tr>
+          <tr>
+            <td><strong>Product discussions</strong></td>
+            <td>Slack → #product</td>
+            <td><span class="badge green">✅ Active</span></td>
+          </tr>
+          <tr>
+            <td><strong>Meeting decisions</strong></td>
+            <td>Granola</td>
+            <td><span class="badge amber">⚠️ Notes exist but not linked to tasks</span></td>
+          </tr>
+          <tr>
+            <td><strong>Product code</strong></td>
+            <td>GitHub → mirour2 (Next.js + Supabase)</td>
+            <td><span class="badge green">✅ Active</span></td>
+          </tr>
+          <tr>
+            <td><strong>Design specs</strong></td>
+            <td>Figma (linked from Asana tasks)</td>
+            <td><span class="badge green">✅ Active</span></td>
+          </tr>
+          <tr>
+            <td><strong>Docs + strategy</strong></td>
+            <td>Google Drive</td>
+            <td><span class="badge amber">⚠️ Scattered, needs organization</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
     <div class="section-title">🔊 Signals</div>
     <div class="card">
       <ul class="checklist">
         <li><div class="check"></div> <span>Amy Wister (revshopp.com) engaged on Mirour BTS update, asked about Kohl's contact — warm lead</span></li>
-        <li><div class="check"></div> <span>Nicole Brooks (Founders Live) reached out about Mirour x FL partnership</span></li>
         <li><div class="check"></div> <span>Faced Facial Studio (Alexis) — excited to learn more, scheduling next week meeting</span></li>
         <li><div class="check"></div> <span>Coleman Zaimes (Evolution Accelerator) — interested, sent calendar link</span></li>
         <li><div class="check"></div> <span>Loren's Shoptalk insight: "the more we can make this low lift for brands and tie to ROI, the more chances"</span></li>
