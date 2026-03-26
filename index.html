@@ -5,23 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mirour Operating System</title>
 <link rel="stylesheet" href="https://use.typekit.net/iqx7giv.css">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'Newsreader', Georgia, serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     background: #FFFFFF;
     color: #2A1D35;
     min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.6;
   }
 
-  /* Colors */
+  /* Brand Colors — from Mirour Brand Book */
   :root {
     --galaxy: #2A1D35;
-    --nebula: #AD76B2;
-    --cream: #FFF7F0;
-    --warm-white: #FAF9F5;
-    --soft-yellow: #FFF1AD;
+    --nebula: #AD75B2;
+    --uv: #7F59A5;
+    --spacejam: #584EA0;
+    --stardust: #FFF6EE;
+    --cream: #FFF6EE;
+    --mellow: #FFF2AF;
+    --supernova: #EBDE13;
     --sunstar: #D49B29;
     --text: #2A1D35;
     --text-light: #6B5E72;
@@ -42,18 +46,26 @@
   .header-left {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
   }
-  .header-left img.icon { height: 32px; }
-  .header-left img.wordmark { height: 18px; }
+  .header-left img.wordmark { height: 20px; }
   .header-os {
     font-family: orpheuspro, Georgia, serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
-    color: var(--text-light);
+    color: var(--nebula);
     letter-spacing: -0.01em;
-    margin-left: 4px;
   }
+  /* M icon as subtle watermark in bottom-right */
+  .brand-watermark {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .brand-watermark img { height: 120px; }
   header .date {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 12px;
@@ -535,13 +547,14 @@
 </head>
 <body>
 
+<div class="brand-watermark"><img src="mirour-icon.png" alt=""></div>
+
 <header>
   <div class="header-left">
-    <img src="mirour-icon.png" alt="Mirour" class="icon">
     <img src="mirour-logo.png" alt="Mirour" class="wordmark">
     <span class="header-os">OS</span>
   </div>
-  <div class="date">Updated March 26, 2026 &nbsp;·&nbsp; Q1 → Q2</div>
+  <div class="date">Updated March 26, 2026</div>
 </header>
 
 <div class="tabs">
