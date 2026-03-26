@@ -281,6 +281,83 @@
   .bug-count-summary { font-size: 12px; color: var(--mid); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #3a2d50; }
 
   footer { text-align: center; padding: 32px; color: #3a2d50; font-size: 12px; }
+
+  /* Architecture Map */
+  .arch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .arch-card {
+    background: #1e1430;
+    border-radius: 10px;
+    padding: 16px;
+    border-top: 4px solid #3a2d50;
+    position: relative;
+  }
+  .arch-card.works { border-top-color: var(--green); }
+  .arch-card.broken { border-top-color: var(--red); }
+  .arch-card.partial { border-top-color: var(--amber); }
+  .arch-card.future { border-top-color: var(--spacejam); border-style: dashed; border-top-style: dashed; }
+  .arch-card h4 { font-size: 13px; color: #fff; margin-bottom: 6px; }
+  .arch-card p { font-size: 11px; color: #999; line-height: 1.5; }
+  .arch-status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .arch-status.works { background: #27ae6022; color: #2ecc71; }
+  .arch-status.broken { background: #c0392b22; color: #e74c3c; }
+  .arch-status.partial { background: #e67e2222; color: #f39c12; }
+  .arch-status.future { background: #584ea022; color: #a084e0; }
+
+  /* Simplify cards */
+  .simplify-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .simplify-card {
+    background: #1e1430;
+    border-radius: 10px;
+    padding: 16px;
+    border-left: 3px solid var(--sunstar);
+  }
+  .simplify-card h4 { font-size: 13px; color: var(--sunstar); margin-bottom: 6px; }
+  .simplify-card .now { font-size: 11px; color: #e74c3c; margin-bottom: 4px; }
+  .simplify-card .then { font-size: 11px; color: #2ecc71; margin-bottom: 8px; }
+  .simplify-card p { font-size: 11px; color: #999; line-height: 1.5; }
+
+  /* Legend */
+  .legend { display: flex; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--mid); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+  .legend-dot.green { background: var(--green); }
+  .legend-dot.red { background: var(--red); }
+  .legend-dot.amber { background: var(--amber); }
+  .legend-dot.purple { background: var(--spacejam); }
+
+  /* Flow diagram */
+  .flow-diagram {
+    background: #1e1430;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .flow-step {
+    text-align: center;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 11px;
+    min-width: 110px;
+  }
+  .flow-step.green { background: #27ae6022; border: 1px solid #27ae6044; color: #2ecc71; }
+  .flow-step.red { background: #c0392b22; border: 1px solid #c0392b44; color: #e74c3c; }
+  .flow-step.amber { background: #e67e2222; border: 1px solid #e67e2244; color: #f39c12; }
+  .flow-step.purple { background: #584ea022; border: 1px dashed #584ea044; color: #a084e0; }
+  .flow-step strong { display: block; margin-bottom: 2px; }
+  .flow-arrow { color: #584EA0; font-size: 20px; padding: 0 8px; }
 </style>
 </head>
 <body>
@@ -300,7 +377,7 @@
 <div class="content pane active" id="product">
 
   <div class="notice">
-    Rule for Q1: Fix before build. Validate before scale. No new features until pilots are converting to paid.
+    Root cause found: The code works. The data doesn't. Products sit in CSVs, tags in SQL scripts, analytics tables have no writers. Fix the data pipeline, not the features.
   </div>
 
   <div class="metrics">
@@ -312,12 +389,12 @@
     <div class="metric crit">
       <div class="num">1</div>
       <div class="label">Critical Blocker</div>
-      <div class="sub">🔴 Tags not pulling products</div>
+      <div class="sub">🔴 Product data not in database</div>
     </div>
-    <div class="metric good">
-      <div class="num">29</div>
-      <div class="label">Open Bugs</div>
-      <div class="sub">All triaged with priority + owner</div>
+    <div class="metric warn">
+      <div class="num">7</div>
+      <div class="label">Ghost Tables</div>
+      <div class="sub">Schema exists, no code writes to them</div>
     </div>
     <div class="metric good">
       <div class="num">Apr</div>
@@ -326,20 +403,278 @@
     </div>
   </div>
 
+  <!-- ═══ ROOT CAUSE ═══ -->
   <div class="section">
-    <div class="section-title">🔴 Critical Blocker — Fix First</div>
+    <div class="section-title">🔴 Critical Blocker — Root Cause Found</div>
+    <div class="card">
+      <div style="font-size: 13px; color: #ccc; line-height: 1.7; margin-bottom: 16px;">
+        <strong style="color: #e74c3c;">What everyone thinks:</strong> "Tags not pulling products" = code bug<br>
+        <strong style="color: #2ecc71;">What's actually happening:</strong> The recommendation engine, flow builder, and tag system all work perfectly.
+        Soberish has 1,024 products in a CSV from Lightspeed POS with 28 product categories. But nobody imported them into Supabase or linked them to tags via the product_tags table.
+        The code queries for products with matching tags → finds nothing → shows empty results. Not a bug. A data gap.
+      </div>
+      <div style="font-size: 12px; color: var(--sunstar); font-weight: bold;">Fix: Run the import + auto-tag script. Map POS categories to Mirour tags. Tanmay, 1 afternoon.</div>
+    </div>
+  </div>
+
+  <!-- ═══ PRODUCT ARCHITECTURE MAP ═══ -->
+  <div class="section">
+    <div class="section-title">🗺️ Product Architecture — Full Picture</div>
+
+    <div style="font-size: 12px; color: #bbb; margin-bottom: 16px; line-height: 1.6;">
+      Everything Mirour has built, what's actually working, what's broken, and what's future. This is the real state of the product.
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot green"></div> Working</div>
+      <div class="legend-item"><div class="legend-dot amber"></div> Built but disconnected</div>
+      <div class="legend-item"><div class="legend-dot red"></div> Broken / empty</div>
+      <div class="legend-item"><div class="legend-dot purple"></div> Future (not built)</div>
+    </div>
+
+    <!-- The actual data flow -->
+    <div style="font-size: 11px; color: var(--mid); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">How data flows through the product</div>
+    <div class="flow-diagram">
+      <div class="flow-step red"><strong>Product Import</strong>Manual CSV only</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step red"><strong>Auto-Tagging</strong>Script exists, never run</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step green"><strong>Flow Builder</strong>Works, complex UI</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step green"><strong>Flow Runner</strong>Quiz + recs work</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step red"><strong>Analytics</strong>Table exists, 0 writes</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step red"><strong>Customer Data</strong>Tags not saved</div>
+    </div>
+
+    <div class="arch-grid">
+      <!-- Row 1: Core features -->
+      <div class="arch-card works">
+        <span class="arch-status works">WORKING</span>
+        <h4>Flow Builder</h4>
+        <p>Node graph editor with 7 step types. Supports quiz questions, conditional logic, tag assignment, product recommendations. Side-by-side preview shipped Mar 20.</p>
+        <p style="color: #e67e22; margin-top: 6px;">⚠ Complex for non-engineers. Kelley and Loren both stuck. Needs wizard mode for first-run.</p>
+      </div>
+
+      <div class="arch-card works">
+        <span class="arch-status works">WORKING</span>
+        <h4>Flow Runner</h4>
+        <p>Customer-facing quiz at /f/[formId]. Renders all step types, calculates tags from answers, filters products by tag match. 3,000+ line file doing 3 jobs (UI + recs + data capture).</p>
+        <p style="color: #2ecc71; margin-top: 6px;">✓ Core engine is solid. Returns right products when tags exist.</p>
+      </div>
+
+      <div class="arch-card works">
+        <span class="arch-status works">WORKING</span>
+        <h4>Tag-Based Recommendations</h4>
+        <p>3 strategies: "any" match, "all" match, "zone-first". Quiz answers accumulate tags → filterProducts() finds matches. Works perfectly when product_tags table is populated.</p>
+        <p style="color: #e67e22; margin-top: 6px;">⚠ Only need "any" strategy for pilots. Other 2 add confusion.</p>
+      </div>
+
+      <!-- Row 2: Data layer -->
+      <div class="arch-card broken">
+        <span class="arch-status broken">NOT WORKING</span>
+        <h4>Product Import Pipeline</h4>
+        <p>No automated import exists. Brands export CSV from POS → someone manually processes it → products sit in CSV never imported to Supabase. Store integrations UI saves API keys but NO code calls those APIs.</p>
+        <p style="color: #e74c3c; margin-top: 6px;">🔴 This is THE blocker. Every pilot is stuck here.</p>
+      </div>
+
+      <div class="arch-card broken">
+        <span class="arch-status broken">GHOST TABLE</span>
+        <h4>Analytics Events</h4>
+        <p>analytics_events table created in migration with full schema (event_type, payload, location_id). Zero code writes to it. The /analytics page has nothing to show because no events are tracked.</p>
+        <p style="color: #e74c3c; margin-top: 6px;">🔴 Can't measure anything. No funnel, no conversion, no drop-off.</p>
+      </div>
+
+      <div class="arch-card broken">
+        <span class="arch-status broken">GHOST TABLE</span>
+        <h4>Customer Tags</h4>
+        <p>customer_tags table exists. lib/tags.ts has appendTags() and getSessionTags() functions ready to go. But the flow runner NEVER calls them. Customer profiling data vanishes after each session.</p>
+        <p style="color: #e74c3c; margin-top: 6px;">🔴 One function call to fix. Huge value unlock.</p>
+      </div>
+
+      <!-- Row 3: More features -->
+      <div class="arch-card broken">
+        <span class="arch-status broken">GHOST TABLE</span>
+        <h4>Form Visits / Flow Sessions</h4>
+        <p>form_visits tracks QR scans/page visits. flow_sessions tracks start/complete. Both tables exist, neither written to. Can't measure engagement or completion rates.</p>
+      </div>
+
+      <div class="arch-card partial">
+        <span class="arch-status partial">PARTIALLY BUILT</span>
+        <h4>Store Integrations</h4>
+        <p>IntegrationsModal lets users save Lightspeed, Shopify, Squarespace API keys. Keys are stored in store_integrations table. But NO code ever calls those APIs to sync products. UI theater.</p>
+      </div>
+
+      <div class="arch-card partial">
+        <span class="arch-status partial">PARTIALLY BUILT</span>
+        <h4>Profile Engine (M3)</h4>
+        <p>Weighted scoring from profile_rules, hard branch for non-drinker, tiebreaker logic. Called by flow runner but has hardcoded "wellness-seeker" ID that won't match real data. Rules not populated for any pilot.</p>
+        <p style="color: #e67e22; margin-top: 6px;">⚠ Premature. Tags alone do the job for now.</p>
+      </div>
+
+      <!-- Row 4: More stuff -->
+      <div class="arch-card partial">
+        <span class="arch-status partial">OVERBUILT</span>
+        <h4>Zone System</h4>
+        <p>Maps products to physical store areas. zone_tags junction table exists. "zone-first" recommendation strategy built. No pilot uses zones. Adds cognitive overhead to flow builder for zero current value.</p>
+        <p style="color: #e67e22; margin-top: 6px;">⚠ Hide for now. Bring back when a pilot asks for wayfinding.</p>
+      </div>
+
+      <div class="arch-card works">
+        <span class="arch-status works">WORKING</span>
+        <h4>Customer Info Capture</h4>
+        <p>Captures phone/email during flows. Customer lookup via token. Creates customer records. Works, but unclear if repeat visitors are matched to previous sessions.</p>
+      </div>
+
+      <div class="arch-card partial">
+        <span class="arch-status partial">PARTIALLY BUILT</span>
+        <h4>Inventory Management</h4>
+        <p>/inventory page exists. Products can be viewed/edited. But product import is manual and tags must be assigned one by one. No bulk operations. No POS sync.</p>
+      </div>
+
+      <!-- Row 5: Future -->
+      <div class="arch-card future">
+        <span class="arch-status future">FUTURE</span>
+        <h4>AI Flow Generation</h4>
+        <p>Import products → AI reads categories/descriptions → auto-generates a quiz flow with tag mappings. Eliminates the blank canvas problem. The #1 simplification for onboarding.</p>
+        <p style="color: #a084e0; margin-top: 6px;">💡 POS categories ARE the quiz. "What are you in the mood for?" writes itself from product data.</p>
+      </div>
+
+      <div class="arch-card future">
+        <span class="arch-status future">FUTURE</span>
+        <h4>AI Auto-Tagging</h4>
+        <p>LLM reads product name + description + category → generates tags automatically. "Kin Euphorics High Rhode" → functional, adaptogen, no-alcohol, social, energize. Turns week-long onboarding into same-day.</p>
+      </div>
+
+      <div class="arch-card future">
+        <span class="arch-status future">FUTURE</span>
+        <h4>Customer Insights Dashboard</h4>
+        <p>Once analytics + customer tags work: "62% of customers want non-alcoholic" / "Top vibe: calm evening" / "THC products have 3x save rate". Makes $199/mo feel like a steal.</p>
+      </div>
+
+      <div class="arch-card future">
+        <span class="arch-status future">FUTURE</span>
+        <h4>Multi-Channel Distribution</h4>
+        <p>Flow runner already works as standalone page. Package as: embed widget for brand websites, shareable link for email campaigns, Instagram story link. Distribution is free, just not packaged yet.</p>
+      </div>
+
+      <div class="arch-card future">
+        <span class="arch-status future">FUTURE</span>
+        <h4>Live POS Sync</h4>
+        <p>Use the API keys already stored in store_integrations to auto-sync products nightly. New products auto-tagged and available in flows. Brands never touch a CSV again.</p>
+      </div>
+
+      <div class="arch-card future">
+        <span class="arch-status future">FUTURE</span>
+        <h4>Flow Wizard (Simple Mode)</h4>
+        <p>3-step onboarding: connect your store → pick a quiz style → preview and launch. Full node editor for power users later. First-run experience should be "flow in 5 minutes."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ WHAT TO SIMPLIFY ═══ -->
+  <div class="section">
+    <div class="section-title">✂️ Simplify — What to Hide, Default, or Cut</div>
+    <div style="font-size: 12px; color: #bbb; margin-bottom: 16px; line-height: 1.6;">
+      The code is more complete than the team realizes. The problem isn't missing features — it's too much exposed at once. These changes make the build easier without rewriting anything.
+    </div>
+
+    <div class="simplify-grid">
+      <div class="simplify-card">
+        <h4>Flow Creation</h4>
+        <div class="now">Now: Blank canvas → build from scratch → manually tag each answer</div>
+        <div class="then">Better: Import products → system generates draft flow → tweak and launch</div>
+        <p>The current flow builder is a power tool. For pilot onboarding you need a wizard. Hide the node editor behind "Advanced" and lead with a 3-step setup.</p>
+      </div>
+
+      <div class="simplify-card">
+        <h4>Recommendation Strategies</h4>
+        <div class="now">Now: 3 strategies to choose from (any / all / zone-first)</div>
+        <div class="then">Better: Default to "any match" — hide the choice entirely</div>
+        <p>Every pilot needs "any". The other two add decision overhead with zero current value. Bring them back as a pro feature when someone actually needs "all match."</p>
+      </div>
+
+      <div class="simplify-card">
+        <h4>Node Types</h4>
+        <div class="now">Now: 7 types (welcome, message, question, customer-info, recommendation, product-showcase, complete)</div>
+        <div class="then">Better: 3 types for pilot flows (welcome, quiz question, recommendations)</div>
+        <p>Message and product-showcase are edge cases. Customer-info can be a toggle on the complete step. Fewer types = fewer things to explain, fewer things to break.</p>
+      </div>
+
+      <div class="simplify-card">
+        <h4>Profile Engine</h4>
+        <div class="now">Now: Weighted scoring + hard branches + archetype matching + tiebreakers</div>
+        <div class="then">Better: Tags alone handle recommendations for all current pilots</div>
+        <p>Profile engine requires populated profile_rules (none exist) and has hardcoded IDs. Tags do the same job with no setup. Revisit when you have 50+ products per category.</p>
+      </div>
+
+      <div class="simplify-card">
+        <h4>Zone System</h4>
+        <div class="now">Now: Products mapped to physical zones, zone_tags table, zone-first filtering</div>
+        <div class="then">Better: Hide zones entirely. Just tags + products.</div>
+        <p>No pilot uses zones. It adds a layer of mapping that makes the flow builder harder to understand. Bring it back when a pilot asks "can I guide people to aisle 3?"</p>
+      </div>
+
+      <div class="simplify-card">
+        <h4>Onboarding</h4>
+        <div class="now">Now: Export CSV → manually map tags → someone imports to Supabase → build flow from scratch</div>
+        <div class="then">Better: Connect POS → auto-import → auto-tag → auto-generate flow → brand tweaks</div>
+        <p>Current onboarding is consulting disguised as a product. Each pilot takes weeks. The auto pipeline turns it into hours. This is the difference between 5 pilots and 50.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ GHOST TABLES ═══ -->
+  <div class="section">
+    <div class="section-title">👻 Ghost Tables — Schema Exists, Nothing Writes to Them</div>
     <div class="card">
       <table class="bug-table">
         <thead>
-          <tr><th>Issue</th><th>Why It Matters</th><th>Owner</th><th>Source</th><th>Status</th></tr>
+          <tr><th>Table</th><th>What It's For</th><th>Status</th><th>Fix Effort</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Tags not pulling products into flows</strong><br><span style="font-size:11px;color:#888">"All tags" shows empty, tagged steps don't route to products</span></td>
-            <td>Blocks ALL quiz/tag-based flows. Kelley stuck building Soberish flows. Can't demo to brands.</td>
-            <td>Tanmay</td>
-            <td>Kelley (daily update Mar 25)</td>
-            <td><span class="badge red">CRITICAL</span></td>
+            <td><strong>analytics_events</strong></td>
+            <td>Track funnel: flow starts, step completions, rec views, saves</td>
+            <td><span class="badge red">0 WRITES</span></td>
+            <td>4 INSERT calls in flow runner</td>
+          </tr>
+          <tr>
+            <td><strong>form_visits</strong></td>
+            <td>Track QR scans and page visits per flow</td>
+            <td><span class="badge red">0 WRITES</span></td>
+            <td>1 INSERT on flow load</td>
+          </tr>
+          <tr>
+            <td><strong>flow_sessions</strong></td>
+            <td>Track flow start → complete with timestamps</td>
+            <td><span class="badge red">0 WRITES</span></td>
+            <td>2 INSERTs (start + complete)</td>
+          </tr>
+          <tr>
+            <td><strong>customer_tags</strong></td>
+            <td>Save what tags each customer matched</td>
+            <td><span class="badge red">LIB EXISTS, NEVER CALLED</span></td>
+            <td>1 function call: appendTags()</td>
+          </tr>
+          <tr>
+            <td><strong>interactions</strong></td>
+            <td>Unknown — created but never referenced</td>
+            <td><span class="badge red">ORPHANED</span></td>
+            <td>Delete or define purpose</td>
+          </tr>
+          <tr>
+            <td><strong>store_integrations</strong></td>
+            <td>Store API keys for Lightspeed/Shopify/Squarespace</td>
+            <td><span class="badge amber">KEYS SAVED, APIs NEVER CALLED</span></td>
+            <td>Build sync worker per platform</td>
+          </tr>
+          <tr>
+            <td><strong>sku_profile_copy</strong></td>
+            <td>Deduplication? Fetched by flow runner but never used</td>
+            <td><span class="badge red">FETCHED, IGNORED</span></td>
+            <td>Remove fetch or implement</td>
           </tr>
         </tbody>
       </table>
@@ -1118,9 +1453,9 @@
             <td>Core platform, bug fixes, QA</td>
           </tr>
           <tr>
-            <td><strong>Flow Builder</strong></td>
-            <td>Kelley</td>
-            <td>Pilot flows, content, integrations</td>
+            <td><strong>Chief Brand Officer</strong></td>
+            <td>Kelley Bowen</td>
+            <td>Brand, pilot flows, content, design</td>
           </tr>
         </tbody>
       </table>
