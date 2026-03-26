@@ -705,258 +705,312 @@
 <!-- ═══════════════════════════════════════════════════════ PRODUCT ══ -->
 <div class="content pane" id="product">
 
-  <div class="notice">Auto-tagging via LLM is the #1 priority. This is our IP.</div>
+  <div class="notice">Tags are the core of everything. If tags work, flows work, search works, recs work, ecom sync works. This is our IP.</div>
 
   <!-- METRICS -->
   <div class="metrics">
     <div class="metric crit">
-      <div class="num">1</div>
-      <div class="label">Critical Blocker</div>
-      <div class="sub">Tagging pipeline not automated</div>
+      <div class="num">7</div>
+      <div class="label">Priority Tickets</div>
+      <div class="sub">Tanmay's active queue</div>
     </div>
     <div class="metric warn">
-      <div class="num">7</div>
-      <div class="label">Ghost Tables</div>
-      <div class="sub">Schema exists, no code writes</div>
-    </div>
-    <div class="metric crit">
-      <div class="num">Blocked</div>
-      <div class="label">Pilots Blocked On</div>
-      <div class="sub">Product data + auto-tagging</div>
+      <div class="num">18</div>
+      <div class="label">Open Bugs</div>
+      <div class="sub">Shape Up Bugs/QA board</div>
     </div>
     <div class="metric good">
-      <div class="num">Apr</div>
-      <div class="label">Next Milestone</div>
-      <div class="sub">Auto-tag prototype live</div>
+      <div class="num">5</div>
+      <div class="label">Pilots</div>
+      <div class="sub">From Asana Pilots project</div>
+    </div>
+    <div class="metric crit">
+      <div class="num">Mar 27</div>
+      <div class="label">Next Due</div>
+      <div class="sub">Tag-based display mode</div>
     </div>
   </div>
 
-  <!-- RIGHT NOW -->
+  <!-- ═══ LAYER 1: WHAT'S SHIPPING NOW ═══ -->
   <div class="section">
-    <div class="section-title">RIGHT NOW WHAT TANMAY NEEDS</div>
+    <div class="section-title">SHIPPING NOW — TANMAY'S ACTIVE WORK</div>
     <div class="card">
-      <div style="font-size: 12px; color: #bbb; line-height: 1.8; margin-bottom: 12px;">
-        <strong>Verify Soberish product data is in database.</strong> Check row count in products table. If gaps, pull from their site export.<br><br>
-        <strong>Start auto-tagging on Soberish batch.</strong> Hand-tag 20 products with onboarding context, validate approach, then script for 100-product batches.<br><br>
-        <strong>Document tag consistency rules.</strong> Build the prompt engineering documentation now so rules transfer to next brand.
+      <table class="bug-table">
+        <thead>
+          <tr><th>Ticket</th><th>Status</th><th>Due</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color: #e74c3c;">Add Tag-Based Product Display Mode</strong><br><span style="font-size: 11px; color: #999;">New product result mode: type a tag → see all matching products. No quiz needed. Use case: Soberish education pages.</span></td>
+            <td><span class="badge red">DUE TOMORROW</span></td>
+            <td>Mar 27</td>
+            <td>Asana</td>
+          </tr>
+          <tr>
+            <td><strong style="color: var(--sunstar);">Build LLM Auto-Tagging System</strong><br><span style="font-size: 11px; color: #999;">THE #1 priority. Batch 100 products + onboarding context → LLM → consistent tags → DB. Prompt engineering for cross-batch consistency. This is our IP.</span></td>
+            <td><span class="badge amber">IN PROGRESS</span></td>
+            <td>—</td>
+            <td>Asana</td>
+          </tr>
+          <tr>
+            <td><strong>AI Flow Creator — Pull Real Tags</strong><br><span style="font-size: 11px; color: #999;">AI flow creator should pull from brand's actual tags in DB. Preview shows real products not placeholders. Feed tags (not full inventory) + prompt to LLM → maps tags to steps.</span></td>
+            <td><span class="badge amber">OPEN</span></td>
+            <td>—</td>
+            <td>Asana</td>
+          </tr>
+          <tr>
+            <td><strong>Show All Tags at Product Result Step</strong><br><span style="font-size: 11px; color: #999;">Show every stacked tag at product result card. Toggle on/off to preview how results change. "3 tags = 2 products, any of these 3 = 15 results."</span></td>
+            <td><span class="badge amber">OPEN</span></td>
+            <td>—</td>
+            <td>Asana</td>
+          </tr>
+          <tr>
+            <td><strong>Hide Recommendation Strategy Logic</strong><br><span style="font-size: 11px; color: #999;">Any/all/zone options confuse users. Hide completely (default to "any") or simplify. Show tags instead.</span></td>
+            <td><span class="badge amber">OPEN</span></td>
+            <td>—</td>
+            <td>Asana</td>
+          </tr>
+          <tr>
+            <td><strong>Make Product Preview Clearer</strong><br><span style="font-size: 11px; color: #999;">Kelley thought dynamic recs were broken — they only show in preview mode. Add helper text. Small fix, big friction reducer.</span></td>
+            <td><span class="badge amber">OPEN</span></td>
+            <td>—</td>
+            <td>Asana</td>
+          </tr>
+          <tr>
+            <td><strong>Onboarding Context Form</strong><br><span style="font-size: 11px; color: #999;">Capture brand context during setup (what they sell, who customers are, use cases). Feeds the LLM so it tags accurately instead of guessing blind.</span></td>
+            <td><span class="badge amber">OPEN</span></td>
+            <td>—</td>
+            <td>Asana</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top: 12px; border-left: 4px solid var(--green);">
+      <h3 style="color: var(--green); font-size: 13px;">Recently Shipped (Tanmay, Mar 23-24)</h3>
+      <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+        Image sizing adjustment · Arrow icon removal from buttons/links · UI consistency between realtime and preview · Contact form fix · Web-scraped Soberish product data + built tagging algorithm with auto-tags · QR on/off backend fix (proper fix in progress)
       </div>
     </div>
   </div>
 
-  <!-- TAGGING ROADMAP -->
+  <!-- ═══ LAYER 2: PILOTS ═══ -->
   <div class="section">
-    <div class="section-title">TAGGING ROADMAP 3-PHASE PATH</div>
+    <div class="section-title">PILOTS — SOURCE: ASANA + CODEBASE + MEETINGS</div>
+    <div class="card">
+      <table class="bug-table">
+        <thead>
+          <tr><th>Pilot</th><th>Category</th><th>Stage</th><th>Key Detail</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>A Bag Concept</strong></td>
+            <td>Bags</td>
+            <td><span class="badge green">MOST ADVANCED</span></td>
+            <td>Pilot started Mar 8. Onboarded, QR flows live, posters printed. CSV import worked perfectly. Madilyn wants: discounts, digital version, branding colors. Feedback captured in Asana.</td>
+          </tr>
+          <tr>
+            <td><strong>Soberish</strong></td>
+            <td>Non-alc beverages</td>
+            <td><span class="badge amber">BUILDING FLOWS</span></td>
+            <td>500+ products web-scraped with auto-tags (Mar 24). Inventory in Google Drive. Kelley building flows, hit a snag with tags not pulling products — needs live walkthrough with Tanmay. 14 standard tags hardcoded in codebase (bulkTagHelpers.ts). Logins set up.</td>
+          </tr>
+          <tr>
+            <td><strong>Glad &amp; Young</strong></td>
+            <td>Jewelry</td>
+            <td><span class="badge amber">ONBOARDING</span></td>
+            <td>Missing images and tags from Shopify export. Need to identify what was excluded. Next auto-tag test case after Soberish. LMO followed up.</td>
+          </tr>
+          <tr>
+            <td><strong>Just Add Honey</strong></td>
+            <td>Tea</td>
+            <td><span class="badge amber">EARLY</span></td>
+            <td>All lifecycle steps open in Asana (contract, onboarding, merch, content, case study). Not yet started in product.</td>
+          </tr>
+          <tr>
+            <td><strong>One of Each</strong></td>
+            <td>Scarves &amp; bags</td>
+            <td><span class="badge amber">JUST STARTED</span></td>
+            <td>Mother-daughter team, 12 years in business. Cape Town + Seattle. Scarves = low-hanging fruit (500 units target). Met with Tamburai Mar 4. Shopify store, needs CSV export. oneofeach.co.za</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top: 12px; border-left: 4px solid var(--spacejam);">
+      <h3 style="color: var(--spacejam); font-size: 13px;">What the Codebase Shows for Pilots</h3>
+      <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+        <strong>Global inventory</strong> shipped Mar 3 — products use owner_id, one catalog across locations. <strong>Customer linking</strong> shipped Mar 8 — sessions and responses tie to customer IDs across visits. <strong>Soberish-specific logic</strong> hardcoded: profile engine has non-drinker override (Q3 check), 14 bulk tags with hard/soft constraints. <strong>Product model</strong> supports tags, zones, staff picks, store_ids array. <strong>Squarespace API route</strong> works. <strong>Shopify</strong> typed but no API route built yet.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ LAYER 3: ROADMAP ═══ -->
+  <div class="section">
+    <div class="section-title">ROADMAP — TAGGING IS THE STRATEGY</div>
     <div class="card" style="margin-bottom: 12px; border-left: 4px solid var(--sunstar);">
       <h3 style="color: var(--sunstar); font-size: 13px;">Phase 1: Auto-Tag on Import (NOW)</h3>
       <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-        Brand uploads CSV or POS export → fills onboarding context → system batches 100 products → LLM returns consistent tags → stored in product_tags immediately.<br>
-        <strong>Test with:</strong> Soberish (this week), then Glad & Young<br>
-        <strong>Timeline:</strong> Prototype by Apr 2, production by Apr 9
+        Brand uploads CSV or POS export → fills onboarding context form → system batches 100 products → LLM returns consistent tags → stored in product_tags. Key: prompt engineering so batch 2 doesn't invent different names than batch 1.<br>
+        <strong>Progress:</strong> Tanmay web-scraped Soberish and built a tagging algo (Mar 24). Full LLM pipeline not yet in codebase — zero auto-tagging code in mirour2 repo.<br>
+        <strong>Test with:</strong> Glad & Young as first real LLM case
       </div>
     </div>
     <div class="card" style="margin-bottom: 12px; border-left: 4px solid var(--spacejam);">
       <h3 style="color: var(--spacejam); font-size: 13px;">Phase 2: Learning Tags from Flows (NEXT)</h3>
       <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-        When brand creates a flow, AI extracts new tags from flow intent. "Find perfect THC drink" → system learns "5mg", "calming" are important → re-tags products. Tags compound over time.<br>
-        <strong>Timeline:</strong> Apr 16+
+        AI goes back and adds new tags based on flow prompts. "Dresses with pockets" creates a pocket tag retroactively across inventory. Tags compound over time.
       </div>
     </div>
     <div class="card" style="border-left: 4px solid #4CAF50;">
       <h3 style="color: #4CAF50; font-size: 13px;">Phase 3: Two-Way Ecom Sync (FUTURE — The Moat)</h3>
       <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-        Mirour tags flow back to Shopify/ecom. Brands' stores become searchable + agentic-ready. In-store intelligence feeds back to their ecommerce. Nobody else does this.
+        Mirour tags flow back to Shopify/ecom. Brands' stores become searchable + agentic-ready. In-store intelligence feeds back to ecommerce. Eng doc already exists in Google Drive. Nobody else does this.
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 12px;">
+      <h3 style="color: var(--mid); font-size: 13px;">Backlog (Decided — Not Yet)</h3>
+      <div style="font-size: 12px; color: #888; line-height: 1.7;">
+        Tags on buttons (attach tag to button → route to filtered results) · QR code reassignment (swap flow behind QR without reprinting — Kohl's needs eventually) · Shopify integration (typed, no API route) · Profiles v2 · Customer profile page · Branded colors for paid tier · Digital version of Mirour · Polls/voting · Content cards drag-and-drop · Group/condense flows for mobile
       </div>
     </div>
   </div>
 
   <!-- KEY DECISIONS -->
   <div class="section">
-    <div class="section-title">KEY DECISIONS FROM TEAM MEETING</div>
+    <div class="section-title">KEY DECISIONS — MAR 26 TEAM MEETING + MAR 9 PRODUCT REVIEW</div>
     <div class="card">
       <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-        <strong>✓ Keep flows.</strong> Not chat-only. Flows = experiential leverage, A/B testing, promotional capability.<br><br>
-        <strong>✓ Hide recommendation logic.</strong> Any/all/zone picker confuses users. Default to "any match" — hide choice entirely.<br><br>
-        <strong>✓ New tag-based display mode.</strong> Recommendation engine is solid. Add simple mode: "show everything with this tag" as filter button.<br><br>
-        <strong>✓ Tags on buttons.</strong> "See all 5mg drinks" routes by tag directly. Removes UI complexity.<br><br>
-        <strong>✗ Deprioritized: Zones, Profile Engine, multi-onboarding strategies.</strong> Tags alone handle all current pilots.
+        <strong>✓ Keep flows, don't go chat-only.</strong> Flows = experiential leverage, A/B testing, promotional capability. (Mar 26)<br><br>
+        <strong>✓ Hide recommendation logic.</strong> Any/all/zone picker confuses users. Default to "any match" — hide entirely. Show tags instead. (Mar 26)<br><br>
+        <strong>✓ New tag-based display mode.</strong> Simple filter: type a tag → see all products with that tag. For Soberish education pages. (Mar 26)<br><br>
+        <strong>✓ Switch quiz from points to tags.</strong> Point-based system too complex for non-technical users. Tags already used for site navigation. (Mar 9)<br><br>
+        <strong>✓ Simplify analytics.</strong> Remove average time, drop-off by step, peak hours. Focus on: total scans, completion rate, most saved items, date range comparison. (Mar 9)<br><br>
+        <strong>✓ Mid-size brands over pop-ups.</strong> Pop-ups lack bandwidth. Enterprise (Nike, eBay, Kohl's) = 6-12 month sales cycle. Nail small-to-mid first. (Mar 20, Mar 26)<br><br>
+        <strong>✓ Server infrastructure by May.</strong> Supabase sufficient for MVP. AWS startup credits available. Need separate dev/prod environments. Target: 10 paying clients before angel round. (Mar 20)<br><br>
+        <strong>✗ Deprioritized:</strong> Zones, Profile Engine scoring, multi-onboarding strategies. Tags alone handle all current pilots.
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ DETAIL BELOW ══ -->
+  <!-- ═══ DETAIL BELOW THE FOLD ═══ -->
   <div class="detail-section">
-    <div class="detail-label">For Deep Dive Architecture & Technical State</div>
+    <div class="detail-label">Deep Dive — Bugs, Architecture, Technical State</div>
 
-    <!-- PROBLEM -->
+    <!-- OPEN BUGS -->
     <div class="section">
-      <div class="section-title">CORE PROBLEM WHY EVERYTHING BLOCKED</div>
+      <div class="section-title">OPEN BUGS — 18 IN SHAPE UP BUGS/QA</div>
       <div class="card">
-        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-          <strong style="color: #e74c3c;">The problem:</strong> Product data from brands is messy. CSVs have no images, no tags, minimal descriptions. Web scraping worked for demo but isn't scalable.<br><br>
-          <strong style="color: #2ecc71;">The solution:</strong> LLM-powered auto-tagging. Send onboarding context + 100 products → LLM returns consistent tags → store in DB. Repeat per batch.<br><br>
-          <strong style="color: var(--sunstar);">Why this is IP:</strong> Two-way sync between Mirour tags and ecom platforms means brands' stores improve just by using Mirour. Tags flow back.
-        </div>
+        <table class="bug-table">
+          <thead>
+            <tr><th>Bug</th><th>Owner</th><th>Impact</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Tags not routing to products in flows</strong></td><td>Tanmay</td><td><span class="badge red">HIGH — Kelley blocked</span></td></tr>
+            <tr><td><strong>Tags dynamic (show on page itself)</strong></td><td>Tanmay</td><td><span class="badge red">HIGH</span></td></tr>
+            <tr><td><strong>Links after product recs not working</strong></td><td>Unassigned</td><td><span class="badge red">HIGH</span></td></tr>
+            <tr><td><strong>Analytics not working</strong></td><td>Unassigned</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Not showing scans in analytics</strong></td><td>Unassigned</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Images not showing in product results</strong></td><td>Unassigned</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Preview screen different than live screen</strong></td><td>Unassigned</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Pricing not working on preview</strong></td><td>Unassigned</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Profile skip contact causing issues</strong></td><td>Unassigned</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Back to customers button broken</strong></td><td>Unassigned</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Device remembering user skips flow</strong></td><td>—</td><td><span class="badge amber">KNOWN — localStorage caches contact form</span></td></tr>
+          </tbody>
+        </table>
+        <div style="font-size: 11px; color: #666; margin-top: 8px;">+ 7 more lower priority bugs in Asana Shape Up board</div>
       </div>
     </div>
 
-    <!-- ARCHITECTURE -->
+    <!-- DATA FLOW -->
     <div class="section">
-      <div class="section-title">PRODUCT ARCHITECTURE FULL PICTURE</div>
-
-      <div style="font-size: 12px; color: #bbb; margin-bottom: 16px; line-height: 1.6;">
-        Everything Mirour has built, what's working, what's broken, and what's future.
-      </div>
+      <div class="section-title">HOW DATA FLOWS THROUGH THE PRODUCT</div>
 
       <div class="legend" style="margin-bottom: 20px;">
         <div class="legend-item"><div class="legend-dot green"></div> Working</div>
-        <div class="legend-item"><div class="legend-dot amber"></div> Built but disconnected</div>
-        <div class="legend-item"><div class="legend-dot red"></div> Broken / empty</div>
-        <div class="legend-item"><div class="legend-dot purple"></div> Future</div>
+        <div class="legend-item"><div class="legend-dot amber"></div> Partially built</div>
+        <div class="legend-item"><div class="legend-dot red"></div> Not built / broken</div>
       </div>
 
-      <!-- Data flow diagram -->
-      <div style="font-size: 11px; color: var(--mid); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">How Data Flows Through the Product</div>
       <div class="flow-diagram">
-        <div class="flow-step red"><strong>Product Import</strong>Manual CSV only</div>
+        <div class="flow-step green"><strong>CSV Import</strong>Works (A Bag Concept confirmed)</div>
         <div class="flow-arrow">→</div>
-        <div class="flow-step red"><strong>Auto-Tagging</strong>Script exists, never run</div>
+        <div class="flow-step red"><strong>LLM Auto-Tag</strong>Zero code in repo</div>
         <div class="flow-arrow">→</div>
-        <div class="flow-step green"><strong>Flow Builder</strong>Works well</div>
+        <div class="flow-step green"><strong>Flow Builder</strong>Drag-and-drop, 7 step types</div>
         <div class="flow-arrow">→</div>
-        <div class="flow-step green"><strong>Flow Runner</strong>Quiz + recs work</div>
+        <div class="flow-step green"><strong>Flow Runner</strong>Quiz + tag recs work</div>
         <div class="flow-arrow">→</div>
-        <div class="flow-step red"><strong>Analytics</strong>Table exists, 0 writes</div>
+        <div class="flow-step red"><strong>Analytics</strong>Schema exists, bugs open</div>
       </div>
+    </div>
 
-      <!-- Architecture grid -->
+    <!-- WHAT'S ACTUALLY IN THE CODEBASE -->
+    <div class="section">
+      <div class="section-title">CODEBASE REALITY — GITHUB mirour2</div>
       <div class="arch-grid">
         <div class="arch-card works">
           <span class="arch-status works">WORKING</span>
           <h4>Flow Builder</h4>
-          <p>Node graph editor with 7 step types. Conditional logic, tag assignment, recommendations. Side-by-side preview shipped Mar 20.</p>
+          <p>7 node types including new product-showcase. Drag-and-drop (Mar 20 rewrite). Conditional logic, branching, tag assignment on quiz answers via conditionalNext.addTags.</p>
         </div>
 
         <div class="arch-card works">
           <span class="arch-status works">WORKING</span>
-          <h4>Flow Runner</h4>
-          <p>Customer-facing quiz at /f/[formId]. Renders steps, calculates tags from answers, filters products by tag match.</p>
+          <h4>Tag System</h4>
+          <p>Tags with categories (mood, dietary, occasion, avoiding) + hard vs soft constraints. appendTags(), getSessionTags(), getCustomerTags() all implemented in lib/tags.ts.</p>
         </div>
 
         <div class="arch-card works">
           <span class="arch-status works">WORKING</span>
-          <h4>Tag-Based Recommendations</h4>
-          <p>3 strategies: "any" match, "all" match, "zone-first". Quiz answers accumulate tags → filterProducts() finds matches.</p>
+          <h4>Recommendation Engine</h4>
+          <p>3 strategies: any/all/zone-first. Staff pick fallback. recommendationLogic config per flow node. Solid foundation.</p>
         </div>
 
-        <div class="arch-card broken">
-          <span class="arch-status broken">NOT WORKING</span>
-          <h4>Product Import Pipeline</h4>
-          <p>No automated import. Brands export CSV → manually processes → sits in CSV never imported to Supabase. Store integrations UI saves keys but NO code calls APIs.</p>
+        <div class="arch-card works">
+          <span class="arch-status works">WORKING</span>
+          <h4>Global Inventory (Mar 3)</h4>
+          <p>Products use owner_id — one catalog across multiple locations. store_id deprecated. Enables multi-location brands.</p>
         </div>
 
-        <div class="arch-card broken">
-          <span class="arch-status broken">GHOST TABLE</span>
-          <h4>Analytics Events</h4>
-          <p>analytics_events table created. Zero code writes to it. Can't measure funnel, conversion, drop-off.</p>
-        </div>
-
-        <div class="arch-card broken">
-          <span class="arch-status broken">GHOST TABLE</span>
-          <h4>Customer Tags</h4>
-          <p>customer_tags table exists. appendTags() and getSessionTags() ready. Flow runner NEVER calls them.</p>
-        </div>
-
-        <div class="arch-card broken">
-          <span class="arch-status broken">GHOST TABLE</span>
-          <h4>Form Visits / Flow Sessions</h4>
-          <p>form_visits and flow_sessions tables exist. Neither written to. Can't measure engagement or completion rates.</p>
+        <div class="arch-card works">
+          <span class="arch-status works">WORKING</span>
+          <h4>Customer Linking (Mar 8)</h4>
+          <p>Latest migration. Sessions + responses tied to customer_id. Track someone across visits. Foundation for customer profiles.</p>
         </div>
 
         <div class="arch-card partial">
-          <span class="arch-status partial">PARTIALLY BUILT</span>
-          <h4>Store Integrations</h4>
-          <p>Users save Lightspeed, Shopify, Squarespace keys. Keys stored. But NO code calls those APIs to sync products.</p>
+          <span class="arch-status partial">PARTIAL</span>
+          <h4>Squarespace Sync</h4>
+          <p>API route at /api/squarespace/products works. Store integrations UI saves keys. Shopify typed (IntegrationPlatform) but no API route.</p>
         </div>
 
         <div class="arch-card partial">
-          <span class="arch-status partial">OVERBUILT</span>
-          <h4>Zone System</h4>
-          <p>Maps products to physical store areas. No pilot uses zones. Adds cognitive overhead with zero current value. Hide for now.</p>
+          <span class="arch-status partial">BUGS OPEN</span>
+          <h4>Analytics</h4>
+          <p>Schema exists (analytics_events, flow_sessions, form_visits). Advanced views + realtime setup migrated Mar 7. Multiple bugs: not showing scans, analytics not working.</p>
         </div>
 
-        <div class="arch-card future">
-          <span class="arch-status future">FUTURE</span>
-          <h4>AI Flow Generation</h4>
-          <p>Import products → AI reads categories/descriptions → auto-generates quiz flow. Eliminates blank canvas. #1 simplification for onboarding.</p>
-        </div>
-
-        <div class="arch-card future">
-          <span class="arch-status future">FUTURE</span>
-          <h4>AI Auto-Tagging</h4>
-          <p>LLM reads product name + description + category → generates tags. Turns week-long onboarding into same-day.</p>
-        </div>
-
-        <div class="arch-card future">
-          <span class="arch-status future">FUTURE</span>
-          <h4>Customer Insights Dashboard</h4>
-          <p>Once analytics + customer tags work: "62% want non-alcoholic" / "Top vibe: calm evening". Makes $199/mo feel like a steal.</p>
+        <div class="arch-card broken">
+          <span class="arch-status broken">NOT BUILT</span>
+          <h4>LLM Auto-Tagging</h4>
+          <p>Zero code in repo. Tanmay built a web-scraping + tagging algo for Soberish externally (Mar 24) but the production LLM pipeline doesn't exist in mirour2 yet.</p>
         </div>
       </div>
     </div>
 
-    <!-- GHOST TABLES -->
+    <!-- MARKET SIGNALS FROM SHOPTALK -->
     <div class="section">
-      <div class="section-title">GHOST TABLES 7 TABLES, ZERO WRITES</div>
+      <div class="section-title">MARKET SIGNALS — SHOPTALK MAR 24-26</div>
       <div class="card">
-        <table class="bug-table">
-          <thead>
-            <tr><th>Table</th><th>What It's For</th><th>Status</th><th>Fix Effort</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>analytics_events</strong></td>
-              <td>Track flow starts, step completions, rec views, saves</td>
-              <td><span class="badge red">0 WRITES</span></td>
-              <td>4 INSERT calls in flow runner</td>
-            </tr>
-            <tr>
-              <td><strong>customer_tags</strong></td>
-              <td>Store accumulated tags from quiz sessions</td>
-              <td><span class="badge red">0 WRITES</span></td>
-              <td>1 function call to appendTags()</td>
-            </tr>
-            <tr>
-              <td><strong>form_visits</strong></td>
-              <td>Count QR scans and page visits per form</td>
-              <td><span class="badge red">0 WRITES</span></td>
-              <td>1 INSERT on form load</td>
-            </tr>
-            <tr>
-              <td><strong>flow_sessions</strong></td>
-              <td>Track quiz start/complete, timing, device</td>
-              <td><span class="badge red">0 WRITES</span></td>
-              <td>2 INSERT calls (start, complete)</td>
-            </tr>
-            <tr>
-              <td><strong>customer_profile_scores</strong></td>
-              <td>Weighted scoring from profile_rules</td>
-              <td><span class="badge amber">PARTIALLY BUILT</span></td>
-              <td>Premature. Tags alone work for now.</td>
-            </tr>
-            <tr>
-              <td><strong>zone_tags</strong></td>
-              <td>Map products to physical store zones</td>
-              <td><span class="badge amber">PARTIALLY BUILT</span></td>
-              <td>Hide for now. Bring back when pilot asks.</td>
-            </tr>
-            <tr>
-              <td><strong>product_auto_tags</strong></td>
-              <td>LLM-generated tags before human review</td>
-              <td><span class="badge red">NOT STARTED</span></td>
-              <td>New table. Set up this week.</td>
-            </tr>
-          </tbody>
-        </table>
+        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+          <strong>20% experiential spaces becoming standard.</strong> Retailers allocating floor space for experiences, not buying. Heavy digital integration.<br><br>
+          <strong>"Get your product data structured first"</strong> — biggest AI/agentic commerce theme. Vitamin Shoppe built AI system in 2 weeks using structured data. This validates our entire tagging thesis.<br><br>
+          <strong>Customers starting in-store have higher LTV.</strong> Omnichannel buyers who start physical → digital retain better long-term.<br><br>
+          <strong>Hot leads:</strong> Veronica Beard (head of data, 33/33/33 split digital/physical/wholesale), Kohl's (using QR + Google Sheets currently, requested deck), Philip Morris (heavy experiential investment, CRM lead ex-J.Crew, no way to capture experiential ROI).
+        </div>
       </div>
     </div>
   </div>
@@ -971,9 +1025,9 @@
   <!-- METRICS -->
   <div class="metrics">
     <div class="metric warn">
-      <div class="num">4</div>
+      <div class="num">5</div>
       <div class="label">Pilots Active</div>
-      <div class="sub">Soberish, Glad & Young, A Bag, One of Each</div>
+      <div class="sub">A Bag, Soberish, Glad & Young, Just Add Honey, One of Each</div>
     </div>
     <div class="metric crit">
       <div class="num">0</div>
