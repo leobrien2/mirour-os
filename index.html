@@ -4,188 +4,219 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mirour Operating System</title>
+<link rel="stylesheet" href="https://use.typekit.net/iqx7giv.css">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Arial', sans-serif; background: #1a1025; color: #fff; min-height: 100vh; }
+  body {
+    font-family: 'Newsreader', Georgia, serif;
+    background: #FFF7F0;
+    color: #2A1D35;
+    min-height: 100vh;
+  }
 
   /* Colors */
   :root {
     --galaxy: #2A1D35;
-    --spacejam: #584EA0;
-    --uv: #7F59A5;
-    --nebula: #AD75B2;
+    --nebula: #AD76B2;
+    --cream: #FFF7F0;
+    --warm-white: #FAF9F5;
+    --soft-yellow: #FFF1AD;
     --sunstar: #D49B29;
-    --stardust: #FFF6EE;
-    --dark: #3A2D40;
-    --mid: #C8BED4;
-    --red: #C0392B;
-    --amber: #E67E22;
-    --green: #27AE60;
+    --text: #2A1D35;
+    --text-light: #6B5E72;
+    --border: #E8DFD4;
+    --green: #2D8A56;
+    --amber: #C97B1A;
+    --red: #B5403A;
   }
 
   header {
-    background: var(--galaxy);
-    border-bottom: 2px solid var(--sunstar);
-    padding: 20px 32px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  header h1 { font-size: 22px; color: #fff; letter-spacing: 2px; }
-  header h1 span { color: var(--sunstar); }
-  header .date { font-size: 13px; color: var(--mid); }
+  header h1 {
+    font-family: orpheuspro, Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--galaxy);
+    letter-spacing: -0.01em;
+  }
+  header h1 span { color: var(--nebula); }
+  header .date {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    color: var(--text-light);
+  }
 
   .tabs {
     display: flex;
-    background: var(--galaxy);
-    border-bottom: 1px solid #3a2d50;
-    padding: 0 32px;
-    gap: 4px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    gap: 32px;
   }
   .tab {
-    padding: 12px 24px;
-    font-size: 13px;
-    font-weight: bold;
+    padding: 16px 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
     cursor: pointer;
-    border-bottom: 3px solid transparent;
-    color: var(--mid);
-    letter-spacing: 1px;
+    border-bottom: 2px solid transparent;
+    color: var(--text-light);
+    letter-spacing: 0;
     transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
-  .tab.active { color: var(--sunstar); border-bottom-color: var(--sunstar); }
-  .tab:hover { color: #fff; }
+  .tab.active { color: var(--nebula); border-bottom-color: var(--nebula); }
+  .tab:hover { color: var(--galaxy); }
 
-  .content { padding: 28px 32px; max-width: 1200px; }
+  .content { padding: 40px; max-width: 900px; margin: 0 auto; }
 
   /* Metric cards */
   .metrics {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
   }
   .metric {
-    background: var(--galaxy);
+    background: var(--warm-white);
     border-radius: 10px;
-    padding: 20px;
-    border-left: 4px solid var(--spacejam);
+    padding: 24px;
+    border-left: 4px solid var(--nebula);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--nebula);
+    box-shadow: 0 1px 3px rgba(42,29,53,0.08);
   }
   .metric.warn { border-left-color: var(--amber); }
   .metric.good { border-left-color: var(--green); }
   .metric.crit { border-left-color: var(--red); }
-  .metric .num { font-size: 36px; font-weight: bold; color: var(--sunstar); margin-bottom: 4px; }
-  .metric .label { font-size: 12px; color: var(--mid); text-transform: uppercase; letter-spacing: 1px; }
-  .metric .sub { font-size: 12px; color: #888; margin-top: 6px; }
+  .metric .num { font-size: 32px; font-weight: 600; color: var(--galaxy); margin-bottom: 8px; }
+  .metric .label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; }
+  .metric .sub { font-size: 12px; color: var(--text-light); margin-top: 8px; }
 
   /* Section */
-  .section { margin-bottom: 28px; }
+  .section { margin-bottom: 32px; }
   .section-title {
-    font-size: 11px;
-    font-weight: bold;
-    color: var(--sunstar);
-    letter-spacing: 2px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--nebula);
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    margin-bottom: 14px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #3a2d50;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
   }
 
   /* Two col */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
 
   /* Card */
   .card {
-    background: var(--galaxy);
+    background: var(--warm-white);
     border-radius: 10px;
-    padding: 20px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(42,29,53,0.08);
   }
-  .card h3 { font-size: 14px; color: #fff; margin-bottom: 12px; }
+  .card h3 { font-family: orpheuspro, Georgia, serif; font-size: 16px; color: var(--galaxy); margin-bottom: 12px; font-weight: 400; letter-spacing: -0.01em; }
 
   /* Bug table */
   .bug-table { width: 100%; border-collapse: collapse; }
   .bug-table th {
-    font-size: 11px; color: var(--mid); text-transform: uppercase;
-    letter-spacing: 1px; padding: 8px 12px; text-align: left;
-    background: #1e1430; border-bottom: 1px solid #3a2d50;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px; color: var(--text-light); text-transform: uppercase;
+    letter-spacing: 0.05em; padding: 12px 12px; text-align: left;
+    background: var(--cream); border-bottom: 1px solid var(--border);
   }
   .bug-table td {
-    padding: 10px 12px; font-size: 13px; color: #ddd;
-    border-bottom: 1px solid #2a1d3540;
+    padding: 12px; font-size: 13px; color: var(--text);
+    border-bottom: 1px solid var(--border);
   }
-  .bug-table tr:hover td { background: #2a1d3560; }
+  .bug-table tr:hover td { background: var(--soft-yellow); }
 
   /* Status badges */
   .badge {
     display: inline-block;
-    padding: 3px 10px;
+    padding: 4px 12px;
     border-radius: 20px;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
   }
-  .badge.red { background: #c0392b22; color: #e74c3c; border: 1px solid #c0392b44; }
-  .badge.amber { background: #e67e2222; color: #f39c12; border: 1px solid #e67e2244; }
-  .badge.green { background: #27ae6022; color: #2ecc71; border: 1px solid #27ae6044; }
-  .badge.purple { background: #584ea022; color: #a084e0; border: 1px solid #584ea044; }
+  .badge.red { background: rgba(181,64,58,0.12); color: var(--red); }
+  .badge.amber { background: rgba(201,123,26,0.12); color: var(--amber); }
+  .badge.green { background: rgba(45,138,86,0.12); color: var(--green); }
+  .badge.purple { background: rgba(173,118,178,0.12); color: var(--nebula); }
 
   /* Checklist */
   .checklist { list-style: none; }
   .checklist li {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    padding: 8px 0;
+    gap: 12px;
+    padding: 10px 0;
     font-size: 13px;
-    color: #ccc;
-    border-bottom: 1px solid #2a1d3540;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
   }
   .checklist li:last-child { border-bottom: none; }
   .checklist li .owner {
     margin-left: auto;
-    font-size: 11px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
     color: var(--nebula);
     white-space: nowrap;
     padding-left: 12px;
   }
-  .check { width: 18px; height: 18px; border: 2px solid #584EA0; border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+  .check { width: 18px; height: 18px; border: 2px solid var(--nebula); border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
   .check.done { background: var(--green); border-color: var(--green); display: flex; align-items: center; justify-content: center; }
   .check.done::after { content: '✓'; color: #fff; font-size: 11px; }
 
   /* Path */
   .path { display: flex; align-items: center; gap: 0; flex-wrap: wrap; }
   .path-step {
-    background: #1e1430;
-    border: 1px solid #3a2d50;
+    background: var(--cream);
+    border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 10px 16px;
+    padding: 12px 16px;
     font-size: 12px;
-    color: #ccc;
+    color: var(--text-light);
     text-align: center;
     flex: 1;
     min-width: 120px;
   }
-  .path-step.done { border-color: var(--green); color: #2ecc71; }
-  .path-step.active { border-color: var(--sunstar); color: var(--sunstar); background: #2a1d35; }
-  .path-arrow { color: #584EA0; font-size: 18px; padding: 0 6px; flex-shrink: 0; }
+  .path-step.done { border-color: var(--green); color: var(--green); }
+  .path-step.active { border-color: var(--nebula); color: var(--nebula); background: var(--soft-yellow); }
+  .path-arrow { color: var(--nebula); font-size: 18px; padding: 0 6px; flex-shrink: 0; }
 
   /* Milestone table */
   .milestone-table { width: 100%; border-collapse: collapse; }
   .milestone-table th {
-    font-size: 11px; color: var(--mid); text-transform: uppercase; letter-spacing: 1px;
-    padding: 8px 14px; text-align: left; background: #1e1430; border-bottom: 1px solid #3a2d50;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 12px 14px; text-align: left; background: var(--cream); border-bottom: 1px solid var(--border);
   }
-  .milestone-table td { padding: 11px 14px; font-size: 13px; color: #ddd; border-bottom: 1px solid #2a1d3540; }
+  .milestone-table td { padding: 12px 14px; font-size: 13px; color: var(--text); border-bottom: 1px solid var(--border); }
 
   /* Notice */
   .notice {
-    background: #2a1d35;
+    background: var(--soft-yellow);
     border-left: 4px solid var(--sunstar);
     border-radius: 0 8px 8px 0;
-    padding: 14px 18px;
+    padding: 16px 18px;
     font-size: 13px;
-    color: var(--stardust);
-    margin-bottom: 20px;
+    color: var(--galaxy);
+    margin-bottom: 24px;
     font-style: italic;
   }
 
@@ -194,71 +225,76 @@
   .pane.active { display: block; }
 
   /* Revenue bar */
-  .rev-bar-wrap { margin: 8px 0; }
-  .rev-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--mid); margin-bottom: 4px; }
-  .rev-bar { height: 8px; background: #2a1d35; border-radius: 4px; overflow: hidden; }
-  .rev-bar-fill { height: 100%; background: var(--spacejam); border-radius: 4px; }
+  .rev-bar-wrap { margin: 12px 0; }
+  .rev-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-light); margin-bottom: 6px; }
+  .rev-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .rev-bar-fill { height: 100%; background: var(--nebula); border-radius: 4px; }
   .rev-bar-fill.gold { background: var(--sunstar); }
 
   /* Pilot cards grid */
   .pilots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
   .pilot-card {
-    background: var(--galaxy);
+    background: var(--warm-white);
     border-radius: 10px;
     overflow: hidden;
-    border-left: 4px solid #3a2d50;
+    border-left: 4px solid var(--nebula);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--nebula);
+    box-shadow: 0 1px 3px rgba(42,29,53,0.08);
   }
   .pilot-card.red { border-left-color: var(--red); }
   .pilot-card.amber { border-left-color: var(--amber); }
   .pilot-card.green { border-left-color: var(--green); }
   .pilot-card-header {
-    padding: 14px 16px;
-    background: #1e1430;
-    border-bottom: 1px solid #3a2d50;
+    padding: 16px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
   }
-  .pilot-card-header h4 { font-size: 14px; color: #fff; margin-bottom: 4px; }
-  .pilot-card-header .category { font-size: 11px; color: var(--nebula); }
+  .pilot-card-header h4 { font-family: orpheuspro, Georgia, serif; font-size: 15px; color: var(--galaxy); margin-bottom: 4px; font-weight: 400; letter-spacing: -0.01em; }
+  .pilot-card-header .category { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 10px; color: var(--text-light); }
   .pilot-card-content { padding: 16px; }
-  .pilot-progress { font-size: 11px; color: var(--mid); margin-bottom: 12px; font-weight: bold; }
-  .pilot-status { font-size: 12px; color: #999; margin-bottom: 12px; font-style: italic; }
+  .pilot-progress { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 10px; color: var(--text-light); margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  .pilot-status { font-size: 12px; color: var(--text-light); margin-bottom: 12px; font-style: italic; }
   .pilot-checklist { list-style: none; }
   .pilot-checklist li {
     display: flex;
     align-items: flex-start;
     gap: 8px;
-    padding: 6px 0;
+    padding: 8px 0;
     font-size: 12px;
-    color: #bbb;
-    border-bottom: 1px solid #2a1d3540;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
   }
   .pilot-checklist li:last-child { border-bottom: none; }
-  .pilot-checklist li.overdue { color: #e74c3c; }
+  .pilot-checklist li.overdue { color: var(--red); }
 
   /* Sales pipeline table */
   .pipeline-table { width: 100%; border-collapse: collapse; }
   .pipeline-table th {
-    font-size: 11px; color: var(--mid); text-transform: uppercase; letter-spacing: 1px;
-    padding: 8px 12px; text-align: left; background: #1e1430; border-bottom: 1px solid #3a2d50;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 12px 12px; text-align: left; background: var(--cream); border-bottom: 1px solid var(--border);
   }
-  .pipeline-table td { padding: 10px 12px; font-size: 13px; color: #ddd; border-bottom: 1px solid #2a1d3540; }
-  .pipeline-table tr:hover td { background: #2a1d3560; }
+  .pipeline-table td { padding: 12px; font-size: 13px; color: var(--text); border-bottom: 1px solid var(--border); }
+  .pipeline-table tr:hover td { background: var(--soft-yellow); }
 
   .stage-badge {
     display: inline-block;
-    padding: 4px 10px;
+    padding: 4px 12px;
     border-radius: 4px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
-  .stage-badge.green { background: #27ae6022; color: #2ecc71; }
-  .stage-badge.purple { background: #584ea022; color: #a084e0; }
-  .stage-badge.amber { background: #e67e2222; color: #f39c12; }
-  .stage-badge.red { background: #c0392b22; color: #e74c3c; }
+  .stage-badge.green { background: rgba(45,138,86,0.12); color: var(--green); }
+  .stage-badge.purple { background: rgba(173,118,178,0.12); color: var(--nebula); }
+  .stage-badge.amber { background: rgba(201,123,26,0.12); color: var(--amber); }
+  .stage-badge.red { background: rgba(181,64,58,0.12); color: var(--red); }
 
-  .lead-name { font-weight: 600; color: #fff; }
-  .lead-note { font-size: 11px; color: #888; margin-top: 2px; }
+  .lead-name { font-weight: 600; color: var(--galaxy); }
+  .lead-note { font-size: 11px; color: var(--text-light); margin-top: 4px; }
 
   /* Green card for recently fixed */
   .card.green-border {
@@ -268,74 +304,81 @@
   /* Feature grid cards */
   .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .feature-card {
-    background: #1e1430;
+    background: var(--warm-white);
     border-radius: 8px;
     padding: 16px;
-    border-left: 3px solid var(--spacejam);
+    border-left: 3px solid var(--nebula);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--nebula);
   }
-  .feature-card h4 { font-size: 13px; color: #fff; margin-bottom: 10px; }
-  .feature-card .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; color: #999; background: #2a1d35; margin-right: 6px; margin-bottom: 8px; }
-  .feature-card p { font-size: 12px; color: #bbb; line-height: 1.4; }
+  .feature-card h4 { font-family: orpheuspro, Georgia, serif; font-size: 14px; color: var(--galaxy); margin-bottom: 10px; font-weight: 400; letter-spacing: -0.01em; }
+  .feature-card .tag { display: inline-block; padding: 3px 8px; border-radius: 4px; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9px; color: var(--text-light); background: var(--cream); margin-right: 6px; margin-bottom: 8px; }
+  .feature-card p { font-size: 12px; color: var(--text); line-height: 1.5; }
 
   /* Bug count summary */
-  .bug-count-summary { font-size: 12px; color: var(--mid); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #3a2d50; }
+  .bug-count-summary { font-size: 12px; color: var(--text-light); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
 
-  footer { text-align: center; padding: 32px; color: #3a2d50; font-size: 12px; }
+  footer { text-align: center; padding: 32px; color: var(--text-light); font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; }
 
   /* Architecture Map */
   .arch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .arch-card {
-    background: #1e1430;
+    background: var(--warm-white);
     border-radius: 10px;
     padding: 16px;
-    border-top: 4px solid #3a2d50;
+    border-top: 4px solid var(--border);
     position: relative;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--border);
   }
   .arch-card.works { border-top-color: var(--green); }
   .arch-card.broken { border-top-color: var(--red); }
   .arch-card.partial { border-top-color: var(--amber); }
-  .arch-card.future { border-top-color: var(--spacejam); border-style: dashed; border-top-style: dashed; }
-  .arch-card h4 { font-size: 13px; color: #fff; margin-bottom: 6px; }
-  .arch-card p { font-size: 11px; color: #999; line-height: 1.5; }
+  .arch-card.future { border-top-color: var(--nebula); border-style: dashed; border-top-style: dashed; }
+  .arch-card h4 { font-family: orpheuspro, Georgia, serif; font-size: 13px; color: var(--galaxy); margin-bottom: 6px; font-weight: 400; letter-spacing: -0.01em; }
+  .arch-card p { font-size: 11px; color: var(--text-light); line-height: 1.5; }
   .arch-status {
     display: inline-block;
-    padding: 2px 8px;
+    padding: 3px 8px;
     border-radius: 4px;
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
     margin-bottom: 8px;
   }
-  .arch-status.works { background: #27ae6022; color: #2ecc71; }
-  .arch-status.broken { background: #c0392b22; color: #e74c3c; }
-  .arch-status.partial { background: #e67e2222; color: #f39c12; }
-  .arch-status.future { background: #584ea022; color: #a084e0; }
+  .arch-status.works { background: rgba(45,138,86,0.12); color: var(--green); }
+  .arch-status.broken { background: rgba(181,64,58,0.12); color: var(--red); }
+  .arch-status.partial { background: rgba(201,123,26,0.12); color: var(--amber); }
+  .arch-status.future { background: rgba(173,118,178,0.12); color: var(--nebula); }
 
   /* Simplify cards */
   .simplify-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .simplify-card {
-    background: #1e1430;
+    background: var(--warm-white);
     border-radius: 10px;
     padding: 16px;
     border-left: 3px solid var(--sunstar);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--sunstar);
   }
-  .simplify-card h4 { font-size: 13px; color: var(--sunstar); margin-bottom: 6px; }
-  .simplify-card .now { font-size: 11px; color: #e74c3c; margin-bottom: 4px; }
-  .simplify-card .then { font-size: 11px; color: #2ecc71; margin-bottom: 8px; }
-  .simplify-card p { font-size: 11px; color: #999; line-height: 1.5; }
+  .simplify-card h4 { font-family: orpheuspro, Georgia, serif; font-size: 13px; color: var(--sunstar); margin-bottom: 6px; font-weight: 400; letter-spacing: -0.01em; }
+  .simplify-card .now { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 10px; color: var(--red); margin-bottom: 4px; font-weight: 600; }
+  .simplify-card .then { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 10px; color: var(--green); margin-bottom: 8px; font-weight: 600; }
+  .simplify-card p { font-size: 11px; color: var(--text-light); line-height: 1.5; }
 
   /* Legend */
   .legend { display: flex; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
-  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--mid); }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 10px; color: var(--text-light); }
   .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
   .legend-dot.green { background: var(--green); }
   .legend-dot.red { background: var(--red); }
   .legend-dot.amber { background: var(--amber); }
-  .legend-dot.purple { background: var(--spacejam); }
+  .legend-dot.purple { background: var(--nebula); }
 
   /* Flow diagram */
   .flow-diagram {
-    background: #1e1430;
+    background: var(--warm-white);
     border-radius: 10px;
     padding: 20px;
     display: flex;
@@ -344,63 +387,72 @@
     gap: 0;
     flex-wrap: wrap;
     margin-bottom: 16px;
+    border: 1px solid var(--border);
   }
   .flow-step {
     text-align: center;
     padding: 12px 16px;
     border-radius: 8px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 11px;
     min-width: 110px;
   }
-  .flow-step.green { background: #27ae6022; border: 1px solid #27ae6044; color: #2ecc71; }
-  .flow-step.red { background: #c0392b22; border: 1px solid #c0392b44; color: #e74c3c; }
-  .flow-step.amber { background: #e67e2222; border: 1px solid #e67e2244; color: #f39c12; }
-  .flow-step.purple { background: #584ea022; border: 1px dashed #584ea044; color: #a084e0; }
+  .flow-step.green { background: rgba(45,138,86,0.12); border: 1px solid rgba(45,138,86,0.24); color: var(--green); }
+  .flow-step.red { background: rgba(181,64,58,0.12); border: 1px solid rgba(181,64,58,0.24); color: var(--red); }
+  .flow-step.amber { background: rgba(201,123,26,0.12); border: 1px solid rgba(201,123,26,0.24); color: var(--amber); }
+  .flow-step.purple { background: rgba(173,118,178,0.12); border: 1px dashed rgba(173,118,178,0.24); color: var(--nebula); }
   .flow-step strong { display: block; margin-bottom: 2px; }
-  .flow-arrow { color: #584EA0; font-size: 20px; padding: 0 8px; }
+  .flow-arrow { color: var(--nebula); font-size: 20px; padding: 0 8px; }
 
   /* Plan styles */
   .plan-header {
-    font-size: 28px;
-    font-weight: bold;
-    color: var(--stardust);
+    font-family: orpheuspro, Georgia, serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--galaxy);
     margin-bottom: 8px;
     line-height: 1.3;
+    letter-spacing: -0.01em;
   }
   .plan-sub {
     font-size: 14px;
-    color: var(--mid);
-    margin-bottom: 28px;
-    line-height: 1.5;
+    color: var(--text-light);
+    margin-bottom: 32px;
+    line-height: 1.6;
   }
   .week-block {
-    background: var(--galaxy);
+    background: var(--warm-white);
     border-radius: 12px;
     padding: 24px;
-    margin-bottom: 20px;
-    border-left: 4px solid #3a2d50;
+    margin-bottom: 24px;
+    border-left: 4px solid var(--border);
     position: relative;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--border);
   }
   .week-block.now { border-left-color: var(--sunstar); }
-  .week-block.next { border-left-color: var(--spacejam); }
-  .week-block.later { border-left-color: var(--mid); }
-  .week-block.after { border-left-color: #3a2d50; }
+  .week-block.next { border-left-color: var(--nebula); }
+  .week-block.later { border-left-color: var(--text-light); }
+  .week-block.after { border-left-color: var(--border); }
   .week-label {
-    font-size: 10px;
-    font-weight: bold;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
   }
   .week-label.now { color: var(--sunstar); }
-  .week-label.next { color: var(--spacejam); }
-  .week-label.later { color: var(--mid); }
-  .week-label.after { color: #555; }
+  .week-label.next { color: var(--nebula); }
+  .week-label.later { color: var(--text-light); }
+  .week-label.after { color: var(--border); }
   .week-title {
+    font-family: orpheuspro, Georgia, serif;
     font-size: 18px;
-    font-weight: bold;
-    color: #fff;
+    font-weight: 400;
+    color: var(--galaxy);
     margin-bottom: 4px;
+    letter-spacing: -0.01em;
   }
   .week-outcome {
     font-size: 13px;
@@ -412,31 +464,33 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid #2a1d3540;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
   }
   .task-row:last-child { border-bottom: none; }
   .task-owner {
-    background: #2a1d35;
+    background: var(--cream);
     border-radius: 6px;
     padding: 4px 10px;
-    font-size: 11px;
-    font-weight: bold;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
     color: var(--nebula);
     white-space: nowrap;
     min-width: 70px;
     text-align: center;
   }
   .task-owner.loren { color: var(--sunstar); }
-  .task-owner.kelley { color: #AD75B2; }
-  .task-owner.tanmay { color: #2ecc71; }
+  .task-owner.kelley { color: var(--nebula); }
+  .task-owner.tanmay { color: var(--green); }
   .task-content { flex: 1; }
-  .task-content strong { font-size: 13px; color: #fff; display: block; margin-bottom: 2px; }
-  .task-content span { font-size: 11px; color: #999; }
+  .task-content strong { font-size: 13px; color: var(--galaxy); display: block; margin-bottom: 4px; }
+  .task-content span { font-size: 11px; color: var(--text-light); }
   .task-effort {
-    font-size: 10px;
-    color: #666;
-    background: #1e1430;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9px;
+    color: var(--text-light);
+    background: var(--cream);
     padding: 3px 8px;
     border-radius: 4px;
     white-space: nowrap;
@@ -444,29 +498,31 @@
 
   /* Shoptalk leads */
   .lead-card {
-    background: #1e1430;
+    background: var(--cream);
     border-radius: 8px;
-    padding: 14px 16px;
-    margin-bottom: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
   }
-  .lead-card h4 { font-size: 13px; color: #fff; margin-bottom: 4px; }
-  .lead-card .insight { font-size: 11px; color: var(--sunstar); margin-bottom: 4px; font-style: italic; }
-  .lead-card .action { font-size: 11px; color: #2ecc71; }
-  .lead-card .who { font-size: 10px; color: var(--nebula); margin-top: 4px; }
+  .lead-card h4 { font-family: orpheuspro, Georgia, serif; font-size: 13px; color: var(--galaxy); margin-bottom: 6px; font-weight: 400; letter-spacing: -0.01em; }
+  .lead-card .insight { font-size: 11px; color: var(--sunstar); margin-bottom: 6px; font-style: italic; }
+  .lead-card .action { font-size: 11px; color: var(--green); }
+  .lead-card .who { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9px; color: var(--nebula); margin-top: 6px; }
 
   /* Detail separator */
   .detail-section {
-    padding-top: 28px;
-    margin-top: 28px;
-    border-top: 2px dashed #3a2d50;
+    padding-top: 32px;
+    margin-top: 32px;
+    border-top: 1px dashed var(--border);
   }
   .detail-label {
-    font-size: 10px;
-    color: #666;
-    font-weight: bold;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9px;
+    color: var(--text-light);
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
   }
 </style>
 </head>
@@ -493,7 +549,7 @@
   <!-- METRICS -->
   <div class="metrics">
     <div class="metric good">
-      <div class="num">4</div>
+      <div class="num">5</div>
       <div class="label">Pilots Active</div>
       <div class="sub">In closed beta</div>
     </div>
@@ -631,7 +687,7 @@
     <div class="two-col">
       <div class="card" style="border-left: 4px solid #4CAF50;">
         <h3 style="color: #4CAF50; font-size: 13px;">Confirmed</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
           <strong>Tags = IP / secret sauce.</strong> Two-way sync with ecom is the moat.<br>
           <strong>Keep flows.</strong> Not chat-only. Flows = experiential leverage, A/B, promo.<br>
           <strong>Auto-tagging via LLM.</strong> Batch products + context → LLM tags → DB.<br>
@@ -642,7 +698,7 @@
       </div>
       <div class="card" style="border-left: 4px solid #FF5252;">
         <h3 style="color: #FF5252; font-size: 13px;">Deprioritized</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
           <strong>Pop-ups not our demographic.</strong> Focus mid-size + large activations.<br>
           <strong>Web scraping not scalable.</strong> Use POS exports.<br>
           <strong>Hide recommendation logic.</strong> Default to "any/all", standard picker.<br>
@@ -691,7 +747,7 @@
   <div class="section">
     <div class="section-title">MARKET SIGNALS & STRATEGIC CONTEXT</div>
     <div class="card">
-      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+      <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
         <strong>In-store is THE conversation.</strong> Every ShopTalk attendee + pilot talking about retail transformation.<br><br>
         <strong>Product data is everyone's wall.</strong> Brands drowning in messy CSVs. First one to crack scalable product understanding wins.<br><br>
         <strong>Right place, right time.</strong> QR codes trained. Gen Z wants IRL. CAC rising. Brands desperate for owned channels.<br><br>
@@ -741,43 +797,43 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong style="color: #e74c3c;">Add Tag-Based Product Display Mode</strong><br><span style="font-size: 11px; color: #999;">New product result mode: type a tag → see all matching products. No quiz needed. Use case: Soberish education pages.</span></td>
+            <td><strong style="color: var(--red);">Add Tag-Based Product Display Mode</strong><br><span style="font-size: 11px; color: var(--text-light);">New product result mode: type a tag → see all matching products. No quiz needed. Use case: Soberish education pages.</span></td>
             <td><span class="badge red">DUE TOMORROW</span></td>
             <td>Mar 27</td>
             <td>Asana</td>
           </tr>
           <tr>
-            <td><strong style="color: var(--sunstar);">Build LLM Auto-Tagging System</strong><br><span style="font-size: 11px; color: #999;">THE #1 priority. Batch 100 products + onboarding context → LLM → consistent tags → DB. Prompt engineering for cross-batch consistency. This is our IP.</span></td>
+            <td><strong style="color: var(--sunstar);">Build LLM Auto-Tagging System</strong><br><span style="font-size: 11px; color: var(--text-light);">THE #1 priority. Batch 100 products + onboarding context → LLM → consistent tags → DB. Prompt engineering for cross-batch consistency. This is our IP.</span></td>
             <td><span class="badge amber">IN PROGRESS</span></td>
             <td>—</td>
             <td>Asana</td>
           </tr>
           <tr>
-            <td><strong>AI Flow Creator — Pull Real Tags</strong><br><span style="font-size: 11px; color: #999;">AI flow creator should pull from brand's actual tags in DB. Preview shows real products not placeholders. Feed tags (not full inventory) + prompt to LLM → maps tags to steps.</span></td>
+            <td><strong>AI Flow Creator — Pull Real Tags</strong><br><span style="font-size: 11px; color: var(--text-light);">AI flow creator should pull from brand's actual tags in DB. Preview shows real products not placeholders. Feed tags (not full inventory) + prompt to LLM → maps tags to steps.</span></td>
             <td><span class="badge amber">OPEN</span></td>
             <td>—</td>
             <td>Asana</td>
           </tr>
           <tr>
-            <td><strong>Show All Tags at Product Result Step</strong><br><span style="font-size: 11px; color: #999;">Show every stacked tag at product result card. Toggle on/off to preview how results change. "3 tags = 2 products, any of these 3 = 15 results."</span></td>
+            <td><strong>Show All Tags at Product Result Step</strong><br><span style="font-size: 11px; color: var(--text-light);">Show every stacked tag at product result card. Toggle on/off to preview how results change. "3 tags = 2 products, any of these 3 = 15 results."</span></td>
             <td><span class="badge amber">OPEN</span></td>
             <td>—</td>
             <td>Asana</td>
           </tr>
           <tr>
-            <td><strong>Hide Recommendation Strategy Logic</strong><br><span style="font-size: 11px; color: #999;">Any/all/zone options confuse users. Hide completely (default to "any") or simplify. Show tags instead.</span></td>
+            <td><strong>Hide Recommendation Strategy Logic</strong><br><span style="font-size: 11px; color: var(--text-light);">Any/all/zone options confuse users. Hide completely (default to "any") or simplify. Show tags instead.</span></td>
             <td><span class="badge amber">OPEN</span></td>
             <td>—</td>
             <td>Asana</td>
           </tr>
           <tr>
-            <td><strong>Make Product Preview Clearer</strong><br><span style="font-size: 11px; color: #999;">Kelley thought dynamic recs were broken — they only show in preview mode. Add helper text. Small fix, big friction reducer.</span></td>
+            <td><strong>Make Product Preview Clearer</strong><br><span style="font-size: 11px; color: var(--text-light);">Kelley thought dynamic recs were broken — they only show in preview mode. Add helper text. Small fix, big friction reducer.</span></td>
             <td><span class="badge amber">OPEN</span></td>
             <td>—</td>
             <td>Asana</td>
           </tr>
           <tr>
-            <td><strong>Onboarding Context Form</strong><br><span style="font-size: 11px; color: #999;">Capture brand context during setup (what they sell, who customers are, use cases). Feeds the LLM so it tags accurately instead of guessing blind.</span></td>
+            <td><strong>Onboarding Context Form</strong><br><span style="font-size: 11px; color: var(--text-light);">Capture brand context during setup (what they sell, who customers are, use cases). Feeds the LLM so it tags accurately instead of guessing blind.</span></td>
             <td><span class="badge amber">OPEN</span></td>
             <td>—</td>
             <td>Asana</td>
@@ -788,7 +844,7 @@
 
     <div class="card" style="margin-top: 12px; border-left: 4px solid var(--green);">
       <h3 style="color: var(--green); font-size: 13px;">Recently Shipped (Tanmay, Mar 23-24)</h3>
-      <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+      <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
         Image sizing adjustment · Arrow icon removal from buttons/links · UI consistency between realtime and preview · Contact form fix · Web-scraped Soberish product data + built tagging algorithm with auto-tags · QR on/off backend fix (proper fix in progress)
       </div>
     </div>
@@ -806,40 +862,40 @@
           <tr>
             <td><strong>A Bag Concept</strong></td>
             <td>Bags</td>
-            <td><span class="badge green">MOST ADVANCED</span></td>
-            <td>Pilot started Mar 8. Onboarded, QR flows live, posters printed. CSV import worked perfectly. Madilyn wants: discounts, digital version, branding colors. Feedback captured in Asana.</td>
+            <td><span class="badge green">LIVE</span></td>
+            <td>Pop-up store. Most advanced pilot. Onboarded, QR flows live, posters printed. CSV import worked perfectly. Madilyn wants: discounts, digital version, branding colors. Feedback captured in Asana.</td>
           </tr>
           <tr>
             <td><strong>Soberish</strong></td>
             <td>Non-alc beverages</td>
-            <td><span class="badge amber">BUILDING FLOWS</span></td>
-            <td>500+ products web-scraped with auto-tags (Mar 24). Inventory in Google Drive. Kelley building flows, hit a snag with tags not pulling products — needs live walkthrough with Tanmay. 14 standard tags hardcoded in codebase (bulkTagHelpers.ts). Logins set up.</td>
+            <td><span class="badge amber">ONBOARDING</span></td>
+            <td>Built on Lightspeed, website Squarespace. 500+ products web-scraped with auto-tags (Mar 24). Kelley building flows, hit a snag with tags not pulling products — needs live walkthrough with Tanmay. 14 standard tags hardcoded in codebase (bulkTagHelpers.ts). Logins set up.</td>
           </tr>
           <tr>
             <td><strong>Glad &amp; Young</strong></td>
-            <td>Jewelry</td>
-            <td><span class="badge amber">ONBOARDING</span></td>
-            <td>Missing images and tags from Shopify export. Need to identify what was excluded. Next auto-tag test case after Soberish. LMO followed up.</td>
+            <td>Bags</td>
+            <td><span class="badge amber">NEXT</span></td>
+            <td>Shopify. Missing images and tags from export. Need to identify what was excluded. Next auto-tag test case after Soberish. LMO followed up.</td>
+          </tr>
+          <tr>
+            <td><strong>One of Each</strong></td>
+            <td>Bags / Scarves</td>
+            <td><span class="badge amber">NEXT</span></td>
+            <td>Shopify. Mother-daughter team, 12 years in business. Cape Town + Seattle. Scarves = low-hanging fruit (500 units target). Met with Tamburai Mar 4. oneofeach.co.za</td>
           </tr>
           <tr>
             <td><strong>Just Add Honey</strong></td>
             <td>Tea</td>
-            <td><span class="badge amber">EARLY</span></td>
-            <td>All lifecycle steps open in Asana (contract, onboarding, merch, content, case study). Not yet started in product.</td>
-          </tr>
-          <tr>
-            <td><strong>One of Each</strong></td>
-            <td>Scarves &amp; bags</td>
-            <td><span class="badge amber">JUST STARTED</span></td>
-            <td>Mother-daughter team, 12 years in business. Cape Town + Seattle. Scarves = low-hanging fruit (500 units target). Met with Tamburai Mar 4. Shopify store, needs CSV export. oneofeach.co.za</td>
+            <td><span class="badge amber">NEXT</span></td>
+            <td>Square/Shopify. All lifecycle steps open in Asana (contract, onboarding, merch, content, case study). Not yet started in product.</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="card" style="margin-top: 12px; border-left: 4px solid var(--spacejam);">
-      <h3 style="color: var(--spacejam); font-size: 13px;">What the Codebase Shows for Pilots</h3>
-      <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+    <div class="card" style="margin-top: 12px; border-left: 4px solid var(--nebula);">
+      <h3 style="color: var(--nebula); font-size: 13px;">What the Codebase Shows for Pilots</h3>
+      <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
         <strong>Global inventory</strong> shipped Mar 3 — products use owner_id, one catalog across locations. <strong>Customer linking</strong> shipped Mar 8 — sessions and responses tie to customer IDs across visits. <strong>Soberish-specific logic</strong> hardcoded: profile engine has non-drinker override (Q3 check), 14 bulk tags with hard/soft constraints. <strong>Product model</strong> supports tags, zones, staff picks, store_ids array. <strong>Squarespace API route</strong> works. <strong>Shopify</strong> typed but no API route built yet.
       </div>
     </div>
@@ -850,28 +906,28 @@
     <div class="section-title">ROADMAP — TAGGING IS THE STRATEGY</div>
     <div class="card" style="margin-bottom: 12px; border-left: 4px solid var(--sunstar);">
       <h3 style="color: var(--sunstar); font-size: 13px;">Phase 1: Auto-Tag on Import (NOW)</h3>
-      <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+      <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
         Brand uploads CSV or POS export → fills onboarding context form → system batches 100 products → LLM returns consistent tags → stored in product_tags. Key: prompt engineering so batch 2 doesn't invent different names than batch 1.<br>
         <strong>Progress:</strong> Tanmay web-scraped Soberish and built a tagging algo (Mar 24). Full LLM pipeline not yet in codebase — zero auto-tagging code in mirour2 repo.<br>
         <strong>Test with:</strong> Glad & Young as first real LLM case
       </div>
     </div>
-    <div class="card" style="margin-bottom: 12px; border-left: 4px solid var(--spacejam);">
-      <h3 style="color: var(--spacejam); font-size: 13px;">Phase 2: Learning Tags from Flows (NEXT)</h3>
-      <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+    <div class="card" style="margin-bottom: 12px; border-left: 4px solid var(--nebula);">
+      <h3 style="color: var(--nebula); font-size: 13px;">Phase 2: Learning Tags from Flows (NEXT)</h3>
+      <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
         AI goes back and adds new tags based on flow prompts. "Dresses with pockets" creates a pocket tag retroactively across inventory. Tags compound over time.
       </div>
     </div>
     <div class="card" style="border-left: 4px solid #4CAF50;">
       <h3 style="color: #4CAF50; font-size: 13px;">Phase 3: Two-Way Ecom Sync (FUTURE — The Moat)</h3>
-      <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+      <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
         Mirour tags flow back to Shopify/ecom. Brands' stores become searchable + agentic-ready. In-store intelligence feeds back to ecommerce. Eng doc already exists in Google Drive. Nobody else does this.
       </div>
     </div>
 
     <div class="card" style="margin-top: 12px;">
-      <h3 style="color: var(--mid); font-size: 13px;">Backlog (Decided — Not Yet)</h3>
-      <div style="font-size: 12px; color: #888; line-height: 1.7;">
+      <h3 style="color: var(--text-light); font-size: 13px;">Backlog (Decided — Not Yet)</h3>
+      <div style="font-size: 12px; color: var(--text-light); line-height: 1.7;">
         Tags on buttons (attach tag to button → route to filtered results) · QR code reassignment (swap flow behind QR without reprinting — Kohl's needs eventually) · Shopify integration (typed, no API route) · Profiles v2 · Customer profile page · Branded colors for paid tier · Digital version of Mirour · Polls/voting · Content cards drag-and-drop · Group/condense flows for mobile
       </div>
     </div>
@@ -881,7 +937,7 @@
   <div class="section">
     <div class="section-title">KEY DECISIONS — MAR 26 TEAM MEETING + MAR 9 PRODUCT REVIEW</div>
     <div class="card">
-      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+      <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
         <strong>✓ Keep flows, don't go chat-only.</strong> Flows = experiential leverage, A/B testing, promotional capability. (Mar 26)<br><br>
         <strong>✓ Hide recommendation logic.</strong> Any/all/zone picker confuses users. Default to "any match" — hide entirely. Show tags instead. (Mar 26)<br><br>
         <strong>✓ New tag-based display mode.</strong> Simple filter: type a tag → see all products with that tag. For Soberish education pages. (Mar 26)<br><br>
@@ -1005,7 +1061,7 @@
     <div class="section">
       <div class="section-title">MARKET SIGNALS — SHOPTALK MAR 24-26</div>
       <div class="card">
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
           <strong>20% experiential spaces becoming standard.</strong> Retailers allocating floor space for experiences, not buying. Heavy digital integration.<br><br>
           <strong>"Get your product data structured first"</strong> — biggest AI/agentic commerce theme. Vitamin Shoppe built AI system in 2 weeks using structured data. This validates our entire tagging thesis.<br><br>
           <strong>Customers starting in-store have higher LTV.</strong> Omnichannel buyers who start physical → digital retain better long-term.<br><br>
@@ -1050,7 +1106,7 @@
   <div class="section">
     <div class="section-title">RIGHT NOW THIS WEEK</div>
     <div class="card">
-      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+      <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
         <strong>Soberish pilot goes live Friday.</strong> Flows deployed, customer feedback starts this weekend.<br><br>
         <strong>ShopTalk follow-ups in motion.</strong> Sales decks being prepared for 3 hot leads. First meetings scheduled.<br><br>
         <strong>Glad & Young onboarding ready.</strong> Auto-tagging system will be tested on 2,000+ SKUs. Path to paid clear.
@@ -1115,15 +1171,31 @@
       <div class="pilot-card">
         <div class="pilot-card-header">
           <h4>One of Each</h4>
-          <div class="category">Boutique / Multi-category</div>
+          <div class="category">Boutique / Accessories</div>
         </div>
         <div class="pilot-card-content">
-          <div class="pilot-progress">EARLY: Inquiry stage</div>
-          <div class="pilot-status">Met at market. Interested in in-store AI. Early conversations.</div>
+          <div class="pilot-progress">NEXT: Onboarding prep</div>
+          <div class="pilot-status">Mother-daughter team, Cape Town + Seattle. Shopify store ready for import.</div>
           <ul class="pilot-checklist">
-            <li>⏳ First product call</li>
-            <li>⏳ Demo + interest validation</li>
+            <li>⏳ Get product data</li>
+            <li>⏳ Auto-tagging</li>
+            <li>⏳ Flow build</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pilot-card">
+        <div class="pilot-card-header">
+          <h4>Just Add Honey</h4>
+          <div class="category">Specialty / Tea</div>
+        </div>
+        <div class="pilot-card-content">
+          <div class="pilot-progress">NEXT: Onboarding prep</div>
+          <div class="pilot-status">Square/Shopify backend. All lifecycle tasks open in Asana.</div>
+          <ul class="pilot-checklist">
+            <li>⏳ Contract</li>
             <li>⏳ Onboarding</li>
+            <li>⏳ Merch + content</li>
           </ul>
         </div>
       </div>
@@ -1134,8 +1206,8 @@
   <div class="section">
     <div class="section-title">APRIL REVENUE MILESTONE</div>
     <div class="card">
-      <div style="font-size: 13px; color: var(--stardust); font-weight: bold; margin-bottom: 12px;">Target: $398 MRR by Apr 30 (2 pilots paying)</div>
-      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+      <div style="font-size: 13px; color: var(--text); font-weight: bold; margin-bottom: 12px;">Target: $398 MRR by Apr 30 (2 pilots paying)</div>
+      <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
         <strong>Soberish:</strong> Pilot $99/mo, likely converts mid-April after first weekend of in-store data.<br>
         <strong>Glad & Young:</strong> Ready to pay by Apr 9. Will convert one to $199/mo (multi-location) by month-end.<br>
         <strong>Critical path:</strong> Auto-tagging must work by Apr 5 to unblock onboarding velocity.
@@ -1178,7 +1250,7 @@
   <div class="section">
     <div class="section-title">RIGHT NOW CONTENT FOR THIS WEEK</div>
     <div class="card">
-      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+      <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
         <strong>ShopTalk Recap Post:</strong> Synthesis of in-store moments everyone's discussing. Publish by Apr 1.<br><br>
         <strong>Vitamin Shoppe Hot Take:</strong> "How a 5,000-store retailer built AI product search in 2 weeks." Case study angle. Publish by Apr 3.<br><br>
         <strong>Behind-the-Scenes Update:</strong> Pilot onboarding process, what we learned from Soberish. Transparency builds trust. Publish by Apr 7.
@@ -1190,16 +1262,16 @@
   <div class="section">
     <div class="section-title">BRAND POSITIONING</div>
     <div class="card" style="border-left: 4px solid var(--sunstar); margin-bottom: 16px;">
-      <div style="font-size: 14px; color: var(--stardust); font-weight: bold; margin-bottom: 8px;">
+      <div style="font-size: 14px; color: var(--text); font-weight: bold; margin-bottom: 8px;">
         "Mirour helps brands drive more revenue from their in-person traffic. Personalized in-store experiences that increase conversion and capture shopper intent in the moment."
       </div>
-      <div style="font-size: 11px; color: var(--mid);">The line that lands: "It's not about more traffic — it's about making every visit count."</div>
+      <div style="font-size: 11px; color: var(--text-light);">The line that lands: "It's not about more traffic — it's about making every visit count."</div>
     </div>
 
     <div class="three-col">
       <div class="card">
         <h3 style="color: var(--sunstar); font-size: 13px;">What Lands</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+        <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
           <strong>"Mailchimp but in-store"</strong> — Philip Morris got it instantly<br><br>
           <strong>"CX first, data capture second"</strong> — Kelley's framing, resonates<br><br>
           <strong>"Make you touch grass"</strong> vs AI-only tools<br><br>
@@ -1208,7 +1280,7 @@
       </div>
       <div class="card">
         <h3 style="color: var(--sunstar); font-size: 13px;">ICP</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+        <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
           <strong>Who:</strong> Mid-size brands. Atlanta young millennial / Gen Z brands serving women in 20s. Fashion, accessories, housewares, gifts.<br><br>
           <strong>Signal:</strong> Aesthetic stores with events/activations. Spending on IRL. Permanent location (pop-ups deprioritized).<br><br>
           <strong>Buyer:</strong> Corporate visual merchandising + CX + ecom dotted line.
@@ -1216,7 +1288,7 @@
       </div>
       <div class="card">
         <h3 style="color: var(--sunstar); font-size: 13px;">Voice</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+        <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
           <strong>"Rally of the people"</strong> for SMBs<br><br>
           <strong>Authority without intimidation</strong> — say it like it is<br><br>
           <strong>Gen Z mindset:</strong> Real-life connection, textures<br><br>
@@ -1232,7 +1304,7 @@
     <div class="three-col">
       <div class="card" style="border-left: 4px solid #4CAF50;">
         <h3 style="color: #4CAF50; font-size: 13px;">What Works</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
           Generate more revenue from in-person<br>
           Self-service for Gen Z/introverts<br>
           Product education when staff busy<br>
@@ -1243,7 +1315,7 @@
       </div>
       <div class="card" style="border-left: 4px solid #FF5252;">
         <h3 style="color: #FF5252; font-size: 13px;">Objections</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
           "Too many tools competing"<br>
           Previous bad experiences<br>
           Pricing sensitivity<br>
@@ -1254,7 +1326,7 @@
       </div>
       <div class="card" style="border-left: 4px solid var(--sunstar);">
         <h3 style="color: var(--sunstar); font-size: 13px;">Pricing Validated</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
           $99/mo ✓ sweet spot<br>
           $149–199 for multi-loc<br>
           $500+ for enterprise<br>
@@ -1274,7 +1346,7 @@
     <div class="section">
       <div class="section-title">MARKET SIGNALS</div>
       <div class="card">
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
           <strong>79%</strong> of people go in-store to touch and try (ShopTalk)<br>
           <strong>70%</strong> of sales still from in-person (Granola discovery)<br>
           <strong>63%</strong> of retailers deployed QR codes in-store (Retail Touchpoints)<br>
@@ -1293,7 +1365,7 @@
       <div class="two-col">
         <div class="card">
           <h3 style="color: var(--sunstar); font-size: 13px;">Market Maturity</h3>
-          <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+          <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
             QR code acceptance post-COVID trained the behavior<br>
             Gen Z loves in-store despite digital-first DNA<br>
             CAC rising, brands need owned channels<br>
@@ -1302,7 +1374,7 @@
         </div>
         <div class="card">
           <h3 style="color: var(--sunstar); font-size: 13px;">Buyer Evolution</h3>
-          <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+          <div style="font-size: 12px; color: var(--text); line-height: 1.7;">
             Two buyers now: AI agents (structured data) + humans (experience)<br>
             Brands must serve both<br>
             Content = infrastructure (ShopTalk)<br>
@@ -1392,7 +1464,7 @@
   <div class="section">
     <div class="section-title">RIGHT NOW FINANCIAL FOCUS</div>
     <div class="card">
-      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+      <div style="font-size: 12px; color: var(--text); line-height: 1.8;">
         <strong>Revenue is the primary metric.</strong> Every week of April is critical. Soberish converting by Apr 9–16. Glad & Young by Apr 9–23.<br><br>
         <strong>Burn is controlled.</strong> $18K/mo is manageable. No hiring until revenue proves model. Three-person team for now.<br><br>
         <strong>Seed round conversation begins when:</strong> 2 pilots paying ($398 MRR) + case study data from Soberish + clear path to 5+ pilots by Q3.
