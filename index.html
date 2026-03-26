@@ -453,13 +453,28 @@
   .lead-card .insight { font-size: 11px; color: var(--sunstar); margin-bottom: 4px; font-style: italic; }
   .lead-card .action { font-size: 11px; color: #2ecc71; }
   .lead-card .who { font-size: 10px; color: var(--nebula); margin-top: 4px; }
+
+  /* Detail separator */
+  .detail-section {
+    padding-top: 28px;
+    margin-top: 28px;
+    border-top: 2px dashed #3a2d50;
+  }
+  .detail-label {
+    font-size: 10px;
+    color: #666;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
 </style>
 </head>
 <body>
 
 <header>
   <h1>MIROUR <span>OS</span></h1>
-  <div class="date">Updated March 25, 2026 &nbsp;·&nbsp; Q1 → Q2</div>
+  <div class="date">Updated March 26, 2026 &nbsp;·&nbsp; Q1 → Q2</div>
 </header>
 
 <div class="tabs">
@@ -473,291 +488,214 @@
 <!-- ═══════════════════════════════════════════════════════ THE PLAN ══ -->
 <div class="content pane active" id="plan">
 
-  <div class="plan-header">Tags are the core. Fix tagging, everything else works.</div>
-  <div class="plan-sub">
-    From today's team meeting: the code works, the flow builder works, the recommendation engine works. The blocker is product data + tagging. Auto-tagging is THE priority — it's our IP, our secret sauce, and the thing that unblocks every pilot. Build the best tagging system that ever existed, then flows practically build themselves.
+  <div class="notice">Tags are the core. Fix tagging, everything else works.</div>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="metric good">
+      <div class="num">4</div>
+      <div class="label">Pilots Active</div>
+      <div class="sub">In closed beta</div>
+    </div>
+    <div class="metric good">
+      <div class="num">5</div>
+      <div class="label">ShopTalk Leads</div>
+      <div class="sub">Hot from conference</div>
+    </div>
+    <div class="metric warn">
+      <div class="num">2</div>
+      <div class="label">Paid by April</div>
+      <div class="sub">$398 MRR goal</div>
+    </div>
+    <div class="metric">
+      <div class="num">$18K</div>
+      <div class="label">Monthly Burn</div>
+      <div class="sub">7 weeks runway</div>
+    </div>
   </div>
 
-  <!-- ═══ KEY DECISIONS — MAR 26 ═══ -->
-  <div class="section" style="margin-bottom: 20px;">
-    <div class="section-title">🔑 Key Decisions — Team Meeting Mar 26</div>
+  <!-- RIGHT NOW: THIS WEEK -->
+  <div class="section">
+    <div class="section-title">RIGHT NOW WEEK (MAR 26–28)</div>
+    <div class="week-block now">
+      <div class="week-label now">Deploy Soberish</div>
+      <div class="week-title">Get 3 flows live in-store</div>
+
+      <div class="task-row">
+        <div class="task-owner kelley">Kelley + Loren</div>
+        <div class="task-content">
+          <strong>Friday 11am: Review Soberish flows</strong>
+          <span>Decide which flows (NA recipes, wine finder, THC drinks) ship. Manual builds where needed.</span>
+        </div>
+        <div class="task-effort">1 hr</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-owner loren">Loren</div>
+        <div class="task-content">
+          <strong>ShopTalk follow-ups + sales decks</strong>
+          <span>Philip Morris, Kohl's, Publicis, Veronica Beard, BRP follow-ups.</span>
+        </div>
+        <div class="task-effort">1–2 days</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-owner loren">Loren</div>
+        <div class="task-content">
+          <strong>Recap product priorities for Tanmay</strong>
+          <span>From team meeting: auto-tagging → AI flow creator → tag on buttons → tag-based display.</span>
+        </div>
+        <div class="task-effort">Today</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-owner tanmay">Tanmay</div>
+        <div class="task-content">
+          <strong>Verify Soberish product data</strong>
+          <span>Confirm data in database. If gaps exist, pull from their website export.</span>
+        </div>
+        <div class="task-effort">2 hrs</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-owner loren">Loren</div>
+        <div class="task-content">
+          <strong>Continue OS + documentation</strong>
+          <span>Keep this dashboard updated, narrative on roadmap and decisions.</span>
+        </div>
+        <div class="task-effort">Ongoing</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MONTH PLAN -->
+  <div class="section">
+    <div class="section-title">THIS MONTH 4-WEEK SPRINT</div>
+
+    <div class="week-block next" style="margin-bottom: 12px;">
+      <div class="week-label next">WEEK 1 (Mar 26–Apr 2)</div>
+      <div class="week-title">Soberish Live + ShopTalk Follow-ups</div>
+      <div class="task-row">
+        <div class="task-owner loren">Loren</div>
+        <div class="task-content"><strong>Friday kickoff with Soberish</strong></div>
+      </div>
+      <div class="task-row">
+        <div class="task-owner loren">Loren</div>
+        <div class="task-content"><strong>Sales decks + meetings with Philip Morris, Kohl's</strong></div>
+      </div>
+    </div>
+
+    <div class="week-block next" style="margin-bottom: 12px;">
+      <div class="week-label next">WEEK 2 (Apr 2–9)</div>
+      <div class="week-title">Auto-Tagging Foundation</div>
+      <div class="task-row">
+        <div class="task-owner tanmay">Tanmay</div>
+        <div class="task-content"><strong>Auto-tagging pipeline with Soberish data</strong></div>
+      </div>
+      <div class="task-row">
+        <div class="task-owner kelley">Kelley</div>
+        <div class="task-content"><strong>Flow iteration based on feedback</strong></div>
+      </div>
+    </div>
+
+    <div class="week-block next" style="margin-bottom: 12px;">
+      <div class="week-label next">WEEK 3 (Apr 9–16)</div>
+      <div class="week-title">Pilots 2 & 3 Onboarding</div>
+      <div class="task-row">
+        <div class="task-owner loren">Loren</div>
+        <div class="task-content"><strong>Convert Glad & Young, sign second paid pilot</strong></div>
+      </div>
+      <div class="task-row">
+        <div class="task-owner tanmay">Tanmay</div>
+        <div class="task-content"><strong>Auto-tagging ready for pilot 2</strong></div>
+      </div>
+    </div>
+
+    <div class="week-block next">
+      <div class="week-label next">WEEK 4 (Apr 16–23)</div>
+      <div class="week-title">Revenue + Prep Seed</div>
+      <div class="task-row">
+        <div class="task-owner loren">Loren</div>
+        <div class="task-content"><strong>2 pilots paying ($398 MRR milestone)</strong></div>
+      </div>
+      <div class="task-row">
+        <div class="task-owner loren">Loren</div>
+        <div class="task-content"><strong>Seed round materials ready</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY DECISIONS -->
+  <div class="section">
+    <div class="section-title">KEY DECISIONS FROM MAR 26 TEAM MEETING</div>
     <div class="two-col">
       <div class="card" style="border-left: 4px solid #4CAF50;">
         <h3 style="color: #4CAF50; font-size: 13px;">Confirmed</h3>
         <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-          <strong>Tags = IP / secret sauce.</strong> Two-way sync between Mirour tags + ecom platforms is the moat. Document as proprietary.<br>
-          <strong>Keep flows, don't go chat-only.</strong> Flows give experiential leverage, A/B testing, promotional capability. Chat removes all of that.<br>
-          <strong>Auto-tagging via LLM is the path.</strong> Batch 100 products → LLM tags with onboarding context → store in DB. Repeat.<br>
-          <strong>AI flow creator must pull real tags.</strong> Not generic templates — show actual products in preview.<br>
-          <strong>New product display: tag-based mode.</strong> Manual, dynamic, AND "show everything with this tag."<br>
-          <strong>Tags on buttons, not just selects.</strong> "See all 5mg drinks" as a button that routes by tag.
+          <strong>Tags = IP / secret sauce.</strong> Two-way sync with ecom is the moat.<br>
+          <strong>Keep flows.</strong> Not chat-only. Flows = experiential leverage, A/B, promo.<br>
+          <strong>Auto-tagging via LLM.</strong> Batch products + context → LLM tags → DB.<br>
+          <strong>AI flow creator pulls real tags.</strong> Not generic templates.<br>
+          <strong>Tag-based product display mode.</strong> Manual, dynamic, "show all with tag."<br>
+          <strong>Tags on buttons.</strong> Direct routing like "See all 5mg drinks."
         </div>
       </div>
       <div class="card" style="border-left: 4px solid #FF5252;">
-        <h3 style="color: #FF5252; font-size: 13px;">Deprioritized / Changed</h3>
+        <h3 style="color: #FF5252; font-size: 13px;">Deprioritized</h3>
         <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-          <strong>Pop-ups are NOT our demographic.</strong> Not enough bandwidth to see value. Focus on mid-size market + larger activations (Nike, eBay, South by type events).<br>
-          <strong>Web scraping is not scalable</strong> for product data. Tanmay confirmed — worked for demo but won't work at scale.<br>
-          <strong>Recommendation strategy complexity hidden.</strong> Any/all/zone — just keep it standard, don't show users the logic picker.<br>
-          <strong>Sales decks are suddenly needed.</strong> Wasn't expected yet. Kohl's, Publicis, Philip Morris all asked. Next phase.
+          <strong>Pop-ups not our demographic.</strong> Focus mid-size + large activations.<br>
+          <strong>Web scraping not scalable.</strong> Use POS exports.<br>
+          <strong>Hide recommendation logic.</strong> Default to "any/all", standard picker.<br>
+          <strong>Sales decks suddenly needed.</strong> Kohl's, Publicis, Philip Morris asked. Phase 2.
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ THIS WEEK ═══ -->
-  <div class="week-block now">
-    <div class="week-label now">This Week · Mar 26–28</div>
-    <div class="week-title">Get Soberish Something In-Store</div>
-    <div class="week-outcome">Outcome: A few working flows Soberish can test in her store this weekend</div>
-
-    <div class="task-row">
-      <div class="task-owner kelley">Kelley + Loren</div>
-      <div class="task-content">
-        <strong>Friday 11am: Go through Soberish flows</strong>
-        <span>Review what Kelley's built (NA recipes, wine finder, spirits) + what Loren's built (THC drinks). Decide what to ship to Soberish in-store. Manual product builds where needed.</span>
-      </div>
-      <div class="task-effort">1 hr</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner loren">Loren</div>
-      <div class="task-content">
-        <strong>ShopTalk follow-ups + sales decks</strong>
-        <span>Terrence (Philip Morris): activation examples. Maureen (Kohl's): deck request. Elizabeth (Publicis): agency partner framing. Max (Veronica Beard): intro call. Alicia (BRP): in-store experiential.</span>
-      </div>
-      <div class="task-effort">1–2 days</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner loren">Loren</div>
-      <div class="task-content">
-        <strong>Recap product priorities for Tanmay</strong>
-        <span>From today's meeting + OS audit. Priority list: auto-tagging → AI flow creator with real tags → tag on buttons → tag-based product display.</span>
-      </div>
-      <div class="task-effort">Today</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner loren">Loren</div>
-      <div class="task-content">
-        <strong>Continue building out Cowork OS</strong>
-        <span>"Rest of my week is going to be spent on this." Get system in one place. Share access with team in Slack. Talk to Marir about how she PMs with Claude Code.</span>
-      </div>
-      <div class="task-effort">Rest of week</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner tanmay">Tanmay</div>
-      <div class="task-content">
-        <strong>Soberish product data — verify import</strong>
-        <span>OS audit says products not in Supabase but Tanmay did web-scrape import. Verify what's there, what's missing. Tanmay pulled from website not CSV — check if tags + images are connected.</span>
-      </div>
-      <div class="task-effort">Half day</div>
-    </div>
-  </div>
-
-  <!-- ═══ NEXT WEEK ═══ -->
-  <div class="week-block next">
-    <div class="week-label next">Next Week · Mar 31–Apr 4</div>
-    <div class="week-title">Auto-Tagging + Sales Decks + Glad & Young</div>
-    <div class="week-outcome">Outcome: Auto-tagging prototype working. Sales deck ready for Kohl's + Publicis. Second pilot onboarding.</div>
-
-    <div class="task-row">
-      <div class="task-owner tanmay">Tanmay</div>
-      <div class="task-content">
-        <strong>Build LLM auto-tagging system (THE priority)</strong>
-        <span>Batch 100 products → send to LLM with onboarding context (who the brand is, what they sell) → LLM returns tags → store in DB. Prompt engineering to ensure tag consistency across batches. Test with Glad & Young.</span>
-      </div>
-      <div class="task-effort">3–5 days</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner tanmay">Tanmay</div>
-      <div class="task-content">
-        <strong>Add tag-based product display mode</strong>
-        <span>New mode alongside manual + dynamic: type a tag → show all products with that tag. Also: add tag capability to buttons (not just select widgets). From today's meeting.</span>
-      </div>
-      <div class="task-effort">1–2 days</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner kelley">Kelley + Loren</div>
-      <div class="task-content">
-        <strong>Build sales decks</strong>
-        <span>Kohl's: big picture framing, Gen Z in-store, how Mirour fits. Make it easy for Maureen to champion upward. Publicis: agency partner angle, experiential ROI. Philip Morris: activation-focused.</span>
-      </div>
-      <div class="task-effort">2–3 days</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner kelley">Kelley</div>
-      <div class="task-content">
-        <strong>Test Glad & Young onboarding</strong>
-        <span>Use as test case for new auto-tagging. What's their product data look like? What format? Can we get CSV + website export to compare?</span>
-      </div>
-      <div class="task-effort">1 day</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner loren">Loren</div>
-      <div class="task-content">
-        <strong>Talk to Marir about PM with Claude Code</strong>
-        <span>"She was like, let me walk you through how I do mine." Learn her PM workflow, apply to Mirour OS.</span>
-      </div>
-      <div class="task-effort">1 hr</div>
-    </div>
-  </div>
-
-  <!-- ═══ WEEK 3 ═══ -->
-  <div class="week-block later">
-    <div class="week-label later">Week 3 · Apr 7–11</div>
-    <div class="week-title">Prove It Works</div>
-    <div class="week-outcome">Outcome: 2 pilots with live flows, real analytics, customer data flowing</div>
-
-    <div class="task-row">
-      <div class="task-owner kelley">Kelley</div>
-      <div class="task-content">
-        <strong>Build flow for pilot #2</strong>
-        <span>Second brand live. Two working examples to demo, pitch, and learn from.</span>
-      </div>
-      <div class="task-effort">2–3 days</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner loren">Loren</div>
-      <div class="task-content">
-        <strong>Review analytics + customer data</strong>
-        <span>With tracking on, you'll have real numbers: flow completion rates, popular tags, customer preferences. Use this for the paid conversion pitch.</span>
-      </div>
-      <div class="task-effort">Ongoing</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner tanmay">Tanmay</div>
-      <div class="task-content">
-        <strong>Separate dev and prod databases</strong>
-        <span>Flagged in March 12 meeting as scaling blocker. Protect pilot data before we have paying customers.</span>
-      </div>
-      <div class="task-effort">1 day</div>
-    </div>
-  </div>
-
-  <!-- ═══ WEEK 4 ═══ -->
-  <div class="week-block after">
-    <div class="week-label after">Week 4 · Apr 14–18</div>
-    <div class="week-title">Convert to Paid</div>
-    <div class="week-outcome">Outcome: 2 pilots paying $199/mo = $398 MRR. Proof of concept for fundraising.</div>
-
-    <div class="task-row">
-      <div class="task-owner loren">Loren</div>
-      <div class="task-content">
-        <strong>Paid conversion conversations</strong>
-        <span>You have live flows, real analytics, customer insights. "Here's what your customers are looking for. That's worth $199/mo." Close 2.</span>
-      </div>
-      <div class="task-effort">All week</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner loren">Loren + Kelley</div>
-      <div class="task-content">
-        <strong>Build pilot SOW template</strong>
-        <span>One-page agreement: scope, timeline, what Mirour provides, what the brand provides, success metrics. Needed before paid conversion.</span>
-      </div>
-      <div class="task-effort">1 day</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner loren">Loren</div>
-      <div class="task-content">
-        <strong>Send Kohl's deck</strong>
-        <span>By now you have 2 live case studies. Include real numbers. Give Maureen something to bring to her team.</span>
-      </div>
-      <div class="task-effort">1 day</div>
-    </div>
-  </div>
-
-  <!-- ═══ AFTER REVENUE ═══ -->
+  <!-- SHOPTALK LEADS -->
   <div class="section">
-    <div class="section-title">After Revenue — What Comes Next</div>
-    <div style="font-size: 12px; color: #bbb; line-height: 1.7; margin-bottom: 12px;">
-      None of this gets built until pilots are paying. These are the moves that scale what's working.
+    <div class="section-title">SHOPTALK LEADS</div>
+    <div class="lead-card">
+      <h4>Terrence Chung · Philip Morris</h4>
+      <div class="insight">Activation examples + strategic in-store partnership</div>
+      <div class="action">→ Sales deck, call this week</div>
+      <div class="who">Loren</div>
     </div>
-    <div class="two-col">
-      <div class="card">
-        <h3 style="color: var(--spacejam); font-size: 13px;">Scale onboarding</h3>
-        <ul class="checklist">
-          <li><div class="check"></div> <span>One-click import from POS APIs (Shopify, Square, Lightspeed)</span></li>
-          <li><div class="check"></div> <span>AI flow creator that pulls from real tagged inventory</span></li>
-          <li><div class="check"></div> <span>Learning tags: flows teach the system new tags over time</span></li>
-          <li><div class="check"></div> <span>QR code reassignment (swap flow without reprinting signage)</span></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3 style="color: var(--spacejam); font-size: 13px;">Unlock more value</h3>
-        <ul class="checklist">
-          <li><div class="check"></div> <span>Two-way tag sync with Shopify / ecom platforms (the moat)</span></li>
-          <li><div class="check"></div> <span>Customer insights dashboard — sales data view, not flow creation</span></li>
-          <li><div class="check"></div> <span>AI search layered into flows (Vitamin Shoppe model — keep as option, not replacement)</span></li>
-          <li><div class="check"></div> <span>Agency partner package for Publicis / activation firms</span></li>
-          <li><div class="check"></div> <span>Onboarding consulting sessions — freelancer-led flow building for brands who need help</span></li>
-        </ul>
-      </div>
+    <div class="lead-card">
+      <h4>Maureen · Kohl's</h4>
+      <div class="insight">Multi-location, in-store engagement + data capture</div>
+      <div class="action">→ Deck request, meeting setup</div>
+      <div class="who">Loren</div>
     </div>
-  </div>
-
-  <!-- ═══ SHOPTALK LEADS ═══ -->
-  <div class="section">
-    <div class="section-title">ShopTalk Leads — Follow Up This Week</div>
-    <div class="two-col">
-      <div>
-        <div class="lead-card">
-          <h4>Terrence Chung — Philip Morris International</h4>
-          <div class="insight">"Mailchimp but in-store" landed immediately. Working on experiential + pop-up activations + new retail store.</div>
-          <div class="action">Follow up: send examples of how Mirour works for activations and in-person capture</div>
-          <div class="who">Owner: Loren</div>
-        </div>
-        <div class="lead-card">
-          <h4>Maureen — Kohl's</h4>
-          <div class="insight">Backend is Google Sheets. QR codes exist but nothing connects. Actively trying to reach Gen Z in-store.</div>
-          <div class="action">Follow up: Kohl's deck (Kelley + Loren). Make it easy for her to champion internally.</div>
-          <div class="who">Owner: Loren + Kelley</div>
-        </div>
-      </div>
-      <div>
-        <div class="lead-card">
-          <h4>Elizabeth — Publicis (Agency)</h4>
-          <div class="insight">CRM expert, agency side. Thinking about her clients. Activations end and data disappears.</div>
-          <div class="action">Follow up: frame Mirour as infrastructure for experiential ROI — the tool she brings to client activations</div>
-          <div class="who">Owner: Loren</div>
-        </div>
-        <div class="lead-card">
-          <h4>Max — Veronica Beard (Head of Data)</h4>
-          <div class="insight">Fashion brand. 33/33/33 split: digital, physical, wholesale. Looking at in-store experiences to bridge omnichannel.</div>
-          <div class="action">Follow up: schedule intro call. Data-first buyer — show analytics angle.</div>
-          <div class="who">Owner: Loren</div>
-        </div>
-        <div class="lead-card">
-          <h4>Alicia Auclair — BRP (Sea-Doo, Jet Ski)</h4>
-          <div class="insight">Retail Marketing Specialist. $1-10B rev. Powersports. Wants: customer feedback capture, product knowledge tech, personalized interactions. Meeting today (Mar 26).</div>
-          <div class="action">Follow up: in-store experiential angle. Perfect ICP match for in-store media + analytics.</div>
-          <div class="who">Owner: Loren</div>
-        </div>
-      </div>
+    <div class="lead-card">
+      <h4>Elizabeth · Publicis</h4>
+      <div class="insight">Agency partner, client-ready solutions</div>
+      <div class="action">→ Agency partner framing</div>
+      <div class="who">Loren</div>
+    </div>
+    <div class="lead-card">
+      <h4>Max · Veronica Beard</h4>
+      <div class="insight">Fashion, in-store activations, premium positioning</div>
+      <div class="action">→ Intro call + product demo</div>
+      <div class="who">Loren</div>
+    </div>
+    <div class="lead-card">
+      <h4>Alicia · BRP</h4>
+      <div class="insight">Large-scale in-store experiential, multi-location</div>
+      <div class="action">→ Strategic positioning + pilot talk</div>
+      <div class="who">Loren</div>
     </div>
   </div>
 
-  <!-- ═══ MARKET SIGNAL ═══ -->
+  <!-- MARKET SIGNALS -->
   <div class="section">
-    <div class="section-title">Market Signal — Why Now (Updated from ShopTalk + Team Meeting)</div>
+    <div class="section-title">MARKET SIGNALS & STRATEGIC CONTEXT</div>
     <div class="card">
-      <div style="font-size: 13px; color: #ccc; line-height: 1.7;">
-        <strong style="color: var(--sunstar);">In-store is THE conversation.</strong> "I thought in-store would be a tiny bit. It was most of the sessions." — Loren at ShopTalk. Brands are investing heavily in IRL experiences. Covaris (leather company) is 20% experiential space, no buying.<br><br>
-        <strong style="color: var(--sunstar);">Product data is everyone's wall.</strong> Every agentic commerce session at ShopTalk hit the same blocker: unstructured product data. Vitamin Shoppe only succeeded because their CTO had already structured the data. If we solve tagging, we're ahead of everyone.<br><br>
-        <strong style="color: var(--sunstar);">Content is infrastructure now.</strong> "This is the time where content is going to be the most important product data. The LLMs need to pull from it." — Vitamin Shoppe CTO on main stage.<br><br>
-        <strong style="color: var(--sunstar);">People who buy in-store first are more loyal.</strong> Higher LTVs, even when they go omnichannel. Brands know this. They're investing in the store — but the tech layer is missing.<br><br>
-        <strong style="color: var(--sunstar);">Right place, right time.</strong> "We're early enough that there's not everybody after it, but in a time where everyone's starting to invest in it and know its value." We're mid-market while Tulip/Salesfloor go enterprise. Sweet spot.<br><br>
-        <strong style="color: var(--sunstar);">Angel round → first revenue → pre-seed.</strong> Plan: angels cover operating costs. Revenue brings team on full-time incrementally. May not even need pre-seed if scaling fast enough. More equity retained.
+      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <strong>In-store is THE conversation.</strong> Every ShopTalk attendee + pilot talking about retail transformation.<br><br>
+        <strong>Product data is everyone's wall.</strong> Brands drowning in messy CSVs. First one to crack scalable product understanding wins.<br><br>
+        <strong>Right place, right time.</strong> QR codes trained. Gen Z wants IRL. CAC rising. Brands desperate for owned channels.<br><br>
+        <strong>Angel round plan.</strong> If Q2 hits $398 MRR + 2 pilots, seed conversation moves to "when." May 2026 realistic.
       </div>
     </div>
   </div>
@@ -767,792 +705,259 @@
 <!-- ═══════════════════════════════════════════════════════ PRODUCT ══ -->
 <div class="content pane" id="product">
 
-  <div class="notice">
-    From Mar 26 team meeting: Tags are the core of everything. Without correct tags, nothing works — no flows, no recommendations, no search. Auto-tagging via LLM is the #1 priority. This is our IP.
-  </div>
+  <div class="notice">Auto-tagging via LLM is the #1 priority. This is our IP.</div>
 
+  <!-- METRICS -->
   <div class="metrics">
-    <div class="metric warn">
-      <div class="num">5</div>
-      <div class="label">Pilots in Program</div>
-      <div class="sub">A Bag Concept: 3/11 done</div>
-    </div>
     <div class="metric crit">
       <div class="num">1</div>
       <div class="label">Critical Blocker</div>
-      <div class="sub">🔴 Product data not in database</div>
+      <div class="sub">Tagging pipeline not automated</div>
     </div>
     <div class="metric warn">
       <div class="num">7</div>
       <div class="label">Ghost Tables</div>
-      <div class="sub">Schema exists, no code writes to them</div>
+      <div class="sub">Schema exists, no code writes</div>
+    </div>
+    <div class="metric crit">
+      <div class="num">Blocked</div>
+      <div class="label">Pilots Blocked On</div>
+      <div class="sub">Product data + auto-tagging</div>
     </div>
     <div class="metric good">
       <div class="num">Apr</div>
       <div class="label">Next Milestone</div>
-      <div class="sub">2 pilots → paid ($398 MRR)</div>
+      <div class="sub">Auto-tag prototype live</div>
     </div>
   </div>
 
-  <!-- ═══ ROOT CAUSE ═══ -->
+  <!-- RIGHT NOW -->
   <div class="section">
-    <div class="section-title">🔴 Core Problem — Tagging is Everything</div>
+    <div class="section-title">RIGHT NOW WHAT TANMAY NEEDS</div>
     <div class="card">
-      <div style="font-size: 13px; color: #ccc; line-height: 1.7; margin-bottom: 16px;">
-        <strong style="color: #e74c3c;">The problem:</strong> Product data from brands is messy. CSVs have no images, no tags, minimal descriptions. Web scraping worked for Soberish demo but isn't scalable. Every brand's data is different and incomplete.<br><br>
-        <strong style="color: #2ecc71;">The solution (from team meeting):</strong> LLM-powered auto-tagging. Onboarding form captures brand context (who they are, what they sell). Batch 100 products → send to LLM with context → LLM returns consistent tags → store in DB. Prompt engineering ensures tag consistency across batches.<br><br>
-        <strong style="color: var(--sunstar);">Why this is IP:</strong> "If we can figure out a way for this software to auto-tag and tag in the moment, we will win." — Kelley. Two-way sync between Mirour tags and ecom platforms (Shopify, etc.) means brands' agentic readiness improves just by using Mirour. Tags flow back to their stores. Nobody else does this.
+      <div style="font-size: 12px; color: #bbb; line-height: 1.8; margin-bottom: 12px;">
+        <strong>Verify Soberish product data is in database.</strong> Check row count in products table. If gaps, pull from their site export.<br><br>
+        <strong>Start auto-tagging on Soberish batch.</strong> Hand-tag 20 products with onboarding context, validate approach, then script for 100-product batches.<br><br>
+        <strong>Document tag consistency rules.</strong> Build the prompt engineering documentation now so rules transfer to next brand.
       </div>
-      <div style="font-size: 12px; color: var(--sunstar); font-weight: bold;">Priority: Build auto-tagging system. Test with Glad & Young. This unblocks everything.</div>
     </div>
   </div>
 
-  <!-- ═══ TAGGING ROADMAP ═══ -->
+  <!-- TAGGING ROADMAP -->
   <div class="section">
-    <div class="section-title">🏷️ Tagging Roadmap — From Team Meeting</div>
-    <div class="two-col">
-      <div class="card" style="border-left: 4px solid var(--sunstar);">
-        <h3 style="color: var(--sunstar); font-size: 13px;">Phase 1: Auto-Tag on Import (NOW)</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-          Brand uploads CSV + fills onboarding context form<br>
-          Batch 100 products → LLM with context → tags returned<br>
-          Prompt engineering for consistency across batches<br>
-          Store tags in product_tags table<br>
-          <strong>Also accept:</strong> website export (Squarespace, Shopify) for richer data<br>
-          <strong>Test with:</strong> Glad & Young
-        </div>
-      </div>
-      <div class="card" style="border-left: 4px solid var(--spacejam);">
-        <h3 style="color: var(--spacejam); font-size: 13px;">Phase 2: Learning Tags from Flows (NEXT)</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-          When you create a flow (e.g., "find perfect THC drink"), AI learns new tags from the prompt<br>
-          "5mg THC" wasn't an initial tag but is important for the flow → system goes back and tags products<br>
-          "Dresses with pockets" → AI finds all products with "dress" + "pocket" in description → adds tag<br>
-          Tags compound over time — system gets smarter with every flow built<br>
-          <strong>Complex but doable</strong> — Tanmay confirmed. Prompt engineering + proper linking.
-        </div>
+    <div class="section-title">TAGGING ROADMAP 3-PHASE PATH</div>
+    <div class="card" style="margin-bottom: 12px; border-left: 4px solid var(--sunstar);">
+      <h3 style="color: var(--sunstar); font-size: 13px;">Phase 1: Auto-Tag on Import (NOW)</h3>
+      <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+        Brand uploads CSV or POS export → fills onboarding context → system batches 100 products → LLM returns consistent tags → stored in product_tags immediately.<br>
+        <strong>Test with:</strong> Soberish (this week), then Glad & Young<br>
+        <strong>Timeline:</strong> Prototype by Apr 2, production by Apr 9
       </div>
     </div>
-    <div class="card" style="margin-top: 12px; border-left: 4px solid #4CAF50;">
+    <div class="card" style="margin-bottom: 12px; border-left: 4px solid var(--spacejam);">
+      <h3 style="color: var(--spacejam); font-size: 13px;">Phase 2: Learning Tags from Flows (NEXT)</h3>
+      <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+        When brand creates a flow, AI extracts new tags from flow intent. "Find perfect THC drink" → system learns "5mg", "calming" are important → re-tags products. Tags compound over time.<br>
+        <strong>Timeline:</strong> Apr 16+
+      </div>
+    </div>
+    <div class="card" style="border-left: 4px solid #4CAF50;">
       <h3 style="color: #4CAF50; font-size: 13px;">Phase 3: Two-Way Ecom Sync (FUTURE — The Moat)</h3>
       <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-        Mirour talks to Shopify bidirectionally. Tags that Mirour creates flow back to the brand's store. Their products become searchable + agentic-ready. Brands learn from how people search in flows → feed that intelligence to ecommerce. "The heavy lift happens with Mirour, tested and proven in-store, then feeds back to their ecom platform." — Kelley
+        Mirour tags flow back to Shopify/ecom. Brands' stores become searchable + agentic-ready. In-store intelligence feeds back to their ecommerce. Nobody else does this.
       </div>
     </div>
   </div>
 
-  <!-- ═══ PRODUCT ARCHITECTURE MAP ═══ -->
+  <!-- KEY DECISIONS -->
   <div class="section">
-    <div class="section-title">🗺️ Product Architecture — Full Picture</div>
-
-    <div style="font-size: 12px; color: #bbb; margin-bottom: 16px; line-height: 1.6;">
-      Everything Mirour has built, what's actually working, what's broken, and what's future. This is the real state of the product.
-    </div>
-
-    <div class="legend">
-      <div class="legend-item"><div class="legend-dot green"></div> Working</div>
-      <div class="legend-item"><div class="legend-dot amber"></div> Built but disconnected</div>
-      <div class="legend-item"><div class="legend-dot red"></div> Broken / empty</div>
-      <div class="legend-item"><div class="legend-dot purple"></div> Future (not built)</div>
-    </div>
-
-    <!-- The actual data flow -->
-    <div style="font-size: 11px; color: var(--mid); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">How data flows through the product</div>
-    <div class="flow-diagram">
-      <div class="flow-step red"><strong>Product Import</strong>Manual CSV only</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step red"><strong>Auto-Tagging</strong>Script exists, never run</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step green"><strong>Flow Builder</strong>Works, complex UI</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step green"><strong>Flow Runner</strong>Quiz + recs work</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step red"><strong>Analytics</strong>Table exists, 0 writes</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step red"><strong>Customer Data</strong>Tags not saved</div>
-    </div>
-
-    <div class="arch-grid">
-      <!-- Row 1: Core features -->
-      <div class="arch-card works">
-        <span class="arch-status works">WORKING</span>
-        <h4>Flow Builder</h4>
-        <p>Node graph editor with 7 step types. Supports quiz questions, conditional logic, tag assignment, product recommendations. Side-by-side preview shipped Mar 20.</p>
-        <p style="color: #e67e22; margin-top: 6px;">⚠ Complex for non-engineers. From meeting: hide recommendation strategy logic (any/all/zone), show tags instead. Add tag-based product display mode + tags on buttons.</p>
-      </div>
-
-      <div class="arch-card works">
-        <span class="arch-status works">WORKING</span>
-        <h4>Flow Runner</h4>
-        <p>Customer-facing quiz at /f/[formId]. Renders all step types, calculates tags from answers, filters products by tag match. 3,000+ line file doing 3 jobs (UI + recs + data capture).</p>
-        <p style="color: #2ecc71; margin-top: 6px;">✓ Core engine is solid. Returns right products when tags exist.</p>
-      </div>
-
-      <div class="arch-card works">
-        <span class="arch-status works">WORKING</span>
-        <h4>Tag-Based Recommendations</h4>
-        <p>3 strategies: "any" match, "all" match, "zone-first". Quiz answers accumulate tags → filterProducts() finds matches. Works perfectly when product_tags table is populated.</p>
-        <p style="color: #e67e22; margin-top: 6px;">⚠ From meeting: keep standard (any/all), hide logic from users. Add new mode: tag-based display — just "show everything with this tag" as simple filter. Plus tag on buttons for direct routing.</p>
-      </div>
-
-      <!-- Row 2: Data layer -->
-      <div class="arch-card broken">
-        <span class="arch-status broken">NOT WORKING</span>
-        <h4>Product Import Pipeline</h4>
-        <p>No automated import exists. Brands export CSV from POS → someone manually processes it → products sit in CSV never imported to Supabase. Store integrations UI saves API keys but NO code calls those APIs.</p>
-        <p style="color: #e74c3c; margin-top: 6px;">🔴 This is THE blocker. Every pilot is stuck here.</p>
-      </div>
-
-      <div class="arch-card broken">
-        <span class="arch-status broken">GHOST TABLE</span>
-        <h4>Analytics Events</h4>
-        <p>analytics_events table created in migration with full schema (event_type, payload, location_id). Zero code writes to it. The /analytics page has nothing to show because no events are tracked.</p>
-        <p style="color: #e74c3c; margin-top: 6px;">🔴 Can't measure anything. No funnel, no conversion, no drop-off.</p>
-      </div>
-
-      <div class="arch-card broken">
-        <span class="arch-status broken">GHOST TABLE</span>
-        <h4>Customer Tags</h4>
-        <p>customer_tags table exists. lib/tags.ts has appendTags() and getSessionTags() functions ready to go. But the flow runner NEVER calls them. Customer profiling data vanishes after each session.</p>
-        <p style="color: #e74c3c; margin-top: 6px;">🔴 One function call to fix. Huge value unlock.</p>
-      </div>
-
-      <!-- Row 3: More features -->
-      <div class="arch-card broken">
-        <span class="arch-status broken">GHOST TABLE</span>
-        <h4>Form Visits / Flow Sessions</h4>
-        <p>form_visits tracks QR scans/page visits. flow_sessions tracks start/complete. Both tables exist, neither written to. Can't measure engagement or completion rates.</p>
-      </div>
-
-      <div class="arch-card partial">
-        <span class="arch-status partial">PARTIALLY BUILT</span>
-        <h4>Store Integrations</h4>
-        <p>IntegrationsModal lets users save Lightspeed, Shopify, Squarespace API keys. Keys are stored in store_integrations table. But NO code ever calls those APIs to sync products. UI theater.</p>
-      </div>
-
-      <div class="arch-card partial">
-        <span class="arch-status partial">PARTIALLY BUILT</span>
-        <h4>Profile Engine (M3)</h4>
-        <p>Weighted scoring from profile_rules, hard branch for non-drinker, tiebreaker logic. Called by flow runner but has hardcoded "wellness-seeker" ID that won't match real data. Rules not populated for any pilot.</p>
-        <p style="color: #e67e22; margin-top: 6px;">⚠ Premature. Tags alone do the job for now.</p>
-      </div>
-
-      <!-- Row 4: More stuff -->
-      <div class="arch-card partial">
-        <span class="arch-status partial">OVERBUILT</span>
-        <h4>Zone System</h4>
-        <p>Maps products to physical store areas. zone_tags junction table exists. "zone-first" recommendation strategy built. No pilot uses zones. Adds cognitive overhead to flow builder for zero current value.</p>
-        <p style="color: #e67e22; margin-top: 6px;">⚠ Hide for now. Bring back when a pilot asks for wayfinding.</p>
-      </div>
-
-      <div class="arch-card works">
-        <span class="arch-status works">WORKING</span>
-        <h4>Customer Info Capture</h4>
-        <p>Captures phone/email during flows. Customer lookup via token. Creates customer records. Works, but unclear if repeat visitors are matched to previous sessions.</p>
-      </div>
-
-      <div class="arch-card partial">
-        <span class="arch-status partial">PARTIALLY BUILT</span>
-        <h4>Inventory Management</h4>
-        <p>/inventory page exists. Products can be viewed/edited. But product import is manual and tags must be assigned one by one. No bulk operations. No POS sync.</p>
-      </div>
-
-      <!-- Row 5: Future -->
-      <div class="arch-card future">
-        <span class="arch-status future">FUTURE</span>
-        <h4>AI Flow Generation</h4>
-        <p>Import products → AI reads categories/descriptions → auto-generates a quiz flow with tag mappings. Eliminates the blank canvas problem. The #1 simplification for onboarding.</p>
-        <p style="color: #a084e0; margin-top: 6px;">💡 POS categories ARE the quiz. "What are you in the mood for?" writes itself from product data.</p>
-      </div>
-
-      <div class="arch-card future">
-        <span class="arch-status future">FUTURE</span>
-        <h4>AI Auto-Tagging</h4>
-        <p>LLM reads product name + description + category → generates tags automatically. "Kin Euphorics High Rhode" → functional, adaptogen, no-alcohol, social, energize. Turns week-long onboarding into same-day.</p>
-      </div>
-
-      <div class="arch-card future">
-        <span class="arch-status future">FUTURE</span>
-        <h4>Customer Insights Dashboard</h4>
-        <p>Once analytics + customer tags work: "62% of customers want non-alcoholic" / "Top vibe: calm evening" / "THC products have 3x save rate". Makes $199/mo feel like a steal.</p>
-      </div>
-
-      <div class="arch-card future">
-        <span class="arch-status future">FUTURE</span>
-        <h4>Multi-Channel Distribution</h4>
-        <p>Flow runner already works as standalone page. Package as: embed widget for brand websites, shareable link for email campaigns, Instagram story link. Distribution is free, just not packaged yet.</p>
-      </div>
-
-      <div class="arch-card future">
-        <span class="arch-status future">FUTURE</span>
-        <h4>Live POS Sync</h4>
-        <p>Use the API keys already stored in store_integrations to auto-sync products nightly. New products auto-tagged and available in flows. Brands never touch a CSV again.</p>
-      </div>
-
-      <div class="arch-card future">
-        <span class="arch-status future">FUTURE</span>
-        <h4>Flow Wizard (Simple Mode)</h4>
-        <p>3-step onboarding: connect your store → pick a quiz style → preview and launch. Full node editor for power users later. First-run experience should be "flow in 5 minutes."</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ WHAT TO SIMPLIFY ═══ -->
-  <div class="section">
-    <div class="section-title">✂️ Simplify — What to Hide, Default, or Cut</div>
-    <div style="font-size: 12px; color: #bbb; margin-bottom: 16px; line-height: 1.6;">
-      The code is more complete than the team realizes. The problem isn't missing features — it's too much exposed at once. These changes make the build easier without rewriting anything.
-    </div>
-
-    <div class="simplify-grid">
-      <div class="simplify-card">
-        <h4>Flow Creation</h4>
-        <div class="now">Now: Blank canvas → build from scratch → manually tag each answer</div>
-        <div class="then">Better: Import products → system generates draft flow → tweak and launch</div>
-        <p>The current flow builder is a power tool. For pilot onboarding you need a wizard. Hide the node editor behind "Advanced" and lead with a 3-step setup.</p>
-      </div>
-
-      <div class="simplify-card">
-        <h4>Recommendation Strategies</h4>
-        <div class="now">Now: 3 strategies to choose from (any / all / zone-first)</div>
-        <div class="then">Better: Default to "any match" — hide the choice entirely</div>
-        <p>Every pilot needs "any". The other two add decision overhead with zero current value. Bring them back as a pro feature when someone actually needs "all match."</p>
-      </div>
-
-      <div class="simplify-card">
-        <h4>Node Types</h4>
-        <div class="now">Now: 7 types (welcome, message, question, customer-info, recommendation, product-showcase, complete)</div>
-        <div class="then">Better: 3 types for pilot flows (welcome, quiz question, recommendations)</div>
-        <p>Message and product-showcase are edge cases. Customer-info can be a toggle on the complete step. Fewer types = fewer things to explain, fewer things to break.</p>
-      </div>
-
-      <div class="simplify-card">
-        <h4>Profile Engine</h4>
-        <div class="now">Now: Weighted scoring + hard branches + archetype matching + tiebreakers</div>
-        <div class="then">Better: Tags alone handle recommendations for all current pilots</div>
-        <p>Profile engine requires populated profile_rules (none exist) and has hardcoded IDs. Tags do the same job with no setup. Revisit when you have 50+ products per category.</p>
-      </div>
-
-      <div class="simplify-card">
-        <h4>Zone System</h4>
-        <div class="now">Now: Products mapped to physical zones, zone_tags table, zone-first filtering</div>
-        <div class="then">Better: Hide zones entirely. Just tags + products.</div>
-        <p>No pilot uses zones. It adds a layer of mapping that makes the flow builder harder to understand. Bring it back when a pilot asks "can I guide people to aisle 3?"</p>
-      </div>
-
-      <div class="simplify-card">
-        <h4>Onboarding</h4>
-        <div class="now">Now: Export CSV → manually map tags → someone imports to Supabase → build flow from scratch</div>
-        <div class="then">Better: Connect POS → auto-import → auto-tag → auto-generate flow → brand tweaks</div>
-        <p>Current onboarding is consulting disguised as a product. Each pilot takes weeks. The auto pipeline turns it into hours. This is the difference between 5 pilots and 50.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ GHOST TABLES ═══ -->
-  <div class="section">
-    <div class="section-title">👻 Ghost Tables — Schema Exists, Nothing Writes to Them</div>
+    <div class="section-title">KEY DECISIONS FROM TEAM MEETING</div>
     <div class="card">
-      <table class="bug-table">
-        <thead>
-          <tr><th>Table</th><th>What It's For</th><th>Status</th><th>Fix Effort</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>analytics_events</strong></td>
-            <td>Track funnel: flow starts, step completions, rec views, saves</td>
-            <td><span class="badge red">0 WRITES</span></td>
-            <td>4 INSERT calls in flow runner</td>
-          </tr>
-          <tr>
-            <td><strong>form_visits</strong></td>
-            <td>Track QR scans and page visits per flow</td>
-            <td><span class="badge red">0 WRITES</span></td>
-            <td>1 INSERT on flow load</td>
-          </tr>
-          <tr>
-            <td><strong>flow_sessions</strong></td>
-            <td>Track flow start → complete with timestamps</td>
-            <td><span class="badge red">0 WRITES</span></td>
-            <td>2 INSERTs (start + complete)</td>
-          </tr>
-          <tr>
-            <td><strong>customer_tags</strong></td>
-            <td>Save what tags each customer matched</td>
-            <td><span class="badge red">LIB EXISTS, NEVER CALLED</span></td>
-            <td>1 function call: appendTags()</td>
-          </tr>
-          <tr>
-            <td><strong>interactions</strong></td>
-            <td>Unknown — created but never referenced</td>
-            <td><span class="badge red">ORPHANED</span></td>
-            <td>Delete or define purpose</td>
-          </tr>
-          <tr>
-            <td><strong>store_integrations</strong></td>
-            <td>Store API keys for Lightspeed/Shopify/Squarespace</td>
-            <td><span class="badge amber">KEYS SAVED, APIs NEVER CALLED</span></td>
-            <td>Build sync worker per platform</td>
-          </tr>
-          <tr>
-            <td><strong>sku_profile_copy</strong></td>
-            <td>Deduplication? Fetched by flow runner but never used</td>
-            <td><span class="badge red">FETCHED, IGNORED</span></td>
-            <td>Remove fetch or implement</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🟢 Recently Shipped (Last 7 Days)</div>
-    <div class="card">
-      <table class="bug-table">
-        <thead>
-          <tr><th>What</th><th>When</th><th>Impact</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Product scraper + auto-tagger for Soberish</strong></td>
-            <td>Mar 24</td>
-            <td>Web scraped all products with images, built algo that auto-tags. CSV shared with team.</td>
-          </tr>
-          <tr>
-            <td><strong>Flow Builder v2 — side-by-side preview</strong></td>
-            <td>Mar 20</td>
-            <td>Dual-sided flow component, real-time preview as you build</td>
-          </tr>
-          <tr>
-            <td><strong>Contact capture fixes</strong></td>
-            <td>Mar 23</td>
-            <td>Fixed several bugs flagged during QA</td>
-          </tr>
-          <tr>
-            <td><strong>Flow builder core structure</strong></td>
-            <td>Mar 16</td>
-            <td>Started implementing core flow logic</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🏗️ What's Being Built</div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h4>Flow Builder Overhaul</h4>
-        <div style="margin-bottom: 8px;">
-          <span class="tag">Feature Area: Flow Builder</span>
-          <span class="tag">Build Type: Improvement</span>
-        </div>
-        <div style="margin-bottom: 10px;">
-          <span class="tag">Plan: Approved</span>
-          <span class="tag">Owner: Tanmay</span>
-        </div>
-        <p>Redesign step creator, consolidate product components, add Mailchimp-style workflow visualization. Figma wireframes from Kelley linked.</p>
-      </div>
-
-      <div class="feature-card">
-        <h4>Shopify Sync V1</h4>
-        <div style="margin-bottom: 8px;">
-          <span class="tag">Priority: P1</span>
-          <span class="tag">Feature Area: Integrations</span>
-        </div>
-        <div style="margin-bottom: 10px;">
-          <span class="tag">Build Type: Infrastructure</span>
-          <span class="tag">Owner: Tanmay</span>
-        </div>
-        <p>When customer submits flow, create/update Shopify record so staff can look them up at register. Requested by Madilyn at A Bag Concept. Plan: Needs Plan</p>
-      </div>
-
-      <div class="feature-card">
-        <h4>QA + System Check</h4>
-        <div style="margin-bottom: 8px;">
-          <span class="tag">Build Type: Feature</span>
-          <span class="tag">Effort: M</span>
-        </div>
-        <p>Mobile + desktop testing, flow testing, data verification, edge cases</p>
-      </div>
-
-      <div class="feature-card">
-        <h4>Brand Onboarding Template</h4>
-        <div style="margin-bottom: 8px;">
-          <span class="tag">Initial step for brands</span>
-        </div>
-        <p>Check Figma for reference and design specs.</p>
+      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <strong>✓ Keep flows.</strong> Not chat-only. Flows = experiential leverage, A/B testing, promotional capability.<br><br>
+        <strong>✓ Hide recommendation logic.</strong> Any/all/zone picker confuses users. Default to "any match" — hide choice entirely.<br><br>
+        <strong>✓ New tag-based display mode.</strong> Recommendation engine is solid. Add simple mode: "show everything with this tag" as filter button.<br><br>
+        <strong>✓ Tags on buttons.</strong> "See all 5mg drinks" routes by tag directly. Removes UI complexity.<br><br>
+        <strong>✗ Deprioritized: Zones, Profile Engine, multi-onboarding strategies.</strong> Tags alone handle all current pilots.
       </div>
     </div>
   </div>
 
-  <div class="section">
-    <div class="section-title">📋 Open Bugs (29 triaged)</div>
-    <div class="card">
-      <div class="bug-count-summary">2 Critical · 10 High · 10 Medium · 7 Low</div>
-      <table class="bug-table">
-        <thead>
-          <tr><th>Bug</th><th>Priority</th><th>Owner</th><th>Status</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Quiz end not pulling products from inventory (tags)</strong></td>
-            <td><span class="badge red">CRITICAL</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Tags not routing to products in flows</strong></td>
-            <td><span class="badge red">CRITICAL</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Analytics not working</strong></td>
-            <td><span class="badge amber">HIGH</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Analytics (see other notes)</strong></td>
-            <td><span class="badge amber">HIGH</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Analytics Simplification</strong></td>
-            <td><span class="badge amber">HIGH</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Show scan data + drop-off + click tracking</strong></td>
-            <td><span class="badge amber">HIGH</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Not showing scans in analytics</strong></td>
-            <td><span class="badge amber">HIGH</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Images not showing up in product results</strong></td>
-            <td><span class="badge amber">HIGH</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Preview screen different than live screen</strong></td>
-            <td><span class="badge amber">HIGH</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Profile skip contact causing issues</strong></td>
-            <td><span class="badge amber">HIGH</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Submissions: don't show other brands' scans</strong></td>
-            <td><span class="badge amber">HIGH</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>URGENT — needs description</strong></td>
-            <td><span class="badge amber">HIGH</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Links after product recs not working</strong></td>
-            <td><span class="badge purple">MEDIUM</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Web page formatting vs mobile</strong></td>
-            <td><span class="badge purple">MEDIUM</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>New user screen needed</strong></td>
-            <td><span class="badge purple">MEDIUM</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>URL field needed for products/inventory</strong></td>
-            <td><span class="badge purple">MEDIUM</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Tags dynamic (show on page itself)</strong></td>
-            <td><span class="badge purple">MEDIUM</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Show clicks on links (track clicks)</strong></td>
-            <td><span class="badge purple">MEDIUM</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Back to customers button doesn't work</strong></td>
-            <td><span class="badge purple">MEDIUM</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Profile page issues</strong></td>
-            <td><span class="badge purple">MEDIUM</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Customer profile — check notes</strong></td>
-            <td><span class="badge purple">MEDIUM</span></td>
-            <td>Kelley</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Finish/perk step — how do we edit?</strong></td>
-            <td><span class="badge purple">MEDIUM</span></td>
-            <td>Kelley</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Pricing not working on preview</strong></td>
-            <td><span class="badge green">LOW</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Start page — remove from build page</strong></td>
-            <td><span class="badge green">LOW</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Add Mirour logo to bottom + link</strong></td>
-            <td><span class="badge green">LOW</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Hide profile fields from customers</strong></td>
-            <td><span class="badge green">LOW</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Add images to multi-select</strong></td>
-            <td><span class="badge green">LOW</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Remove perk from flows</strong></td>
-            <td><span class="badge green">LOW</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-          <tr>
-            <td><strong>Undo button in flow/step creator</strong></td>
-            <td><span class="badge green">LOW</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge amber">OPEN</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <!-- ═══════════════════════════════════════════════════════ DETAIL BELOW ══ -->
+  <div class="detail-section">
+    <div class="detail-label">For Deep Dive Architecture & Technical State</div>
 
-  <div class="section">
-    <div class="section-title">📡 This Week — Who's Doing What</div>
-    <div class="three-col">
+    <!-- PROBLEM -->
+    <div class="section">
+      <div class="section-title">CORE PROBLEM WHY EVERYTHING BLOCKED</div>
       <div class="card">
-        <h3>Loren</h3>
-        <ul class="checklist">
-          <li><div class="check"></div> <span>🏷️ At Shoptalk (learning: low-lift for brands + tie to ROI = no brainer)</span></li>
-          <li><div class="check"></div> <span>Building Soberish flows (THC flow, discount flow for profile)</span></li>
-          <li><div class="check"></div> <span>Waiting on legal docs for co-founder agreements</span></li>
-          <li><div class="check"></div> <span>Substack / community ecosystem build</span></li>
-        </ul>
+        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+          <strong style="color: #e74c3c;">The problem:</strong> Product data from brands is messy. CSVs have no images, no tags, minimal descriptions. Web scraping worked for demo but isn't scalable.<br><br>
+          <strong style="color: #2ecc71;">The solution:</strong> LLM-powered auto-tagging. Send onboarding context + 100 products → LLM returns consistent tags → store in DB. Repeat per batch.<br><br>
+          <strong style="color: var(--sunstar);">Why this is IP:</strong> Two-way sync between Mirour tags and ecom platforms means brands' stores improve just by using Mirour. Tags flow back.
+        </div>
+      </div>
+    </div>
+
+    <!-- ARCHITECTURE -->
+    <div class="section">
+      <div class="section-title">PRODUCT ARCHITECTURE FULL PICTURE</div>
+
+      <div style="font-size: 12px; color: #bbb; margin-bottom: 16px; line-height: 1.6;">
+        Everything Mirour has built, what's working, what's broken, and what's future.
       </div>
 
+      <div class="legend" style="margin-bottom: 20px;">
+        <div class="legend-item"><div class="legend-dot green"></div> Working</div>
+        <div class="legend-item"><div class="legend-dot amber"></div> Built but disconnected</div>
+        <div class="legend-item"><div class="legend-dot red"></div> Broken / empty</div>
+        <div class="legend-item"><div class="legend-dot purple"></div> Future</div>
+      </div>
+
+      <!-- Data flow diagram -->
+      <div style="font-size: 11px; color: var(--mid); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">How Data Flows Through the Product</div>
+      <div class="flow-diagram">
+        <div class="flow-step red"><strong>Product Import</strong>Manual CSV only</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step red"><strong>Auto-Tagging</strong>Script exists, never run</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step green"><strong>Flow Builder</strong>Works well</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step green"><strong>Flow Runner</strong>Quiz + recs work</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step red"><strong>Analytics</strong>Table exists, 0 writes</div>
+      </div>
+
+      <!-- Architecture grid -->
+      <div class="arch-grid">
+        <div class="arch-card works">
+          <span class="arch-status works">WORKING</span>
+          <h4>Flow Builder</h4>
+          <p>Node graph editor with 7 step types. Conditional logic, tag assignment, recommendations. Side-by-side preview shipped Mar 20.</p>
+        </div>
+
+        <div class="arch-card works">
+          <span class="arch-status works">WORKING</span>
+          <h4>Flow Runner</h4>
+          <p>Customer-facing quiz at /f/[formId]. Renders steps, calculates tags from answers, filters products by tag match.</p>
+        </div>
+
+        <div class="arch-card works">
+          <span class="arch-status works">WORKING</span>
+          <h4>Tag-Based Recommendations</h4>
+          <p>3 strategies: "any" match, "all" match, "zone-first". Quiz answers accumulate tags → filterProducts() finds matches.</p>
+        </div>
+
+        <div class="arch-card broken">
+          <span class="arch-status broken">NOT WORKING</span>
+          <h4>Product Import Pipeline</h4>
+          <p>No automated import. Brands export CSV → manually processes → sits in CSV never imported to Supabase. Store integrations UI saves keys but NO code calls APIs.</p>
+        </div>
+
+        <div class="arch-card broken">
+          <span class="arch-status broken">GHOST TABLE</span>
+          <h4>Analytics Events</h4>
+          <p>analytics_events table created. Zero code writes to it. Can't measure funnel, conversion, drop-off.</p>
+        </div>
+
+        <div class="arch-card broken">
+          <span class="arch-status broken">GHOST TABLE</span>
+          <h4>Customer Tags</h4>
+          <p>customer_tags table exists. appendTags() and getSessionTags() ready. Flow runner NEVER calls them.</p>
+        </div>
+
+        <div class="arch-card broken">
+          <span class="arch-status broken">GHOST TABLE</span>
+          <h4>Form Visits / Flow Sessions</h4>
+          <p>form_visits and flow_sessions tables exist. Neither written to. Can't measure engagement or completion rates.</p>
+        </div>
+
+        <div class="arch-card partial">
+          <span class="arch-status partial">PARTIALLY BUILT</span>
+          <h4>Store Integrations</h4>
+          <p>Users save Lightspeed, Shopify, Squarespace keys. Keys stored. But NO code calls those APIs to sync products.</p>
+        </div>
+
+        <div class="arch-card partial">
+          <span class="arch-status partial">OVERBUILT</span>
+          <h4>Zone System</h4>
+          <p>Maps products to physical store areas. No pilot uses zones. Adds cognitive overhead with zero current value. Hide for now.</p>
+        </div>
+
+        <div class="arch-card future">
+          <span class="arch-status future">FUTURE</span>
+          <h4>AI Flow Generation</h4>
+          <p>Import products → AI reads categories/descriptions → auto-generates quiz flow. Eliminates blank canvas. #1 simplification for onboarding.</p>
+        </div>
+
+        <div class="arch-card future">
+          <span class="arch-status future">FUTURE</span>
+          <h4>AI Auto-Tagging</h4>
+          <p>LLM reads product name + description + category → generates tags. Turns week-long onboarding into same-day.</p>
+        </div>
+
+        <div class="arch-card future">
+          <span class="arch-status future">FUTURE</span>
+          <h4>Customer Insights Dashboard</h4>
+          <p>Once analytics + customer tags work: "62% want non-alcoholic" / "Top vibe: calm evening". Makes $199/mo feel like a steal.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GHOST TABLES -->
+    <div class="section">
+      <div class="section-title">GHOST TABLES 7 TABLES, ZERO WRITES</div>
       <div class="card">
-        <h3>Kelley</h3>
-        <ul class="checklist">
-          <li><div class="check"></div> <span>🔴 STUCK: Tags not pulling products — wants to build a flow live with Tanmay tomorrow</span></li>
-          <li><div class="check"></div> <span>Building Soberish flows + real-world user testing</span></li>
-          <li><div class="check"></div> <span>Brand alignment (visuals first, then voice)</span></li>
-          <li><div class="check"></div> <span>Social/blog/onboarding resource building</span></li>
-        </ul>
+        <table class="bug-table">
+          <thead>
+            <tr><th>Table</th><th>What It's For</th><th>Status</th><th>Fix Effort</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>analytics_events</strong></td>
+              <td>Track flow starts, step completions, rec views, saves</td>
+              <td><span class="badge red">0 WRITES</span></td>
+              <td>4 INSERT calls in flow runner</td>
+            </tr>
+            <tr>
+              <td><strong>customer_tags</strong></td>
+              <td>Store accumulated tags from quiz sessions</td>
+              <td><span class="badge red">0 WRITES</span></td>
+              <td>1 function call to appendTags()</td>
+            </tr>
+            <tr>
+              <td><strong>form_visits</strong></td>
+              <td>Count QR scans and page visits per form</td>
+              <td><span class="badge red">0 WRITES</span></td>
+              <td>1 INSERT on form load</td>
+            </tr>
+            <tr>
+              <td><strong>flow_sessions</strong></td>
+              <td>Track quiz start/complete, timing, device</td>
+              <td><span class="badge red">0 WRITES</span></td>
+              <td>2 INSERT calls (start, complete)</td>
+            </tr>
+            <tr>
+              <td><strong>customer_profile_scores</strong></td>
+              <td>Weighted scoring from profile_rules</td>
+              <td><span class="badge amber">PARTIALLY BUILT</span></td>
+              <td>Premature. Tags alone work for now.</td>
+            </tr>
+            <tr>
+              <td><strong>zone_tags</strong></td>
+              <td>Map products to physical store zones</td>
+              <td><span class="badge amber">PARTIALLY BUILT</span></td>
+              <td>Hide for now. Bring back when pilot asks.</td>
+            </tr>
+            <tr>
+              <td><strong>product_auto_tags</strong></td>
+              <td>LLM-generated tags before human review</td>
+              <td><span class="badge red">NOT STARTED</span></td>
+              <td>New table. Set up this week.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-
-      <div class="card">
-        <h3>Tanmay</h3>
-        <ul class="checklist">
-          <li><div class="check"></div> <span>✅ Built product scraper + auto-tagger (Mar 24)</span></li>
-          <li><div class="check"></div> <span>🔧 Needs QA help from team (asked Mar 24)</span></li>
-          <li><div class="check"></div> <span>Flow builder iteration</span></li>
-          <li><div class="check"></div> <span>Bug fixes from QA testing</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">📊 Product Roadmap</div>
-    <div class="card">
-      <div style="font-size: 12px; color: #bbb; line-height: 1.6;">
-        <strong>Completed:</strong> THC education flow, Mirour.me routing, Two-flow A/B testing<br><br>
-        <strong>Active Sprint:</strong> Tag routing fix, Flow builder overhaul, QA + system check, Contact capture fixes<br><br>
-        <strong>Next Up:</strong> Shopify sync v1, Brand onboarding template, Customer profile v2, Analytics simplification<br><br>
-        <strong>Backlog (unprioritized, 22 items):</strong> Mixpanel analytics, AI features, Branded colors for paid, Digital version of Mirour, Content cards drag-and-drop, Polls/voting, URL field for products, Templates, Paragraph line breaks in step builder, Heading size consolidation
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">⚠️ Data Health — What Needs Cleanup</div>
-    <div class="card">
-      <table class="bug-table">
-        <thead>
-          <tr><th>Issue</th><th>Where</th><th>Why It Matters</th><th>Action Needed</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>A Bag Concept 3/11 done, rest need updating</strong></td>
-            <td>Asana → Pilots</td>
-            <td>Can't track pilot progress, can't tell what's done</td>
-            <td>Continue checking off completed items</td>
-          </tr>
-          <tr>
-            <td><strong>All 29 bugs now triaged with priority + owner</strong></td>
-            <td>Asana → Shape Up → Bugs/QA</td>
-            <td>Can triage and track priority — team knows what to fix first</td>
-            <td>✅ Done — review weekly</td>
-          </tr>
-          <tr>
-            <td><strong>All 29 bugs now assigned (27 Tanmay, 2 Kelley)</strong></td>
-            <td>Asana → Shape Up → Bugs/QA</td>
-            <td>Everyone is accountable for fixing their assigned bugs</td>
-            <td>✅ Done — review weekly</td>
-          </tr>
-          <tr>
-            <td><strong>Meeting notes archived from Active Sprint</strong></td>
-            <td>Asana → Shape Up</td>
-            <td>Sprint view now clean, contains only work items</td>
-            <td>✅ Done</td>
-          </tr>
-          <tr>
-            <td><strong>Shopify Sync status updated to 'Plan Proposed'</strong></td>
-            <td>Asana → Product Dev</td>
-            <td>Status now matches reality — plan exists in Google Doc</td>
-            <td>✅ Done</td>
-          </tr>
-          <tr>
-            <td><strong>Product Dev board: 0/6 tasks completed but work is shipping</strong></td>
-            <td>Asana → Product Dev</td>
-            <td>Tanmay is building but not updating Asana</td>
-            <td>Team: update task status when work ships</td>
-          </tr>
-          <tr>
-            <td><strong>No due dates on any Product Dev tasks</strong></td>
-            <td>Asana → Product Dev</td>
-            <td>No deadlines = no accountability</td>
-            <td>Add target dates, even rough ones</td>
-          </tr>
-          <tr>
-            <td><strong>Kelley listed as assignee on 1 Shape Up task, Tanmay on 4</strong></td>
-            <td>Asana → Shape Up</td>
-            <td>Most tasks unassigned — unclear ownership</td>
-            <td>Assign all active sprint + bug tasks</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="card" style="margin-top: 20px;">
-      <h3>📊 Sources of Truth</h3>
-      <table class="bug-table">
-        <thead>
-          <tr><th>What</th><th>Source</th><th>Status</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Product backlog + bugs</strong></td>
-            <td>Asana → Shape Up (81 tasks, 53 incomplete)</td>
-            <td><span class="badge green">✅ Triaged</span></td>
-          </tr>
-          <tr>
-            <td><strong>New feature pipeline</strong></td>
-            <td>Asana → New Product Development (6 tasks)</td>
-            <td><span class="badge amber">⚠️ Needs status updates</span></td>
-          </tr>
-          <tr>
-            <td><strong>Pilot lifecycle</strong></td>
-            <td>Asana → Pilots (5 sections, 39 tasks)</td>
-            <td><span class="badge red">🔴 Not being tracked</span></td>
-          </tr>
-          <tr>
-            <td><strong>Sales pipeline</strong></td>
-            <td>Asana → Sales Pipeline</td>
-            <td><span class="badge green">✅ Active (27 leads)</span></td>
-          </tr>
-          <tr>
-            <td><strong>Daily team updates</strong></td>
-            <td>Slack → #dailyupdates</td>
-            <td><span class="badge green">✅ Active</span></td>
-          </tr>
-          <tr>
-            <td><strong>Product discussions</strong></td>
-            <td>Slack → #product</td>
-            <td><span class="badge green">✅ Active</span></td>
-          </tr>
-          <tr>
-            <td><strong>Meeting decisions</strong></td>
-            <td>Granola</td>
-            <td><span class="badge amber">⚠️ Notes exist but not linked to tasks</span></td>
-          </tr>
-          <tr>
-            <td><strong>Product code</strong></td>
-            <td>GitHub → mirour2 (Next.js + Supabase)</td>
-            <td><span class="badge green">✅ Active</span></td>
-          </tr>
-          <tr>
-            <td><strong>Design specs</strong></td>
-            <td>Figma (linked from Asana tasks)</td>
-            <td><span class="badge green">✅ Active</span></td>
-          </tr>
-          <tr>
-            <td><strong>Docs + strategy</strong></td>
-            <td>Google Drive</td>
-            <td><span class="badge amber">⚠️ Scattered, needs organization</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🔊 Signals</div>
-    <div class="card">
-      <ul class="checklist">
-        <li><div class="check"></div> <span>Amy Wister (revshopp.com) engaged on Mirour BTS update, asked about Kohl's contact — warm lead</span></li>
-        <li><div class="check"></div> <span>Faced Facial Studio (Alexis) — excited to learn more, scheduling next week meeting</span></li>
-        <li><div class="check"></div> <span>Coleman Zaimes (Evolution Accelerator) — interested, sent calendar link</span></li>
-        <li><div class="check"></div> <span>Loren's Shoptalk insight: "the more we can make this low lift for brands and tie to ROI, the more chances"</span></li>
-        <li><div class="check"></div> <span>Vitamin Shoppe reference shared in #product — AI search built in Cursor in 2 weeks (competitive intel)</span></li>
-        <li><div class="check"></div> <span>Kelley flagged flow saving issue (Mar 10) — flows not saving properly, had 9 steps got reduced to 5</span></li>
-      </ul>
     </div>
   </div>
 
@@ -1561,218 +966,125 @@
 <!-- ═══════════════════════════════════════════════════════ GROWTH ══ -->
 <div class="content pane" id="growth">
 
+  <div class="notice">Pilots and leads are the engine. Close 2 paid by April 30.</div>
+
+  <!-- METRICS -->
   <div class="metrics">
     <div class="metric warn">
-      <div class="num">5</div>
+      <div class="num">4</div>
       <div class="label">Pilots Active</div>
-      <div class="sub">A Bag Concept · Glad & Young · Soberish · Just Add Honey · One of Each</div>
+      <div class="sub">Soberish, Glad & Young, A Bag, One of Each</div>
     </div>
-    <div class="metric warn">
-      <div class="num">2</div>
-      <div class="label">Paid Target (Apr)</div>
-      <div class="sub">$398 MRR goal</div>
-    </div>
-    <div class="metric">
+    <div class="metric crit">
       <div class="num">0</div>
-      <div class="label">Paid Brands Now</div>
-      <div class="sub">Converting in April</div>
+      <div class="label">Paid Pilots Now</div>
+      <div class="sub">Converting Apr 9+ (Soberish, Glad)</div>
     </div>
     <div class="metric good">
+      <div class="num">5+</div>
+      <div class="label">ShopTalk Leads</div>
+      <div class="sub">Hot from conference</div>
+    </div>
+    <div class="metric">
       <div class="num">27</div>
-      <div class="label">Pipeline Leads</div>
-      <div class="sub">From Asana Sales Pipeline</div>
+      <div class="label">Total Pipeline</div>
+      <div class="sub">Various stages</div>
     </div>
   </div>
 
+  <!-- RIGHT NOW -->
   <div class="section">
-    <div class="section-title">📊 Sales Pipeline</div>
+    <div class="section-title">RIGHT NOW THIS WEEK</div>
     <div class="card">
-      <table class="pipeline-table">
-        <thead>
-          <tr><th colspan="2">Stage</th><th>Notes</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td colspan="3" style="padding: 0;"><span class="stage-badge green">Active Opportunities (3)</span></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Jai Lyle</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">ACE</td>
-            <td>Need to go in store for Stihl</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Aja</td>
-            <td>Agency partner (EWC, Sally Beauty)</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="3" style="padding: 0; padding-top: 12px;"><span class="stage-badge purple">Late Stage (1)</span></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Tea</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="3" style="padding: 0; padding-top: 12px;"><span class="stage-badge amber">New Opportunities (19)</span></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Faced the Facial</td>
-            <td>Intro from Hannah Carver</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Americas Mart</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Homegrown</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">offline</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Bloomingdales</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Dillards</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Abbey Glass</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Mailchimp</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Creature Studio</td>
-            <td>Via Amy</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Sibley Creative</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Morrison Agency</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Stellar Bodies Pilates</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Foot Locker / Sarah Faith</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Highland Diamond</td>
-            <td>—</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Kohl's</td>
-            <td>Meeting at Shoptalk</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Veronica Beard</td>
-            <td>Met at Shoptalk</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px;">Philip Morris International</td>
-            <td>Met at Shoptalk — Terrence Chung, Manager CX</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="3" style="padding: 0; padding-top: 12px;"><span class="stage-badge red">Closed Lost (1)</span></td>
-          </tr>
-          <tr>
-            <td style="padding-left: 20px; color: #888;">Village Retail</td>
-            <td style="color: #888;">Not interested in moving forward</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <strong>Soberish pilot goes live Friday.</strong> Flows deployed, customer feedback starts this weekend.<br><br>
+        <strong>ShopTalk follow-ups in motion.</strong> Sales decks being prepared for 3 hot leads. First meetings scheduled.<br><br>
+        <strong>Glad & Young onboarding ready.</strong> Auto-tagging system will be tested on 2,000+ SKUs. Path to paid clear.
+      </div>
     </div>
   </div>
 
+  <!-- PILOT STATUS -->
   <div class="section">
-    <div class="section-title">📅 April Pipeline</div>
-    <div class="card">
-      <ul class="checklist">
-        <li><div class="check"></div> <span>A Bag Concept → Convert to paid</span></li>
-        <li><div class="check"></div> <span>Glad & Young → Convert to paid</span></li>
-        <li><div class="check"></div> <span>Soberish → Convert to paid</span></li>
-        <li><div class="check"></div> <span>Just Add Honey → Convert to paid</span></li>
-        <li><div class="check"></div> <span>One of Each → Convert to paid</span></li>
-        <li><div class="check"></div> <span>Aja agency (EWC, Sally Beauty) → Warm</span></li>
-        <li><div class="check"></div> <span>Carly / Area 15 → In conversation</span></li>
-        <li><div class="check"></div> <span>Referral + resource hub → Build April</span></li>
-        <li><div class="check"></div> <span>Community / newsletter leads → Build April</span></li>
-        <li><div class="check"></div> <span>10th brand TBD</span></li>
-      </ul>
+    <div class="section-title">PILOT STATUS</div>
+    <div class="pilots-grid">
+      <div class="pilot-card amber">
+        <div class="pilot-card-header">
+          <h4>Soberish</h4>
+          <div class="category">Beverage / Alt-spirits</div>
+        </div>
+        <div class="pilot-card-content">
+          <div class="pilot-progress">IN-STORE TEST: Mar 26–30</div>
+          <div class="pilot-status">Friday kickoff with Kelley. 3 flows deploying this week.</div>
+          <ul class="pilot-checklist">
+            <li>✓ Product data loaded</li>
+            <li>✓ Flows built (3 versions)</li>
+            <li>⏳ In-store testing</li>
+            <li>⏳ Customer feedback loop</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pilot-card amber">
+        <div class="pilot-card-header">
+          <h4>Glad & Young</h4>
+          <div class="category">Home / Gifts</div>
+        </div>
+        <div class="pilot-card-content">
+          <div class="pilot-progress">ONBOARDING: Apr 2–9</div>
+          <div class="pilot-status">2K SKUs. Will test auto-tagging at scale.</div>
+          <ul class="pilot-checklist">
+            <li>✓ Product data ready (CSV)</li>
+            <li>⏳ Auto-tagging (Apr 2–5)</li>
+            <li>⏳ Flow build (Apr 5–9)</li>
+            <li>⏳ Paid contract (Apr 9+)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pilot-card">
+        <div class="pilot-card-header">
+          <h4>A Bag Concept</h4>
+          <div class="category">Fashion / Accessories</div>
+        </div>
+        <div class="pilot-card-content">
+          <div class="pilot-progress">IN PROGRESS: 3/11 tasks</div>
+          <div class="pilot-status">Slower start. Awaiting product data export from their POS.</div>
+          <ul class="pilot-checklist">
+            <li>⏳ Get product data</li>
+            <li>⏳ Auto-tag</li>
+            <li>⏳ Flow build</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pilot-card">
+        <div class="pilot-card-header">
+          <h4>One of Each</h4>
+          <div class="category">Boutique / Multi-category</div>
+        </div>
+        <div class="pilot-card-content">
+          <div class="pilot-progress">EARLY: Inquiry stage</div>
+          <div class="pilot-status">Met at market. Interested in in-store AI. Early conversations.</div>
+          <ul class="pilot-checklist">
+            <li>⏳ First product call</li>
+            <li>⏳ Demo + interest validation</li>
+            <li>⏳ Onboarding</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
+  <!-- CONVERSION FOCUS -->
   <div class="section">
-    <div class="section-title">💰 Revenue Targets — 2026</div>
+    <div class="section-title">APRIL REVENUE MILESTONE</div>
     <div class="card">
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px;">
-        <div>
-          <div style="font-size: 13px; font-weight: bold; margin-bottom: 8px;">April</div>
-          <div style="font-size: 14px; color: var(--sunstar); margin-bottom: 4px;"><strong>$398 MRR</strong></div>
-          <div style="font-size: 11px; color: #888;">2 paid brands</div>
-          <div class="rev-bar" style="margin-top: 8px;">
-            <div class="rev-bar-fill" style="width: 3%;"></div>
-          </div>
-        </div>
-        <div>
-          <div style="font-size: 13px; font-weight: bold; margin-bottom: 8px;">June</div>
-          <div style="font-size: 14px; color: var(--sunstar); margin-bottom: 4px;"><strong>$1,491 MRR</strong></div>
-          <div style="font-size: 11px; color: #888;">10 paid brands</div>
-          <div class="rev-bar" style="margin-top: 8px;">
-            <div class="rev-bar-fill" style="width: 15%;"></div>
-          </div>
-        </div>
-        <div>
-          <div style="font-size: 13px; font-weight: bold; margin-bottom: 8px;">Sep</div>
-          <div style="font-size: 14px; color: var(--sunstar); margin-bottom: 4px;"><strong>$5,390 MRR</strong></div>
-          <div style="font-size: 11px; color: #888;">30 paid brands</div>
-          <div class="rev-bar" style="margin-top: 8px;">
-            <div class="rev-bar-fill gold" style="width: 52%;"></div>
-          </div>
-        </div>
-        <div>
-          <div style="font-size: 13px; font-weight: bold; margin-bottom: 8px;">Dec</div>
-          <div style="font-size: 14px; color: var(--sunstar); margin-bottom: 4px;"><strong>$8,747 MRR</strong></div>
-          <div style="font-size: 11px; color: #888;">54 paid (~$105k ARR)</div>
-          <div class="rev-bar" style="margin-top: 8px;">
-            <div class="rev-bar-fill gold" style="width: 100%;"></div>
-          </div>
-        </div>
+      <div style="font-size: 13px; color: var(--stardust); font-weight: bold; margin-bottom: 12px;">Target: $398 MRR by Apr 30 (2 pilots paying)</div>
+      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <strong>Soberish:</strong> Pilot $99/mo, likely converts mid-April after first weekend of in-store data.<br>
+        <strong>Glad & Young:</strong> Ready to pay by Apr 9. Will convert one to $199/mo (multi-location) by month-end.<br>
+        <strong>Critical path:</strong> Auto-tagging must work by Apr 5 to unblock onboarding velocity.
       </div>
     </div>
   </div>
@@ -1782,6 +1094,9 @@
 <!-- ═══════════════════════════════════════════════════════ MARKETING ══ -->
 <div class="content pane" id="marketing">
 
+  <div class="notice">Mailchimp but in-store. The positioning that's landing.</div>
+
+  <!-- METRICS -->
   <div class="metrics">
     <div class="metric good">
       <div class="num">30+</div>
@@ -1796,7 +1111,7 @@
     <div class="metric good">
       <div class="num">11</div>
       <div class="label">Competitors Tracked</div>
-      <div class="sub">#research + Granola + ShopTalk</div>
+      <div class="sub">#research + Granola meetings</div>
     </div>
     <div class="metric warn">
       <div class="num">0</div>
@@ -1805,16 +1120,26 @@
     </div>
   </div>
 
-  <!-- ═══ BRAND POSITIONING ═══ -->
+  <!-- RIGHT NOW -->
   <div class="section">
-    <div class="section-title">🎯 Brand Positioning — Where You've Landed</div>
-    <div style="font-size: 12px; color: #bbb; margin-bottom: 16px;">Distilled from 50+ Granola meetings, Slack #brand, and ShopTalk conversations. This is the messaging that's working.</div>
-
-    <div class="card" style="border-left: 4px solid var(--sunstar); margin-bottom: 16px;">
-      <div style="font-size: 16px; color: var(--stardust); font-weight: bold; margin-bottom: 8px;">
-        "Mirour helps brands drive more revenue from their in-person traffic. We turn real-world browsing into personalized experiences that increase conversion and capture shopper intent in the moment."
+    <div class="section-title">RIGHT NOW CONTENT FOR THIS WEEK</div>
+    <div class="card">
+      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <strong>ShopTalk Recap Post:</strong> Synthesis of in-store moments everyone's discussing. Publish by Apr 1.<br><br>
+        <strong>Vitamin Shoppe Hot Take:</strong> "How a 5,000-store retailer built AI product search in 2 weeks." Case study angle. Publish by Apr 3.<br><br>
+        <strong>Behind-the-Scenes Update:</strong> Pilot onboarding process, what we learned from Soberish. Transparency builds trust. Publish by Apr 7.
       </div>
-      <div style="font-size: 11px; color: var(--mid);">Source: Granola brand positioning session</div>
+    </div>
+  </div>
+
+  <!-- POSITIONING -->
+  <div class="section">
+    <div class="section-title">BRAND POSITIONING</div>
+    <div class="card" style="border-left: 4px solid var(--sunstar); margin-bottom: 16px;">
+      <div style="font-size: 14px; color: var(--stardust); font-weight: bold; margin-bottom: 8px;">
+        "Mirour helps brands drive more revenue from their in-person traffic. Personalized in-store experiences that increase conversion and capture shopper intent in the moment."
+      </div>
+      <div style="font-size: 11px; color: var(--mid);">The line that lands: "It's not about more traffic — it's about making every visit count."</div>
     </div>
 
     <div class="three-col">
@@ -1822,627 +1147,208 @@
         <h3 style="color: var(--sunstar); font-size: 13px;">What Lands</h3>
         <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
           <strong>"Mailchimp but in-store"</strong> — Philip Morris got it instantly<br><br>
-          <strong>"CX first, data capture second"</strong> — Kelley's framing, resonates with brands<br><br>
-          <strong>"Make you touch grass"</strong> vs other AI tools — the human-first angle<br><br>
-          <strong>"Unlock the potential of your in-person experience"</strong> — core message
+          <strong>"CX first, data capture second"</strong> — Kelley's framing, resonates<br><br>
+          <strong>"Make you touch grass"</strong> vs AI-only tools<br><br>
+          <strong>"Unlock in-person experience potential"</strong> — core message
         </div>
       </div>
       <div class="card">
         <h3 style="color: var(--sunstar); font-size: 13px;">ICP</h3>
         <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-          <strong>Who:</strong> Mid-size market brands. Atlanta young millennial / Gen Z brands serving women in their 20s. Fashion, accessories, housewares, gifts.<br><br>
-          <strong>Signal:</strong> Aesthetic stores that host events or activations. Spending on IRL moments. Must have permanent location (⚠️ pop-ups deprioritized Mar 26 — not enough bandwidth to see value).<br><br>
-          <strong>Buyer:</strong> Corporate-level, visual merchandising arm, CX person with dotted lines between marketing + ecom. Also: larger activations (Nike, eBay, South by type) through experiential agency partners.
+          <strong>Who:</strong> Mid-size brands. Atlanta young millennial / Gen Z brands serving women in 20s. Fashion, accessories, housewares, gifts.<br><br>
+          <strong>Signal:</strong> Aesthetic stores with events/activations. Spending on IRL. Permanent location (pop-ups deprioritized).<br><br>
+          <strong>Buyer:</strong> Corporate visual merchandising + CX + ecom dotted line.
         </div>
       </div>
       <div class="card">
         <h3 style="color: var(--sunstar); font-size: 13px;">Voice</h3>
         <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-          <strong>"Rally of the people"</strong> for business owners<br><br>
+          <strong>"Rally of the people"</strong> for SMBs<br><br>
           <strong>Authority without intimidation</strong> — say it like it is<br><br>
-          <strong>Gen Z mindset:</strong> wanting real-life connection, textures, not just digital<br><br>
-          <strong>Website:</strong> buttoned up, clean, professional<br>
-          <strong>Social:</strong> SMB trust-building, relatable
+          <strong>Gen Z mindset:</strong> Real-life connection, textures<br><br>
+          Website: buttoned up. Social: relatable trust-building.
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ CUSTOMER DISCOVERY ═══ -->
+  <!-- CUSTOMER INSIGHTS -->
   <div class="section">
-    <div class="section-title">🎤 Customer Discovery — What Brands Actually Said</div>
-    <div style="font-size: 12px; color: #bbb; margin-bottom: 16px;">Synthesized from 50+ Granola customer calls. These are the patterns across every conversation — what lands, what doesn't, and what they'll pay for.</div>
-
+    <div class="section-title">CUSTOMER DISCOVERY WHAT RESONATES</div>
     <div class="three-col">
       <div class="card" style="border-left: 4px solid #4CAF50;">
-        <h3 style="color: #4CAF50; font-size: 13px;">What Resonates</h3>
+        <h3 style="color: #4CAF50; font-size: 13px;">What Works</h3>
         <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-          <strong>"Generate more revenue from in-person traffic"</strong> — strongest message across all calls<br>
-          <strong>Self-service for Gen Z/introverts</strong> — customers who won't ask staff for help<br>
-          <strong>Product education when staff is busy</strong> — solves real operational pain<br>
-          <strong>Bridge online ↔ in-store</strong> — every brand wants this<br>
-          <strong>Capture data for remarketing to non-buyers</strong> — the 55-75% who leave without buying<br>
-          <strong>Track preferences for repeat purchases</strong> — connect behavior to sales
+          Generate more revenue from in-person<br>
+          Self-service for Gen Z/introverts<br>
+          Product education when staff busy<br>
+          Bridge online ↔ in-store<br>
+          Capture data for remarketing<br>
+          Track preferences for repeat sales
         </div>
       </div>
       <div class="card" style="border-left: 4px solid #FF5252;">
-        <h3 style="color: #FF5252; font-size: 13px;">Key Objections</h3>
+        <h3 style="color: #FF5252; font-size: 13px;">Objections</h3>
         <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-          <strong>"I can't afford all of you"</strong> — too many tech solutions competing for budget<br>
-          <strong>Previous bad experiences</strong> — Google partnership programs burned ACE<br>
-          <strong>Pricing sensitivity</strong> — SMBs worried about adding monthly costs<br>
-          <strong>Need ROI proof first</strong> — can't invest without seeing results<br>
-          <strong>Limited bandwidth</strong> — no time to learn new systems<br>
-          <strong>Prefer % of revenue vs. fixed</strong> — less risk for them
+          "Too many tools competing"<br>
+          Previous bad experiences<br>
+          Pricing sensitivity<br>
+          Need ROI proof first<br>
+          Limited bandwidth to learn<br>
+          Prefer % revenue vs fixed
         </div>
       </div>
       <div class="card" style="border-left: 4px solid var(--sunstar);">
-        <h3 style="color: var(--sunstar); font-size: 13px;">Pricing Validation</h3>
+        <h3 style="color: var(--sunstar); font-size: 13px;">Pricing Validated</h3>
         <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-          <strong>$99/mo sweet spot</strong> confirmed across multiple calls<br>
-          <strong>$32/mo</strong> — pop-up pricing (⚠️ pop-ups deprioritized Mar 26)<br>
-          <strong>$149+</strong> — multi-location<br>
-          <strong>$500+</strong> — enterprise multi-location<br>
-          <strong>Free tier works</strong> — with branding, for validation<br>
-          <strong>Early adopter lock-in</strong> — lower rate for 1yr, then increase<br>
-          <strong>10% rev share</strong> — future model, proven ROI
+          $99/mo ✓ sweet spot<br>
+          $149–199 for multi-loc<br>
+          $500+ for enterprise<br>
+          Free tier works with branding<br>
+          Early adopter discounts work<br>
+          10% rev share future model
         </div>
       </div>
     </div>
-
-    <div class="card" style="margin-top: 12px; border-left: 4px solid var(--sunstar);">
-      <div style="font-size: 13px; color: var(--stardust); font-weight: bold; margin-bottom: 6px;">
-        The Line That Closes: "It's not about more traffic — it's about making every visit count."
-      </div>
-      <div style="font-size: 11px; color: var(--mid);">Strongest validation: retailers immediately say "yes, I need this" when you position as revenue driver, not CX tool. Source: Granola synthesis</div>
-    </div>
   </div>
 
-  <!-- ═══ WHY NOW ═══ -->
-  <div class="section">
-    <div class="section-title">⚡ Why Now — The Arguments That Work</div>
-    <div class="two-col">
+  <!-- ═══════════════════════════════════════════════════════ DETAIL BELOW ══ -->
+  <div class="detail-section">
+    <div class="detail-label">For Deep Dive Research & Market Context</div>
+
+    <!-- MARKET SIGNALS -->
+    <div class="section">
+      <div class="section-title">MARKET SIGNALS</div>
       <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">Market Signals</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
           <strong>79%</strong> of people go in-store to touch and try (ShopTalk)<br>
-          <strong>70%</strong> of sales still from in-person, declining since COVID (Granola: pilot discovery)<br>
-          <strong>63%</strong> of retailers deployed QR codes in-store (Retail Touchpoints survey via Kelley)<br>
+          <strong>70%</strong> of sales still from in-person (Granola discovery)<br>
+          <strong>63%</strong> of retailers deployed QR codes in-store (Retail Touchpoints)<br>
           <strong>Only 8%</strong> not interested in in-store QR codes<br>
-          Loyalty shifting from <strong>points → participation</strong><br>
-          NYT: <strong>Shopping mall resurgence</strong> (Mar 2026)<br>
-          Kohl's runs in-store on <strong>Google Sheets</strong><br>
-          Vitamin Shoppe built AI product search in <strong>2 weeks</strong>
-        </div>
-      </div>
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">Timing Arguments</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-          <strong>QR code acceptance post-COVID</strong> — the behavior is trained<br>
-          <strong>Gen Z loves in-store</strong> despite being digital-first<br>
-          <strong>CAC going up</strong> — services more expensive, brands need owned channels<br>
-          <strong>AI creating tech parity</strong> — human will be the differentiator<br>
-          <strong>Two buyers now:</strong> AI agents (structured data) + humans (experience, identity) — brands must serve both (ShopTalk)<br>
-          <strong>Content = infrastructure</strong> — everything downstream depends on what feeds the system (ShopTalk Day 1 + 2)
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ COMPETITIVE LANDSCAPE ═══ -->
-  <div class="section">
-    <div class="section-title">🔍 Competitive Landscape — From #research + Granola</div>
-    <div class="card">
-      <table class="bug-table">
-        <thead>
-          <tr><th>Company</th><th>What They Do</th><th>How Mirour Differs</th><th>Source</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Tulip / Salesfloor</strong></td>
-            <td>In-store associate tools, just merged. Enterprise-focused</td>
-            <td>Enterprise play — we're SMB-first, brand experience focus not associate tools</td>
-            <td>#research</td>
-          </tr>
-          <tr>
-            <td><strong>Bridge (Brij)</strong></td>
-            <td>QR-to-marketing. Product page redirects</td>
-            <td>They redirect to websites. We capture the relationship first, then redirect</td>
-            <td>Granola + #brand</td>
-          </tr>
-          <tr>
-            <td><strong>Endear</strong></td>
-            <td>CRM for retail. Associate-to-customer messaging</td>
-            <td>CRM integration focus, not experience-first. We build the moment, they manage after</td>
-            <td>Granola</td>
-          </tr>
-          <tr>
-            <td><strong>Digify / Digiphy</strong></td>
-            <td>QR code marketing platform</td>
-            <td>QR-only. No flows, no recommendations, no product matching. We're the experience layer</td>
-            <td>Granola + Asana</td>
-          </tr>
-          <tr>
-            <td><strong>Attentive</strong></td>
-            <td>SMS marketing. Post-capture engagement</td>
-            <td>They're the post-capture play. We're the capture moment itself — then hand off to tools like Attentive</td>
-            <td>#research</td>
-          </tr>
-          <tr>
-            <td><strong>AnyRoad</strong></td>
-            <td>Experiential marketing platform. Event ROI</td>
-            <td>Enterprise experiential. We're physical retail, always-on, not event-specific</td>
-            <td>#research</td>
-          </tr>
-          <tr>
-            <td><strong>Ometria</strong></td>
-            <td>Customer data + marketing for retail</td>
-            <td>Clean, data-first brand. They show results which is a good model for us later</td>
-            <td>#brand (Kelley + Loren liked their approach)</td>
-          </tr>
-          <tr>
-            <td><strong>Happenstance AI</strong></td>
-            <td>AI for retail experiences</td>
-            <td>Shared by Tanmay — worth watching</td>
-            <td>#research</td>
-          </tr>
-          <tr>
-            <td><strong>CRWD (joincrwd.com)</strong></td>
-            <td>Brand community + rewards</td>
-            <td>Community rewards, not in-store experience capture</td>
-            <td>#research</td>
-          </tr>
-          <tr>
-            <td><strong>TYB (Try Your Best)</strong></td>
-            <td>Community rewards platform for brands</td>
-            <td>Post-purchase loyalty. We're pre-purchase discovery + capture</td>
-            <td>Granola</td>
-          </tr>
-          <tr>
-            <td><strong>Vitamin Shoppe (Shoppe Advisor)</strong></td>
-            <td>AI product search — natural language + guided flows. Built in 2 weeks</td>
-            <td>Internal build, not a product. Validates the model. We're building the platform version.</td>
-            <td>ShopTalk main stage</td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="font-size: 11px; color: var(--sunstar); margin-top: 12px; font-style: italic;">
-        Key differentiator: Mirour acts as mediator — captures data before redirect. Experiential advertising background creates "sticky" QR experiences vs. just landing pages.
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ DATA STRATEGY AS MARKETING ═══ -->
-  <div class="section">
-    <div class="section-title">📊 Data Strategy — Your Biggest Marketing Asset</div>
-    <div style="font-size: 12px; color: #bbb; margin-bottom: 12px;">From Loren's #dailyupdates data taxonomy (Mar 6). This is the full picture of what Mirour captures — and what makes you a market research platform, not just a QR tool.</div>
-    <div class="three-col">
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">For Brands (Table Stakes)</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-          User identity + behavior in flow<br>
-          Contact capture + opt-in<br>
-          Touchpoint-level scans + completion<br>
-          Flow A/B performance<br>
-          Product saves + clicks<br>
-          Peak engagement times<br>
-          Profile capture rate
-        </div>
-      </div>
-      <div class="card" style="border-left: 3px solid var(--sunstar);">
-        <h3 style="color: var(--sunstar); font-size: 13px;">Nobody Else Has This</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-          <strong>Saves without purchase</strong> — hottest remarketing list<br>
-          <strong>Cross-location journeys</strong> — same person, multiple stores<br>
-          <strong>What they couldn't find</strong> — product gap signals<br>
-          <strong>Own-words descriptions</strong> — open text fields are gold<br>
-          <strong>Demand signals by city</strong> — what's resonating across locations<br>
-          <strong>Lapsed visitor flags</strong> — engaged but didn't return
-        </div>
-      </div>
-      <div class="card" style="border-left: 3px solid var(--spacejam);">
-        <h3 style="color: var(--spacejam); font-size: 13px;">Future: Market Research Firm</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-          Consumer sentiment + preference<br>
-          Trend data (rising search terms over time)<br>
-          Competitive intel from shoppers<br>
-          Demographic patterns<br>
-          Product intelligence (what needs more explanation)<br>
-          <strong>For a brand: replaces a focus group</strong><br>
-          <strong>For a mall: economic development data</strong><br>
-          <strong>For CPG: retail partner performance</strong>
-        </div>
-      </div>
-    </div>
-    <div style="font-size: 11px; color: var(--sunstar); margin-top: 8px; font-style: italic;">"The saves-without-purchase list and the cross-location journey data are the two things nobody else can give a mall or event operator." — Loren, #dailyupdates</div>
-  </div>
-
-  <!-- ═══ RESEARCH LIBRARY ═══ -->
-  <div class="section">
-    <div class="section-title">📚 Research Library — Full #research Channel</div>
-    <div style="font-size: 12px; color: #bbb; margin-bottom: 12px;">Every article, report, and resource saved by the team (Feb–Mar 2026). Use for content, decks, and investor materials.</div>
-    <div class="two-col">
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">Reports & Data</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-          <strong>Yotpo:</strong> "Playbook for the Two Buyer Reality" (Mar 25)<br>
-          <strong>Square:</strong> Local Economy Report (Mar 24)<br>
-          <strong>Quorso:</strong> NRF Intelligent Store Report 2026 (Mar 3)<br>
-          <strong>CTC:</strong> 2026 Trend Report via Issuu (Mar 10)<br>
-          <strong>Retail Touchpoints:</strong> Store Ops Survey — 63% QR deployed, only 8% not interested (Mar 10)<br>
-          <strong>Retail Touchpoints:</strong> Next Era of AI — consumer + associate tools (Feb 27)<br>
-          <strong>Optimum Retailing:</strong> Automated Self-Optimizing Stores PDF (Feb 19)<br>
-          <strong>Faire:</strong> Serendipity in Retail Report — Amy from Cercie sent (Feb 4)<br>
-          <strong>Mailchimp:</strong> Art of the Opt-In (Mar 5)<br>
-          <strong>V-Count / TruRating:</strong> 55-75% leave without purchasing, 1% conversion = thousands/week (Feb 18)
-        </div>
-      </div>
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">Articles, Trends & Competitors</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-          <strong>NYT:</strong> Shopping Mall Resurgence (Mar 21)<br>
-          <strong>Progressive Grocer:</strong> Next-Gen Grocery Store Design — automation + human touch (Mar 21)<br>
-          <strong>RetailDive:</strong> Evolution of Stores (Mar 12 + Mar 5)<br>
-          <strong>RetailDive:</strong> Retail Trends to Watch 2026 + Dept Store Outlook (Feb 5)<br>
-          <strong>Tulip + Salesfloor:</strong> Merger announcement — enterprise competitor (Mar 24)<br>
-          <strong>Attentive:</strong> SMS marketing — post-capture play (Mar 20)<br>
-          <strong>Happenstance AI:</strong> AI for retail — shared by Tanmay (Mar 20)<br>
-          <strong>CRWD (joincrwd.com):</strong> Brand community + rewards (Mar 16)<br>
-          <strong>AnyRoad:</strong> Experiential marketing platform (Mar 9)<br>
-          <strong>Stay.ai:</strong> AI for AOV — "good for website copy + product build?" (Feb 24)<br>
-          <strong>Gap Inc "Encore":</strong> Interactive infrastructure investment — Kelley flagged (Feb 24)<br>
-          <strong>MDRN Photo Booth:</strong> How to measure ROI from experiential activations (Feb 3)<br>
-          <strong>TikTok:</strong> Staples employee insider guide — "could be cool for product as insiders guide" (Feb 11)
-        </div>
-      </div>
-    </div>
-    <div class="card" style="margin-top: 12px;">
-      <h3 style="color: var(--sunstar); font-size: 13px;">Key Stats to Use in Content</h3>
-      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-        <strong>55-75%</strong> of shoppers leave without purchasing (V-Count)<br>
-        <strong>1% conversion improvement</strong> = thousands in incremental weekly revenue (TruRating)<br>
-        <strong>63%</strong> of retailers deployed QR codes in-store (Retail Touchpoints)<br>
-        <strong>Only 8%</strong> say they aren't interested in in-store QR (Retail Touchpoints)<br>
-        <strong>33%</strong> of consumers say automation feels impersonal (Kelley, Feb 20)<br>
-        <strong>15%</strong> higher retention for purpose-led brands (Kelley, Feb 20)<br>
-        <strong>79%</strong> of people go in-store to touch and try (ShopTalk)<br>
-        <strong>Product merchandising</strong> is a top-3 store ops challenge (Retail Touchpoints survey)
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ INDUSTRY INTEL ═══ -->
-  <div class="section">
-    <div class="section-title">📰 Industry Intel — Content Inspiration from Newsletters & Articles</div>
-    <div style="font-size: 12px; color: #bbb; margin-bottom: 12px;">Rich content from your inbox and #research that can be repurposed into Mirour's content. Updated Mar 26.</div>
-    <div class="two-col">
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">This Week (Mar 24–26)</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-          <strong>Retail TouchPoints (Mar 26):</strong> Hot Topic + Camp turning nostalgia into growth — "when done right, nostalgia is a powerful growth vehicle." Mirour angle: in-store experiences that tap into emotional connection.<br>
-          <strong>Retail TouchPoints (Mar 26):</strong> AI Shopping wars — OpenAI focuses on discovery, Meta launches checkout, Shopify catalog integration. Mirour angle: we're the in-store version of what they're doing online.<br>
-          <strong>Retail TouchPoints (Mar 26):</strong> Express x Bebe Y2K capsule collection — culture-driven retail. Content idea: how brands turn cultural moments into in-store experiences.<br>
-          <strong>Retail TouchPoints (Mar 26):</strong> eBay "Community Resale" 48-hour livestream + curated fashion edit. Mirour angle: community-driven commerce is going physical.<br>
-          <strong>Yotpo (Mar 25):</strong> "Playbook for the Two Buyer Reality" — human buyers + AI agents. Direct Mirour relevance: we serve both.<br>
-          <strong>Tulip + Salesfloor merger (Mar 24):</strong> Enterprise competitor consolidating. We're the SMB alternative.
-        </div>
-      </div>
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">Recent (Mar 2026)</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-          <strong>NYT (Mar 21):</strong> Shopping mall resurgence — validates the whole thesis<br>
-          <strong>Progressive Grocer (Mar 21):</strong> Next-gen store design balancing automation + human touch — our exact positioning<br>
-          <strong>Square (Mar 24):</strong> Local Economy Report — data for SMB content<br>
-          <strong>RetailDive (Mar 12):</strong> Evolution of Stores trendline — ongoing series to reference<br>
-          <strong>CTC (Mar 10):</strong> 2026 Trend Report — visual merchandising trends<br>
-          <strong>Retail Touchpoints (Mar 10):</strong> Store Ops Survey — 63% QR deployed, product merchandising top-3 challenge<br>
-          <strong>Gap Inc "Encore" (Feb 24):</strong> Interactive infrastructure investment — big brands investing in experiential
-        </div>
-      </div>
-    </div>
-    <div class="card" style="margin-top: 12px; border-left: 4px solid var(--sunstar);">
-      <h3 style="color: var(--sunstar); font-size: 13px;">Content Angles to Pull From These</h3>
-      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-        <strong>"The AI shopping war is online. Nobody's fighting for in-store yet."</strong> — OpenAI, Meta, Shopify all going digital. Mirour is the in-store play.<br>
-        <strong>"Nostalgia sells. But are you capturing who it sells to?"</strong> — Hot Topic/Camp prove emotional retail works. Mirour captures the data behind the feeling.<br>
-        <strong>"Two buyers, one store."</strong> — Yotpo's framework. Human buyers need experience, AI agents need structured data. Mirour serves both.<br>
-        <strong>"Community commerce is going physical."</strong> — eBay's livestream events, Gap's Encore. The brands winning are building community IRL.<br>
-        <strong>"63% of retailers have QR codes. 0% are using them well."</strong> — From Retail Touchpoints survey. QR exists but nothing connects.
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ CONTENT PIPELINE ═══ -->
-  <div class="section">
-    <div class="section-title">🔥 Content Pipeline — From Your Own Conversations</div>
-
-    <div style="font-size: 11px; color: var(--mid); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">ShopTalk (write this week while it's fresh)</div>
-    <div class="two-col" style="margin-bottom: 20px;">
-      <div>
-        <div class="lead-card" style="border-left: 3px solid var(--sunstar);">
-          <h4>"Mailchimp But In-Store"</h4>
-          <div class="insight">Landed immediately with Philip Morris. 4 words that capture the whole value prop.</div>
-          <div class="action">LinkedIn + Substack: "We're building Mailchimp for physical retail."</div>
-        </div>
-        <div class="lead-card" style="border-left: 3px solid var(--sunstar);">
-          <h4>"Kohl's Backend is Google Sheets"</h4>
-          <div class="insight">Massive retailer, no system, trying to reach Gen Z.</div>
-          <div class="action">Newsletter: "If Kohl's doesn't have this figured out, nobody does."</div>
-        </div>
-        <div class="lead-card" style="border-left: 3px solid var(--sunstar);">
-          <h4>"Vitamin Shoppe Built It in 2 Weeks"</h4>
-          <div class="insight">AI product search on main stage. Built with Cursor. This is what we're building.</div>
-          <div class="action">Hot take: "The future of in-store shopping was on a main stage — and we've been building it."</div>
-        </div>
-      </div>
-      <div>
-        <div class="lead-card" style="border-left: 3px solid var(--sunstar);">
-          <h4>"Activations End and the Data Disappears"</h4>
-          <div class="insight">Elizabeth at Publicis — brands invest in experiential, can't measure ROI.</div>
-          <div class="action">LinkedIn: "Brands spend millions on in-store experiences. Then the data walks out the door."</div>
-        </div>
-        <div class="lead-card" style="border-left: 3px solid var(--sunstar);">
-          <h4>"Product Data is the Wall"</h4>
-          <div class="insight">ShopTalk Day 1: Every AI/agentic session hit the same wall — bad product data.</div>
-          <div class="action">Thread: "Every retailer I met is trying to build AI. They're all stuck on the same thing."</div>
-        </div>
-        <div class="lead-card" style="border-left: 3px solid var(--sunstar);">
-          <h4>"79% Go In-Store to Touch and Try"</h4>
-          <div class="insight">Physical confidence is the core job of the store. Loyalty = participation, not points.</div>
-          <div class="action">Data post: "Stores aren't dying. But the richest signal still isn't in the stack."</div>
+          Loyalty shifting from points → participation<br>
+          <strong>NYT:</strong> Shopping mall resurgence (Mar 2026)<br>
+          Kohl's runs in-store on Google Sheets<br>
+          Vitamin Shoppe built AI search in 2 weeks
         </div>
       </div>
     </div>
 
-    <div style="font-size: 11px; color: var(--mid); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">From Granola Meetings</div>
-    <div class="two-col" style="margin-bottom: 20px;">
-      <div>
-        <div class="lead-card">
-          <h4>"The Last Bastion of Face-to-Face Selling"</h4>
-          <div class="insight">Ace Hardware conversation — industries where human connection drives sales</div>
-          <div class="action">Post about the industries AI can't replace</div>
+    <!-- WHY NOW -->
+    <div class="section">
+      <div class="section-title">WHY NOW THE TIMING ARGUMENTS</div>
+      <div class="two-col">
+        <div class="card">
+          <h3 style="color: var(--sunstar); font-size: 13px;">Market Maturity</h3>
+          <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+            QR code acceptance post-COVID trained the behavior<br>
+            Gen Z loves in-store despite digital-first DNA<br>
+            CAC rising, brands need owned channels<br>
+            AI creating tech parity — human will be differentiator
+          </div>
         </div>
-        <div class="lead-card">
-          <h4>"Every Touchpoint is a Brand Moment"</h4>
-          <div class="insight">Jenny's framework: consistency across every interaction</div>
-          <div class="action">Brand strategy content for retail operators</div>
-        </div>
-        <div class="lead-card">
-          <h4>"I Don't Want Another App"</h4>
-          <div class="insight">Platform fatigue — communities bouncing between Slack, WhatsApp, Facebook</div>
-          <div class="action">"Why every community platform keeps failing"</div>
-        </div>
-        <div class="lead-card">
-          <h4>"$800/mo on SMS and Wants More"</h4>
-          <div class="insight">Soberish owner validated Mirour before seeing it</div>
-          <div class="action">Case study: how a beverage retailer's SMS spend proved in-store capture</div>
-        </div>
-      </div>
-      <div>
-        <div class="lead-card">
-          <h4>"AI Under the Hood, Not in Our Face"</h4>
-          <div class="insight">Sid: agentic AI should personalize without being overt</div>
-          <div class="action">Timely take on invisible AI vs. chatbot-in-your-face</div>
-        </div>
-        <div class="lead-card">
-          <h4>"Anthropologie: More Dollars Per Square Foot"</h4>
-          <div class="insight">Carly: designed to wander and discover = highest revenue per sq ft</div>
-          <div class="action">"What Anthropologie figured out that everyone else is ignoring"</div>
-        </div>
-        <div class="lead-card">
-          <h4>"Coffee Chats Suck" → Best 20 Min All Week</h4>
-          <div class="insight">Taylor at Dreamers & Doers — reimagining professional networking</div>
-          <div class="action">Relatable founder content about networking differently</div>
-        </div>
-        <div class="lead-card">
-          <h4>"Pick a Market Where People Hate Everything"</h4>
-          <div class="insight">Best markets = where existing solutions frustrate everyone</div>
-          <div class="action">Startup advice — Mirour origin story, Loren's voice</div>
+        <div class="card">
+          <h3 style="color: var(--sunstar); font-size: 13px;">Buyer Evolution</h3>
+          <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+            Two buyers now: AI agents (structured data) + humans (experience)<br>
+            Brands must serve both<br>
+            Content = infrastructure (ShopTalk)<br>
+            Everything downstream depends on what feeds the system
+          </div>
         </div>
       </div>
     </div>
 
-    <div style="font-size: 11px; color: var(--mid); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">From #brand + Slack</div>
-    <div class="two-col">
-      <div>
-        <div class="lead-card">
-          <h4>Paid Community Access</h4>
-          <div class="insight">Loren: "Could be a good funnel — gated resources, access for advice, shared peer experiences for brand owners"</div>
-          <div class="action">Launch paid community alongside pilots. Revenue + content + feedback loop.</div>
-        </div>
-        <div class="lead-card">
-          <h4>Quiz as Lead Gen (Meta!)</h4>
-          <div class="insight">Loren shared a quiz-style lead form and said "idea for us as a lead (a quiz HA!)"</div>
-          <div class="action">Use your own product as your marketing tool. Build a "What kind of retail experience are you?" quiz.</div>
-        </div>
-      </div>
-      <div>
-        <div class="lead-card">
-          <h4>"We don't have to be techy — more like no-brainer stats"</h4>
-          <div class="insight">Kelley: "CX first, data capture second." Loren: results-driven, not feature-driven.</div>
-          <div class="action">All content should lead with outcomes, not features. Show results.</div>
-        </div>
-        <div class="lead-card">
-          <h4>Mirour Merch</h4>
-          <div class="insight">Custom patches, jean jacket, branded shirts being explored. Purple/yellow pinstripe options.</div>
-          <div class="action">IRL brand presence at events. Ship to advisors/pilots. Content when ready.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ PRICING ═══ -->
-  <div class="section">
-    <div class="section-title">💰 Pricing Framework — From Granola Strategy Sessions</div>
-    <div class="card">
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: center;">
-        <div style="background: #1e1430; border-radius: 8px; padding: 16px;">
-          <div style="font-size: 20px; font-weight: bold; color: var(--mid);">Free</div>
-          <div style="font-size: 11px; color: #888; margin-top: 8px;">Flows only<br>Mirour branding<br>Manual setup</div>
-        </div>
-        <div style="background: #1e1430; border-radius: 8px; padding: 16px;">
-          <div style="font-size: 20px; font-weight: bold; color: var(--sunstar);">$99/mo</div>
-          <div style="font-size: 11px; color: #888; margin-top: 8px;">Remove branding<br>Custom colors<br>Product linking</div>
-        </div>
-        <div style="background: #1e1430; border-radius: 8px; padding: 16px;">
-          <div style="font-size: 20px; font-weight: bold; color: var(--sunstar);">$199/mo</div>
-          <div style="font-size: 11px; color: #888; margin-top: 8px;">CRM integration<br>Analytics<br>Multi-location</div>
-        </div>
-        <div style="background: #1e1430; border-radius: 8px; padding: 16px; border: 1px dashed #584ea044;">
-          <div style="font-size: 20px; font-weight: bold; color: var(--spacejam);">ROI-based</div>
-          <div style="font-size: 11px; color: #888; margin-top: 8px;">Future: 10% share<br>of proven ROI<br>(from Granola)</div>
-        </div>
-      </div>
-      <div style="font-size: 11px; color: #999; margin-top: 12px;">Current pilot pricing: $99 and $199 tiers. Testing $99 in March (Granola Mar 12 meeting).</div>
-    </div>
-  </div>
-
-  <!-- ═══ CONTENT CALENDAR ═══ -->
-  <div class="section">
-    <div class="section-title">📅 Content Calendar — This Week</div>
-    <div class="card">
-      <table class="bug-table">
-        <thead>
-          <tr><th>What</th><th>Format</th><th>Owner</th><th>When</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>ShopTalk recap — what retail is actually talking about</strong></td>
-            <td>LinkedIn + BTS Update</td>
-            <td>Loren</td>
-            <td>Wed/Thu</td>
-          </tr>
-          <tr>
-            <td><strong>Vitamin Shoppe hot take</strong></td>
-            <td>LinkedIn thread</td>
-            <td>Loren</td>
-            <td>This week</td>
-          </tr>
-          <tr>
-            <td><strong>BTS Update — ShopTalk edition</strong></td>
-            <td>Email newsletter</td>
-            <td>Loren</td>
-            <td>Friday</td>
-          </tr>
-          <tr>
-            <td><strong>Kohl's deck (big picture framing)</strong></td>
-            <td>Presentation</td>
-            <td>Kelley + Loren</td>
-            <td>Next week</td>
-          </tr>
-          <tr>
-            <td><strong>"Mailchimp but in-store" positioning</strong></td>
-            <td>LinkedIn + Substack launch</td>
-            <td>Loren</td>
-            <td>Next week</td>
-          </tr>
-          <tr>
-            <td><strong>First pilot goes live — behind the scenes</strong></td>
-            <td>BTS Update + social</td>
-            <td>Loren</td>
-            <td>When Soberish launches</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- ═══ CONTENT STRATEGY ═══ -->
-  <div class="section">
-    <div class="section-title">🧭 Content Strategy — From Granola Brand Sessions</div>
-    <div style="font-size: 12px; color: #bbb; margin-bottom: 12px;">Audience segmentation and content approach distilled from 50+ Granola meetings.</div>
-    <div class="two-col">
+    <!-- COMPETITIVE LANDSCAPE -->
+    <div class="section">
+      <div class="section-title">COMPETITIVE LANDSCAPE</div>
       <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">Audience Split</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-          <strong>Website:</strong> Enterprise-appropriate, professional, not alienating to SMBs but buttoned-up enough for corporate buyers<br><br>
-          <strong>Social (IG/LinkedIn):</strong> SMB trust-building, "rally of the people" for business owners with Gen Z mindset wanting real-life connection<br><br>
-          <strong>Key insight:</strong> These are two different voices for two different buyers. Don't mix them.
-        </div>
-      </div>
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">Content Pillars That Work</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
-          <strong>Behind-the-scenes authenticity</strong> over polished marketing (BTS emails prove this)<br>
-          <strong>Value-first education</strong> — be a news source for your industry, not just product promotion<br>
-          <strong>Community connection</strong> and relationship-building focus<br>
-          <strong>Real-world application</strong> of digital tools — "make you touch grass"<br>
-          <strong>Outcomes, not features</strong> — "CX first, data capture second" (Kelley)<br>
-          <strong>Authentic demand > perfect positioning</strong> — focus on what people actually pay for
-        </div>
-      </div>
-    </div>
-    <div class="card" style="margin-top: 12px;">
-      <h3 style="color: var(--sunstar); font-size: 13px;">Brand Differentiation — Physical vs. Digital</h3>
-      <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-        From Granola brand sessions with Kelley: Mirour bridges <strong>physical and digital worlds</strong> while avoiding artificial AI associations. Focus on "make you touch grass" vs other AI tools. Tactile textures, artisan elements, authentic differentiation. The brand should feel like a <strong>real-life friend who happens to know everything about the store</strong>, not a chatbot.
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ DISTRIBUTION ═══ -->
-  <div class="section">
-    <div class="section-title">📡 Distribution Channels</div>
-    <div class="two-col">
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">BTS Update (Email)</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.6;">
-          <strong>Highest engagement.</strong> "We dropped the ball" got the most replies. Raw/honest > polished. Coleman → investor meeting. Amy → Kohl's intro. Jim Grady being added. Pattern: vulnerable honesty = real responses.
-        </div>
-      </div>
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">LinkedIn</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.6;">
-          TEDx Talk in email signature is landing. ACE contact noticed LinkedIn content. Post ShopTalk insights while fresh. Thought leadership = pipeline. Relationship building + industry authority.
-        </div>
-      </div>
-    </div>
-    <div class="two-col" style="margin-top: 12px;">
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">Instagram</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.6;">
-          Visual storytelling + community building. IRL moments — pop-ups, pilot installs, ShopTalk. SMB audience. Behind-the-scenes of building. Consistent thread: the human side of retail tech. Staples TikTok "insider guide" model = inspiration for product content.
-        </div>
-      </div>
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 13px;">Substack / Paid Community</h3>
-        <div style="font-size: 12px; color: #bbb; line-height: 1.6;">
-          Not started. Loren's idea: gated resources, access for advice, shared peer experiences. "Retail Reality Check" weekly series. Revenue + content + feedback loop. Career Whisperer model: educational content builds trust before selling.
-        </div>
+        <table class="bug-table">
+          <thead>
+            <tr><th>Company</th><th>What They Do</th><th>How We Differ</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Tulip / Salesfloor</strong></td>
+              <td>Associate tools, enterprise-focused</td>
+              <td>We're SMB-first, brand experience not associate tools</td>
+            </tr>
+            <tr>
+              <td><strong>Bridge (Brij)</strong></td>
+              <td>QR-to-marketing redirects</td>
+              <td>They redirect to websites. We capture relationship first.</td>
+            </tr>
+            <tr>
+              <td><strong>Endear</strong></td>
+              <td>Retail CRM, associate messaging</td>
+              <td>CRM integration focus. We build the moment, they manage after.</td>
+            </tr>
+            <tr>
+              <td><strong>Digify</strong></td>
+              <td>QR code marketing platform</td>
+              <td>QR-only. We're the experience layer + recommendations.</td>
+            </tr>
+            <tr>
+              <td><strong>Attentive</strong></td>
+              <td>SMS marketing, post-capture</td>
+              <td>We're the capture moment. Hand off to them for engagement.</td>
+            </tr>
+            <tr>
+              <td><strong>Ometria</strong></td>
+              <td>Customer data + marketing for retail</td>
+              <td>Clean data-first brand. Good model for us later.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 
 </div>
 
-<!-- ═══════════════════════════════════════════════════════ OPS ══ -->
+<!-- ═══════════════════════════════════════════════════════ OPS & FINANCE ══ -->
 <div class="content pane" id="ops">
 
+  <div class="notice">7 weeks runway. $398 MRR revenue by April 30 critical. Seed round May 2026.</div>
+
+  <!-- METRICS -->
   <div class="metrics">
-    <div class="metric">
-      <div class="num">28</div>
-      <div class="label">Days in Cycle</div>
-      <div class="sub">30-day sprint</div>
+    <div class="metric warn">
+      <div class="num">$18K</div>
+      <div class="label">Monthly Burn</div>
+      <div class="sub">Salary + infrastructure</div>
     </div>
     <div class="metric good">
-      <div class="num">$18K</div>
-      <div class="label">Burn Rate</div>
-      <div class="sub">Conservative</div>
-    </div>
-    <div class="metric">
       <div class="num">$82K</div>
-      <div class="label">Remaining</div>
-      <div class="sub">Of $100K runway</div>
+      <div class="label">Cash Remaining</div>
+      <div class="sub">of $100K raised</div>
     </div>
-    <div class="metric">
-      <div class="num">May 2026</div>
-      <div class="label">Runway End</div>
-      <div class="sub">7 weeks</div>
+    <div class="metric warn">
+      <div class="num">7 wks</div>
+      <div class="label">Runway</div>
+      <div class="sub">Before out of cash</div>
+    </div>
+    <div class="metric crit">
+      <div class="num">$398</div>
+      <div class="label">MRR by April 30</div>
+      <div class="sub">Revenue milestone (critical)</div>
     </div>
   </div>
 
+  <!-- RIGHT NOW -->
   <div class="section">
-    <div class="section-title">Burn Rate & Runway</div>
+    <div class="section-title">RIGHT NOW FINANCIAL FOCUS</div>
+    <div class="card">
+      <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+        <strong>Revenue is the primary metric.</strong> Every week of April is critical. Soberish converting by Apr 9–16. Glad & Young by Apr 9–23.<br><br>
+        <strong>Burn is controlled.</strong> $18K/mo is manageable. No hiring until revenue proves model. Three-person team for now.<br><br>
+        <strong>Seed round conversation begins when:</strong> 2 pilots paying ($398 MRR) + case study data from Soberish + clear path to 5+ pilots by Q3.
+      </div>
+    </div>
+  </div>
+
+  <!-- BURN RATE -->
+  <div class="section">
+    <div class="section-title">BURN RATE & RUNWAY</div>
     <div class="card">
       <div class="rev-bar-wrap">
         <div class="rev-bar-label">
@@ -2466,8 +1372,9 @@
     </div>
   </div>
 
+  <!-- FUNDRAISING -->
   <div class="section">
-    <div class="section-title">Fundraising</div>
+    <div class="section-title">FUNDRAISING</div>
     <div class="card">
       <table class="milestone-table">
         <thead>
@@ -2475,18 +1382,18 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>Seed Round</strong></td>
-            <td>May 2026</td>
-            <td><span class="badge amber">IN PROGRESS</span></td>
-          </tr>
-          <tr>
             <td><strong>Revenue Milestone</strong></td>
-            <td>Apr 2026 — $398 MRR</td>
-            <td><span class="badge red">CRITICAL</span></td>
+            <td>Apr 30 — $398 MRR</td>
+            <td><span class="badge red">CRITICAL PATH</span></td>
           </tr>
           <tr>
             <td><strong>Proof of Concept</strong></td>
             <td>2 brands → paid + case studies</td>
+            <td><span class="badge amber">IN PROGRESS</span></td>
+          </tr>
+          <tr>
+            <td><strong>Seed Round</strong></td>
+            <td>May 2026</td>
             <td><span class="badge amber">IN PROGRESS</span></td>
           </tr>
         </tbody>
@@ -2494,8 +1401,9 @@
     </div>
   </div>
 
+  <!-- TEAM -->
   <div class="section">
-    <div class="section-title">Team</div>
+    <div class="section-title">TEAM</div>
     <div class="card">
       <table class="milestone-table">
         <thead>
@@ -2510,7 +1418,7 @@
           <tr>
             <td><strong>CTO / Engineer</strong></td>
             <td>Tanmay</td>
-            <td>Core platform, bug fixes, QA</td>
+            <td>Core platform, auto-tagging, QA</td>
           </tr>
           <tr>
             <td><strong>Chief Brand Officer</strong></td>
@@ -2525,7 +1433,7 @@
 </div>
 
 <footer>
-  Mirour Operating System · mirourmirour.com · Updated March 25, 2026
+  Mirour Operating System · mirourmirour.com · Updated March 26, 2026
 </footer>
 
 <script>
