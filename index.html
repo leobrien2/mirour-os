@@ -473,104 +473,139 @@
 <!-- ═══════════════════════════════════════════════════════ THE PLAN ══ -->
 <div class="content pane active" id="plan">
 
-  <div class="plan-header">One goal: a brand sends their products and has a live flow the same day.</div>
+  <div class="plan-header">Tags are the core. Fix tagging, everything else works.</div>
   <div class="plan-sub">
-    Everything else — AI flows, profiles, zones, multi-channel — comes after we prove this works.
-    The code is built. The data pipeline isn't. Fix the pipeline, convert 2 pilots to paid by April. That's the whole plan.
+    From today's team meeting: the code works, the flow builder works, the recommendation engine works. The blocker is product data + tagging. Auto-tagging is THE priority — it's our IP, our secret sauce, and the thing that unblocks every pilot. Build the best tagging system that ever existed, then flows practically build themselves.
+  </div>
+
+  <!-- ═══ KEY DECISIONS — MAR 26 ═══ -->
+  <div class="section" style="margin-bottom: 20px;">
+    <div class="section-title">🔑 Key Decisions — Team Meeting Mar 26</div>
+    <div class="two-col">
+      <div class="card" style="border-left: 4px solid #4CAF50;">
+        <h3 style="color: #4CAF50; font-size: 13px;">Confirmed</h3>
+        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+          <strong>Tags = IP / secret sauce.</strong> Two-way sync between Mirour tags + ecom platforms is the moat. Document as proprietary.<br>
+          <strong>Keep flows, don't go chat-only.</strong> Flows give experiential leverage, A/B testing, promotional capability. Chat removes all of that.<br>
+          <strong>Auto-tagging via LLM is the path.</strong> Batch 100 products → LLM tags with onboarding context → store in DB. Repeat.<br>
+          <strong>AI flow creator must pull real tags.</strong> Not generic templates — show actual products in preview.<br>
+          <strong>New product display: tag-based mode.</strong> Manual, dynamic, AND "show everything with this tag."<br>
+          <strong>Tags on buttons, not just selects.</strong> "See all 5mg drinks" as a button that routes by tag.
+        </div>
+      </div>
+      <div class="card" style="border-left: 4px solid #FF5252;">
+        <h3 style="color: #FF5252; font-size: 13px;">Deprioritized / Changed</h3>
+        <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
+          <strong>Pop-ups are NOT our demographic.</strong> Not enough bandwidth to see value. Focus on mid-size market + larger activations (Nike, eBay, South by type events).<br>
+          <strong>Web scraping is not scalable</strong> for product data. Tanmay confirmed — worked for demo but won't work at scale.<br>
+          <strong>Recommendation strategy complexity hidden.</strong> Any/all/zone — just keep it standard, don't show users the logic picker.<br>
+          <strong>Sales decks are suddenly needed.</strong> Wasn't expected yet. Kohl's, Publicis, Philip Morris all asked. Next phase.
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ═══ THIS WEEK ═══ -->
   <div class="week-block now">
-    <div class="week-label now">This Week · Mar 25–28</div>
-    <div class="week-title">Unblock Everyone</div>
-    <div class="week-outcome">Outcome: Kelley and Loren can build real flows with real products</div>
+    <div class="week-label now">This Week · Mar 26–28</div>
+    <div class="week-title">Get Soberish Something In-Store</div>
+    <div class="week-outcome">Outcome: A few working flows Soberish can test in her store this weekend</div>
 
     <div class="task-row">
-      <div class="task-owner tanmay">Tanmay</div>
+      <div class="task-owner kelley">Kelley + Loren</div>
       <div class="task-content">
-        <strong>Run Soberish product import + auto-tag</strong>
-        <span>1,024 products from Lightspeed CSV. Map 28 POS categories to Mirour tags. Import to Supabase with product_tags links. This fixes the #1 blocker.</span>
+        <strong>Friday 11am: Go through Soberish flows</strong>
+        <span>Review what Kelley's built (NA recipes, wine finder, spirits) + what Loren's built (THC drinks). Decide what to ship to Soberish in-store. Manual product builds where needed.</span>
       </div>
-      <div class="task-effort">1 day</div>
+      <div class="task-effort">1 hr</div>
+    </div>
+
+    <div class="task-row">
+      <div class="task-owner loren">Loren</div>
+      <div class="task-content">
+        <strong>ShopTalk follow-ups + sales decks</strong>
+        <span>Terrence (Philip Morris): activation examples. Maureen (Kohl's): deck request. Elizabeth (Publicis): agency partner framing. Max (Veronica Beard): intro call. Alicia (BRP): in-store experiential.</span>
+      </div>
+      <div class="task-effort">1–2 days</div>
+    </div>
+
+    <div class="task-row">
+      <div class="task-owner loren">Loren</div>
+      <div class="task-content">
+        <strong>Recap product priorities for Tanmay</strong>
+        <span>From today's meeting + OS audit. Priority list: auto-tagging → AI flow creator with real tags → tag on buttons → tag-based product display.</span>
+      </div>
+      <div class="task-effort">Today</div>
+    </div>
+
+    <div class="task-row">
+      <div class="task-owner loren">Loren</div>
+      <div class="task-content">
+        <strong>Continue building out Cowork OS</strong>
+        <span>"Rest of my week is going to be spent on this." Get system in one place. Share access with team in Slack. Talk to Marir about how she PMs with Claude Code.</span>
+      </div>
+      <div class="task-effort">Rest of week</div>
     </div>
 
     <div class="task-row">
       <div class="task-owner tanmay">Tanmay</div>
       <div class="task-content">
-        <strong>Add analytics event tracking</strong>
-        <span>4 INSERT calls in flow runner: flow_started, step_completed, recommendation_shown, flow_completed. Turns on the entire analytics pipeline.</span>
+        <strong>Soberish product data — verify import</strong>
+        <span>OS audit says products not in Supabase but Tanmay did web-scrape import. Verify what's there, what's missing. Tanmay pulled from website not CSV — check if tags + images are connected.</span>
       </div>
       <div class="task-effort">Half day</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner tanmay">Tanmay</div>
-      <div class="task-content">
-        <strong>Wire up customer_tags persistence</strong>
-        <span>Call appendTags() when recommendations are generated. One function call. Customer profiling data stops vanishing.</span>
-      </div>
-      <div class="task-effort">30 min</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner loren">Loren</div>
-      <div class="task-content">
-        <strong>ShopTalk follow-ups</strong>
-        <span>Terrence (Philip Morris): send activation examples. Maureen (Kohl's): send what Mirour does. Elizabeth (Publicis): agency partner framing.</span>
-      </div>
-      <div class="task-effort">1 day</div>
-    </div>
-
-    <div class="task-row">
-      <div class="task-owner loren">Loren</div>
-      <div class="task-content">
-        <strong>Show team Cowork + OS</strong>
-        <span>Walk Kelley and Tanmay through what you've been building. Get everyone on the same page.</span>
-      </div>
-      <div class="task-effort">30 min</div>
     </div>
   </div>
 
   <!-- ═══ NEXT WEEK ═══ -->
   <div class="week-block next">
     <div class="week-label next">Next Week · Mar 31–Apr 4</div>
-    <div class="week-title">First Real Flow Goes Live</div>
-    <div class="week-outcome">Outcome: A customer scans a QR code at Soberish and gets real product recommendations</div>
+    <div class="week-title">Auto-Tagging + Sales Decks + Glad & Young</div>
+    <div class="week-outcome">Outcome: Auto-tagging prototype working. Sales deck ready for Kohl's + Publicis. Second pilot onboarding.</div>
 
     <div class="task-row">
-      <div class="task-owner kelley">Kelley</div>
+      <div class="task-owner tanmay">Tanmay</div>
       <div class="task-content">
-        <strong>Build the Soberish flow</strong>
-        <span>Products are now tagged and in the database. Build the quiz flow — "What are you in the mood for?" with real product categories. Test with real data.</span>
+        <strong>Build LLM auto-tagging system (THE priority)</strong>
+        <span>Batch 100 products → send to LLM with onboarding context (who the brand is, what they sell) → LLM returns tags → store in DB. Prompt engineering to ensure tag consistency across batches. Test with Glad & Young.</span>
       </div>
-      <div class="task-effort">2–3 days</div>
+      <div class="task-effort">3–5 days</div>
+    </div>
+
+    <div class="task-row">
+      <div class="task-owner tanmay">Tanmay</div>
+      <div class="task-content">
+        <strong>Add tag-based product display mode</strong>
+        <span>New mode alongside manual + dynamic: type a tag → show all products with that tag. Also: add tag capability to buttons (not just select widgets). From today's meeting.</span>
+      </div>
+      <div class="task-effort">1–2 days</div>
     </div>
 
     <div class="task-row">
       <div class="task-owner kelley">Kelley + Loren</div>
       <div class="task-content">
-        <strong>Build the Kohl's deck</strong>
-        <span>Big picture framing: retail's in-store problem, why Gen Z needs a different approach, how Mirour fits. Make it easy for Maureen to champion upward. Not what Mirour does — why it matters.</span>
+        <strong>Build sales decks</strong>
+        <span>Kohl's: big picture framing, Gen Z in-store, how Mirour fits. Make it easy for Maureen to champion upward. Publicis: agency partner angle, experiential ROI. Philip Morris: activation-focused.</span>
       </div>
-      <div class="task-effort">2 days</div>
+      <div class="task-effort">2–3 days</div>
     </div>
 
     <div class="task-row">
-      <div class="task-owner tanmay">Tanmay</div>
+      <div class="task-owner kelley">Kelley</div>
       <div class="task-content">
-        <strong>Import products for pilot #2</strong>
-        <span>Pick whichever of A Bag Concept or Glad & Young is closest to ready. Same process: import + auto-tag. Two pilots with real data.</span>
+        <strong>Test Glad & Young onboarding</strong>
+        <span>Use as test case for new auto-tagging. What's their product data look like? What format? Can we get CSV + website export to compare?</span>
       </div>
       <div class="task-effort">1 day</div>
     </div>
 
     <div class="task-row">
-      <div class="task-owner tanmay">Tanmay</div>
+      <div class="task-owner loren">Loren</div>
       <div class="task-content">
-        <strong>Flow builder simplification</strong>
-        <span>Core priority from Slack discussions. Simplify flow creation toward single-step setup. Estimated 1 week.</span>
+        <strong>Talk to Marir about PM with Claude Code</strong>
+        <span>"She was like, let me walk you through how I do mine." Learn her PM workflow, apply to Mirour OS.</span>
       </div>
-      <div class="task-effort">Ongoing</div>
+      <div class="task-effort">1 hr</div>
     </div>
   </div>
 
@@ -650,21 +685,22 @@
     </div>
     <div class="two-col">
       <div class="card">
-        <h3 style="color: var(--spacejam); font-size: 13px;">Build faster onboarding</h3>
+        <h3 style="color: var(--spacejam); font-size: 13px;">Scale onboarding</h3>
         <ul class="checklist">
-          <li><div class="check"></div> <span>One-click import from POS APIs (keys already stored)</span></li>
-          <li><div class="check"></div> <span>AI auto-tagging from product descriptions</span></li>
-          <li><div class="check"></div> <span>Auto-generate starter flows from product categories</span></li>
-          <li><div class="check"></div> <span>Flow wizard: connect store → pick quiz style → launch</span></li>
+          <li><div class="check"></div> <span>One-click import from POS APIs (Shopify, Square, Lightspeed)</span></li>
+          <li><div class="check"></div> <span>AI flow creator that pulls from real tagged inventory</span></li>
+          <li><div class="check"></div> <span>Learning tags: flows teach the system new tags over time</span></li>
+          <li><div class="check"></div> <span>QR code reassignment (swap flow without reprinting signage)</span></li>
         </ul>
       </div>
       <div class="card">
         <h3 style="color: var(--spacejam); font-size: 13px;">Unlock more value</h3>
         <ul class="checklist">
-          <li><div class="check"></div> <span>Customer insights dashboard ("62% want non-alcoholic")</span></li>
-          <li><div class="check"></div> <span>Multi-channel: embed widget, email links, social links</span></li>
-          <li><div class="check"></div> <span>AI search layered into flows (Vitamin Shoppe model)</span></li>
+          <li><div class="check"></div> <span>Two-way tag sync with Shopify / ecom platforms (the moat)</span></li>
+          <li><div class="check"></div> <span>Customer insights dashboard — sales data view, not flow creation</span></li>
+          <li><div class="check"></div> <span>AI search layered into flows (Vitamin Shoppe model — keep as option, not replacement)</span></li>
           <li><div class="check"></div> <span>Agency partner package for Publicis / activation firms</span></li>
+          <li><div class="check"></div> <span>Onboarding consulting sessions — freelancer-led flow building for brands who need help</span></li>
         </ul>
       </div>
     </div>
@@ -696,9 +732,15 @@
           <div class="who">Owner: Loren</div>
         </div>
         <div class="lead-card">
-          <h4>Veronica Beard + Others</h4>
-          <div class="insight">Met at ShopTalk. Early conversations.</div>
-          <div class="action">Follow up: send intro email with what Mirour does</div>
+          <h4>Max — Veronica Beard (Head of Data)</h4>
+          <div class="insight">Fashion brand. 33/33/33 split: digital, physical, wholesale. Looking at in-store experiences to bridge omnichannel.</div>
+          <div class="action">Follow up: schedule intro call. Data-first buyer — show analytics angle.</div>
+          <div class="who">Owner: Loren</div>
+        </div>
+        <div class="lead-card">
+          <h4>Alicia Auclair — BRP (Sea-Doo, Jet Ski)</h4>
+          <div class="insight">Retail Marketing Specialist. $1-10B rev. Powersports. Wants: customer feedback capture, product knowledge tech, personalized interactions. Meeting today (Mar 26).</div>
+          <div class="action">Follow up: in-store experiential angle. Perfect ICP match for in-store media + analytics.</div>
           <div class="who">Owner: Loren</div>
         </div>
       </div>
@@ -707,13 +749,15 @@
 
   <!-- ═══ MARKET SIGNAL ═══ -->
   <div class="section">
-    <div class="section-title">Market Signal — Why Now</div>
+    <div class="section-title">Market Signal — Why Now (Updated from ShopTalk + Team Meeting)</div>
     <div class="card">
       <div style="font-size: 13px; color: #ccc; line-height: 1.7;">
-        <strong style="color: var(--sunstar);">Vitamin Shoppe built it in 2 weeks.</strong> AI product search called Shoppe Advisor — customers search product catalog in natural language OR click guided flows. Associate uses same tool alongside customer. Main stage at ShopTalk. This is what we're building.<br><br>
-        <strong style="color: var(--sunstar);">Kohl's runs on Google Sheets.</strong> QR codes exist, nothing connects. If a retailer that size doesn't have this figured out, the mid-market definitely doesn't.<br><br>
-        <strong style="color: var(--sunstar);">79% of people go in-store to touch and try.</strong> Physical stores aren't dying. But the richest signal — what happens inside a store — still isn't in the stack. Brands are building better experiences and not measuring them.<br><br>
-        <strong style="color: var(--sunstar);">Loyalty is shifting from points to participation.</strong> Higher AOV, higher retention. The brands winning are building loyalty through experience and engagement, not discounts. Mirour captures that.
+        <strong style="color: var(--sunstar);">In-store is THE conversation.</strong> "I thought in-store would be a tiny bit. It was most of the sessions." — Loren at ShopTalk. Brands are investing heavily in IRL experiences. Covaris (leather company) is 20% experiential space, no buying.<br><br>
+        <strong style="color: var(--sunstar);">Product data is everyone's wall.</strong> Every agentic commerce session at ShopTalk hit the same blocker: unstructured product data. Vitamin Shoppe only succeeded because their CTO had already structured the data. If we solve tagging, we're ahead of everyone.<br><br>
+        <strong style="color: var(--sunstar);">Content is infrastructure now.</strong> "This is the time where content is going to be the most important product data. The LLMs need to pull from it." — Vitamin Shoppe CTO on main stage.<br><br>
+        <strong style="color: var(--sunstar);">People who buy in-store first are more loyal.</strong> Higher LTVs, even when they go omnichannel. Brands know this. They're investing in the store — but the tech layer is missing.<br><br>
+        <strong style="color: var(--sunstar);">Right place, right time.</strong> "We're early enough that there's not everybody after it, but in a time where everyone's starting to invest in it and know its value." We're mid-market while Tulip/Salesfloor go enterprise. Sweet spot.<br><br>
+        <strong style="color: var(--sunstar);">Angel round → first revenue → pre-seed.</strong> Plan: angels cover operating costs. Revenue brings team on full-time incrementally. May not even need pre-seed if scaling fast enough. More equity retained.
       </div>
     </div>
   </div>
@@ -724,7 +768,7 @@
 <div class="content pane" id="product">
 
   <div class="notice">
-    Root cause found: The code works. The data doesn't. Products sit in CSVs, tags in SQL scripts, analytics tables have no writers. Fix the data pipeline, not the features.
+    From Mar 26 team meeting: Tags are the core of everything. Without correct tags, nothing works — no flows, no recommendations, no search. Auto-tagging via LLM is the #1 priority. This is our IP.
   </div>
 
   <div class="metrics">
@@ -752,15 +796,48 @@
 
   <!-- ═══ ROOT CAUSE ═══ -->
   <div class="section">
-    <div class="section-title">🔴 Critical Blocker — Root Cause Found</div>
+    <div class="section-title">🔴 Core Problem — Tagging is Everything</div>
     <div class="card">
       <div style="font-size: 13px; color: #ccc; line-height: 1.7; margin-bottom: 16px;">
-        <strong style="color: #e74c3c;">What everyone thinks:</strong> "Tags not pulling products" = code bug<br>
-        <strong style="color: #2ecc71;">What's actually happening:</strong> The recommendation engine, flow builder, and tag system all work perfectly.
-        Soberish has 1,024 products in a CSV from Lightspeed POS with 28 product categories. But nobody imported them into Supabase or linked them to tags via the product_tags table.
-        The code queries for products with matching tags → finds nothing → shows empty results. Not a bug. A data gap.
+        <strong style="color: #e74c3c;">The problem:</strong> Product data from brands is messy. CSVs have no images, no tags, minimal descriptions. Web scraping worked for Soberish demo but isn't scalable. Every brand's data is different and incomplete.<br><br>
+        <strong style="color: #2ecc71;">The solution (from team meeting):</strong> LLM-powered auto-tagging. Onboarding form captures brand context (who they are, what they sell). Batch 100 products → send to LLM with context → LLM returns consistent tags → store in DB. Prompt engineering ensures tag consistency across batches.<br><br>
+        <strong style="color: var(--sunstar);">Why this is IP:</strong> "If we can figure out a way for this software to auto-tag and tag in the moment, we will win." — Kelley. Two-way sync between Mirour tags and ecom platforms (Shopify, etc.) means brands' agentic readiness improves just by using Mirour. Tags flow back to their stores. Nobody else does this.
       </div>
-      <div style="font-size: 12px; color: var(--sunstar); font-weight: bold;">Fix: Run the import + auto-tag script. Map POS categories to Mirour tags. Tanmay, 1 afternoon.</div>
+      <div style="font-size: 12px; color: var(--sunstar); font-weight: bold;">Priority: Build auto-tagging system. Test with Glad & Young. This unblocks everything.</div>
+    </div>
+  </div>
+
+  <!-- ═══ TAGGING ROADMAP ═══ -->
+  <div class="section">
+    <div class="section-title">🏷️ Tagging Roadmap — From Team Meeting</div>
+    <div class="two-col">
+      <div class="card" style="border-left: 4px solid var(--sunstar);">
+        <h3 style="color: var(--sunstar); font-size: 13px;">Phase 1: Auto-Tag on Import (NOW)</h3>
+        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+          Brand uploads CSV + fills onboarding context form<br>
+          Batch 100 products → LLM with context → tags returned<br>
+          Prompt engineering for consistency across batches<br>
+          Store tags in product_tags table<br>
+          <strong>Also accept:</strong> website export (Squarespace, Shopify) for richer data<br>
+          <strong>Test with:</strong> Glad & Young
+        </div>
+      </div>
+      <div class="card" style="border-left: 4px solid var(--spacejam);">
+        <h3 style="color: var(--spacejam); font-size: 13px;">Phase 2: Learning Tags from Flows (NEXT)</h3>
+        <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+          When you create a flow (e.g., "find perfect THC drink"), AI learns new tags from the prompt<br>
+          "5mg THC" wasn't an initial tag but is important for the flow → system goes back and tags products<br>
+          "Dresses with pockets" → AI finds all products with "dress" + "pocket" in description → adds tag<br>
+          Tags compound over time — system gets smarter with every flow built<br>
+          <strong>Complex but doable</strong> — Tanmay confirmed. Prompt engineering + proper linking.
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 12px; border-left: 4px solid #4CAF50;">
+      <h3 style="color: #4CAF50; font-size: 13px;">Phase 3: Two-Way Ecom Sync (FUTURE — The Moat)</h3>
+      <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
+        Mirour talks to Shopify bidirectionally. Tags that Mirour creates flow back to the brand's store. Their products become searchable + agentic-ready. Brands learn from how people search in flows → feed that intelligence to ecommerce. "The heavy lift happens with Mirour, tested and proven in-store, then feeds back to their ecom platform." — Kelley
+      </div>
     </div>
   </div>
 
@@ -801,7 +878,7 @@
         <span class="arch-status works">WORKING</span>
         <h4>Flow Builder</h4>
         <p>Node graph editor with 7 step types. Supports quiz questions, conditional logic, tag assignment, product recommendations. Side-by-side preview shipped Mar 20.</p>
-        <p style="color: #e67e22; margin-top: 6px;">⚠ Complex for non-engineers. Kelley and Loren both stuck. Needs wizard mode for first-run.</p>
+        <p style="color: #e67e22; margin-top: 6px;">⚠ Complex for non-engineers. From meeting: hide recommendation strategy logic (any/all/zone), show tags instead. Add tag-based product display mode + tags on buttons.</p>
       </div>
 
       <div class="arch-card works">
@@ -815,7 +892,7 @@
         <span class="arch-status works">WORKING</span>
         <h4>Tag-Based Recommendations</h4>
         <p>3 strategies: "any" match, "all" match, "zone-first". Quiz answers accumulate tags → filterProducts() finds matches. Works perfectly when product_tags table is populated.</p>
-        <p style="color: #e67e22; margin-top: 6px;">⚠ Only need "any" strategy for pilots. Other 2 add confusion.</p>
+        <p style="color: #e67e22; margin-top: 6px;">⚠ From meeting: keep standard (any/all), hide logic from users. Add new mode: tag-based display — just "show everything with this tag" as simple filter. Plus tag on buttons for direct routing.</p>
       </div>
 
       <!-- Row 2: Data layer -->
@@ -1753,9 +1830,9 @@
       <div class="card">
         <h3 style="color: var(--sunstar); font-size: 13px;">ICP</h3>
         <div style="font-size: 12px; color: #bbb; line-height: 1.7;">
-          <strong>Who:</strong> Atlanta young millennial / Gen Z brands serving women in their 20s. Fashion, accessories, housewares, gifts.<br><br>
-          <strong>Signal:</strong> Aesthetic stores that host events or activations. You can see they're spending on IRL moments.<br><br>
-          <strong>Buyer:</strong> Corporate-level, visual merchandising arm, CX person with dotted lines between marketing + ecom.
+          <strong>Who:</strong> Mid-size market brands. Atlanta young millennial / Gen Z brands serving women in their 20s. Fashion, accessories, housewares, gifts.<br><br>
+          <strong>Signal:</strong> Aesthetic stores that host events or activations. Spending on IRL moments. Must have permanent location (⚠️ pop-ups deprioritized Mar 26 — not enough bandwidth to see value).<br><br>
+          <strong>Buyer:</strong> Corporate-level, visual merchandising arm, CX person with dotted lines between marketing + ecom. Also: larger activations (Nike, eBay, South by type) through experiential agency partners.
         </div>
       </div>
       <div class="card">
@@ -1803,7 +1880,7 @@
         <h3 style="color: var(--sunstar); font-size: 13px;">Pricing Validation</h3>
         <div style="font-size: 12px; color: #bbb; line-height: 1.8;">
           <strong>$99/mo sweet spot</strong> confirmed across multiple calls<br>
-          <strong>$32/mo</strong> — pop-up pilot pricing<br>
+          <strong>$32/mo</strong> — pop-up pricing (⚠️ pop-ups deprioritized Mar 26)<br>
           <strong>$149+</strong> — multi-location<br>
           <strong>$500+</strong> — enterprise multi-location<br>
           <strong>Free tier works</strong> — with branding, for validation<br>
