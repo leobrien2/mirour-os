@@ -563,6 +563,7 @@
   <div class="tab" onclick="show('growth', this)">GROWTH</div>
   <div class="tab" onclick="show('brand', this)">BRAND</div>
   <div class="tab" onclick="show('marketing', this)">MARKETING</div>
+  <div class="tab" onclick="show('customers', this)">CUSTOMERS</div>
   <div class="tab" onclick="show('ops', this)">OPS & FINANCE</div>
 </div>
 
@@ -1542,6 +1543,119 @@
         </div>
       </div>
     </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ CUSTOMERS ══ -->
+<div class="content pane" id="customers">
+
+  <div class="notice">5 pilots. 1 live. 1 testing. 3 need setup. Goal: learn fast, convert to paid.</div>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="metric"><div class="number">5</div><div class="label">Total Pilots</div></div>
+    <div class="metric"><div class="number" style="color:var(--green);">1</div><div class="label">Live</div></div>
+    <div class="metric"><div class="number" style="color:var(--amber);">1</div><div class="label">Testing</div></div>
+    <div class="metric"><div class="number">3</div><div class="label">Not Active Yet</div></div>
+  </div>
+
+  <!-- PILOT DETAIL TABLE -->
+  <div class="section">
+    <div class="section-title">PILOT STATUS & FEEDBACK</div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:15%;">Pilot</th>
+          <th style="width:12%;">Category</th>
+          <th style="width:12%;">Status</th>
+          <th style="width:30%;">Where They Are</th>
+          <th style="width:31%;">Feedback / Needs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>A Bag Concept</strong></td>
+          <td>Fashion / Accessories</td>
+          <td><span style="color:var(--green); font-weight:600;">● LIVE</span></td>
+          <td>Live with 2 flows. QR codes printed, posters in-store. CSV import worked. Only live pilot.</td>
+          <td>Want Shopify API to connect customers directly (not just CSV). Need real-time sync.</td>
+        </tr>
+        <tr>
+          <td><strong>Soberish</strong></td>
+          <td>Beverage / Alt-spirits</td>
+          <td><span style="color:var(--amber); font-weight:600;">● TESTING</span></td>
+          <td>Testing flows. Reached out to go live. Co-founder agreements in progress.</td>
+          <td>Need to walk through product live next week. Flows being built by Kelley.</td>
+        </tr>
+        <tr style="color:var(--text-light);">
+          <td><strong>Glad & Young</strong></td>
+          <td>Home / Gifts (PCM)</td>
+          <td><span style="font-weight:600;">○ NOT ACTIVE</span></td>
+          <td>Product data in Drive (CSV export). ~20 unique products, mixed vendors. Need setup.</td>
+          <td>Good auto-tagging test case — messy Shopify tags, HTML descriptions with extractable content.</td>
+        </tr>
+        <tr style="color:var(--text-light);">
+          <td><strong>One of Each</strong></td>
+          <td>Boutique / Accessories</td>
+          <td><span style="font-weight:600;">○ NOT ACTIVE</span></td>
+          <td>Mother-daughter team (Cape Town + Seattle). Shopify store ready. Need to set up and test.</td>
+          <td>No feedback yet — need to onboard and test flows.</td>
+        </tr>
+        <tr style="color:var(--text-light);">
+          <td><strong>Just Add Honey</strong></td>
+          <td>Specialty / Tea</td>
+          <td><span style="font-weight:600;">○ NOT ACTIVE</span></td>
+          <td>Square/Shopify backend. All lifecycle tasks open in Asana. Need to set up and test.</td>
+          <td>No feedback yet — need to onboard and test flows.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WHAT WE'RE LEARNING -->
+  <div class="section">
+    <div class="section-title">WHAT WE'RE LEARNING</div>
+    <div class="card">
+      <p><strong>From A Bag Concept (live):</strong> QR flows work in-store. CSV import is functional but not scalable — customers want real Shopify API integration, not file uploads. Pop-ups aren't the demo for selling — this pilot is proving capabilities and integrations.</p>
+      <p style="margin-top:12px;"><strong>From Soberish (testing):</strong> Co-founder relationship means deeper engagement. Testing flows before going live is the right sequence. Need to get product in her hands this week.</p>
+      <p style="margin-top:12px;"><strong>From Glad & Young (data review):</strong> Multi-brand marketplace with garbage Shopify tags. Perfect test case for LLM auto-tagging thesis. HTML descriptions contain useful extractable content.</p>
+    </div>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="section">
+    <div class="section-title">NEXT STEPS</div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:25%;">Pilot</th>
+          <th style="width:75%;">What Needs to Happen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>A Bag Concept</strong></td>
+          <td>Monitor live flows. Collect customer engagement data. Use learnings to inform product roadmap (Shopify API integration).</td>
+        </tr>
+        <tr>
+          <td><strong>Soberish</strong></td>
+          <td>Get product to her this week. Walk through live next week. Close co-founder agreement.</td>
+        </tr>
+        <tr>
+          <td><strong>Glad & Young</strong></td>
+          <td>Run their CSV through auto-tagging when ready. Build demo flows. This is the real sales demo dataset.</td>
+        </tr>
+        <tr>
+          <td><strong>One of Each</strong></td>
+          <td>Connect Shopify. Import products. Build first flow. Test.</td>
+        </tr>
+        <tr>
+          <td><strong>Just Add Honey</strong></td>
+          <td>Connect Square/Shopify. Import products. Build first flow. Test.</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 </div>
