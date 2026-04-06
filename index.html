@@ -56,7 +56,6 @@
     color: var(--nebula);
     letter-spacing: -0.01em;
   }
-  /* M icon as subtle watermark in bottom-right */
   .brand-watermark {
     position: fixed;
     bottom: 20px;
@@ -97,7 +96,6 @@
 
   .content { padding: 40px; max-width: 900px; margin: 0 auto; }
 
-  /* Metric cards */
   .metrics {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -108,7 +106,6 @@
     background: var(--cream);
     border-radius: 10px;
     padding: 24px;
-    border-left: 4px solid var(--nebula);
     border: 1px solid var(--border);
     border-left: 4px solid var(--nebula);
     box-shadow: 0 1px 3px rgba(42,29,53,0.08);
@@ -120,7 +117,6 @@
   .metric .label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; }
   .metric .sub { font-size: 14px; color: var(--text-light); margin-top: 8px; }
 
-  /* Section */
   .section { margin-bottom: 32px; }
   .section-title {
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -134,11 +130,9 @@
     border-bottom: 1px solid var(--border);
   }
 
-  /* Two col */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
 
-  /* Card */
   .card {
     background: var(--cream);
     border-radius: 10px;
@@ -148,7 +142,6 @@
   }
   .card h3 { font-family: orpheuspro, Georgia, serif; font-size: 16px; color: var(--galaxy); margin-bottom: 12px; font-weight: 400; letter-spacing: -0.01em; }
 
-  /* Bug table */
   .bug-table { width: 100%; border-collapse: collapse; }
   .bug-table th {
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -160,9 +153,7 @@
     padding: 12px; font-size: 14px; color: var(--text);
     border-bottom: 1px solid var(--border);
   }
-  .bug-table tr:hover td { background: var(--soft-yellow); }
 
-  /* Status badges */
   .badge {
     display: inline-block;
     padding: 4px 12px;
@@ -177,7 +168,6 @@
   .badge.green { background: rgba(45,138,86,0.12); color: var(--green); }
   .badge.purple { background: rgba(173,118,178,0.12); color: var(--nebula); }
 
-  /* Checklist */
   .checklist { list-style: none; }
   .checklist li {
     display: flex;
@@ -189,47 +179,9 @@
     border-bottom: 1px solid var(--border);
   }
   .checklist li:last-child { border-bottom: none; }
-  .checklist li .owner {
-    margin-left: auto;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 11px;
-    color: var(--nebula);
-    white-space: nowrap;
-    padding-left: 12px;
-  }
-  .check { width: 18px; height: 18px; border: 2px solid var(--nebula); border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
-  .check.done { background: var(--green); border-color: var(--green); display: flex; align-items: center; justify-content: center; }
-  .check.done::after { content: '✓'; color: #fff; font-size: 14px; }
 
-  /* Path */
-  .path { display: flex; align-items: center; gap: 0; flex-wrap: wrap; }
-  .path-step {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 14px;
-    color: var(--text-light);
-    text-align: center;
-    flex: 1;
-    min-width: 120px;
-  }
-  .path-step.done { border-color: var(--green); color: var(--green); }
-  .path-step.active { border-color: var(--nebula); color: var(--nebula); background: var(--soft-yellow); }
-  .path-arrow { color: var(--nebula); font-size: 18px; padding: 0 6px; flex-shrink: 0; }
-
-  /* Milestone table */
-  .milestone-table { width: 100%; border-collapse: collapse; }
-  .milestone-table th {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em;
-    padding: 12px 14px; text-align: left; background: var(--cream); border-bottom: 1px solid var(--border);
-  }
-  .milestone-table td { padding: 12px 14px; font-size: 14px; color: var(--text); border-bottom: 1px solid var(--border); }
-
-  /* Notice */
   .notice {
-    background: var(--soft-yellow);
+    background: rgba(255,242,175,0.3);
     border-left: 4px solid var(--sunstar);
     border-radius: 0 8px 8px 0;
     padding: 16px 18px;
@@ -239,24 +191,14 @@
     font-style: italic;
   }
 
-  /* Pane management */
   .pane { display: none; }
   .pane.active { display: block; }
 
-  /* Revenue bar */
-  .rev-bar-wrap { margin: 12px 0; }
-  .rev-bar-label { display: flex; justify-content: space-between; font-size: 14px; color: var(--text-light); margin-bottom: 6px; }
-  .rev-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
-  .rev-bar-fill { height: 100%; background: var(--nebula); border-radius: 4px; }
-  .rev-bar-fill.gold { background: var(--sunstar); }
-
-  /* Pilot cards grid */
   .pilots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
   .pilot-card {
     background: var(--cream);
     border-radius: 10px;
     overflow: hidden;
-    border-left: 4px solid var(--nebula);
     border: 1px solid var(--border);
     border-left: 4px solid var(--nebula);
     box-shadow: 0 1px 3px rgba(42,29,53,0.08);
@@ -269,25 +211,17 @@
     background: var(--cream);
     border-bottom: 1px solid var(--border);
   }
-  .pilot-card-header h4 { font-family: orpheuspro, Georgia, serif; font-size: 15px; color: var(--galaxy); margin-bottom: 4px; font-weight: 400; letter-spacing: -0.01em; }
+  .pilot-card-header h4 { font-family: orpheuspro, Georgia, serif; font-size: 15px; color: var(--galaxy); margin-bottom: 4px; font-weight: 400; }
   .pilot-card-header .category { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--text-light); }
   .pilot-card-content { padding: 16px; }
   .pilot-progress { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--text-light); margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
   .pilot-status { font-size: 14px; color: var(--text-light); margin-bottom: 12px; font-style: italic; }
   .pilot-checklist { list-style: none; }
   .pilot-checklist li {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 8px 0;
-    font-size: 14px;
-    color: var(--text);
-    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 8px; padding: 8px 0; font-size: 14px; color: var(--text); border-bottom: 1px solid var(--border);
   }
   .pilot-checklist li:last-child { border-bottom: none; }
-  .pilot-checklist li.overdue { color: var(--red); }
 
-  /* Sales pipeline table */
   .pipeline-table { width: 100%; border-collapse: collapse; }
   .pipeline-table th {
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -295,126 +229,45 @@
     padding: 12px 12px; text-align: left; background: var(--cream); border-bottom: 1px solid var(--border);
   }
   .pipeline-table td { padding: 12px; font-size: 14px; color: var(--text); border-bottom: 1px solid var(--border); }
-  .pipeline-table tr:hover td { background: var(--soft-yellow); }
 
   .stage-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    display: inline-block; padding: 4px 12px; border-radius: 4px;
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
   }
   .stage-badge.green { background: rgba(45,138,86,0.12); color: var(--green); }
   .stage-badge.purple { background: rgba(173,118,178,0.12); color: var(--nebula); }
   .stage-badge.amber { background: rgba(201,123,26,0.12); color: var(--amber); }
-  .stage-badge.red { background: rgba(181,64,58,0.12); color: var(--red); }
 
   .lead-name { font-weight: 600; color: var(--galaxy); }
-  .lead-note { font-size: 14px; color: var(--text-light); margin-top: 4px; }
 
-  /* Green card for recently fixed */
-  .card.green-border {
-    border-left: 4px solid var(--green);
-  }
-
-  /* Feature grid cards */
-  .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .feature-card {
-    background: var(--cream);
-    border-radius: 8px;
-    padding: 16px;
-    border-left: 3px solid var(--nebula);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--nebula);
-  }
-  .feature-card h4 { font-family: orpheuspro, Georgia, serif; font-size: 14px; color: var(--galaxy); margin-bottom: 10px; font-weight: 400; letter-spacing: -0.01em; }
-  .feature-card .tag { display: inline-block; padding: 3px 8px; border-radius: 4px; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--text-light); background: var(--cream); margin-right: 6px; margin-bottom: 8px; }
-  .feature-card p { font-size: 14px; color: var(--text); line-height: 1.5; }
-
-  /* Bug count summary */
-  .bug-count-summary { font-size: 14px; color: var(--text-light); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-
-  footer { text-align: center; padding: 32px; color: var(--text-light); font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14px; }
-
-  /* Architecture Map */
   .arch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .arch-card {
-    background: var(--cream);
-    border-radius: 10px;
-    padding: 16px;
-    border-top: 4px solid var(--border);
-    position: relative;
-    border: 1px solid var(--border);
-    border-top: 4px solid var(--border);
+    background: var(--cream); border-radius: 10px; padding: 16px; position: relative;
+    border: 1px solid var(--border); border-top: 4px solid var(--border);
   }
   .arch-card.works { border-top-color: var(--green); }
   .arch-card.broken { border-top-color: var(--red); }
   .arch-card.partial { border-top-color: var(--amber); }
   .arch-card.future { border-top-color: var(--nebula); border-style: dashed; border-top-style: dashed; }
-  .arch-card h4 { font-family: orpheuspro, Georgia, serif; font-size: 14px; color: var(--galaxy); margin-bottom: 6px; font-weight: 400; letter-spacing: -0.01em; }
+  .arch-card h4 { font-family: orpheuspro, Georgia, serif; font-size: 14px; color: var(--galaxy); margin-bottom: 6px; font-weight: 400; }
   .arch-card p { font-size: 14px; color: var(--text-light); line-height: 1.5; }
   .arch-status {
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    margin-bottom: 8px;
+    display: inline-block; padding: 3px 8px; border-radius: 4px;
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 8px;
   }
   .arch-status.works { background: rgba(45,138,86,0.12); color: var(--green); }
   .arch-status.broken { background: rgba(181,64,58,0.12); color: var(--red); }
   .arch-status.partial { background: rgba(201,123,26,0.12); color: var(--amber); }
   .arch-status.future { background: rgba(173,118,178,0.12); color: var(--nebula); }
 
-  /* Simplify cards */
-  .simplify-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .simplify-card {
-    background: var(--cream);
-    border-radius: 10px;
-    padding: 16px;
-    border-left: 3px solid var(--sunstar);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--sunstar);
-  }
-  .simplify-card h4 { font-family: orpheuspro, Georgia, serif; font-size: 14px; color: var(--sunstar); margin-bottom: 6px; font-weight: 400; letter-spacing: -0.01em; }
-  .simplify-card .now { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--red); margin-bottom: 4px; font-weight: 600; }
-  .simplify-card .then { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--green); margin-bottom: 8px; font-weight: 600; }
-  .simplify-card p { font-size: 14px; color: var(--text-light); line-height: 1.5; }
-
-  /* Legend */
-  .legend { display: flex; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
-  .legend-item { display: flex; align-items: center; gap: 6px; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--text-light); }
-  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
-  .legend-dot.green { background: var(--green); }
-  .legend-dot.red { background: var(--red); }
-  .legend-dot.amber { background: var(--amber); }
-  .legend-dot.purple { background: var(--nebula); }
-
-  /* Flow diagram */
   .flow-diagram {
-    background: var(--cream);
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-    border: 1px solid var(--border);
+    background: var(--cream); border-radius: 10px; padding: 20px;
+    display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap;
+    margin-bottom: 16px; border: 1px solid var(--border);
   }
   .flow-step {
-    text-align: center;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 14px;
-    min-width: 110px;
+    text-align: center; padding: 12px 16px; border-radius: 8px;
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14px; min-width: 110px;
   }
   .flow-step.green { background: rgba(45,138,86,0.12); border: 1px solid rgba(45,138,86,0.24); color: var(--green); }
   .flow-step.red { background: rgba(181,64,58,0.12); border: 1px solid rgba(181,64,58,0.24); color: var(--red); }
@@ -423,81 +276,32 @@
   .flow-step strong { display: block; margin-bottom: 2px; }
   .flow-arrow { color: var(--nebula); font-size: 20px; padding: 0 8px; }
 
-  /* Plan styles */
   .plan-header {
-    font-family: orpheuspro, Georgia, serif;
-    font-size: 32px;
-    font-weight: 400;
-    color: var(--galaxy);
-    margin-bottom: 8px;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-  }
-  .plan-sub {
-    font-size: 14px;
-    color: var(--text-light);
-    margin-bottom: 32px;
-    line-height: 1.6;
+    font-family: orpheuspro, Georgia, serif; font-size: 32px; font-weight: 400; color: var(--galaxy);
+    margin-bottom: 8px; line-height: 1.3;
   }
   .week-block {
-    background: var(--cream);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 24px;
-    border-left: 4px solid var(--border);
-    position: relative;
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--border);
+    background: var(--cream); border-radius: 12px; padding: 24px; margin-bottom: 24px;
+    border: 1px solid var(--border); border-left: 4px solid var(--border);
   }
   .week-block.now { border-left-color: var(--sunstar); }
   .week-block.next { border-left-color: var(--nebula); }
-  .week-block.later { border-left-color: var(--text-light); }
-  .week-block.after { border-left-color: var(--border); }
   .week-label {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 6px;
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;
   }
   .week-label.now { color: var(--sunstar); }
   .week-label.next { color: var(--nebula); }
-  .week-label.later { color: var(--text-light); }
-  .week-label.after { color: var(--border); }
   .week-title {
-    font-family: orpheuspro, Georgia, serif;
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--galaxy);
+    font-family: orpheuspro, Georgia, serif; font-size: 18px; font-weight: 400; color: var(--galaxy);
     margin-bottom: 4px;
-    letter-spacing: -0.01em;
   }
-  .week-outcome {
-    font-size: 14px;
-    color: var(--nebula);
-    margin-bottom: 16px;
-    font-style: italic;
-  }
-  .task-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-  }
+  .task-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
   .task-row:last-child { border-bottom: none; }
   .task-owner {
-    background: var(--cream);
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--nebula);
-    white-space: nowrap;
-    min-width: 70px;
-    text-align: center;
+    background: var(--cream); border-radius: 6px; padding: 4px 10px;
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 600;
+    color: var(--nebula); white-space: nowrap; min-width: 70px; text-align: center;
   }
   .task-owner.loren { color: var(--sunstar); }
   .task-owner.kelley { color: var(--nebula); }
@@ -506,43 +310,43 @@
   .task-content strong { font-size: 14px; color: var(--galaxy); display: block; margin-bottom: 4px; }
   .task-content span { font-size: 14px; color: var(--text-light); }
   .task-effort {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 11px;
-    color: var(--text-light);
-    background: var(--cream);
-    padding: 3px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--text-light);
+    background: var(--cream); padding: 3px 8px; border-radius: 4px; white-space: nowrap;
   }
 
-  /* Shoptalk leads */
   .lead-card {
-    background: var(--cream);
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 12px;
-    border: 1px solid var(--border);
+    background: var(--cream); border-radius: 8px; padding: 16px; margin-bottom: 12px; border: 1px solid var(--border);
   }
-  .lead-card h4 { font-family: orpheuspro, Georgia, serif; font-size: 14px; color: var(--galaxy); margin-bottom: 6px; font-weight: 400; letter-spacing: -0.01em; }
+  .lead-card h4 { font-family: orpheuspro, Georgia, serif; font-size: 14px; color: var(--galaxy); margin-bottom: 6px; font-weight: 400; }
   .lead-card .insight { font-size: 14px; color: var(--sunstar); margin-bottom: 6px; font-style: italic; }
   .lead-card .action { font-size: 14px; color: var(--green); }
   .lead-card .who { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--nebula); margin-top: 6px; }
 
-  /* Detail separator */
-  .detail-section {
-    padding-top: 32px;
-    margin-top: 32px;
-    border-top: 1px dashed var(--border);
-  }
+  .detail-section { padding-top: 32px; margin-top: 32px; border-top: 1px dashed var(--border); }
   .detail-label {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 11px;
-    color: var(--text-light);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 20px;
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--text-light);
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px;
   }
+
+  .bug-count-summary { font-size: 14px; color: var(--text-light); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+
+  .legend { display: flex; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--text-light); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+  .legend-dot.green { background: var(--green); }
+  .legend-dot.red { background: var(--red); }
+  .legend-dot.amber { background: var(--amber); }
+  .legend-dot.purple { background: var(--nebula); }
+
+  .milestone-table { width: 100%; border-collapse: collapse; }
+  .milestone-table th {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 12px 14px; text-align: left; background: var(--cream); border-bottom: 1px solid var(--border);
+  }
+  .milestone-table td { padding: 12px 14px; font-size: 14px; color: var(--text); border-bottom: 1px solid var(--border); }
+
+  footer { text-align: center; padding: 32px; color: var(--text-light); font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14px; }
 </style>
 </head>
 
@@ -568,12 +372,11 @@
   <div class="tab" onclick="show('ops', this)">OPS & FINANCE</div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════ THE PLAN ══ -->
+<!-- THE PLAN -->
 <div class="content pane active" id="plan">
 
-  <div class="notice">Mairin strategy call: introduce $1K setup fee + $99/mo. Build 4-5 template flows with problem statements (product delight phase). Pop-ups deprioritized — focus retail/omni-channel. Sales deck needs rework. Tanmay: status on Shopify + Lightspeed integrations needed. Soberish flow build this week.</div>
+  <div class="notice">Loren out with family this week — peppered online. Main goal: onboard ALL pilots. Soberish call Friday for one flow. Re-ping G&amp;Y, Tea, One of Each. AI Search shipped (Tanmay Apr 5). First inbound website lead from a stranger (Apr 6). Pricing: $1K setup + $99/mo. Tagging best practices doc published (Kelley).</div>
 
-  <!-- METRICS -->
   <div class="metrics">
     <div class="metric good">
       <div class="num">5</div>
@@ -586,18 +389,18 @@
       <div class="sub">ShopTalk + Faced + new</div>
     </div>
     <div class="metric warn">
-      <div class="num">$0</div>
-      <div class="label">Revenue</div>
-      <div class="sub">Pre-revenue</div>
+      <div class="num">11</div>
+      <div class="label">Open Bugs</div>
+      <div class="sub">1 high, 5 med, 3 low, 2 untriaged</div>
     </div>
     <div class="metric">
-      <div class="num">$99–199</div>
+      <div class="num">$1K+$99</div>
       <div class="label">Pricing</div>
-      <div class="sub">Per pilot / month</div>
+      <div class="sub">Setup + monthly SaaS</div>
     </div>
   </div>
 
-  <!-- RIGHT NOW: THIS WEEK -->
+  <!-- RIGHT NOW -->
   <div class="section">
     <div class="section-title">RIGHT NOW WEEK (APR 6–11)</div>
     <div class="week-block now">
@@ -607,8 +410,8 @@
       <div class="task-row">
         <div class="task-owner loren">Loren</div>
         <div class="task-content">
-          <strong>Follow up: Just Add Honey (Tea), A Bag Concept, Glad & Young</strong>
-          <span>Internal clients getting set up. ABC needs check-in (solo operator, waits for prompting). G&Y login info still needed for Kelley. Tea needs onboarding kickoff.</span>
+          <strong>Onboard all pilots &mdash; Soberish call Friday, re-ping G&amp;Y, Tea, One of Each</strong>
+          <span>Loren out with family but moving things along. Walk brands through setup. "The other bag lady we can have them start from scratch."</span>
         </div>
         <div class="task-effort">This week</div>
       </div>
@@ -616,17 +419,17 @@
       <div class="task-row">
         <div class="task-owner tanmay">Tanmay</div>
         <div class="task-content">
-          <strong>Status update needed: Shopify + Lightspeed integrations</strong>
-          <span>POS/CRM sync is critical — Mairin meeting confirmed this is a must-have. Shopify sync plan proposed (P1) but Loren needs a status check from Tanmay.</span>
+          <strong>AI Search shipped &mdash; now focus on bug fixes + auto-tagging pipeline</strong>
+          <span>AI Search implemented and ready (Apr 5). Next: refine LLM auto-tagging prompts with Soberish data. 11 open bugs to triage.</span>
         </div>
-        <div class="task-effort">ASAP</div>
+        <div class="task-effort">This week</div>
       </div>
 
       <div class="task-row">
         <div class="task-owner kelley">Kelley</div>
         <div class="task-content">
-          <strong>Build out Soberish flow</strong>
-          <span>Soberish needs flows built before in-store deployment. THC count tagging is industry-specific — auto-tagging needs to handle non-standard attributes.</span>
+          <strong>QR signage templates + flow iteration from Soberish feedback</strong>
+          <span>Tagging best practices doc published (Apr 3). QR sign templates nearly done. G&amp;Y flows ready when cleared.</span>
         </div>
         <div class="task-effort">This week</div>
       </div>
@@ -634,19 +437,10 @@
       <div class="task-row">
         <div class="task-owner loren">Loren</div>
         <div class="task-content">
-          <strong>Rework sales deck — stop using Claude, use own pitch skills</strong>
-          <span>Getting crickets from deck sends. Mairin confirmed: deck is nice but not converting. Loren's superpower is pitch writing — needs a focused session to rebuild without AI.</span>
+          <strong>Bug testing &mdash; responses, button/URL clicks, saved products in profiles, analytics</strong>
+          <span>"Continuously going through product for bugs / issues!" Loren specifically flagged responses &amp; button/URL clicks plus analytics clarity.</span>
         </div>
-        <div class="task-effort">Weekend</div>
-      </div>
-
-      <div class="task-row">
-        <div class="task-owner loren">Loren</div>
-        <div class="task-content">
-          <strong>Implement Mairin's OS feedback</strong>
-          <span>Ask Claude about data pipeline ("walk me through how you're pulling these"). Add in-app dismiss/feedback buttons. Share advisor view with Mairin for readability review.</span>
-        </div>
-        <div class="task-effort">Weekend</div>
+        <div class="task-effort">Ongoing</div>
       </div>
 
       <div class="task-row">
@@ -674,54 +468,41 @@
     <div class="section-title">THIS MONTH 4-WEEK SPRINT</div>
 
     <div class="week-block now" style="margin-bottom: 12px;">
-      <div class="week-label now">WEEK 1 (Apr 1–4) ← YOU ARE HERE</div>
-      <div class="week-title">Sales Deck Out + Soberish & G&Y Live</div>
-      <div class="task-row">
-        <div class="task-owner loren">Loren</div>
-        <div class="task-content"><strong>Send sales deck to 11 active leads — Faced, Kohl's, Publicis, Philip Morris, etc.</strong></div>
-      </div>
+      <div class="week-label now">WEEK 2 (Apr 7&ndash;11) &larr; YOU ARE HERE</div>
+      <div class="week-title">Auto-Tagging Foundation + Soberish Live Walkthrough</div>
       <div class="task-row">
         <div class="task-owner tanmay">Tanmay</div>
-        <div class="task-content"><strong>Product stability review + login flow + responses duplicating bug</strong></div>
-      </div>
-      <div class="task-row">
-        <div class="task-owner kelley">Kelley</div>
-        <div class="task-content"><strong>G&Y flows + QR sign templates for Soberish & G&Y</strong></div>
-      </div>
-    </div>
-
-    <div class="week-block next" style="margin-bottom: 12px;">
-      <div class="week-label next">WEEK 2 (Apr 7–11)</div>
-      <div class="week-title">Auto-Tagging Foundation</div>
-      <div class="task-row">
-        <div class="task-owner tanmay">Tanmay</div>
-        <div class="task-content"><strong>Auto-tagging pipeline with Soberish data — refine LLM prompts</strong></div>
+        <div class="task-content"><strong>Auto-tagging pipeline with Soberish data &mdash; refine LLM prompts</strong></div>
       </div>
       <div class="task-row">
         <div class="task-owner kelley">Kelley</div>
         <div class="task-content"><strong>Flow iteration based on Soberish in-store feedback</strong></div>
       </div>
+      <div class="task-row">
+        <div class="task-owner loren">Loren</div>
+        <div class="task-content"><strong>Soberish call Friday &mdash; walk through one flow live</strong></div>
+      </div>
     </div>
 
     <div class="week-block next" style="margin-bottom: 12px;">
-      <div class="week-label next">WEEK 3 (Apr 14–18)</div>
-      <div class="week-title">Pilots 2 & 3 Onboarding</div>
+      <div class="week-label next">WEEK 3 (Apr 14&ndash;18)</div>
+      <div class="week-title">Pilots 2 &amp; 3 Onboarding</div>
       <div class="task-row">
         <div class="task-owner loren">Loren</div>
-        <div class="task-content"><strong>Convert Glad & Young, sign second paid pilot</strong></div>
+        <div class="task-content"><strong>Convert Glad &amp; Young, sign second paid pilot</strong></div>
       </div>
       <div class="task-row">
         <div class="task-owner tanmay">Tanmay</div>
-        <div class="task-content"><strong>Auto-tagging ready for Glad & Young (2K SKUs)</strong></div>
+        <div class="task-content"><strong>Auto-tagging ready for Glad &amp; Young (2K SKUs)</strong></div>
       </div>
     </div>
 
     <div class="week-block next">
-      <div class="week-label next">WEEK 4 (Apr 21–25)</div>
+      <div class="week-label next">WEEK 4 (Apr 21&ndash;25)</div>
       <div class="week-title">Revenue + Prep Seed</div>
       <div class="task-row">
         <div class="task-owner loren">Loren</div>
-        <div class="task-content"><strong>Convert first pilot to paid ($99–199/mo)</strong></div>
+        <div class="task-content"><strong>Convert first pilot to paid ($1K setup + $99/mo)</strong></div>
       </div>
       <div class="task-row">
         <div class="task-owner loren">Loren</div>
@@ -732,99 +513,126 @@
 
   <!-- KEY DECISIONS -->
   <div class="section">
-    <div class="section-title">KEY DECISIONS FROM RECENT MEETINGS</div>
+    <div class="section-title">KEY DECISIONS &amp; SIGNALS</div>
     <div class="two-col">
-      <div class="card" style="border-left: 4px solid #4CAF50;">
-        <h3 style="color: #4CAF50; font-size: 14px;">From Mairin Strategy Call (Apr 3)</h3>
+      <div class="card" style="border-left: 4px solid var(--green);">
+        <h3 style="color: var(--green); font-size: 14px;">Wins This Week</h3>
         <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-          <strong>New pricing model:</strong> $1,000 setup fee + $99/mo. Charge for the strategy + setup — Loren & Kelley are valuable consultants, not just software sellers.<br>
-          <strong>Services + SaaS = the moat.</strong> Services revenue is real revenue. Mairin's company is 40% services. Funnel: value exchange → services → SaaS in the middle.<br>
-          <strong>Build 4-5 template flows with problem statements</strong> — "Flow to gain traction for your new product launch." Users discover value immediately instead of empty basket.<br>
-          <strong>Product phase: Delight.</strong> Basic ✓. Performance ✓. Now: anticipate needs, build for the user. Close the gap between customer and revenue.<br>
-          <strong>Deprioritize pop-up-only pilots.</strong> Solo operators lack bandwidth to self-direct. Focus on retail/omni-channel with physical spaces.<br>
-          <strong>Own the SMB/mid-market now.</strong> Enterprises (Vitamin Shoppe) will build it themselves. Lock in SMBs before bigger players enter.<br>
-          <strong>Flodesk as brand inspiration</strong> — invested in design + experience, not just tools. Mirour already has great branding — lean into beautiful experience as selling point.
+          <strong>AI Search shipped</strong> &mdash; Tanmay (Apr 5). Demo: mirour.me/f/f56b8e2e<br>
+          <strong>First inbound website lead</strong> &mdash; from a stranger, "no relation to us, which is so fun" (Loren, Apr 6)<br>
+          <strong>Fantastic Soberish call</strong> &mdash; Mehrnush: "never seen anything like it, called it a big deal" (Apr 3)<br>
+          <strong>Tagging best practices doc</strong> published by Kelley (Apr 3)<br>
+          <strong>2 bugs fixed:</strong> profile for users, analytics wrong responses (object vs text)<br>
+          <strong>Pricing confirmed:</strong> $1K setup + $99/mo (advisor feedback Apr 3)
         </div>
       </div>
-      <div class="card" style="border-left: 4px solid #FF5252;">
-        <h3 style="color: #FF5252; font-size: 14px;">Blocking Issues</h3>
+      <div class="card" style="border-left: 4px solid var(--red);">
+        <h3 style="color: var(--red); font-size: 14px;">Blocking Issues</h3>
         <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-          <strong>13 open bugs</strong> in Shape Up Bugs/QA (1 high, 5 medium, 3 low, 4 untriaged).<br>
-          <strong>Profile skip contact causing issues</strong> — only High priority bug.<br>
-          <strong>Analytics bugs (4)</strong> — not working, simplification needed, wrong responses (object vs text).<br>
-          <strong>4 new untriaged bugs:</strong> profile for users, responses abandon, notes inside profile, analytics page showing wrong responses.<br>
-          <strong>Sales deck not converting</strong> — Loren getting crickets from sends. Needs full rework using own pitch skills, not AI.<br>
-          <strong>Shopify/Lightspeed integration status unknown</strong> — Tanmay needs to give update. POS sync is critical for pilot value.
+          <strong>11 open bugs</strong> in Shape Up Bugs/QA (1 high, 5 medium, 3 low, 2 untriaged).<br>
+          <strong>Profile skip contact causing issues</strong> &mdash; only HIGH priority bug.<br>
+          <strong>Analytics bugs (4)</strong> &mdash; not working, simplification needed, separate notes.<br>
+          <strong>Lightspeed integration critical</strong> &mdash; Soberish: "POS integration is non-negotiable." Archived products, channel toggles, real-time sync all needed.<br>
+          <strong>Responses duplicating</strong> &mdash; in active sprint, Tanmay investigating.<br>
+          <strong>Loren out this week</strong> &mdash; peppered online, family time.
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SHOPTALK + NEW LEADS -->
+  <!-- WHO'S DOING WHAT -->
   <div class="section">
-    <div class="section-title">ACTIVE LEADS — SHOPTALK + NEW</div>
+    <div class="section-title">THIS WEEK &mdash; WHO&rsquo;S DOING WHAT (FROM #DAILYUPDATES)</div>
+    <div class="three-col">
+      <div class="card" style="border-left: 4px solid var(--sunstar);">
+        <h3 style="color: var(--sunstar); font-size: 14px;">Loren &mdash; CEO</h3>
+        <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
+          <strong>Win:</strong> First inbound brand on website from no relation (Apr 6)<br><br>
+          <strong>Working:</strong> Onboarding pilot brands. Soberish call Friday.<br><br>
+          <strong>Need:</strong> Continuously going through product for bugs. Responses &amp; button/URL clicks. Analytics clarity.
+        </div>
+      </div>
+      <div class="card" style="border-left: 4px solid var(--green);">
+        <h3 style="color: var(--green); font-size: 14px;">Tanmay &mdash; CTO</h3>
+        <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
+          <strong>Win:</strong> AI Search implemented and ready (Apr 5)<br><br>
+          <strong>Working:</strong> Bug fixes and AI chat feature polishing. Auto-tagging pipeline.<br><br>
+          <strong>Need:</strong> Bug reports from Loren/Kelley. Soberish Lightspeed access.
+        </div>
+      </div>
+      <div class="card" style="border-left: 4px solid var(--nebula);">
+        <h3 style="color: var(--nebula); font-size: 14px;">Kelley &mdash; CBO</h3>
+        <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
+          <strong>Win:</strong> Excited for Soberish pilot &mdash; so close! (Apr 3)<br><br>
+          <strong>Working:</strong> QR signage templates, tagging best practices doc (published!)<br><br>
+          <strong>Need:</strong> Cleared to create G&amp;Y flows?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVE LEADS -->
+  <div class="section">
+    <div class="section-title">ACTIVE LEADS &mdash; SHOPTALK + NEW</div>
     <div class="lead-card">
-      <h4>Faced Facial Studio · WARM 🔥</h4>
+      <h4>Faced Facial Studio &middot; WARM</h4>
       <div class="insight">Multi-store facial studio. Super interested in paid pilot after call with Loren (Mar 31).</div>
-      <div class="action">→ Send sales deck + follow up on paid pilot details. Potential $99/mo.</div>
+      <div class="action">&rarr; Follow up email. Potential $99/mo + $1K setup.</div>
       <div class="who">Loren</div>
     </div>
     <div class="lead-card">
-      <h4>Maureen · Kohl's</h4>
-      <div class="insight">Multi-location, in-store engagement + data capture</div>
-      <div class="action">→ Send sales deck (brand)</div>
+      <h4>Kula Coffee &middot; PROPOSAL</h4>
+      <div class="insight">At proposal stage in pipeline. Active follow up.</div>
+      <div class="action">&rarr; Follow up email</div>
       <div class="who">Loren</div>
     </div>
     <div class="lead-card">
-      <h4>Terrence Chung · Philip Morris</h4>
-      <div class="insight">Heavy experiential investment, CRM lead ex-J.Crew</div>
-      <div class="action">→ Follow up email this week</div>
+      <h4>Kohl&rsquo;s &middot; Publicis Group &middot; Philip Morris</h4>
+      <div class="insight">Enterprise / agency leads from ShopTalk</div>
+      <div class="action">&rarr; Send sales decks (brand + partnerships)</div>
       <div class="who">Loren</div>
     </div>
     <div class="lead-card">
-      <h4>Elizabeth · Publicis Group</h4>
-      <div class="insight">Agency partner, client-ready solutions</div>
-      <div class="action">→ Send sales deck (partnerships)</div>
-      <div class="who">Loren</div>
-    </div>
-    <div class="lead-card">
-      <h4>Max · Veronica Beard</h4>
-      <div class="insight">Women's apparel. Revenue split 33/33/33 (wholesale/in-store/e-com). Met Max (data lead) at ShopTalk breakfast — customer discovered him, he shared their stack. Very interested in in-store data.</div>
-      <div class="action">→ Follow up email sent — keep warm</div>
-      <div class="who">Loren</div>
-    </div>
-    <div class="lead-card">
-      <h4>Highland Diamond · Jai Lyle · Aja</h4>
+      <h4>Veronica Beard &middot; Highland Diamond &middot; Aja</h4>
       <div class="insight">Warm leads from ShopTalk conversations</div>
-      <div class="action">→ Follow up emails</div>
+      <div class="action">&rarr; Follow up emails</div>
+      <div class="who">Loren</div>
+    </div>
+    <div class="lead-card">
+      <h4>NEW: First inbound website lead (Apr 6)</h4>
+      <div class="insight">Unknown brand found Mirour organically &mdash; no prior connection.</div>
+      <div class="action">&rarr; Follow up and qualify</div>
+      <div class="who">Loren</div>
+    </div>
+    <div class="lead-card">
+      <h4>Nisha / Tech Week ATL</h4>
+      <div class="insight">Wants Mirour to host or do a panel. "She wants to amplify what we're doing."</div>
+      <div class="action">&rarr; Decide event format (mini ShopTalk? AI + IRL panel?)</div>
       <div class="who">Loren</div>
     </div>
   </div>
 
   <!-- MARKET SIGNALS -->
   <div class="section">
-    <div class="section-title">MARKET SIGNALS & STRATEGIC CONTEXT</div>
+    <div class="section-title">MARKET SIGNALS &amp; STRATEGIC CONTEXT</div>
     <div class="card">
       <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-        <strong>In-store is THE conversation.</strong> 20% experiential spaces becoming standard. Vitamin Shoppe built their own Mirour-like tool in 2 weeks — enterprises will build, SMBs won't.<br><br>
-        <strong>Product data is everyone's wall.</strong> AI/agentic commerce requires structured tags first. Industry-specific tags (THC count for Soberish) are non-standard — our tagging service is the moat.<br><br>
-        <strong>SaaS is not dead (Mairin's Qualtrics insight):</strong> Anthropic still uses Qualtrics for basic surveys. Companies outsource what they don't want to own, even if they could build it.<br><br>
-        <strong>Competitive gap:</strong> QR competitors do data capture. Canva does landing pages. Nobody does branded, guided in-store touchpoints with product recommendations.<br><br>
-        <strong>Key insight from ABC pilot:</strong> Solo operators wait to be told what to do. Template flows with problem statements solve this. Education IS the product.<br><br>
-        <strong>Retail store pilot (launching ~2 weeks):</strong> Walkthrough today — reaction was "this is incredible." Immediately said yes to $99/mo without hesitation. Speed of yes = leaving money on the table.<br><br>
-        <strong>Next milestone:</strong> Introduce $1K setup + $99/mo. Convert first pilot to paid. Build case study. That unlocks fundraising.
+        <strong>Soberish validation:</strong> Mehrnush called it "a big deal" &mdash; "never seen anything like it." Can already see how it helps both consumer and brand. Strongest pilot validation yet.<br><br>
+        <strong>Lightspeed integration is non-negotiable</strong> for Soberish. Archived products, channel toggles (online-only vs in-store), real-time sync are all requirements. CSV filtering to active-only needed as interim.<br><br>
+        <strong>Soberish new website went live</strong> &mdash; everything in Lightspeed IS on the website now. Categories on website could map to Mirour categories. Tags may come from Lightspeed directly.<br><br>
+        <strong>Product data is everyone&rsquo;s wall.</strong> AI/agentic commerce requires structured tags first. Tags are the core of everything &mdash; if tags work, everything works.<br><br>
+        <strong>Tech Week ATL opportunity</strong> &mdash; Nisha wants Mirour to host/panel. Could position as "Using AI to make in-person better."
       </div>
     </div>
   </div>
 
 </div>
 
-<!-- ═══════════════════════════════════════════════════════ PRODUCT ══ -->
+<!-- PRODUCT -->
 <div class="content pane" id="product">
 
-  <div class="notice">13 open bugs (4 new untriaged). Tanmay needs to give integration status (Shopify/Lightspeed). Soberish flow build this week. Mairin: build template flows with problem statements for product delight phase.</div>
+  <div class="notice">AI Search shipped (Tanmay Apr 5). 11 open bugs (down from 13 &mdash; 2 fixed). Responses duplicating in active sprint. Tagging best practices doc published. Soberish walkthrough Friday.</div>
 
-  <!-- METRICS -->
   <div class="metrics">
     <div class="metric">
       <div class="num">3</div>
@@ -832,9 +640,9 @@
       <div class="sub">LLM tagging + hide fields + responses dup</div>
     </div>
     <div class="metric warn">
-      <div class="num">13</div>
+      <div class="num">11</div>
       <div class="label">Open Bugs</div>
-      <div class="sub">1 high, 5 med, 3 low, 4 new</div>
+      <div class="sub">1 high, 5 med, 3 low, 2 untriaged</div>
     </div>
     <div class="metric good">
       <div class="num">5</div>
@@ -844,202 +652,147 @@
     <div class="metric good">
       <div class="num">2</div>
       <div class="label">In Build</div>
-      <div class="sub">Product Dev — Approved</div>
+      <div class="sub">Product Dev &mdash; Approved</div>
     </div>
   </div>
 
-  <!-- ═══ LAYER 1: ACTIVE SPRINT (Shape Up) ═══ -->
+  <!-- ACTIVE SPRINT -->
   <div class="section">
-    <div class="section-title">ACTIVE SPRINT — SHAPE UP (SOURCE OF TRUTH)</div>
+    <div class="section-title">ACTIVE SPRINT &mdash; SHAPE UP (SOURCE OF TRUTH)</div>
     <div class="card">
       <table class="bug-table">
-        <thead>
-          <tr><th>Ticket</th><th>Owner</th><th>Priority</th></tr>
-        </thead>
+        <thead><tr><th>Ticket</th><th>Owner</th><th>Priority</th></tr></thead>
         <tbody>
           <tr>
-            <td><strong style="color: var(--sunstar);">Build LLM Auto-Tagging System</strong><br><span style="font-size: 14px; color: var(--text-light);">THE #1 priority and our IP. Batch products + context → LLM → consistent tags → DB. Working externally but not in mirour2 repo yet.</span></td>
-            <td>—</td>
+            <td><strong style="color: var(--sunstar);">Build LLM Auto-Tagging System</strong><br><span style="font-size: 14px; color: var(--text-light);">THE #1 priority and our IP. Batch products + context &rarr; LLM &rarr; consistent tags &rarr; DB.</span></td>
+            <td>&mdash;</td>
             <td><span class="badge amber">MEDIUM</span></td>
           </tr>
           <tr>
-            <td><strong>Hide profile fields from customers view</strong><br><span style="font-size: 14px; color: var(--text-light);">Customer-facing profile view should not show internal fields.</span></td>
+            <td><strong>Hide profile fields from customers view</strong><br><span style="font-size: 14px; color: var(--text-light);">Customer-facing profile should not show internal fields.</span></td>
             <td>Tanmay</td>
             <td><span class="badge green">LOW</span></td>
           </tr>
           <tr>
-            <td><strong style="color: var(--red);">responses duplicating</strong><br><span style="font-size: 14px; color: var(--text-light);">Loren saw responses showing multiple submits + abandons from Shoptalk email capture test (loren@mirour flow). May be a display issue or DB write issue. Tanmay investigating Apr 2.</span></td>
-            <td>Tanmay</td>
-            <td><span class="badge red">ACTIVE</span></td>
+            <td><strong style="color: var(--red);">responses duplicating</strong><br><span style="font-size: 14px; color: var(--text-light);">Multiple submits + abandons from Shoptalk email capture test. Tanmay investigating.</span></td>
+            <td>&mdash;</td>
+            <td><span class="badge purple">UNTRIAGED</span></td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="card" style="margin-top: 12px; border-left: 4px solid var(--green);">
-      <h3 style="color: var(--green); font-size: 14px;">Recently Shipped (since Mar 26) — 14 items</h3>
+      <h3 style="color: var(--green); font-size: 14px;">Recently Shipped (since Mar 26) &mdash; 16 items</h3>
       <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-        <strong>✓ Add Tag-Based Product Display Mode</strong> — type a tag → see all matching products. Core feature for Soberish.<br>
-        <strong>✓ Hide Recommendation Strategy Logic</strong> — defaulting to "any match", removing confusing UI<br>
-        <strong>✓ Make Product Preview Clearer</strong> — helper text for dynamic recs preview mode<br>
-        <strong>✓ AI flow builder with auto-tagging and routing</strong> — Tanmay (Mar 26)<br>
-        <strong>✓ G&amp;Y auto-tag CSV</strong> — 3,063 unique products, 6 batches, ~12min runtime (Tanmay Mar 27). Kelley reviewed: compound tags &amp; some empty rows to clean up.<br>
-        <strong>✓ Soberish product images fix</strong> — was blocking pilot demo, now resolved<br>
-        <strong>✓ Not showing scans in analytics</strong> (High) · <strong>✓ Preview vs live screen</strong> (High)<br>
-        <strong>✓ Back to customers button</strong> · <strong>✓ New user screen</strong> · <strong>✓ Web page vs mobile formatting</strong><br>
-        <strong>✓ Tags not routing to products</strong> · <strong>✓ Pricing not working on preview</strong><br>
-        <strong>✓ Images not showing in product results</strong> · <strong>✓ Start page removal</strong>
+        <strong>&check; AI Search</strong> &mdash; implemented and ready (Tanmay, Apr 5)<br>
+        <strong>&check; Add Tag-Based Product Display Mode</strong> &mdash; type a tag &rarr; see all matching products<br>
+        <strong>&check; Hide Recommendation Strategy Logic</strong> &mdash; defaulting to "any match"<br>
+        <strong>&check; Make Product Preview Clearer</strong> &mdash; helper text for dynamic recs<br>
+        <strong>&check; AI flow builder with auto-tagging and routing</strong> &mdash; Tanmay (Mar 26)<br>
+        <strong>&check; G&amp;Y auto-tag CSV</strong> &mdash; 3,063 products, 6 batches<br>
+        <strong>&check; Soberish product images fix</strong> &mdash; was blocking pilot demo<br>
+        <strong>&check; profile for users</strong> &mdash; newly fixed<br>
+        <strong>&check; analytics page showing wrong responses (object vs text)</strong> &mdash; newly fixed<br>
+        <strong>&check; Not showing scans in analytics</strong> (High) &middot; <strong>&check; Preview vs live screen</strong> (High)<br>
+        <strong>&check; Back to customers button</strong> &middot; <strong>&check; New user screen</strong> &middot; <strong>&check; Web page vs mobile formatting</strong><br>
+        <strong>&check; Tags not routing to products</strong> &middot; <strong>&check; Pricing not working on preview</strong><br>
+        <strong>&check; Images not showing in product results</strong> &middot; <strong>&check; Start page removal</strong>
       </div>
     </div>
   </div>
 
-  <!-- ═══ LAYER 2: PRODUCT DEVELOPMENT ═══ -->
+  <!-- PRODUCT DEV PIPELINE -->
   <div class="section">
-    <div class="section-title">PRODUCT DEVELOPMENT PIPELINE — SOURCE: ASANA</div>
+    <div class="section-title">PRODUCT DEVELOPMENT PIPELINE &mdash; SOURCE: ASANA</div>
     <div class="card">
       <table class="bug-table">
-        <thead>
-          <tr><th>Task</th><th>Stage</th><th>Priority</th><th>Approval</th></tr>
-        </thead>
+        <thead><tr><th>Task</th><th>Stage</th><th>Priority</th><th>Approval</th></tr></thead>
         <tbody>
           <tr>
             <td><strong>Build Implementation</strong></td>
             <td><span class="badge green">BUILD</span></td>
-            <td>—</td>
+            <td>&mdash;</td>
             <td><span class="badge green">APPROVED</span></td>
           </tr>
           <tr>
             <td><strong>Update Flow Creation</strong><br><span style="font-size: 14px; color: var(--text-light);">Flow Builder improvement</span></td>
             <td><span class="badge green">BUILD</span></td>
-            <td>—</td>
+            <td>&mdash;</td>
             <td><span class="badge green">APPROVED</span></td>
-          </tr>
-          <tr>
-            <td><strong>QA + System Check</strong></td>
-            <td><span class="badge amber">REVIEW (QA)</span></td>
-            <td><span class="badge red">P1</span></td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>Sync to Shopify</strong><br><span style="font-size: 14px; color: var(--text-light);">When customer submits info in Mirour flow, create/update record in brand's Shopify store</span></td>
-            <td><span class="badge purple">IDEA</span></td>
-            <td><span class="badge red">P1</span></td>
-            <td><span class="badge amber">PLAN PROPOSED</span></td>
-          </tr>
-          <tr>
-            <td><strong>Initial step for brands template</strong></td>
-            <td><span class="badge purple">IDEA</span></td>
-            <td><span class="badge amber">P2</span></td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>Release Notes</strong></td>
-            <td><span class="badge green">PUSH LIVE</span></td>
-            <td><span class="badge green">P3</span></td>
-            <td>—</td>
           </tr>
         </tbody>
       </table>
+      <div style="font-size: 14px; color: var(--text-light); margin-top: 12px;">Note: Product Development project is archived. Active work tracked in Shape Up.</div>
     </div>
   </div>
 
-  <!-- ═══ LAYER 3: PILOTS ═══ -->
+  <!-- PILOTS -->
   <div class="section">
-    <div class="section-title">PILOTS — SOURCE: ASANA + MEETINGS</div>
+    <div class="section-title">PILOTS &mdash; SOURCE: ASANA + MEETINGS</div>
     <div class="card">
       <table class="bug-table">
-        <thead>
-          <tr><th>Pilot</th><th>Category</th><th>Stage</th><th>Progress</th></tr>
-        </thead>
+        <thead><tr><th>Pilot</th><th>Category</th><th>Stage</th><th>Progress</th></tr></thead>
         <tbody>
           <tr>
             <td><strong>A Bag Concept</strong></td>
             <td>Bags</td>
             <td><span class="badge green">LIVE</span></td>
-            <td>3/11 tasks done. QR flows live, posters printed. Pop-up store — only live pilot.</td>
+            <td>3/11 tasks done. QR flows live, posters printed. Pop-up &mdash; only live pilot.</td>
           </tr>
           <tr>
             <td><strong>Soberish</strong></td>
             <td>Non-alc beverages</td>
             <td><span class="badge amber">ONBOARDING</span></td>
-            <td>0/9 tasks. Product images bug FIXED ✓. Kelley building flows. Ready for live walkthrough.</td>
+            <td>0/9 tasks. Call with Mehrnush Friday. Starting with spirit wall only. Lightspeed POS.</td>
           </tr>
           <tr>
             <td><strong>Glad &amp; Young</strong></td>
             <td>Home / Gifts</td>
-            <td><span class="badge amber">NEXT</span></td>
-            <td>0/9 tasks. Shopify. First real LLM auto-tag test case (2K SKUs).</td>
+            <td><span class="badge amber">IN PROGRESS</span></td>
+            <td>0/9 tasks. Shopify. Kelley waiting for clearance on flows. 2K SKUs auto-tagged.</td>
           </tr>
           <tr>
             <td><strong>One of Each</strong></td>
             <td>Bags / Scarves</td>
             <td><span class="badge amber">NEXT</span></td>
-            <td>0/3 tasks. Shopify. Mother-daughter team, Cape Town + Seattle.</td>
+            <td>0/3 tasks. Shopify. Mother-daughter team. Re-ping this week.</td>
           </tr>
           <tr>
             <td><strong>Just Add Honey</strong></td>
             <td>Tea</td>
             <td><span class="badge amber">NEXT</span></td>
-            <td>0/7 tasks. Square/Shopify. All lifecycle steps open in Asana.</td>
+            <td>0/7 tasks. Square/Shopify. Re-ping this week.</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- ═══ ROADMAP ═══ -->
-  <div class="section">
-    <div class="section-title">ROADMAP — TAGGING IS THE STRATEGY</div>
-    <div class="card" style="margin-bottom: 12px; border-left: 4px solid var(--sunstar);">
-      <h3 style="color: var(--sunstar); font-size: 14px;">Phase 1: Auto-Tag on Import (NOW)</h3>
-      <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-        Brand uploads CSV or POS export → fills onboarding context form → system batches products → LLM returns consistent tags → stored in product_tags.<br>
-        <strong>Progress:</strong> Auto-tagging working externally. Tag-Based Product Display Mode shipped ✓. Soberish data web-scraped with auto-tags. G&amp;Y CSV processed: 3,063 products / 6 batches (Mar 27). In active sprint for integration into mirour2 repo.<br>
-        <strong>Known issues from G&amp;Y test:</strong> Some compound tags (e.g., "leather-charm") missing split versions ("leather", "charm"). Some products have no tags (empty brackets). Kelley reviewing — not a blocker for flows.<br>
-        <strong>Next:</strong> Clean G&amp;Y CSV, integrate into product import flow, use as first production auto-tag case.
-      </div>
-    </div>
-    <div class="card" style="margin-bottom: 12px; border-left: 4px solid var(--nebula);">
-      <h3 style="color: var(--nebula); font-size: 14px;">Phase 2: Learning Tags from Flows (NEXT)</h3>
-      <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-        AI goes back and adds new tags based on flow prompts. Tags compound over time.
-      </div>
-    </div>
-    <div class="card" style="border-left: 4px solid #4CAF50;">
-      <h3 style="color: #4CAF50; font-size: 14px;">Phase 3: Two-Way Ecom Sync (FUTURE — The Moat)</h3>
-      <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-        Mirour tags flow back to Shopify/ecom. Shopify sync plan proposed in Product Dev (P1). Nobody else does this.
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ DETAIL BELOW THE FOLD ═══ -->
+  <!-- DETAIL: BUGS -->
   <div class="detail-section">
-    <div class="detail-label">Deep Dive — Bugs, Architecture, Technical State</div>
+    <div class="detail-label">Deep Dive &mdash; Bugs, Architecture, Technical State</div>
 
-    <!-- OPEN BUGS -->
     <div class="section">
-      <div class="section-title">OPEN BUGS — 13 IN SHAPE UP BUGS/QA</div>
+      <div class="section-title">OPEN BUGS &mdash; 11 IN SHAPE UP BUGS/QA</div>
       <div class="card">
-        <div class="bug-count-summary">1 High · 5 Medium · 3 Low · 4 Untriaged (new)</div>
+        <div class="bug-count-summary">1 High &middot; 5 Medium &middot; 3 Low &middot; 2 Untriaged</div>
         <table class="bug-table">
-          <thead>
-            <tr><th>Bug</th><th>Owner</th><th>Priority</th></tr>
-          </thead>
+          <thead><tr><th>Bug</th><th>Owner</th><th>Priority</th></tr></thead>
           <tbody>
             <tr><td><strong>Profile skip contact causing issues</strong></td><td>Tanmay</td><td><span class="badge red">HIGH</span></td></tr>
             <tr><td><strong>Analytics not working</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
             <tr><td><strong>Analytics (see other notes)</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
-            <tr><td><strong>Customer profile — check notes</strong></td><td>—</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Customer profile &mdash; check notes</strong></td><td>&mdash;</td><td><span class="badge amber">MEDIUM</span></td></tr>
             <tr><td><strong>Analytics Simplification</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
             <tr><td><strong>Profile page issues</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
-            <tr><td><strong style="color: var(--red);">profile for users</strong> <em>(new)</em></td><td>—</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
-            <tr><td><strong style="color: var(--red);">responses abandon</strong> <em>(new)</em></td><td>—</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
-            <tr><td><strong style="color: var(--red);">notes inside profile</strong> <em>(new)</em></td><td>—</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
-            <tr><td><strong style="color: var(--red);">analytics page showing wrong responses (object vs text)</strong> <em>(new)</em></td><td>—</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
+            <tr><td><strong>Drag-and-drop image upload</strong></td><td>Tanmay</td><td><span class="badge green">LOW</span></td></tr>
+            <tr><td><strong>Can&rsquo;t reorder manual products</strong></td><td>Tanmay</td><td><span class="badge green">LOW</span></td></tr>
+            <tr><td><strong>Remove perk from flows</strong></td><td>Tanmay</td><td><span class="badge green">LOW</span></td></tr>
+            <tr><td><strong style="color: var(--red);">responses abandon</strong></td><td>&mdash;</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
+            <tr><td><strong style="color: var(--red);">notes inside profile</strong></td><td>&mdash;</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
           </tbody>
         </table>
-        <div style="font-size: 14px; color: #666; margin-top: 8px;">+ 3 low priority: drag-and-drop image upload, can't reorder manual products, remove perk from flows</div>
       </div>
     </div>
 
@@ -1052,61 +805,63 @@
         <div class="legend-item"><div class="legend-dot red"></div> Not built / broken</div>
       </div>
       <div class="flow-diagram">
-        <div class="flow-step green"><strong>CSV Import</strong>Works (confirmed)</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step amber"><strong>LLM Auto-Tag</strong>Working externally, not in repo</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step green"><strong>Flow Builder</strong>Drag-and-drop, functional</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step green"><strong>Flow Runner</strong>Quiz + tag recs work</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step red"><strong>Analytics</strong>Schema exists, bugs open</div>
+        <div class="flow-step green"><strong>CSV Import</strong>Works</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step amber"><strong>LLM Auto-Tag</strong>Working externally</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step green"><strong>Flow Builder</strong>Functional</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step green"><strong>AI Search</strong>NEW &mdash; Shipped!</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step green"><strong>Flow Runner</strong>Quiz + tags work</div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step red"><strong>Analytics</strong>Bugs open</div>
       </div>
     </div>
 
-    <!-- CODEBASE -->
+    <!-- ARCHITECTURE -->
     <div class="section">
-      <div class="section-title">CODEBASE REALITY — GITHUB mirour2</div>
+      <div class="section-title">CODEBASE REALITY &mdash; GITHUB mirour2</div>
       <div class="arch-grid">
         <div class="arch-card works">
           <span class="arch-status works">WORKING</span>
           <h4>Flow Builder</h4>
-          <p>7 node types. Drag-and-drop. AI flow builder now functional with drag/drop components (confirmed Granola).</p>
+          <p>7 node types. Drag-and-drop. AI flow builder functional.</p>
         </div>
         <div class="arch-card works">
           <span class="arch-status works">WORKING</span>
           <h4>Tag System</h4>
-          <p>Tags with categories + hard vs soft constraints. appendTags(), getSessionTags(), getCustomerTags() in lib/tags.ts.</p>
+          <p>Tags with categories + constraints. Best practices doc published.</p>
         </div>
         <div class="arch-card works">
-          <span class="arch-status works">WORKING</span>
-          <h4>Recommendation Engine</h4>
-          <p>3 strategies: any/all/zone-first. Rec strategy logic now hidden from users (shipped).</p>
+          <span class="arch-status works">NEW</span>
+          <h4>AI Search</h4>
+          <p>Shipped Apr 5. Semantic product search across brand inventory.</p>
         </div>
         <div class="arch-card works">
           <span class="arch-status works">WORKING</span>
           <h4>Global Inventory</h4>
-          <p>Products use owner_id — one catalog across locations. Multi-location ready.</p>
+          <p>Products use owner_id. Multi-location ready.</p>
         </div>
         <div class="arch-card works">
           <span class="arch-status works">WORKING</span>
           <h4>Customer Linking</h4>
-          <p>Sessions + responses tied to customer_id. Track across visits.</p>
+          <p>Sessions + responses tied to customer_id.</p>
         </div>
         <div class="arch-card partial">
           <span class="arch-status partial">PARTIAL</span>
           <h4>Squarespace Sync</h4>
-          <p>API route works. Shopify typed but no API route. Shopify sync plan proposed (P1 in Product Dev).</p>
+          <p>API route works. Shopify typed but no API route.</p>
         </div>
         <div class="arch-card partial">
           <span class="arch-status partial">BUGS OPEN</span>
           <h4>Analytics</h4>
-          <p>Schema exists. Multiple bugs: not showing scans, analytics not working. Simplification planned.</p>
+          <p>Schema exists. 4 analytics-related bugs open.</p>
         </div>
         <div class="arch-card partial">
           <span class="arch-status partial">IN SPRINT</span>
           <h4>LLM Auto-Tagging</h4>
-          <p>Working externally (Tanmay built web-scraping + tagging algo). Tag-Based Display Mode shipped. In active sprint for integration.</p>
+          <p>Working externally. Tag-Based Display shipped. In active sprint for integration.</p>
         </div>
       </div>
     </div>
@@ -1114,17 +869,16 @@
 
 </div>
 
-<!-- ═══════════════════════════════════════════════════════ GROWTH ══ -->
+<!-- GROWTH -->
 <div class="content pane" id="growth">
 
-  <div class="notice">New pricing model: $1K setup + $99/mo (Mairin rec). Pop-ups deprioritized. Veronica Beard warm (met Max at ShopTalk breakfast). Sales deck getting crickets — rework needed. Target: close 2 paid pilots by April 30.</div>
+  <div class="notice">First inbound website lead (Apr 6). Soberish: "never seen anything like it." Pricing: $1K setup + $99/mo. 30 total in pipeline (5 pilots, 11 active leads, 14 new opps). Tech Week ATL panel opportunity.</div>
 
-  <!-- METRICS -->
   <div class="metrics">
     <div class="metric warn">
       <div class="num">5</div>
       <div class="label">Pilots Active</div>
-      <div class="sub">A Bag, Soberish, Glad & Young, Just Add Honey, One of Each</div>
+      <div class="sub">ABC, Soberish, G&amp;Y, JAH, OoE</div>
     </div>
     <div class="metric crit">
       <div class="num">0</div>
@@ -1139,7 +893,7 @@
     <div class="metric">
       <div class="num">30</div>
       <div class="label">Total Pipeline</div>
-      <div class="sub">11 active, 14 new, 5 pilots</div>
+      <div class="sub">5 pilots, 11 active, 14 new</div>
     </div>
   </div>
 
@@ -1148,85 +902,52 @@
     <div class="section-title">PILOT STATUS</div>
     <div class="pilots-grid">
       <div class="pilot-card green">
-        <div class="pilot-card-header">
-          <h4>A Bag Concept</h4>
-          <div class="category">Fashion / Accessories</div>
-        </div>
+        <div class="pilot-card-header"><h4>A Bag Concept</h4><div class="category">Fashion / Accessories</div></div>
         <div class="pilot-card-content">
-          <div class="pilot-progress">LIVE — 3/11 tasks done</div>
+          <div class="pilot-progress">LIVE &mdash; 3/11 tasks done</div>
           <div class="pilot-status">Only live pilot. QR flows active, posters printed. Pop-up store.</div>
           <ul class="pilot-checklist">
-            <li>✓ Pilot started</li>
-            <li>✓ Onboarding complete</li>
-            <li>✓ Posters with QR Codes</li>
-            <li>⏳ Contract, merch, content, case study</li>
+            <li>&check; Pilot started</li><li>&check; Onboarding complete</li><li>&check; Posters with QR Codes</li>
+            <li>&#9203; Contract, merch, content, case study</li>
           </ul>
         </div>
       </div>
-
       <div class="pilot-card amber">
-        <div class="pilot-card-header">
-          <h4>Soberish</h4>
-          <div class="category">Beverage / Alt-spirits</div>
-        </div>
+        <div class="pilot-card-header"><h4>Soberish</h4><div class="category">Beverage / Alt-spirits (Lightspeed POS)</div></div>
         <div class="pilot-card-content">
-          <div class="pilot-progress">ONBOARDING — 0/9 tasks</div>
-          <div class="pilot-status">Product images bug FIXED ✓. Flows being built by Kelley. Ready for live walkthrough.</div>
+          <div class="pilot-progress">ONBOARDING &mdash; CALL FRIDAY</div>
+          <div class="pilot-status">Mehrnush: "never seen anything like it." Starting with spirit wall only. New website live &mdash; Lightspeed synced.</div>
           <ul class="pilot-checklist">
-            <li>✓ Fix product images in preview</li>
-            <li>⏳ Walk through live with Kelley</li>
-            <li>⏳ In-store deployment</li>
-            <li>⏳ Customer feedback loop</li>
+            <li>&check; Fix product images</li><li>&check; Loom walkthroughs sent</li>
+            <li>&#9203; Friday call &mdash; walk through one flow</li>
+            <li>&#9203; Delete + re-upload data with new credentials</li>
+            <li>&#9203; In-store deployment</li>
           </ul>
         </div>
       </div>
-
       <div class="pilot-card">
-        <div class="pilot-card-header">
-          <h4>Glad & Young</h4>
-          <div class="category">Home / Gifts (PCM)</div>
-        </div>
+        <div class="pilot-card-header"><h4>Glad &amp; Young</h4><div class="category">Home / Gifts (PCM) &mdash; Shopify</div></div>
         <div class="pilot-card-content">
-          <div class="pilot-progress">IN PROGRESS — 0/9 tasks</div>
-          <div class="pilot-status">Kelley actively building flows. Login info needed from Loren. 2K SKUs for LLM auto-tag test.</div>
+          <div class="pilot-progress">IN PROGRESS &mdash; 0/9 tasks</div>
+          <div class="pilot-status">2K SKUs auto-tagged. Kelley waiting for clearance. G&amp;Y data CSV shared (Apr 2).</div>
           <ul class="pilot-checklist">
-            <li>⏳ Login info (Loren → Kelley)</li>
-            <li>⏳ Kelley building flows</li>
-            <li>⏳ Auto-tagging at scale</li>
-            <li>⏳ Paid contract</li>
+            <li>&#9203; Kelley building flows (waiting on clearance)</li>
+            <li>&#9203; Auto-tagging at scale</li><li>&#9203; Paid contract</li>
           </ul>
         </div>
       </div>
-
       <div class="pilot-card">
-        <div class="pilot-card-header">
-          <h4>One of Each</h4>
-          <div class="category">Boutique / Accessories</div>
-        </div>
+        <div class="pilot-card-header"><h4>One of Each</h4><div class="category">Boutique / Accessories &mdash; Shopify</div></div>
         <div class="pilot-card-content">
-          <div class="pilot-progress">NEXT — 0/3 tasks</div>
-          <div class="pilot-status">Mother-daughter team, Cape Town + Seattle. Shopify store ready.</div>
-          <ul class="pilot-checklist">
-            <li>⏳ Onboarding</li>
-            <li>⏳ Login setup</li>
-            <li>⏳ Merch</li>
-          </ul>
+          <div class="pilot-progress">NEXT &mdash; 0/3 tasks</div>
+          <div class="pilot-status">Mother-daughter team. Loren re-pinging this week.</div>
         </div>
       </div>
-
       <div class="pilot-card">
-        <div class="pilot-card-header">
-          <h4>Just Add Honey</h4>
-          <div class="category">Specialty / Tea</div>
-        </div>
+        <div class="pilot-card-header"><h4>Just Add Honey</h4><div class="category">Specialty / Tea &mdash; Square/Shopify</div></div>
         <div class="pilot-card-content">
-          <div class="pilot-progress">NEXT — 0/7 tasks</div>
-          <div class="pilot-status">Square/Shopify backend. All lifecycle tasks open in Asana.</div>
-          <ul class="pilot-checklist">
-            <li>⏳ Contract</li>
-            <li>⏳ Onboarding</li>
-            <li>⏳ Merch + content</li>
-          </ul>
+          <div class="pilot-progress">NEXT &mdash; 0/7 tasks</div>
+          <div class="pilot-status">Loren re-pinging this week. "The tea lady."</div>
         </div>
       </div>
     </div>
@@ -1234,92 +955,36 @@
 
   <!-- SALES PIPELINE -->
   <div class="section">
-    <div class="section-title">SALES PIPELINE — SOURCE: ASANA</div>
+    <div class="section-title">SALES PIPELINE &mdash; SOURCE: ASANA</div>
     <div class="card">
       <table class="pipeline-table">
-        <thead>
-          <tr><th>Lead</th><th>Type</th><th>Next Step</th><th>Note</th></tr>
-        </thead>
+        <thead><tr><th>Lead</th><th>Type</th><th>Next Step</th><th>Note</th></tr></thead>
         <tbody>
-          <tr>
-            <td class="lead-name">Faced the Facial 🔥</td>
-            <td>Multi store</td>
-            <td><span class="stage-badge amber">Follow up email</span></td>
-            <td>WARM — super interested in paid pilot after call (Mar 31). $99/mo.</td>
-          </tr>
-          <tr>
-            <td class="lead-name">kula coffee</td>
-            <td>—</td>
-            <td><span class="stage-badge amber">Follow up email</span></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="lead-name">Ben @ del</td>
-            <td>Agency</td>
-            <td><span class="stage-badge purple">Send partnerships deck</span></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="lead-name">ACE</td>
-            <td>—</td>
-            <td><span class="stage-badge amber">—</span></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="lead-name">Kohl's</td>
-            <td>Enterprise</td>
-            <td><span class="stage-badge purple">Send sales deck</span></td>
-            <td>Requested demo deck at ShopTalk</td>
-          </tr>
-          <tr>
-            <td class="lead-name">Phillip Morris Intl</td>
-            <td>Enterprise</td>
-            <td><span class="stage-badge amber">Follow up email</span></td>
-            <td>Heavy experiential investment, CRM lead</td>
-          </tr>
-          <tr>
-            <td class="lead-name">Publicis Group</td>
-            <td>Agency</td>
-            <td><span class="stage-badge purple">Send partnerships deck</span></td>
-            <td>Client-ready solutions, agency partner framing</td>
-          </tr>
-          <tr>
-            <td class="lead-name">Veronica Beard</td>
-            <td>Fashion</td>
-            <td><span class="stage-badge amber">Follow up email</span></td>
-            <td>In-store activations, head of data interested</td>
-          </tr>
-          <tr>
-            <td class="lead-name">Highland Diamond</td>
-            <td>—</td>
-            <td><span class="stage-badge amber">Follow up email</span></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="lead-name">Jai Lyle</td>
-            <td>—</td>
-            <td><span class="stage-badge amber">Follow up email</span></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="lead-name">Aja</td>
-            <td>—</td>
-            <td><span class="stage-badge amber">Follow up email</span></td>
-            <td></td>
-          </tr>
+          <tr><td class="lead-name">Faced the Facial</td><td>Multi store</td><td><span class="stage-badge amber">Follow up email</span></td><td>WARM &mdash; super interested in paid pilot (Mar 31)</td></tr>
+          <tr><td class="lead-name">Kula Coffee</td><td>&mdash;</td><td><span class="stage-badge amber">Follow up email</span></td><td>At Proposal stage</td></tr>
+          <tr><td class="lead-name">Ben @ del</td><td>Agency</td><td><span class="stage-badge purple">Send partnerships deck</span></td><td></td></tr>
+          <tr><td class="lead-name">Publicis Group</td><td>Agency</td><td><span class="stage-badge purple">Send partnerships deck</span></td><td>Client-ready solutions</td></tr>
+          <tr><td class="lead-name">Kohl&rsquo;s</td><td>Enterprise</td><td><span class="stage-badge purple">Send sales deck</span></td><td>Requested demo at ShopTalk</td></tr>
+          <tr><td class="lead-name">Phillip Morris Intl</td><td>Enterprise</td><td><span class="stage-badge amber">Follow up email</span></td><td>Heavy experiential</td></tr>
+          <tr><td class="lead-name">Veronica Beard</td><td>Fashion</td><td><span class="stage-badge amber">Follow up email</span></td><td>Head of data interested</td></tr>
+          <tr><td class="lead-name">Highland Diamond</td><td>&mdash;</td><td><span class="stage-badge amber">Follow up email</span></td><td></td></tr>
+          <tr><td class="lead-name">Jai Lyle</td><td>Pop up</td><td><span class="stage-badge amber">Follow up email</span></td><td></td></tr>
+          <tr><td class="lead-name">Aja</td><td>&mdash;</td><td><span class="stage-badge amber">Follow up email</span></td><td></td></tr>
+          <tr><td class="lead-name">ACE</td><td>&mdash;</td><td><span class="stage-badge amber">&mdash;</span></td><td></td></tr>
         </tbody>
       </table>
     </div>
     <div class="card" style="margin-top: 12px;">
-      <h3 style="color: var(--text-light); font-size: 14px;">New Opportunities (14 — no next steps assigned yet)</h3>
+      <h3 style="color: var(--text-light); font-size: 14px;">New Opportunities (14 &mdash; no next steps assigned yet)</h3>
       <div style="font-size: 14px; color: var(--text-light); line-height: 1.7;">
-        Americas Mart · Homegrown (Partnership) · offline (Partnership) · Bloomingdales · Dillards · Abbey Glass · Mailchimp (Partnership — signup complete ✓) · Creature Studio · Sibley Creative · Morrison Agency · Stellar Bodies Pilates · Foot Locker / Sarah Faith · BRP · Abbey Glass
+        Americas Mart &middot; Homegrown (Partnership) &middot; offline (Partnership) &middot; Bloomingdales &middot; Dillards &middot; Abbey Glass &middot; Mailchimp (Partnership &mdash; signup complete &check;) &middot; Creature Studio &middot; Sibley Creative &middot; Morrison Agency &middot; Stellar Bodies Pilates &middot; Foot Locker / Sarah Faith &middot; BRP &middot; Abbey Glass
       </div>
     </div>
     <div class="card" style="margin-top: 12px; border-left: 4px solid var(--sunstar);">
-      <h3 style="color: var(--sunstar); font-size: 14px;">New Signal — Apr 2</h3>
+      <h3 style="color: var(--sunstar); font-size: 14px;">New Signals</h3>
       <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-        <strong>Nisha / Tech Week opp</strong> — surfaced by Loren in #dailyupdates Apr 1. Not yet in Asana. Follow up needed.
+        <strong>First inbound website lead</strong> &mdash; brand found Mirour organically, no prior connection (Apr 6).<br>
+        <strong>Nisha / Tech Week ATL</strong> &mdash; wants Mirour to host or panel. Not yet in Asana.
       </div>
     </div>
   </div>
@@ -1328,147 +993,83 @@
   <div class="section">
     <div class="section-title">PATH TO FIRST REVENUE</div>
     <div class="card">
-      <div style="font-size: 14px; color: var(--text); font-weight: bold; margin-bottom: 12px;">No one is paying yet. New model: $1K setup + $99/mo (Mairin rec Apr 3).</div>
+      <div style="font-size: 14px; color: var(--text); font-weight: bold; margin-bottom: 12px;">No one is paying yet. Model: $1K setup + $99/mo.</div>
       <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-        <strong>A Bag Concept:</strong> Live (pop-up). Deprioritizing pop-up-only pilots going forward — solo operators lack bandwidth. Still good for learning.<br>
-        <strong>Retail store pilot (launching ~2 weeks):</strong> Walkthrough today — immediate yes to $99/mo. Leaving money on the table. Introduce setup fee here.<br>
-        <strong>Soberish:</strong> Flows being built this week. Once live, clock starts on conversion.<br>
-        <strong>Faced Facial:</strong> Multi-store. Warm lead for paid pilot.<br>
-        <strong>New pricing:</strong> $1,000 setup (strategy + flow builds + signage + tips) + $99/mo SaaS. Services revenue is real revenue.
+        <strong>Soberish:</strong> Best candidate for first paid. Call Friday. "A big deal." Starting spirit wall only.<br>
+        <strong>Faced Facial:</strong> Multi-store. Warm lead for paid pilot after Mar 31 call.<br>
+        <strong>Kula Coffee:</strong> At proposal stage &mdash; furthest non-pilot lead.<br>
+        <strong>New pricing:</strong> $1,000 setup (strategy + flow builds + signage + tips) + $99/mo SaaS.
       </div>
     </div>
   </div>
 
 </div>
 
-<!-- ═══════════════════════════════════════════════════════ BRAND ══ -->
+<!-- BRAND -->
 <div class="content pane" id="brand">
 
-  <div class="notice">Sales deck sent but getting crickets — Loren to rework without AI this weekend. Flodesk as brand inspiration (Mairin rec). Lean into beautiful experience as selling point, not just tools.</div>
+  <div class="notice">Tagging best practices doc published by Kelley (Apr 3). Flodesk as brand inspiration. Lean into beautiful experience as selling point.</div>
 
-  <!-- METRICS -->
   <div class="metrics">
-    <div class="metric good">
-      <div class="num">DONE</div>
-      <div class="label">Visual Identity</div>
-      <div class="sub">Brand book finalized</div>
-    </div>
-    <div class="metric warn">
-      <div class="num">NEXT</div>
-      <div class="label">Voice Guide</div>
-      <div class="sub">In Asana Ideas</div>
-    </div>
-    <div class="metric good">
-      <div class="num">MVP</div>
-      <div class="label">Website</div>
-      <div class="sub">mirourmirour.com live</div>
-    </div>
-    <div class="metric good">
-      <div class="num">1</div>
-      <div class="label">Decks</div>
-      <div class="sub">Sales deck done ✓</div>
-    </div>
+    <div class="metric good"><div class="num">DONE</div><div class="label">Visual Identity</div><div class="sub">Brand book finalized</div></div>
+    <div class="metric warn"><div class="num">NEXT</div><div class="label">Voice Guide</div><div class="sub">In Asana Ideas</div></div>
+    <div class="metric good"><div class="num">MVP</div><div class="label">Website</div><div class="sub">mirourmirour.com live</div></div>
+    <div class="metric good"><div class="num">1</div><div class="label">Decks</div><div class="sub">Sales deck done &check;</div></div>
   </div>
 
-  <!-- ═══ IDENTITY SYSTEM ═══ -->
   <div class="section">
-    <div class="section-title">IDENTITY SYSTEM — SOURCE: BRAND BOOK + SLACK #BRAND</div>
+    <div class="section-title">IDENTITY SYSTEM</div>
     <div class="three-col">
       <div class="card" style="border-left: 4px solid var(--green);">
-        <h3 style="color: var(--green); font-size: 14px;">Visual Identity — DONE</h3>
+        <h3 style="color: var(--green); font-size: 14px;">Visual Identity &mdash; DONE</h3>
         <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-          <strong>Typography:</strong> Orpheus Pro (headlines, serif) + Helvetica Neue (body, sans-serif)<br><br>
-          <strong>Colors:</strong> Galaxy #2A1D35, Nebula #AD75B2, Ultra Violet #7F59A5, Space Jam #584EA0, Stardust #FFF6EE, Mellow #FFF2AF, Supernova #EBDE13, Sun Star #D49B29<br><br>
-          <strong>Logos:</strong> MIROUR wordmark (galaxy) + M icon (galaxy). Don't put them next to each other.<br><br>
-          <strong>Aesthetic:</strong> Not techy — "no brainer stats" feel (Kelley, #brand Mar 4). Warm, editorial, approachable.
+          <strong>Typography:</strong> Orpheus Pro (headlines) + Helvetica Neue (body)<br><br>
+          <strong>Colors:</strong> Galaxy #2A1D35, Nebula #AD75B2, UV #7F59A5, Space Jam #584EA0, Stardust #FFF6EE, Mellow #FFF2AF, Supernova #EBDE13, Sun Star #D49B29<br><br>
+          <strong>Aesthetic:</strong> Warm, editorial, approachable. Not techy.
         </div>
       </div>
       <div class="card" style="border-left: 4px solid var(--sunstar);">
-        <h3 style="color: var(--sunstar); font-size: 14px;">Voice — NEXT UP</h3>
+        <h3 style="color: var(--sunstar); font-size: 14px;">Voice &mdash; NEXT UP</h3>
         <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-          <strong>"CX first, data capture second"</strong> — Kelley's framing, resonates (#brand Mar 4)<br><br>
-          <strong>"Rally of the people"</strong> for SMB owners<br><br>
-          <strong>Authority without intimidation</strong> — say it like it is<br><br>
-          <strong>Two registers:</strong> Website = buttoned up, professional. Social = relatable, trust-building, behind-the-scenes.<br><br>
-          <strong>Status:</strong> Formal voice guide not yet written. In Asana Ideas backlog.
+          <strong>"CX first, data capture second"</strong> &mdash; Kelley&rsquo;s framing<br><br>
+          <strong>Two registers:</strong> Website = professional. Social = relatable, behind-the-scenes.<br><br>
+          <strong>Status:</strong> Formal voice guide not yet written.
         </div>
       </div>
       <div class="card" style="border-left: 4px solid var(--nebula);">
-        <h3 style="color: var(--nebula); font-size: 14px;">Positioning — TESTED AT SHOPTALK</h3>
+        <h3 style="color: var(--nebula); font-size: 14px;">Positioning &mdash; TESTED</h3>
         <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-          <strong>4-word pitch:</strong> "Make every visit count" (from Asana deck copy)<br><br>
-          <strong>"Mailchimp but in-store"</strong> — Philip Morris got it instantly<br><br>
-          <strong>"Taking the good parts of online back to in-store"</strong><br><br>
-          <strong>What we do:</strong> Mirour helps brands generate more revenue from every visit by engaging in-store customers in the moment and capturing their intent.
+          <strong>"Make every visit count"</strong><br><br>
+          <strong>"Mailchimp but in-store"</strong> &mdash; Philip Morris got it instantly<br><br>
+          Mirour helps brands generate more revenue from every visit by engaging in-store customers and capturing their intent.
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ ICP ═══ -->
   <div class="section">
-    <div class="section-title">ICP — WHO WE'RE FOR</div>
+    <div class="section-title">ICP &mdash; WHO WE&rsquo;RE FOR</div>
     <div class="card">
       <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-        <strong>Who:</strong> Mid-size brands with in-store presence. Atlanta young millennial / Gen Z brands serving women in 20s. Fashion, accessories, housewares, gifts. Food & beverage secondary.<br>
-        <strong>Signal:</strong> Aesthetic stores with events/activations. Spending on IRL. Permanent location (shifted away from pop-ups). 2-3 brands inside Ponce City Market as proof of concept.<br>
-        <strong>Buyer:</strong> Visual merchandising + CX + ecom dotted line. The person who owns the in-store experience but doesn't have tools for it.<br>
-        <strong>Enterprise (long-term):</strong> 6-12 month sales process. Kohl's, Veronica Beard, Philip Morris all interested but need materials to champion internally.
+        <strong>Who:</strong> Mid-size brands with in-store presence. Atlanta young millennial / Gen Z brands. Fashion, accessories, housewares, gifts.<br>
+        <strong>Signal:</strong> Aesthetic stores with events/activations. Permanent location. 2-3 brands inside Ponce City Market as proof of concept.<br>
+        <strong>Buyer:</strong> Visual merchandising + CX + ecom dotted line.<br>
+        <strong>Enterprise (long-term):</strong> 6-12 month sales. Kohl&rsquo;s, Veronica Beard, Philip Morris interested.
       </div>
     </div>
   </div>
 
-  <!-- ═══ BRAND ASSETS IN PROGRESS ═══ -->
   <div class="section">
-    <div class="section-title">BRAND ASSETS — SOURCE: ASANA BRAND & MARKETING</div>
+    <div class="section-title">BRAND ASSETS &mdash; SOURCE: ASANA</div>
     <div class="card">
       <table class="bug-table">
-        <thead>
-          <tr><th>Asset</th><th>Owner</th><th>Status</th><th>Detail</th></tr>
-        </thead>
+        <thead><tr><th>Asset</th><th>Owner</th><th>Status</th><th>Detail</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong>Sales Deck ✓ + 3 more needed</strong></td>
-            <td>Loren + Kelley</td>
-            <td><span class="badge green">1 DONE</span></td>
-            <td>Sales deck finalized (Canva) and going to leads. Still need: investor (10-page), agencies/experiential, long-term partners.</td>
-          </tr>
-          <tr>
-            <td><strong>Domain Migration</strong></td>
-            <td>—</td>
-            <td><span class="badge red">OVERDUE</span></td>
-            <td>Move cercie to mirour.me, route mirourmirour.com properly. Due Mar 9, still open.</td>
-          </tr>
-          <tr>
-            <td><strong>Canva Templates — IRL Signage</strong></td>
-            <td>Kelley</td>
-            <td><span class="badge amber">IDEAS</span></td>
-            <td>Tabletop/fixture toppers, shelf talkers, iPad screen. Mirour branding locked on top layer so it can't be covered.</td>
-          </tr>
-          <tr>
-            <td><strong>"Starter Pack" for Operators</strong></td>
-            <td>Kelley</td>
-            <td><span class="badge amber">IDEAS</span></td>
-            <td>Onboarding kit for new pilot brands. What they get, how to use it.</td>
-          </tr>
-          <tr>
-            <td><strong>Resources Page on Website</strong></td>
-            <td>—</td>
-            <td><span class="badge amber">IDEAS</span></td>
-            <td>Self-serve docs, guides, onboarding materials.</td>
-          </tr>
-          <tr>
-            <td><strong>Brand QR Canva Resources</strong></td>
-            <td>—</td>
-            <td><span class="badge amber">IDEAS</span></td>
-            <td>Templates for QR signage that brands can customize.</td>
-          </tr>
-          <tr>
-            <td><strong>Merch</strong></td>
-            <td>—</td>
-            <td><span class="badge amber">EXPLORING</span></td>
-            <td>Custom patches + shirts. Iron-on DIY route explored. (#brand Mar 4-6)</td>
-          </tr>
+          <tr><td><strong>Sales Deck</strong></td><td>Loren + Kelley</td><td><span class="badge green">DONE</span></td><td>Finalized in Canva. Sent to leads.</td></tr>
+          <tr><td><strong>Tagging Best Practices Doc</strong></td><td>Kelley</td><td><span class="badge green">DONE</span></td><td>Published Apr 3 in Google Docs.</td></tr>
+          <tr><td><strong>QR Signage Templates</strong></td><td>Kelley</td><td><span class="badge amber">IN PROGRESS</span></td><td>For Soberish and G&amp;Y.</td></tr>
+          <tr><td><strong>Domain Migration</strong></td><td>&mdash;</td><td><span class="badge red">OVERDUE</span></td><td>Move cercie to mirour.me. Due Mar 9.</td></tr>
+          <tr><td><strong>Starter Pack for Operators</strong></td><td>Kelley</td><td><span class="badge amber">IDEAS</span></td><td>Onboarding kit for new pilot brands.</td></tr>
         </tbody>
       </table>
     </div>
@@ -1476,361 +1077,168 @@
 
 </div>
 
-<!-- ═══════════════════════════════════════════════════════ MARKETING ══ -->
+<!-- MARKETING -->
 <div class="content pane" id="marketing">
 
-  <div class="notice">Content system designed but not launched: blog → Substack (Loren, Wednesdays) → Carousels (Kelley, IG + LinkedIn). Social live. Blog + Substack not yet.</div>
+  <div class="notice">Content system designed but not launched: blog &rarr; Substack (Loren, Wednesdays) &rarr; Carousels (Kelley, IG + LinkedIn). Social live. Blog + Substack not yet.</div>
 
-  <!-- METRICS -->
   <div class="metrics">
-    <div class="metric good">
-      <div class="num">6+</div>
-      <div class="label">Social Posts</div>
-      <div class="sub">Designed + scheduled (Canva)</div>
-    </div>
-    <div class="metric warn">
-      <div class="num">0</div>
-      <div class="label">Substacks Sent</div>
-      <div class="sub">Copy written, not published</div>
-    </div>
-    <div class="metric warn">
-      <div class="num">0</div>
-      <div class="label">Blog Posts</div>
-      <div class="sub">Ideas in Asana, not written</div>
-    </div>
-    <div class="metric good">
-      <div class="num">8+</div>
-      <div class="label">Competitors</div>
-      <div class="sub">Tracked in #research</div>
-    </div>
+    <div class="metric good"><div class="num">6+</div><div class="label">Social Posts</div><div class="sub">Designed + scheduled</div></div>
+    <div class="metric warn"><div class="num">0</div><div class="label">Substacks Sent</div><div class="sub">Copy written, not published</div></div>
+    <div class="metric warn"><div class="num">0</div><div class="label">Blog Posts</div><div class="sub">Ideas in Asana</div></div>
+    <div class="metric good"><div class="num">8+</div><div class="label">Competitors</div><div class="sub">Tracked in #research</div></div>
   </div>
 
-  <!-- ═══ CONTENT SYSTEM ═══ -->
   <div class="section">
-    <div class="section-title">CONTENT SYSTEM — HOW IT WORKS (FROM ASANA)</div>
+    <div class="section-title">CONTENT SYSTEM</div>
     <div class="card" style="border-left: 4px solid var(--nebula); margin-bottom: 16px;">
       <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-        <strong>Step 1:</strong> Write blog "touchpoint" posts on Squarespace (AEO/SEO optimized)<br>
-        <strong>Step 2:</strong> Loren pulls from posts → Substack sends on Wednesdays<br>
-        <strong>Step 3:</strong> Kelley pulls from posts → Carousels for IG + LinkedIn → Google Drive folder<br>
+        <strong>Step 1:</strong> Write blog posts on Squarespace (AEO/SEO optimized)<br>
+        <strong>Step 2:</strong> Loren pulls &rarr; Substack on Wednesdays<br>
+        <strong>Step 3:</strong> Kelley pulls &rarr; Carousels for IG + LinkedIn<br>
         <strong>Goal:</strong> One piece of content feeds three channels. Not launched yet but the system is designed.
       </div>
     </div>
   </div>
 
-  <!-- ═══ ACTIVE CONTENT WORK ═══ -->
   <div class="section">
-    <div class="section-title">ACTIVE WORK — SOURCE: ASANA BRAND & MARKETING</div>
-    <div class="card">
-      <table class="bug-table">
-        <thead>
-          <tr><th>Task</th><th>Owner</th><th>Status</th><th>Detail</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Social Posts — Feb/Mar 2026</strong></td>
-            <td>Kelley</td>
-            <td><span class="badge green">LIVE</span></td>
-            <td>6+ posts designed in Canva, scheduled for IG.</td>
-          </tr>
-          <tr>
-            <td><strong>Social Posts — Apr/May 2026</strong></td>
-            <td>Kelley</td>
-            <td><span class="badge amber">IN PROGRESS</span></td>
-            <td>Next batch. Pulling from blog posts to create carousels for IG + LinkedIn.</td>
-          </tr>
-          <tr>
-            <td><strong>AEO/SEO Blogs → Substack + Carousels</strong></td>
-            <td>Loren + Kelley</td>
-            <td><span class="badge amber">IN PROGRESS</span></td>
-            <td>Blog "touchpoints" on Squarespace → Substack → Carousels → Google Drive.</td>
-          </tr>
-          <tr>
-            <td><strong>Substack 1</strong></td>
-            <td>Loren</td>
-            <td><span class="badge amber">COPY WRITTEN</span></td>
-            <td>First issue drafted in Google Doc. Account exists (lorenmountobrien.substack.com). Not published.</td>
-          </tr>
-          <tr>
-            <td><strong>IRL Vendor Resource List</strong></td>
-            <td>—</td>
-            <td><span class="badge amber">IN PROGRESS</span></td>
-            <td>Google Form for vendor info. Lead gen / community building.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- ═══ CONTENT IDEAS ═══ -->
-  <div class="section">
-    <div class="section-title">CONTENT IDEAS BACKLOG — SOURCE: ASANA IDEAS + SLACK</div>
-    <div class="two-col">
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 14px;">Blog / Substack Ideas</h3>
-        <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-          <strong>"Harsh truth: I don't want to talk to your team"</strong> — self-serve shopping, Gen Z mindset<br><br>
-          <strong>How to curate the experience</strong> — Stihl, tire store, sober shop. Thoughtful layering, not hard upsells.<br><br>
-          <strong>Tips from pilot convos</strong> — Glad & Young, Just Add Honey. "Boring tips are surprisingly effective" (Kelley)<br><br>
-          <strong>"Walmart using digital in store — so should you"</strong><br><br>
-          <strong>Warby Parker: reasons to come into your store</strong><br><br>
-          <strong>ShopTalk recaps</strong> — Loren's Day 1 + Day 2 Slack posts, ready-made<br><br>
-          <strong>Vitamin Shoppe angle</strong> — AI product search in 2 weeks
-        </div>
-      </div>
-      <div class="card">
-        <h3 style="color: var(--sunstar); font-size: 14px;">Other Marketing Ideas</h3>
-        <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-          <strong>Paid community</strong> — gated resources, peer experiences, advice. Revenue while product builds. (#brand Mar 14)<br><br>
-          <strong>Quiz as lead gen</strong> — for Mirour itself, like HubSpot quiz (#brand Mar 10)<br><br>
-          <strong>Education series newsletter</strong> — for brand operators<br><br>
-          <strong>Reddit / Threads</strong> — presence on discussion platforms<br><br>
-          <strong>Direct mailers</strong><br><br>
-          <strong>Press</strong> — B2C + B2B outlets (in Asana Ideas)
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ EVENTS ═══ -->
-  <div class="section">
-    <div class="section-title">EVENTS & CONFERENCES — SOURCE: ASANA</div>
+    <div class="section-title">EVENTS &amp; CONFERENCES</div>
     <div class="card">
       <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-        <strong>ShopTalk Spring 2026</strong> — Just happened (Mar 24-26). Huge success.<br>
-        <strong>ShopTalk Fall (Nashville)</strong> — On the radar<br>
-        <strong>NRF January 2027</strong> — Biggest retail conference<br>
-        <strong>ATLFW Panel?</strong> — Atlanta Fashion Week, potential speaking<br>
-        <strong>Pop-up Spaces (South Downtown)</strong> — Mirour activations / demos<br>
-        <strong>Quarterly IRL Event</strong> — Education pop-up for brand operators
+        <strong>Tech Week ATL</strong> &mdash; Nisha wants Mirour to host or panel. "Using AI to make in-person better." Decision needed.<br>
+        <strong>ShopTalk Spring 2026</strong> &mdash; Happened Mar 24-26. Huge success. 5 solid leads.<br>
+        <strong>ShopTalk Fall (Nashville)</strong> &mdash; On the radar<br>
+        <strong>NRF January 2027</strong> &mdash; Biggest retail conference
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ DETAIL BELOW ══ -->
   <div class="detail-section">
-    <div class="detail-label">Market Intelligence & Competitive Landscape</div>
+    <div class="detail-label">Market Intelligence &amp; Competitive Landscape</div>
 
-    <!-- MARKET SIGNALS -->
     <div class="section">
-      <div class="section-title">MARKET SIGNALS — FROM SHOPTALK + #RESEARCH + GRANOLA</div>
+      <div class="section-title">MARKET SIGNALS</div>
       <div class="card">
         <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
           <strong>79%</strong> of people go in-store to touch and try (ShopTalk)<br>
-          <strong>70%</strong> of sales still from in-person (Granola)<br>
-          <strong>63%</strong> of retailers deployed QR codes in-store, only 8% not interested (Retail Touchpoints, Kelley Mar 10)<br>
-          Loyalty shifting from points → participation (ShopTalk)<br>
+          <strong>70%</strong> of sales still from in-person<br>
+          <strong>63%</strong> of retailers deployed QR codes in-store, only 8% not interested<br>
           Two buyers now: AI agents + humans (ShopTalk + Yotpo)<br>
+          Content = infrastructure &mdash; bad data, bad outputs<br>
           <strong>NYT:</strong> Shopping mall resurgence (Mar 21)<br>
-          <strong>Vitamin Shoppe:</strong> AI search in 2 weeks with Cursor — main stage ShopTalk<br>
-          Content = infrastructure — bad data, bad outputs (ShopTalk recurring theme)
+          <strong>Vitamin Shoppe:</strong> AI search in 2 weeks with Cursor
         </div>
       </div>
     </div>
 
-    <!-- COMPETITIVE LANDSCAPE -->
     <div class="section">
-      <div class="section-title">COMPETITIVE LANDSCAPE — FROM #RESEARCH + GRANOLA</div>
+      <div class="section-title">COMPETITIVE LANDSCAPE</div>
       <div class="card">
         <table class="bug-table">
-          <thead>
-            <tr><th>Company</th><th>What They Do</th><th>How We Differ</th><th>Source</th></tr>
-          </thead>
+          <thead><tr><th>Company</th><th>What They Do</th><th>How We Differ</th></tr></thead>
           <tbody>
-            <tr><td><strong>Tulip / Salesfloor</strong></td><td>Associate tools, enterprise. Merged.</td><td>SMB-first, brand experience</td><td>#research Mar 24</td></tr>
-            <tr><td><strong>Bridge (Brij)</strong></td><td>QR-to-marketing redirects</td><td>We capture relationship first</td><td>Granola</td></tr>
-            <tr><td><strong>Endear</strong></td><td>Retail CRM</td><td>We build the moment, they manage after</td><td>Granola</td></tr>
-            <tr><td><strong>Digify</strong></td><td>QR code OS for DTCs</td><td>We're experience + recommendations</td><td>Granola</td></tr>
-            <tr><td><strong>Attentive</strong></td><td>SMS marketing, post-capture</td><td>We're the capture moment</td><td>#research Mar 20</td></tr>
-            <tr><td><strong>Happenstance AI</strong></td><td>AI for retail</td><td>TBD — Tanmay flagged</td><td>#research Mar 20</td></tr>
-            <tr><td><strong>CRWD / TYB</strong></td><td>Community rewards</td><td>Post-purchase. We're pre/during.</td><td>#research + Granola</td></tr>
-            <tr><td><strong>Ometria</strong></td><td>Customer data + marketing</td><td>Good model for us at scale</td><td>Granola</td></tr>
+            <tr><td><strong>Tulip / Salesfloor</strong></td><td>Associate tools, enterprise</td><td>SMB-first, brand experience</td></tr>
+            <tr><td><strong>Bridge (Brij)</strong></td><td>QR-to-marketing redirects</td><td>We capture relationship first</td></tr>
+            <tr><td><strong>Endear</strong></td><td>Retail CRM</td><td>We build the moment</td></tr>
+            <tr><td><strong>Digify</strong></td><td>QR code OS for DTCs</td><td>We&rsquo;re experience + recs</td></tr>
+            <tr><td><strong>Attentive</strong></td><td>SMS marketing, post-capture</td><td>We&rsquo;re the capture moment</td></tr>
           </tbody>
         </table>
       </div>
     </div>
+  </div>
 
-    <!-- #RESEARCH FEED -->
-    <div class="section">
-      <div class="section-title">#RESEARCH CHANNEL — RECENT (MAR 2026)</div>
-      <div class="card">
-        <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-          Yotpo: Two-Buyer Reality (Mar 25) · Tulip/Salesfloor merger (Mar 24) · Square Local Economy Report (Mar 24) · NYT: Mall Resurgence (Mar 21) · Progressive Grocer: Next-Gen Store Design (Mar 21) · Attentive (Mar 20) · Happenstance AI (Mar 20) · CRWD (Mar 16) · Retail Dive: Evolution of Stores (Mar 12) · Retail Touchpoints: Store Ops Survey (Mar 10) · CTC 2026 Trend Report (Mar 10)
-        </div>
+</div>
+
+<!-- CUSTOMERS -->
+<div class="content pane" id="customers">
+
+  <div class="notice">5 pilots. 1 live. 1 onboarding (Soberish call Friday). 3 need setup &mdash; Loren re-pinging all this week. Pop-ups deprioritized. Template flows close the empty basket gap.</div>
+
+  <div class="metrics">
+    <div class="metric"><div class="num">5</div><div class="label">Total Pilots</div></div>
+    <div class="metric"><div class="num" style="color:var(--green);">1</div><div class="label">Live</div></div>
+    <div class="metric"><div class="num" style="color:var(--amber);">2</div><div class="label">In Progress</div></div>
+    <div class="metric"><div class="num">2</div><div class="label">Not Active Yet</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">PILOT STATUS &amp; FEEDBACK</div>
+    <div class="card">
+    <table class="bug-table">
+      <thead><tr><th>Pilot</th><th>Category</th><th>Status</th><th>Where They Are</th><th>Feedback / Needs</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>A Bag Concept</strong></td><td>Fashion</td>
+          <td><span style="color:var(--green); font-weight:600;">LIVE</span></td>
+          <td>Live with 2 flows. QR codes printed. Only live pilot.</td>
+          <td>Want Shopify API for real-time sync.</td>
+        </tr>
+        <tr>
+          <td><strong>Soberish</strong></td><td>Alt-spirits</td>
+          <td><span style="color:var(--amber); font-weight:600;">ONBOARDING</span></td>
+          <td>Call Friday. Starting spirit wall. New website live (Lightspeed synced). Loom walkthroughs sent.</td>
+          <td>Mehrnush: "a big deal, never seen anything like it." POS integration non-negotiable. Need Lightspeed access.</td>
+        </tr>
+        <tr>
+          <td><strong>Glad &amp; Young</strong></td><td>Home/Gifts</td>
+          <td><span style="color:var(--amber); font-weight:600;">IN PROGRESS</span></td>
+          <td>2K SKUs auto-tagged. Kelley waiting for clearance on flows. G&amp;Y data CSV shared.</td>
+          <td>Auto-tagging test case. Compound tags + some empty rows to clean.</td>
+        </tr>
+        <tr style="color:var(--text-light);">
+          <td><strong>One of Each</strong></td><td>Boutique</td>
+          <td>NOT ACTIVE</td>
+          <td>Mother-daughter team. Shopify ready. Loren re-pinging this week.</td>
+          <td>No feedback yet.</td>
+        </tr>
+        <tr style="color:var(--text-light);">
+          <td><strong>Just Add Honey</strong></td><td>Tea</td>
+          <td>NOT ACTIVE</td>
+          <td>Square/Shopify. All lifecycle tasks open. Loren re-pinging this week.</td>
+          <td>No feedback yet.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">WHAT WE&rsquo;RE LEARNING</div>
+    <div class="card">
+      <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
+        <strong>From Soberish (Apr 3):</strong> POS integration is non-negotiable. Archived products are a real data hygiene issue. Online/in-store channel toggles add another layer. Real-time sync is the unlock. Starting with spirit wall for high-pressure test.<br><br>
+        <strong>From Soberish (feedback notes Apr 2):</strong> Categories on website could map to Mirour categories. Tags may come from Lightspeed directly. "Staff picks" tab was loved. Setup feels overwhelming at first glance from a "busy and overwhelmed founder brain."<br><br>
+        <strong>From A Bag Concept:</strong> Solo operators wait for prompting. Template flows with problem statements solve the empty basket gap.<br><br>
+        <strong>From G&amp;Y (data review):</strong> Multi-brand marketplace with messy Shopify tags. 3,063 products processed. Compound tags need split versions. Some products have no tags.<br><br>
+        <strong>Key pattern:</strong> Education IS the product. Pre-built template flows close the knowledge gap.
       </div>
     </div>
   </div>
 
 </div>
 
-<!-- ═══════════════════════════════════════════════════════ CUSTOMERS ══ -->
-<div class="content pane" id="customers">
-
-  <div class="notice">5 pilots. 1 live. 1 testing. 3 need setup. Pop-ups deprioritized — focus retail/omni-channel. Solo operators wait to be told what to do. Template flows solve this.</div>
-
-  <!-- METRICS -->
-  <div class="metrics">
-    <div class="metric"><div class="number">5</div><div class="label">Total Pilots</div></div>
-    <div class="metric"><div class="number" style="color:var(--green);">1</div><div class="label">Live</div></div>
-    <div class="metric"><div class="number" style="color:var(--amber);">2</div><div class="label">Testing</div></div>
-    <div class="metric"><div class="number">2</div><div class="label">Not Active Yet</div></div>
-  </div>
-
-  <!-- PILOT DETAIL TABLE -->
-  <div class="section">
-    <div class="section-title">PILOT STATUS & FEEDBACK</div>
-    <table>
-      <thead>
-        <tr>
-          <th style="width:15%;">Pilot</th>
-          <th style="width:12%;">Category</th>
-          <th style="width:12%;">Status</th>
-          <th style="width:30%;">Where They Are</th>
-          <th style="width:31%;">Feedback / Needs</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>A Bag Concept</strong></td>
-          <td>Fashion / Accessories</td>
-          <td><span style="color:var(--green); font-weight:600;">● LIVE</span></td>
-          <td>Live with 2 flows. QR codes printed, posters in-store. CSV import worked. Only live pilot.</td>
-          <td>Want Shopify API to connect customers directly (not just CSV). Need real-time sync.</td>
-        </tr>
-        <tr>
-          <td><strong>Soberish</strong></td>
-          <td>Beverage / Alt-spirits</td>
-          <td><span style="color:var(--amber); font-weight:600;">● TESTING</span></td>
-          <td>Product images bug FIXED. Testing flows. Contracts sent. Kelley building flows.</td>
-          <td>Ready for live walkthrough. QR sign templates being designed.</td>
-        </tr>
-        <tr style="color:var(--text-light);">
-          <td><strong>Glad & Young</strong></td>
-          <td>Home / Gifts (PCM)</td>
-          <td><span style="color:var(--amber); font-weight:600;">● IN PROGRESS</span></td>
-          <td>Kelley actively building flows. Login info needed from Loren. 2K SKUs for auto-tag test.</td>
-          <td>Good auto-tagging test case. Kelley working on flows as of Apr 1. QR sign templates in design.</td>
-        </tr>
-        <tr style="color:var(--text-light);">
-          <td><strong>One of Each</strong></td>
-          <td>Boutique / Accessories</td>
-          <td><span style="font-weight:600;">○ NOT ACTIVE</span></td>
-          <td>Mother-daughter team (Cape Town + Seattle). Shopify store ready. Need to set up and test.</td>
-          <td>No feedback yet — need to onboard and test flows.</td>
-        </tr>
-        <tr style="color:var(--text-light);">
-          <td><strong>Just Add Honey</strong></td>
-          <td>Specialty / Tea</td>
-          <td><span style="font-weight:600;">○ NOT ACTIVE</span></td>
-          <td>Square/Shopify backend. All lifecycle tasks open in Asana. Need to set up and test.</td>
-          <td>No feedback yet — need to onboard and test flows.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- WHAT WE'RE LEARNING -->
-  <div class="section">
-    <div class="section-title">WHAT WE'RE LEARNING</div>
-    <div class="card">
-      <p><strong>From A Bag Concept (live):</strong> Solo operator waits for Loren to prompt her — "what are you doing next?" sparked the email capture use case for SEC college football bag line. Going to NY Fashion Week this fall. Deprioritizing pop-up-only pilots going forward — need people with physical spaces or omni-channel presence.</p>
-      <p style="margin-top:12px;"><strong>From Soberish (testing):</strong> Industry-specific tags (THC count) won't auto-generate from standard product data. Need to handle non-standard attributes. Flows being built this week.</p>
-      <p style="margin-top:12px;"><strong>From Glad & Young (data review):</strong> Multi-brand marketplace with messy Shopify tags. Perfect auto-tagging test case. 3,063 products processed. Kelley reviewed — compound tags and empty rows to fix.</p>
-      <p style="margin-top:12px;"><strong>From retail store walkthrough (today):</strong> "This is incredible." Immediately said yes to $99/mo — forgot to even ask about pricing until end of call. Speed of yes = leaving money on the table. Introduce $1K setup fee.</p>
-      <p style="margin-top:12px;"><strong>Key pattern (Mairin):</strong> Brands buy into the problem but don't have the knowledge to self-serve. Education IS the product. Pre-built template flows with problem statements ("Flow to gain traction for your new product launch") close the empty basket gap.</p>
-    </div>
-  </div>
-
-  <!-- NEXT STEPS -->
-  <div class="section">
-    <div class="section-title">NEXT STEPS</div>
-    <table>
-      <thead>
-        <tr>
-          <th style="width:25%;">Pilot</th>
-          <th style="width:75%;">What Needs to Happen</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>A Bag Concept</strong></td>
-          <td>Monitor live flows. Collect customer engagement data. Use learnings to inform product roadmap (Shopify API integration).</td>
-        </tr>
-        <tr>
-          <td><strong>Soberish</strong></td>
-          <td>Images fixed. Walk through live this week. Contracts sent. QR sign templates being designed.</td>
-        </tr>
-        <tr>
-          <td><strong>Glad & Young</strong></td>
-          <td>Kelley building flows now. Loren to add login info. Run CSV through auto-tagging when ready.</td>
-        </tr>
-        <tr>
-          <td><strong>One of Each</strong></td>
-          <td>Connect Shopify. Import products. Build first flow. Test.</td>
-        </tr>
-        <tr>
-          <td><strong>Just Add Honey</strong></td>
-          <td>Connect Square/Shopify. Import products. Build first flow. Test.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-</div>
-
-<!-- ═══════════════════════════════════════════════════════ OPS & FINANCE ══ -->
+<!-- OPS & FINANCE -->
 <div class="content pane" id="ops">
 
-  <div class="notice">Pre-revenue. New pricing model from Mairin call: $1K setup + $99/mo. Services + SaaS = the moat. Equity splits confirmed (not equal). Tanmay co-founder agreement in progress.</div>
+  <div class="notice">Pre-revenue. $1K setup + $99/mo pricing model. Contracts sent to team. 3 co-founders.</div>
 
-  <!-- METRICS -->
   <div class="metrics">
-    <div class="metric warn">
-      <div class="num">$0</div>
-      <div class="label">MRR</div>
-      <div class="sub">Pre-revenue</div>
-    </div>
-    <div class="metric good">
-      <div class="num">5</div>
-      <div class="label">Pilots</div>
-      <div class="sub">1 live, 1 onboarding, 3 next</div>
-    </div>
-    <div class="metric warn">
-      <div class="num">3</div>
-      <div class="label">Team</div>
-      <div class="sub">All co-founders (CEO, CTO, CBO)</div>
-    </div>
-    <div class="metric">
-      <div class="num">$1K+$99</div>
-      <div class="label">New Pricing</div>
-      <div class="sub">Setup fee + monthly SaaS</div>
-    </div>
+    <div class="metric warn"><div class="num">$0</div><div class="label">MRR</div><div class="sub">Pre-revenue</div></div>
+    <div class="metric good"><div class="num">5</div><div class="label">Pilots</div><div class="sub">1 live, 1 onboarding, 3 next</div></div>
+    <div class="metric warn"><div class="num">3</div><div class="label">Team</div><div class="sub">All co-founders</div></div>
+    <div class="metric"><div class="num">$1K+$99</div><div class="label">New Pricing</div><div class="sub">Setup + monthly SaaS</div></div>
   </div>
 
-  <!-- TEAM -->
   <div class="section">
     <div class="section-title">TEAM</div>
     <div class="card">
       <table class="milestone-table">
-        <thead>
-          <tr><th>Role</th><th>Name</th><th>Focus</th></tr>
-        </thead>
+        <thead><tr><th>Role</th><th>Name</th><th>Focus</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong>Co-Founder / CEO</strong></td>
-            <td>Loren Mount-O'Brien</td>
-            <td>Product, pilots, fundraising</td>
-          </tr>
-          <tr>
-            <td><strong>Co-Founder / CTO</strong></td>
-            <td>Tanmay</td>
-            <td>Core platform, auto-tagging, QA</td>
-          </tr>
-          <tr>
-            <td><strong>Co-Founder / CBO</strong></td>
-            <td>Kelley Bowen</td>
-            <td>Brand, pilot flows, content, design</td>
-          </tr>
+          <tr><td><strong>Co-Founder / CEO</strong></td><td>Loren Mount-O&rsquo;Brien</td><td>Product, pilots, fundraising</td></tr>
+          <tr><td><strong>Co-Founder / CTO</strong></td><td>Tanmay Jha</td><td>Core platform, auto-tagging, AI search, QA</td></tr>
+          <tr><td><strong>Co-Founder / CBO</strong></td><td>Kelley Bowen</td><td>Brand, pilot flows, content, design</td></tr>
         </tbody>
       </table>
     </div>
@@ -1847,7 +1255,6 @@ function show(tabName, element) {
   const panes = document.querySelectorAll('.pane');
   panes.forEach(p => p.classList.remove('active'));
   document.getElementById(tabName).classList.add('active');
-
   const tabs = document.querySelectorAll('.tab');
   tabs.forEach(t => t.classList.remove('active'));
   element.classList.add('active');
