@@ -1381,8 +1381,9 @@
   <div class="updates-header">
     <h2>Updates</h2>
     <div class="updates-header-actions">
-      <button onclick="copyAllUpdates()" class="primary">Copy All</button>
-      <button onclick="clearCurrentTab()">Clear Tab</button>
+      <button onclick="sendToSlack()" class="primary" id="sendBtn">Send to Slack</button>
+      <button onclick="copyAllUpdates()">Copy</button>
+      <button onclick="clearAllUpdates()">Clear All</button>
     </div>
     <button class="updates-close" onclick="toggleUpdates()">&times;</button>
   </div>
@@ -1520,6 +1521,84 @@ function clearCurrentTab() {
   renderUpdatesTabs();
   renderUpdates();
   showToast('Cleared ' + TAB_LABELS[currentUpdateTab]);
+}
+
+function clearAllUpdates() {
+  saveUpdates({});
+  renderUpdatesTabs();
+  renderUpdates();
+  showToast('All updates cleared');
+}
+
+function formatUpdatesForSlack() {
+  const data = getUpdates();
+  var lines = ['*OS UPDATES — ' + new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}) + '*\n'];
+  var hasAny = false;
+
+  UPDATE_TABS.forEach(function(tab) {
+    var items = data[tab] || [];
+    if (items.length > 0) {
+      hasAny = true;
+      lines.push('*' + TAB_LABELS[tab].toUpperCase() + '*');
+      items.forEach(function(item) {
+        lines.push('• ' + item.text + '  _(' + item.time + ')_');
+      });
+      lines.push('');
+    }
+  });
+
+  return hasAny ? lines.join('\n') : null;
+}
+
+/* Slack webhook for #os-updates — set this after creating the channel */
+var SLACK_WEBHOOK_URL = localStorage.getItem('mirour-os-webhook') || '';
+
+function sendToSlack() {
+  var msg = formatUpdatesForSlack();
+  if (!msg) { showToast('No updates to send'); return; }
+
+  if (!SLACK_WEBHOOK_URL) {
+    showConfigModal();
+    return;
+  }
+
+  var btn = document.getElementById('sendBtn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  fetch(SLACK_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text: msg })
+  }).then(function(res) {
+    if (res.ok) {
+      showToast('Sent to #os-updates');
+      saveUpdates({});
+      renderUpdatesTabs();
+      renderUpdates();
+    } else {
+      showToast('Failed to send — check webhook URL');
+    }
+    btn.textContent = 'Send to Slack';
+    btn.disabled = false;
+  }).catch(function() {
+    // Webhook might be blocked by CORS — fallback to copy
+    copyAllUpdates();
+    showToast('Copied instead — paste in #os-updates');
+    btn.textContent = 'Send to Slack';
+    btn.disabled = false;
+  });
+}
+
+function showConfigModal() {
+  var url = prompt('Paste the Slack webhook URL for #os-updates.\n\n(In Slack: channel settings → Integrations → Webhooks → Add)\n\nOr leave empty to just copy to clipboard:');
+  if (url && url.trim()) {
+    SLACK_WEBHOOK_URL = url.trim();
+    localStorage.setItem('mirour-os-webhook', SLACK_WEBHOOK_URL);
+    sendToSlack();
+  } else {
+    copyAllUpdates();
+  }
 }
 
 function copyAllUpdates() {
