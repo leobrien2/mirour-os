@@ -458,6 +458,15 @@
   }
   .updates-input-row button:hover { background: var(--galaxy); }
 
+  .updates-status {
+    padding: 10px 24px; font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px; display: none; border-bottom: 1px solid var(--border);
+  }
+  .updates-status.saved { display: block; background: rgba(45,138,86,0.08); color: var(--green); }
+  .updates-status.unsaved { display: block; background: rgba(201,123,26,0.08); color: var(--amber); }
+  .updates-status.saving { display: block; background: rgba(173,118,178,0.08); color: var(--nebula); }
+  .updates-status.error { display: block; background: rgba(181,64,58,0.08); color: var(--red); }
+
   .empty-state {
     text-align: center; padding: 40px 20px; color: var(--text-light); font-size: 14px;
   }
@@ -1381,12 +1390,13 @@
   <div class="updates-header">
     <h2>Updates</h2>
     <div class="updates-header-actions">
-      <button onclick="sendToSlack()" class="primary" id="sendBtn">Send to Slack</button>
-      <button onclick="copyAllUpdates()">Copy</button>
+      <button onclick="saveToRepo()" class="primary" id="saveBtn">Save</button>
       <button onclick="clearAllUpdates()">Clear All</button>
     </div>
     <button class="updates-close" onclick="toggleUpdates()">&times;</button>
   </div>
+
+  <div class="updates-status" id="updatesStatus"></div>
 
   <div class="updates-tabs" id="updatesTabs"></div>
 
@@ -1396,7 +1406,7 @@
 
   <div class="updates-input-area">
     <div class="updates-input-row">
-      <textarea id="updatesInput" placeholder="Add a note or update..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();addUpdate();}"></textarea>
+      <textarea id="updatesInput" placeholder="What needs fixing or updating..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();addUpdate();}"></textarea>
       <button onclick="addUpdate()">Add</button>
     </div>
   </div>
@@ -1421,34 +1431,49 @@ function show(tabName, element) {
 /* ── UPDATES SYSTEM ── */
 const UPDATE_TABS = ['plan','product','growth','brand','marketing','customers','ops','general'];
 const TAB_LABELS = {plan:'The Plan',product:'Product',growth:'Growth',brand:'Brand',marketing:'Marketing',customers:'Customers',ops:'Ops & Finance',general:'General'};
+const REPO_OWNER = 'leobrien2';
+const REPO_NAME = 'mirour-os';
+const UPDATES_FILE = 'updates.json';
 let currentUpdateTab = 'general';
+let unsavedChanges = false;
 
+/* Local storage for drafts + GitHub token */
 function getUpdates() {
   try { return JSON.parse(localStorage.getItem('mirour-os-updates') || '{}'); } catch(e) { return {}; }
 }
-function saveUpdates(data) {
+function saveUpdatesLocal(data) {
   localStorage.setItem('mirour-os-updates', JSON.stringify(data));
+}
+function getToken() { return localStorage.getItem('mirour-os-token') || ''; }
+function setToken(t) { localStorage.setItem('mirour-os-token', t); }
+
+function setStatus(type, msg) {
+  var el = document.getElementById('updatesStatus');
+  el.className = 'updates-status ' + type;
+  el.textContent = msg;
 }
 
 function toggleUpdates() {
-  const panel = document.getElementById('updatesPanel');
-  const overlay = document.getElementById('updatesOverlay');
-  const isOpen = panel.classList.contains('open');
+  var panel = document.getElementById('updatesPanel');
+  var overlay = document.getElementById('updatesOverlay');
+  var isOpen = panel.classList.contains('open');
   panel.classList.toggle('open');
   overlay.classList.toggle('open');
   if (!isOpen) {
     renderUpdatesTabs();
     renderUpdates();
     document.getElementById('updatesInput').focus();
+    // Load existing updates from repo on open
+    loadFromRepo();
   }
 }
 
 function renderUpdatesTabs() {
-  const container = document.getElementById('updatesTabs');
-  const data = getUpdates();
-  container.innerHTML = UPDATE_TABS.map(t => {
-    const hasNotes = (data[t] || []).length > 0;
-    const active = t === currentUpdateTab ? ' active' : '';
+  var container = document.getElementById('updatesTabs');
+  var data = getUpdates();
+  container.innerHTML = UPDATE_TABS.map(function(t) {
+    var hasNotes = (data[t] || []).length > 0;
+    var active = t === currentUpdateTab ? ' active' : '';
     return '<div class="updates-tab' + active + '" onclick="switchUpdateTab(\'' + t + '\')">' +
       TAB_LABELS[t] +
       '<span class="tab-dot' + (hasNotes ? ' has' : '') + '"></span></div>';
@@ -1462,12 +1487,12 @@ function switchUpdateTab(tab) {
 }
 
 function renderUpdates() {
-  const list = document.getElementById('updatesList');
-  const data = getUpdates();
-  const items = data[currentUpdateTab] || [];
+  var list = document.getElementById('updatesList');
+  var data = getUpdates();
+  var items = data[currentUpdateTab] || [];
 
   if (items.length === 0) {
-    list.innerHTML = '<div class="empty-state"><div class="empty-icon">&#9998;</div>No updates for ' + TAB_LABELS[currentUpdateTab] + ' yet.<br>Add notes about what needs changing.</div>';
+    list.innerHTML = '<div class="empty-state"><div class="empty-icon">&#9998;</div>No updates for ' + TAB_LABELS[currentUpdateTab] + ' yet.<br>Flag what\'s wrong or needs changing.</div>';
   } else {
     list.innerHTML = items.map(function(item, i) {
       return '<li class="update-item">' +
@@ -1480,166 +1505,154 @@ function renderUpdates() {
 }
 
 function addUpdate() {
-  const input = document.getElementById('updatesInput');
-  const text = input.value.trim();
+  var input = document.getElementById('updatesInput');
+  var text = input.value.trim();
   if (!text) return;
 
-  const data = getUpdates();
+  var data = getUpdates();
   if (!data[currentUpdateTab]) data[currentUpdateTab] = [];
 
-  const now = new Date();
-  const timeStr = now.toLocaleDateString('en-US', {month:'short', day:'numeric'}) + ' at ' +
+  var now = new Date();
+  var timeStr = now.toLocaleDateString('en-US', {month:'short', day:'numeric'}) + ' at ' +
     now.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
 
-  data[currentUpdateTab].push({ text: text, time: timeStr });
-  saveUpdates(data);
+  data[currentUpdateTab].push({ text: text, time: timeStr, status: 'pending' });
+  saveUpdatesLocal(data);
   input.value = '';
   input.style.height = 'auto';
+  unsavedChanges = true;
+  setStatus('unsaved', 'Unsaved changes — hit Save to push to the OS');
   renderUpdatesTabs();
   renderUpdates();
 
-  // scroll to bottom
   var body = document.getElementById('updatesBody');
   body.scrollTop = body.scrollHeight;
 }
 
 function deleteUpdate(index) {
-  const data = getUpdates();
+  var data = getUpdates();
   if (data[currentUpdateTab]) {
     data[currentUpdateTab].splice(index, 1);
     if (data[currentUpdateTab].length === 0) delete data[currentUpdateTab];
-    saveUpdates(data);
+    saveUpdatesLocal(data);
+    unsavedChanges = true;
+    setStatus('unsaved', 'Unsaved changes — hit Save to push to the OS');
     renderUpdatesTabs();
     renderUpdates();
   }
 }
 
-function clearCurrentTab() {
-  const data = getUpdates();
-  delete data[currentUpdateTab];
-  saveUpdates(data);
-  renderUpdatesTabs();
-  renderUpdates();
-  showToast('Cleared ' + TAB_LABELS[currentUpdateTab]);
-}
-
 function clearAllUpdates() {
-  saveUpdates({});
+  saveUpdatesLocal({});
+  unsavedChanges = true;
+  setStatus('unsaved', 'Cleared — hit Save to sync');
   renderUpdatesTabs();
   renderUpdates();
-  showToast('All updates cleared');
+  showToast('All updates cleared locally');
 }
 
-function formatUpdatesForSlack() {
-  const data = getUpdates();
-  var lines = ['*OS UPDATES — ' + new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}) + '*\n'];
-  var hasAny = false;
-
-  UPDATE_TABS.forEach(function(tab) {
-    var items = data[tab] || [];
-    if (items.length > 0) {
-      hasAny = true;
-      lines.push('*' + TAB_LABELS[tab].toUpperCase() + '*');
-      items.forEach(function(item) {
-        lines.push('• ' + item.text + '  _(' + item.time + ')_');
-      });
-      lines.push('');
-    }
-  });
-
-  return hasAny ? lines.join('\n') : null;
-}
-
-/* Slack webhook for #os-updates — set this after creating the channel */
-var SLACK_WEBHOOK_URL = localStorage.getItem('mirour-os-webhook') || '';
-
-function sendToSlack() {
-  var msg = formatUpdatesForSlack();
-  if (!msg) { showToast('No updates to send'); return; }
-
-  if (!SLACK_WEBHOOK_URL) {
-    showConfigModal();
-    return;
+/* ── GITHUB SYNC ── */
+function ensureToken() {
+  var token = getToken();
+  if (token) return token;
+  token = prompt('One-time setup: paste a GitHub personal access token.\n\nThis lets the OS save your updates directly to the repo.\n\nGo to: github.com/settings/tokens → Generate new token (classic) → check "repo" scope → paste here:');
+  if (token && token.trim()) {
+    setToken(token.trim());
+    return token.trim();
   }
+  return null;
+}
 
-  var btn = document.getElementById('sendBtn');
-  btn.textContent = 'Sending...';
+function saveToRepo() {
+  var token = ensureToken();
+  if (!token) { showToast('Need a GitHub token to save'); return; }
+
+  var data = getUpdates();
+  var hasAny = Object.keys(data).some(function(k) { return (data[k] || []).length > 0; });
+
+  var payload = {
+    updated_at: new Date().toISOString(),
+    updates: hasAny ? data : {}
+  };
+
+  var btn = document.getElementById('saveBtn');
+  btn.textContent = 'Saving...';
   btn.disabled = true;
+  setStatus('saving', 'Saving to repo...');
 
-  fetch(SLACK_WEBHOOK_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text: msg })
+  // First check if file exists (to get sha for update)
+  fetch('https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + UPDATES_FILE, {
+    headers: { 'Authorization': 'token ' + token }
+  }).then(function(res) {
+    return res.ok ? res.json() : null;
+  }).then(function(existing) {
+    var body = {
+      message: 'OS update: ' + new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'}),
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2)))),
+      branch: 'main'
+    };
+    if (existing && existing.sha) body.sha = existing.sha;
+
+    return fetch('https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + UPDATES_FILE, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'token ' + token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
   }).then(function(res) {
     if (res.ok) {
-      showToast('Sent to #os-updates');
-      saveUpdates({});
+      unsavedChanges = false;
+      setStatus('saved', 'Saved — the next refresh will pick this up and update the OS');
+      showToast('Saved to repo');
+    } else {
+      return res.json().then(function(err) { throw new Error(err.message || 'Save failed'); });
+    }
+    btn.textContent = 'Save';
+    btn.disabled = false;
+  }).catch(function(err) {
+    setStatus('error', 'Error: ' + err.message);
+    showToast('Save failed — ' + err.message);
+    btn.textContent = 'Save';
+    btn.disabled = false;
+  });
+}
+
+function loadFromRepo() {
+  var token = getToken();
+  if (!token) return;
+
+  fetch('https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + UPDATES_FILE, {
+    headers: { 'Authorization': 'token ' + token }
+  }).then(function(res) {
+    return res.ok ? res.json() : null;
+  }).then(function(file) {
+    if (!file || !file.content) return;
+    var content = JSON.parse(decodeURIComponent(escape(atob(file.content.replace(/\n/g, '')))));
+    if (content.updates && Object.keys(content.updates).length > 0) {
+      // Merge: repo data as base, local unsaved on top
+      var local = getUpdates();
+      var merged = content.updates;
+      Object.keys(local).forEach(function(tab) {
+        if (!merged[tab]) merged[tab] = [];
+        local[tab].forEach(function(item) {
+          // Avoid dupes by checking text+time
+          var isDupe = merged[tab].some(function(m) { return m.text === item.text && m.time === item.time; });
+          if (!isDupe) merged[tab].push(item);
+        });
+      });
+      saveUpdatesLocal(merged);
       renderUpdatesTabs();
       renderUpdates();
-    } else {
-      showToast('Failed to send — check webhook URL');
+      setStatus('saved', 'Synced with repo — ' + content.updated_at.split('T')[0]);
     }
-    btn.textContent = 'Send to Slack';
-    btn.disabled = false;
-  }).catch(function() {
-    // Webhook might be blocked by CORS — fallback to copy
-    copyAllUpdates();
-    showToast('Copied instead — paste in #os-updates');
-    btn.textContent = 'Send to Slack';
-    btn.disabled = false;
-  });
-}
-
-function showConfigModal() {
-  var url = prompt('Paste the Slack webhook URL for #os-updates.\n\n(In Slack: channel settings → Integrations → Webhooks → Add)\n\nOr leave empty to just copy to clipboard:');
-  if (url && url.trim()) {
-    SLACK_WEBHOOK_URL = url.trim();
-    localStorage.setItem('mirour-os-webhook', SLACK_WEBHOOK_URL);
-    sendToSlack();
-  } else {
-    copyAllUpdates();
-  }
-}
-
-function copyAllUpdates() {
-  const data = getUpdates();
-  let output = 'MIROUR OS UPDATES — ' + new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}) + '\n';
-  output += '='.repeat(50) + '\n\n';
-  let hasAny = false;
-
-  UPDATE_TABS.forEach(function(tab) {
-    const items = data[tab] || [];
-    if (items.length > 0) {
-      hasAny = true;
-      output += TAB_LABELS[tab].toUpperCase() + '\n';
-      output += '-'.repeat(30) + '\n';
-      items.forEach(function(item) {
-        output += '• ' + item.text + '  (' + item.time + ')\n';
-      });
-      output += '\n';
-    }
-  });
-
-  if (!hasAny) {
-    showToast('No updates to copy');
-    return;
-  }
-
-  navigator.clipboard.writeText(output).then(function() {
-    showToast('Copied to clipboard — paste into Slack or wherever');
-  }).catch(function() {
-    // Fallback
-    var ta = document.createElement('textarea');
-    ta.value = output; document.body.appendChild(ta);
-    ta.select(); document.execCommand('copy');
-    document.body.removeChild(ta);
-    showToast('Copied to clipboard');
-  });
+  }).catch(function() { /* silent — no file yet is fine */ });
 }
 
 function updateGlobalDot() {
-  const data = getUpdates();
-  const hasAny = Object.keys(data).some(function(k) { return (data[k] || []).length > 0; });
+  var data = getUpdates();
+  var hasAny = Object.keys(data).some(function(k) { return (data[k] || []).length > 0; });
   document.getElementById('globalDot').className = 'dot' + (hasAny ? ' has-notes' : '');
 }
 
