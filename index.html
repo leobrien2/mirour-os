@@ -194,37 +194,91 @@
   .pane { display: none; }
   .pane.active { display: block; }
 
-  /* Goal Trackers */
+  /* Goal Trackers — clean style */
   .goals-section { margin-bottom: 32px; }
   .goal-card {
-    background: var(--galaxy);
-    border-radius: 12px;
+    background: #fff;
+    border-radius: 10px;
     padding: 24px 28px;
-    color: #fff;
+    color: var(--galaxy);
     margin-bottom: 16px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--nebula);
   }
-  .goal-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.6; margin-bottom: 8px; }
+  .goal-card.primary { border-left-color: var(--spacejam); border-left-width: 6px; }
+  .goal-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 8px; }
   .goal-header { display: flex; justify-content: space-between; align-items: baseline; }
-  .goal-value { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; }
-  .goal-target { font-size: 14px; opacity: 0.5; }
-  .goal-bar-wrap { height: 8px; background: rgba(255,255,255,0.12); border-radius: 4px; overflow: hidden; margin-top: 14px; }
-  .goal-bar { height: 100%; border-radius: 4px; background: var(--sunstar); transition: width 0.5s; }
-  .goal-status { font-size: 13px; opacity: 0.55; margin-top: 10px; }
+  .goal-value { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--galaxy); }
+  .goal-target { font-size: 14px; color: var(--text-light); }
+  .goal-bar-wrap { height: 6px; background: #f0eae0; border-radius: 3px; overflow: hidden; margin-top: 14px; }
+  .goal-bar { height: 100%; border-radius: 3px; background: var(--nebula); transition: width 0.5s; }
+  .goal-status { font-size: 13px; color: var(--text-light); margin-top: 10px; }
+  .goal-source { font-size: 11px; color: var(--faint, #a4a2a8); margin-top: 6px; font-style: italic; }
   .goal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
 
-  /* Tab KPI badges */
-  .kpi-strip { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
-  .kpi-pill { background: var(--cream); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; display: flex; align-items: center; gap: 8px; font-size: 13px; }
-  .kpi-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .kpi-dot.green { background: var(--green); }
-  .kpi-dot.amber { background: var(--amber); }
-  .kpi-dot.red { background: var(--red); }
-  .kpi-dot.purple { background: var(--nebula); }
+  /* KPI Tracker cards (mini goal-card style) */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .kpi-tracker {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .kpi-tracker:hover { border-color: var(--nebula); box-shadow: 0 2px 8px rgba(42,29,53,0.08); }
+  .kpi-tracker .kpi-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-light); margin-bottom: 6px; }
+  .kpi-tracker .kpi-value { font-size: 22px; font-weight: 600; color: var(--galaxy); }
+  .kpi-tracker .kpi-value.empty { color: var(--text-light); font-size: 16px; font-weight: 400; }
+  .kpi-tracker .kpi-bar-wrap { height: 4px; background: #f0eae0; border-radius: 2px; overflow: hidden; margin-top: 8px; }
+  .kpi-tracker .kpi-bar { height: 100%; border-radius: 2px; background: var(--nebula); }
+  .kpi-tracker .kpi-bar.green { background: var(--green); }
+  .kpi-tracker .kpi-bar.amber { background: var(--amber); }
+  .kpi-tracker .kpi-bar.red { background: var(--red); }
+  .kpi-tracker .kpi-source { font-size: 10px; color: var(--text-light); margin-top: 6px; font-style: italic; }
+
+  /* Editable items */
+  .editable { cursor: pointer; position: relative; transition: box-shadow 0.2s; }
+  .editable:hover { box-shadow: 0 0 0 2px rgba(173,118,178,0.25); border-radius: 8px; }
+
+  /* Edit popover */
+  .edit-popover {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    width: 420px;
+    max-width: 90vw;
+    box-shadow: 0 16px 48px rgba(42,29,53,0.2);
+    z-index: 1500;
+    display: none;
+  }
+  .edit-popover.open { display: block; }
+  .edit-popover h3 { font-family: orpheuspro, Georgia, serif; font-size: 16px; margin-bottom: 16px; font-weight: 400; }
+  .edit-popover label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-light); margin-bottom: 4px; margin-top: 12px; }
+  .edit-popover input, .edit-popover textarea, .edit-popover select {
+    width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px;
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14px; color: var(--galaxy);
+    background: var(--cream);
+  }
+  .edit-popover textarea { resize: vertical; min-height: 60px; }
+  .edit-popover .edit-actions { display: flex; gap: 8px; margin-top: 16px; justify-content: flex-end; }
+  .edit-popover .edit-actions button {
+    padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid var(--border);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  .edit-popover .edit-actions .save { background: var(--galaxy); color: #fff; border-color: var(--galaxy); }
+  .edit-popover .edit-actions .cancel { background: #fff; color: var(--text); }
+  .edit-overlay { position: fixed; inset: 0; background: rgba(42,29,53,0.3); z-index: 1499; display: none; }
+  .edit-overlay.open { display: block; }
 
   /* Pricing table */
   .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-  .pricing-card { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 24px; border-top: 4px solid var(--nebula); }
-  .pricing-card.featured { border-top-color: var(--sunstar); background: #fff; }
+  .pricing-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 24px; border-left: 4px solid var(--nebula); }
+  .pricing-card.featured { border-left-color: var(--spacejam); }
   .pricing-name { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 8px; }
   .pricing-amount { font-size: 32px; font-weight: 600; color: var(--galaxy); }
   .pricing-period { font-size: 14px; color: var(--text-light); }
@@ -528,7 +582,7 @@
     <img src="mirour-logo.png" alt="Mirour" class="wordmark">
     <span class="header-os">OS</span>
   </div>
-  <div class="date">Updated April 20, 2026</div>
+  <div class="date">Updated April 19, 2026</div>
 </header>
 
 <div class="tabs">
@@ -547,26 +601,26 @@
   <!-- COMPANY GOALS -->
   <div class="goals-section">
     <div class="section-title">COMPANY GOALS</div>
-    <div class="goal-card" style="background: linear-gradient(135deg, var(--galaxy) 0%, var(--spacejam) 100%);">
+    <div class="goal-card primary editable" data-id="goal-arr">
       <div class="goal-label">ARR Target</div>
       <div class="goal-header">
         <div class="goal-value">$1M</div>
-        <div class="goal-target">$1,188 / $1,000,000</div>
+        <div class="goal-target">$0 / $1,000,000</div>
       </div>
-      <div class="goal-bar-wrap"><div class="goal-bar" style="width: 0.1%;"></div></div>
-      <div class="goal-status">FIRST SALE — Brave + Kind @ $99/mo (Apr 17). 5 pilots in setup converting this month. Armada experiential deal in play.</div>
+      <div class="goal-bar-wrap"><div class="goal-bar" style="width: 0%;"></div></div>
+      <div class="goal-status">Pre-revenue — 0 paid brands. 5 in pilot setup, converting this month.</div>
     </div>
     <div class="goal-row">
-      <div class="goal-card">
+      <div class="goal-card editable" data-id="goal-brands-eoy">
         <div class="goal-label">Brands by EOY 2026</div>
         <div class="goal-header">
           <div class="goal-value">100</div>
-          <div class="goal-target">1 / 100 active</div>
+          <div class="goal-target">0 / 100 active</div>
         </div>
-        <div class="goal-bar-wrap"><div class="goal-bar" style="width: 1%;"></div></div>
-        <div class="goal-status">1 paid (Brave + Kind) — 5 in setup, 36 total pipeline. Target $100K+ revenue.</div>
+        <div class="goal-bar-wrap"><div class="goal-bar" style="width: 0%;"></div></div>
+        <div class="goal-status">0 active — 5 in setup, 36 total pipeline. Target $100K+ revenue.</div>
       </div>
-      <div class="goal-card" style="background: var(--spacejam);">
+      <div class="goal-card editable" data-id="goal-pipeline-6mo">
         <div class="goal-label">6-Month Pipeline Target</div>
         <div class="goal-header">
           <div class="goal-value">1,000</div>
@@ -578,23 +632,23 @@
     </div>
   </div>
 
-  <div class="notice">🎉 FIRST SALE — Brave + Kind bookstore @ $99/mo (Apr 17). Armada experiential deal in play (150-person launch party, June 23 or 30). One of Each flows almost ready — Loren: "3x in stores within 2 weeks." Soberish customer launch this week. G&amp;Y still blocked on manual tagging bug. NEW product bugs Apr 17–18: save lag, saved items not showing, profile errors. Loren proposed pricing tweak (Founding 10 locked at $99 for 1 yr; Standard $149).</div>
+  <div class="notice">Soberish Friday in-store visit COMPLETE — employee testing phase underway, customer launch end of this week. One of Each (Tamburai) walkthrough done; Loom + logo/photos pending from Info. Soberish new blocker: `DON'T UPLOAD CSV TO MIROUR` — custom tags must be added first. THC exclusion tag logic still required. G&amp;Y manual tagging bug still blocking launch. Shopify custom app submission pending (10–15 day approval). Summer intern starts May 18.</div>
 
   <div class="metrics">
-    <div class="metric good">
-      <div class="num">1</div>
-      <div class="label">Paid Brands</div>
-      <div class="sub">Brave + Kind @ $99/mo 🎉</div>
+    <div class="metric editable warn">
+      <div class="num">0</div>
+      <div class="label">Active Brands</div>
+      <div class="sub">5 in pilot setup, 0 live</div>
     </div>
-    <div class="metric good">
+    <div class="metric editable good">
       <div class="num">36</div>
       <div class="label">Total Pipeline</div>
       <div class="sub">3 late stage + 11 active + 17 new</div>
     </div>
-    <div class="metric crit">
-      <div class="num">21</div>
+    <div class="metric editable crit">
+      <div class="num">20</div>
       <div class="label">Open Bugs</div>
-      <div class="sub">Bugs/QA — 4 new HIGH (save/profile)</div>
+      <div class="sub">Shape Up Bugs/QA — growing after pilot testing</div>
     </div>
     <div class="metric">
       <div class="num">$99/$149</div>
@@ -605,34 +659,16 @@
 
   <!-- RIGHT NOW -->
   <div class="section">
-    <div class="section-title">RIGHT NOW WEEK (APR 20–24)</div>
+    <div class="section-title">RIGHT NOW WEEK (APR 14–18)</div>
     <div class="week-block now">
-      <div class="week-label now">First Sale Conversion + Pilots Live + New Deals</div>
-      <div class="week-title">Brave + Kind onboarding, Soberish customer launch, Armada quote by Friday, One of Each go-live</div>
-
-      <div class="task-row">
-        <div class="task-owner loren">Loren</div>
-        <div class="task-content">
-          <strong style="color: var(--green);">🎉 FIRST SALE — Brave + Kind @ $99/mo (Apr 17) — ONBOARD</strong>
-          <span>Send info + pricing. Bunnie also wants to discuss agency-side revenue growth (Kelley to join). Newsletter send from Index today.</span>
-        </div>
-        <div class="task-effort">This week</div>
-      </div>
-
-      <div class="task-row">
-        <div class="task-owner loren">Loren</div>
-        <div class="task-content">
-          <strong style="color: var(--sunstar);">Armada experiential quote + pitch (Chelsea) — deliver by Friday</strong>
-          <span>150-person luxury-pirate launch party at Luminarium end of June. Build in Mirour: RSVP flow + QR data capture at event. Chelsea sending rough budget Friday. New experiential wedge — reusable template.</span>
-        </div>
-        <div class="task-effort">Quote Friday</div>
-      </div>
+      <div class="week-label now">Pilots Going Live + Product Bugs + Lightspeed Partnership</div>
+      <div class="week-title">Soberish in-store Friday, G&amp;Y launch blocked by tagging bugs, One of Each walkthrough today</div>
 
       <div class="task-row">
         <div class="task-owner tanmay">Tanmay</div>
         <div class="task-content">
-          <strong style="color: var(--red);">Fix save/profile HIGH bugs surfaced Apr 17–18</strong>
-          <span>Loren flagged: "saving items lagged + sign up updates" (HIGH), "saved items not showing" (HIGH), "saved item/profile went weird" (HIGH), anonymous save attribution issue. Critical for upcoming pilot launches.</span>
+          <strong style="color: var(--red);">Fix G&amp;Y manual product add/tagging bug (P0 for launch)</strong>
+          <span>Apr 13: Loren + Kelley confirmed they can't manually tag or add products in G&amp;Y. Soberish tags also bleeding into G&amp;Y. Search not letting Loren search. Blocking pilot launch.</span>
         </div>
         <div class="task-effort">URGENT</div>
       </div>
@@ -640,8 +676,8 @@
       <div class="task-row">
         <div class="task-owner tanmay">Tanmay</div>
         <div class="task-content">
-          <strong>Lightspeed integration — live inventory sync (Phase 1)</strong>
-          <span>Partnership call with Ali + Tamara complete. Phase 1: live inventory sync (24-hour implementation possible). Tanmay reviewing API docs; Tamara sending calendar link. Phase 2: push in-store interaction data back. Critical for Soberish.</span>
+          <strong>Lightspeed partnership call (Wed)</strong>
+          <span>Positioning as customer discovery partnership, NOT platform takeover. Need read + write API access. Loren: "only share bare minimum, play down what we're building."</span>
         </div>
         <div class="task-effort">This week</div>
       </div>
@@ -649,44 +685,35 @@
       <div class="task-row">
         <div class="task-owner loren">Loren</div>
         <div class="task-content">
-          <strong>Soberish customer launch (post employee testing)</strong>
-          <span>Employee testing phase complete. THC exclusion + archived-product cleanup still pending. Customer-facing launch this week. Fresh Lightspeed inventory pull needed.</span>
+          <strong>&check; Soberish in-store visit COMPLETE &mdash; employee testing underway</strong>
+          <span>Three spirit-wall flow skeletons live. Employee testing phase started; customer launch end of this week. Blocker: don't upload CSV to Mirour until custom tags added. THC exclusion tag logic still needed.</span>
         </div>
-        <div class="task-effort">This week</div>
+        <div class="task-effort">Customer launch this week</div>
       </div>
 
       <div class="task-row">
         <div class="task-owner loren">Loren</div>
         <div class="task-content">
-          <strong>One of Each (Tamburai) go-live — flows almost ready</strong>
-          <span>Loren (Apr 18): "Weekend win — Tamburai's flows are almost ready to go live. Should have 3x in stores within 2 weeks." Primary CTA: fundraiser ($200K rural campus). Secondary: find-your-scarf.</span>
+          <strong>&check; G&amp;Y flows ready + Loren onboarding (Apr 13)</strong>
+          <span>"Glad and young flows ready on my end! Just waiting on manual tagging." Kelley and Loren synced on G&amp;Y flows via Google Doc.</span>
         </div>
-        <div class="task-effort">2 weeks to live</div>
+        <div class="task-effort">DONE</div>
       </div>
 
       <div class="task-row">
-        <div class="task-owner tanmay">Tanmay</div>
+        <div class="task-owner loren">Loren</div>
         <div class="task-content">
-          <strong style="color: var(--red);">G&amp;Y manual tagging bug still blocking paid launch</strong>
-          <span>Loren + Kelley can't manually tag or add products. Cross-pilot tag bleed (Soberish → G&amp;Y). Tag search broken. Fix unlocks paid conversion.</span>
+          <strong>&check; One of Each (Tamburai) flow walkthrough COMPLETE</strong>
+          <span>Setup call held. Platform strategy: lead with fundraiser ($200K rural campus) = primary CTA, secondary "find your scarf" flow. Next: Loom walkthrough + request high-res logo/pop-up photos from Info.</span>
         </div>
-        <div class="task-effort">URGENT</div>
-      </div>
-
-      <div class="task-row">
-        <div class="task-owner tanmay">Tanmay</div>
-        <div class="task-content">
-          <strong>Contact card spec + auto-disclaimer (per Loren Apr 17)</strong>
-          <span>Always-on, small disclaimer on capture. Single combined email + SMS opt-in. STOP flips SMS only, unsubscribe flips email only. Snapshot disclaimer verbatim. UTC timestamps. Needed for all brands now.</span>
-        </div>
-        <div class="task-effort">This week</div>
+        <div class="task-effort">Loom pending</div>
       </div>
 
       <div class="task-row">
         <div class="task-owner kelley">Kelley</div>
         <div class="task-content">
-          <strong>GTM + brand deep dive + onboarding support</strong>
-          <span>Brand alignment (visuals done, voice next). Soberish onboarding support. Brave + Kind agency-side convo with Loren. Summer intern prep (starts May 18).</span>
+          <strong>GTM + pilot onboarding (Apr 14)</strong>
+          <span>Kelley's focus this week. Soberish flow building (adaptogen, non-alc spirit, recipe/bourbon tagging). Brand alignment visuals first, voice next. Can help with product testing.</span>
         </div>
         <div class="task-effort">This week</div>
       </div>
@@ -694,10 +721,28 @@
       <div class="task-row">
         <div class="task-owner loren">Loren</div>
         <div class="task-content">
-          <strong>Mirour In-Store Index — newsletter anchor</strong>
-          <span>Index (curated public-source stats: NRF, Census, Placer) used to build sales pipeline via newsletter. Loren (Apr 16): "working on index for newsletter — using to build sales pipeline."</span>
+          <strong>Summer intern onboarding prep &mdash; starts May 18</strong>
+          <span>New team member coming. Great meet with Kelley this AM (Apr 14) to plan.</span>
         </div>
-        <div class="task-effort">Ongoing</div>
+        <div class="task-effort">Prep now</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-owner loren">Loren</div>
+        <div class="task-content">
+          <strong>Feedback tool decision needed (PostHog / Sentry)</strong>
+          <span>Per Granola, decision still open between feedback/observability options. Tanmay waiting on call.</span>
+        </div>
+        <div class="task-effort">This week</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-owner loren">Loren</div>
+        <div class="task-content">
+          <strong>&check; Making the Moment podcast recorded</strong>
+          <span>Aja's platform for retail/brand storytelling — Mirour positioned as bridging in-store and digital capture.</span>
+        </div>
+        <div class="task-effort">Done</div>
       </div>
     </div>
   </div>
@@ -707,45 +752,45 @@
     <div class="section-title">THIS MONTH 4-WEEK SPRINT</div>
 
     <div class="week-block now" style="margin-bottom: 12px;">
-      <div class="week-label now">WEEK 4 (Apr 20&ndash;24) &larr; YOU ARE HERE</div>
-      <div class="week-title">First Sale Conversion + Soberish Customer Launch + Armada Quote</div>
-      <div class="task-row">
-        <div class="task-owner loren">Loren</div>
-        <div class="task-content"><strong>🎉 Brave + Kind onboarding (first paid!) + Armada quote by Fri</strong></div>
-      </div>
+      <div class="week-label now">WEEK 3 (Apr 14&ndash;18) &larr; YOU ARE HERE</div>
+      <div class="week-title">Pilots Going Live + Tagging Bug Fixes</div>
       <div class="task-row">
         <div class="task-owner tanmay">Tanmay</div>
-        <div class="task-content"><strong>Fix save/profile HIGH bugs + Lightspeed Phase 1 API review</strong></div>
+        <div class="task-content"><strong>Fix manual tag add + search + cross-pilot tag bleed (P0)</strong></div>
+      </div>
+      <div class="task-row">
+        <div class="task-owner loren">Loren</div>
+        <div class="task-content"><strong>Soberish Friday in-store employee test + One of Each walkthrough</strong></div>
       </div>
       <div class="task-row">
         <div class="task-owner kelley">Kelley</div>
-        <div class="task-content"><strong>Brand deep-dive + pilot onboarding support + B+K agency side</strong></div>
+        <div class="task-content"><strong>Soberish flow build (adaptogen, non-alc, recipes) + G&amp;Y flow polish</strong></div>
       </div>
     </div>
 
     <div class="week-block next" style="margin-bottom: 12px;">
-      <div class="week-label next">WEEK 5 (Apr 28&ndash;May 2)</div>
-      <div class="week-title">Soberish + G&amp;Y Paid Conversion + One of Each Live</div>
+      <div class="week-label next">WEEK 4 (Apr 21&ndash;25)</div>
+      <div class="week-title">Soberish Customer Launch + G&amp;Y Paid</div>
       <div class="task-row">
         <div class="task-owner loren">Loren</div>
-        <div class="task-content"><strong>Convert G&amp;Y + Soberish to paid ($99/mo — Founding 10 tier)</strong></div>
+        <div class="task-content"><strong>Soberish customer-facing launch end of week (post Friday test)</strong></div>
       </div>
       <div class="task-row">
         <div class="task-owner loren">Loren</div>
-        <div class="task-content"><strong>One of Each live in 3x stores (Tamburai flows shipping)</strong></div>
+        <div class="task-content"><strong>Convert G&amp;Y + Soberish to paid ($1K setup + $99/mo)</strong></div>
       </div>
     </div>
 
     <div class="week-block next">
-      <div class="week-label next">WEEK 6 (May 5&ndash;9)</div>
-      <div class="week-title">Case Studies + Seed Prep + Intern Ramp</div>
+      <div class="week-label next">WEEK 5 (Apr 28&ndash;May 2)</div>
+      <div class="week-title">Seed Prep + Case Studies</div>
       <div class="task-row">
         <div class="task-owner loren">Loren</div>
-        <div class="task-content"><strong>First pilot case study (Brave + Kind or Soberish)</strong></div>
+        <div class="task-content"><strong>First pilot case study (A Bag Concept or Soberish)</strong></div>
       </div>
       <div class="task-row">
         <div class="task-owner loren">Loren</div>
-        <div class="task-content"><strong>Seed round materials + Summer intern onboarding (starts May 18)</strong></div>
+        <div class="task-content"><strong>Seed round materials ready</strong></div>
       </div>
     </div>
   </div>
@@ -757,25 +802,26 @@
       <div class="card" style="border-left: 4px solid var(--green);">
         <h3 style="color: var(--green); font-size: 14px;">Wins This Week</h3>
         <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-          <strong>🎉 FIRST SALE — Brave + Kind bookstore @ $99/mo (Apr 17)</strong> &mdash; also interested in agency-side revenue growth<br>
-          <strong>Armada experiential deal captured (Apr 16)</strong> &mdash; 150-person launch party June 23/30 at Luminarium. New wedge for events/activations<br>
-          <strong>One of Each (Tamburai) flows almost ready (Apr 18)</strong> &mdash; "3x in stores within 2 weeks"<br>
-          <strong>manual tag search bug fixed (Apr 16)</strong> &mdash; plus favoriting/profiles, signup/save, response capture all shipped<br>
-          <strong>Soberish in-store visit + employee testing complete</strong> &mdash; customer launch this week<br>
-          <strong>Lightspeed partnership call complete</strong> &mdash; Phase 1 live inventory sync (24hr impl possible); Phase 2 push-back<br>
-          <strong>Contact card spec drafted (Apr 17)</strong> &mdash; single opt-in email + SMS, always-on disclaimer<br>
-          <strong>Summer intern starts May 18</strong>
+          <strong>Soberish Friday in-store visit COMPLETE</strong> &mdash; employee testing phase underway<br>
+          <strong>One of Each (Tamburai) setup call held</strong> &mdash; platform strategy locked (fundraiser primary CTA)<br>
+          <strong>New AI search prototype added</strong> &mdash; floating persistent element in builder<br>
+          <strong>Making the Moment podcast recorded</strong> &mdash; Aja's platform, Mirour positioned as bridging in-store + digital<br>
+          <strong>Summer intern starts May 18</strong> &mdash; great meet with Kelley Apr 14<br>
+          <strong>Khanna (Icon NY)</strong> validated retail-data/experiential bridge; interested in NY Tech Week panel<br>
+          <strong>Shopify integration COMPLETE</strong> &mdash; G&amp;Y customer data syncing (Tanmay, Apr 8)<br>
+          <strong>Soberish Lightspeed workaround live</strong> &mdash; data syncing for pilot (Tanmay, Apr 9)
         </div>
       </div>
       <div class="card" style="border-left: 4px solid var(--red);">
         <h3 style="color: var(--red); font-size: 14px;">Blocking Issues</h3>
         <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-          <strong>NEW: Save/profile HIGH bugs (Apr 17–18)</strong> &mdash; saving items lagged, saved items not showing, save profile went weird. Loren: "spent 2 hours on flows, so scared it'll wipe."<br>
-          <strong>G&amp;Y manual tagging</strong> &mdash; still broken; cross-pilot tag bleed (Soberish → G&amp;Y). Blocks paid launch.<br>
+          <strong>CSV upload blocker</strong> &mdash; "Don't upload CSV to Mirour" until custom tags added first (Granola, Apr 11).<br>
+          <strong>G&amp;Y manual tagging broken</strong> &mdash; Loren + Kelley both can't tag or add products. Still blocking launch.<br>
+          <strong>Cross-pilot tag bleed</strong> &mdash; Soberish tags appearing in G&amp;Y profile.<br>
+          <strong>Search not working</strong> &mdash; manual tag search in flow won't let Loren search/add products.<br>
           <strong>THC drinks in non-alc results</strong> &mdash; exclusion tag logic still pending Tanmay.<br>
-          <strong>Anonymous save attribution issue</strong> &mdash; logged-in user's save showing as anonymous (Loren, Apr 18).<br>
           <strong>Lightspeed archived/Squarespace data</strong> &mdash; old products still pulling; fresh inventory pull needed.<br>
-          <strong>21 open bugs</strong> in Bugs/QA &mdash; 4 new HIGH since Apr 17.<br>
+          <strong>20 open bugs</strong> in Shape Up Bugs/QA &mdash; surfacing faster than fixing during pilot testing.<br>
           <strong>Shopify custom app submission pending</strong> &mdash; 10–15 day approval window.
         </div>
       </div>
@@ -789,25 +835,25 @@
       <div class="card" style="border-left: 4px solid var(--sunstar);">
         <h3 style="color: var(--sunstar); font-size: 14px;">Loren &mdash; CEO</h3>
         <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-          <strong>Win:</strong> 🎉 First sale — Brave + Kind @ $99/mo! Armada quote in play. Tamburai flows nearly live.<br><br>
-          <strong>Working:</strong> Getting B+K info + pricing over. Armada quote for Friday. Newsletter from Index. GTM + One of Each + Soberish + G&amp;Y pipeline.<br><br>
-          <strong>Need:</strong> Save/profile bugs cleared before more pilots go live. Lightspeed API good (waiting on Tanmay review).
+          <strong>Win:</strong> Soberish Friday in-store visit complete; Tamburai setup call done; Making the Moment podcast recorded.<br><br>
+          <strong>Working:</strong> Soberish customer launch prep (end of this week). Tamburai Loom walkthrough. Feedback tool decision.<br><br>
+          <strong>Need:</strong> Product bugs and updates and testing &mdash; manual tag add, search, cross-pilot tag bleed all still blocking.
         </div>
       </div>
       <div class="card" style="border-left: 4px solid var(--green);">
         <h3 style="color: var(--green); font-size: 14px;">Tanmay &mdash; CTO</h3>
         <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-          <strong>Win:</strong> Manual tag search fixed. Save + response-capture fixes shipped. Analytics LLM experiment running locally. Great team meeting.<br><br>
-          <strong>Working:</strong> Lightspeed integration + API docs review. Bug fixes (save lag, saved items not showing, profile errors). Contact card spec + auto-disclaimer.<br><br>
-          <strong>Need:</strong> Access to <a href="mailto:event@mirour.me">event@mirour.me</a> if we set up auto-confirmation for Armada. Image support on multi-select Qs for visual voting pattern.
+          <strong>Win:</strong> New AI search prototype added as floating persistent element. Shopify custom app submitted for approval.<br><br>
+          <strong>Working:</strong> THC exclusion tag logic for Soberish. Lightspeed read/write API confirmation. Tagging bug fixes.<br><br>
+          <strong>Need:</strong> Tagging best practices doc from Kelley before proceeding further. Feedback tool decision.
         </div>
       </div>
       <div class="card" style="border-left: 4px solid var(--nebula);">
         <h3 style="color: var(--nebula); font-size: 14px;">Kelley &mdash; CBO</h3>
         <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-          <strong>Win:</strong> Brave + Kind + Indiehouse + Armada model all moving. Brand deep-dive progressing. End-card update landed.<br><br>
-          <strong>Working:</strong> GTM web stuff + brand deep dive + onboarding support. Soberish adaptogen/non-alc/recipe flows. B+K agency-side thinking.<br><br>
-          <strong>Need:</strong> Product testing &mdash; lmk where to dive in. Align on flow guidance for onboarding at G&amp;Y live.
+          <strong>Win:</strong> Soberish logins configured. Lightspeed learnings documented (archived/channel/sync requirements).<br><br>
+          <strong>Working:</strong> Tagging best practices doc (Tanmay waiting). G&amp;Y flow polish. Soberish adaptogen + non-alc + recipe flows.<br><br>
+          <strong>Need:</strong> Final tagging doc out before Tanmay proceeds on auto-tag work.
         </div>
       </div>
     </div>
@@ -816,28 +862,10 @@
   <!-- ACTIVE LEADS -->
   <div class="section">
     <div class="section-title">ACTIVE LEADS &mdash; SHOPTALK + NEW</div>
-    <div class="lead-card" style="border-left: 4px solid var(--green);">
-      <h4>🎉 Brave + Kind Bookstore &middot; CLOSED — $99/mo (Apr 17)</h4>
-      <div class="insight">FIRST SALE. Bunnie &mdash; 8-yr Black woman-owned Decatur bookstore. 20K email list, 38K followers. Also wants to discuss agency-side revenue growth.</div>
-      <div class="action">&rarr; Onboard this week. Kelley joins on agency-side conversation.</div>
-      <div class="who">Loren + Kelley</div>
-    </div>
-    <div class="lead-card" style="border-left: 4px solid var(--sunstar);">
-      <h4>Armada (Chelsea) &middot; NEW DEAL — Experiential Wedge</h4>
-      <div class="insight">Restaurant staffing startup. 150-person luxury-pirate launch party at Luminarium (June 23 or 30). Needs ticketing/RSVP/data capture. Reusable template asset.</div>
-      <div class="action">&rarr; Comprehensive quote + partner network options by Friday. Chelsea sending budget Fri.</div>
-      <div class="who">Loren</div>
-    </div>
     <div class="lead-card">
-      <h4>Faced Facial Studio &middot; WARM — PROPOSAL</h4>
-      <div class="insight">Multi-store facial studio. Super interested in paid pilot. At Proposal stage.</div>
-      <div class="action">&rarr; Follow up email. Potential $99/mo + setup included annual.</div>
-      <div class="who">Loren</div>
-    </div>
-    <div class="lead-card">
-      <h4>Indiehouse &middot; PROPOSAL</h4>
-      <div class="insight">At proposal stage. Kelley flagged as awesomeness in Apr 17 win (w/ Brave+Kind, event model).</div>
-      <div class="action">&rarr; Follow up + close</div>
+      <h4>Faced Facial Studio &middot; WARM</h4>
+      <div class="insight">Multi-store facial studio. Super interested in paid pilot after call with Loren (Mar 31).</div>
+      <div class="action">&rarr; Follow up email. Potential $99/mo + $1K setup.</div>
       <div class="who">Loren</div>
     </div>
     <div class="lead-card">
@@ -848,13 +876,13 @@
     </div>
     <div class="lead-card">
       <h4>Kohl&rsquo;s &middot; Publicis Group &middot; Philip Morris</h4>
-      <div class="insight">Enterprise / agency leads from ShopTalk. Follow-up emails in flight.</div>
+      <div class="insight">Enterprise / agency leads from ShopTalk</div>
       <div class="action">&rarr; Send sales decks (brand + partnerships)</div>
       <div class="who">Loren</div>
     </div>
     <div class="lead-card">
       <h4>Veronica Beard &middot; Highland Diamond &middot; Aja</h4>
-      <div class="insight">Warm leads from ShopTalk conversations. Aja = experiential partnership.</div>
+      <div class="insight">Warm leads from ShopTalk conversations</div>
       <div class="action">&rarr; Follow up emails</div>
       <div class="who">Loren</div>
     </div>
@@ -865,14 +893,20 @@
       <div class="who">Loren</div>
     </div>
     <div class="lead-card">
+      <h4>Brave + Kind Bookstore &middot; ACTIVE</h4>
+      <div class="insight">New active opportunity in pipeline.</div>
+      <div class="action">&rarr; Follow up</div>
+      <div class="who">Loren</div>
+    </div>
+    <div class="lead-card">
       <h4>Nisha / Tech Week ATL</h4>
-      <div class="insight">Wants Mirour to host or panel. "Using AI to make in-person better."</div>
-      <div class="action">&rarr; Decide event format. Follow up re: ATL Tech Week dates.</div>
+      <div class="insight">Wants Mirour to host or do a panel. "She wants to amplify what we're doing."</div>
+      <div class="action">&rarr; Decide event format. Follow up re: Atlanta Tech Week dates.</div>
       <div class="who">Loren</div>
     </div>
     <div class="lead-card">
       <h4>BIP Ventures / Nate &middot; RELATIONSHIP</h4>
-      <div class="insight">Series A fund, $5-10M checks. Met Apr 1. Open to sending early-stage / female founders via Trailblazers.</div>
+      <div class="insight">Series A fund, $5-10M checks. Met Apr 1. Open to sending early-stage/female founders via Trailblazers.</div>
       <div class="action">&rarr; Add Nate to Trailblazers newsletter. Reach out post-rebrand for co-hosted event.</div>
       <div class="who">Loren</div>
     </div>
@@ -883,12 +917,11 @@
     <div class="section-title">MARKET SIGNALS &amp; STRATEGIC CONTEXT</div>
     <div class="card">
       <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-        <strong>🎉 First sale validates $99/mo pricing</strong> &mdash; Brave + Kind (Apr 17). Indie retailer fit: modest foot traffic, big email list, wants consistent content. Pricing signal is holding.<br><br>
-        <strong>Experiential is a real wedge</strong> &mdash; Armada deal (Apr 16) proves Mirour can replace Eventbrite-style link-outs. Scope: RSVP landing + form + QR data capture. One-time build becomes reusable template + future sales asset.<br><br>
-        <strong>Soberish validation:</strong> Mehrnush called it "a big deal" &mdash; "never seen anything like it." Strongest pilot validation yet.<br><br>
-        <strong>Lightspeed integration &mdash; Phase 1 unlockable in 24hrs</strong>. Phase 2 (push-back in-store interaction data) is the clienteling-adjacent hook. Position as customer discovery, NOT platform takeover.<br><br>
-        <strong>Product data is everyone&rsquo;s wall.</strong> AI/agentic commerce requires structured tags first. Tags are the core &mdash; if tags work, everything works.<br><br>
-        <strong>Tech Week ATL</strong> &mdash; Nisha wants Mirour to host/panel. "Using AI to make in-person better."
+        <strong>Soberish validation:</strong> Mehrnush called it "a big deal" &mdash; "never seen anything like it." Can already see how it helps both consumer and brand. Strongest pilot validation yet.<br><br>
+        <strong>Lightspeed integration is non-negotiable</strong> for Soberish. Archived products, channel toggles (online-only vs in-store), real-time sync are all requirements. CSV filtering to active-only needed as interim.<br><br>
+        <strong>Soberish new website went live</strong> &mdash; everything in Lightspeed IS on the website now. Categories on website could map to Mirour categories. Tags may come from Lightspeed directly.<br><br>
+        <strong>Product data is everyone&rsquo;s wall.</strong> AI/agentic commerce requires structured tags first. Tags are the core of everything &mdash; if tags work, everything works.<br><br>
+        <strong>Tech Week ATL opportunity</strong> &mdash; Nisha wants Mirour to host/panel. Could position as "Using AI to make in-person better."
       </div>
     </div>
   </div>
@@ -898,7 +931,7 @@
 <!-- PRODUCT -->
 <div class="content pane" id="product">
 
-  <div class="notice">21 open bugs in Bugs/QA. 4 new HIGH bugs surfaced Apr 17–18 (save lag, saved items not showing, profile errors, anonymous attribution). Lightspeed Phase 1 API review in progress. Shopify custom app submitted (10–15 day window). Contact card spec drafted for always-on disclaimer. Analytics LLM experiment running locally (Tanmay).</div>
+  <div class="notice">20 open bugs in Shape Up Bugs/QA. New AI search prototype added as floating persistent element. Shopify custom app submitted for approval (10–15 day window). Tagging best practices doc still needed from Kelley before Tanmay proceeds. THC exclusion tag logic + CSV-upload guard still open for Soberish.</div>
 
   <div class="metrics">
     <div class="metric">
@@ -906,29 +939,49 @@
       <div class="label">Active Sprint</div>
       <div class="sub">Build LLM Auto-Tagging System</div>
     </div>
-    <div class="metric crit">
-      <div class="num">21</div>
+    <div class="metric editable crit">
+      <div class="num">20</div>
       <div class="label">Open Bugs</div>
-      <div class="sub">4 new HIGH from Apr 17–18 (save/profile)</div>
+      <div class="sub">Bugs/QA in Shape Up — growing during pilot tests</div>
     </div>
-    <div class="metric warn">
+    <div class="metric editable warn">
       <div class="num">0</div>
       <div class="label">Live Pilots</div>
-      <div class="sub">5 in setup, customer launches this week</div>
+      <div class="sub">5 in setup, 0 customer-facing</div>
     </div>
-    <div class="metric good">
+    <div class="metric editable good">
       <div class="num">2</div>
       <div class="label">In Build</div>
       <div class="sub">Product Dev &mdash; Approved</div>
     </div>
   </div>
 
-  <!-- PRODUCT KPIs (placeholder) -->
-  <div class="kpi-strip">
-    <div class="kpi-pill"><div class="kpi-dot red"></div>Shopify integration: pending approval (10-15 days)</div>
-    <div class="kpi-pill"><div class="kpi-dot amber"></div>Lightspeed integration: Phase 1 API review</div>
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>Auto-tagging: building</div>
-    <div class="kpi-pill"><div class="kpi-dot amber"></div>Contact card spec: drafted Apr 17</div>
+  <!-- PRODUCT KPIs -->
+  <div class="kpi-grid">
+    <div class="kpi-tracker editable" data-id="product-shopify">
+      <div class="kpi-label">Shopify Integration</div>
+      <div class="kpi-value">Pending</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar amber" style="width: 60%;"></div></div>
+      <div class="kpi-source">Submitted for approval (10-15 days)</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="product-lightspeed">
+      <div class="kpi-label">Lightspeed Integration</div>
+      <div class="kpi-value">In Progress</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar amber" style="width: 40%;"></div></div>
+      <div class="kpi-source">Source: Tanmay</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="product-autotagging">
+      <div class="kpi-label">Auto-Tagging</div>
+      <div class="kpi-value">Building</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 30%;"></div></div>
+      <div class="kpi-source">Source: Shape Up</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="product-analytics">
+      <div class="kpi-label">Analytics Rebuild</div>
+      <div class="kpi-value">Planned</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 10%;"></div></div>
+      <div class="kpi-source">See analytics mockup</div>
+    </div>
   </div>
 
   <!-- ACTIVE SPRINT -->
@@ -958,24 +1011,23 @@
     </div>
 
     <div class="card" style="margin-top: 12px; border-left: 4px solid var(--green);">
-      <h3 style="color: var(--green); font-size: 14px;">Recently Shipped &mdash; 23+ items</h3>
+      <h3 style="color: var(--green); font-size: 14px;">Recently Shipped (since Mar 26) &mdash; 18 items</h3>
       <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-        <strong>&check; Manual tag search fix</strong> &mdash; Apr 16, the P0 pilot blocker for G&amp;Y<br>
-        <strong>&check; Customers capturing responses / input (HIGH)</strong> &mdash; fixed<br>
-        <strong>&check; Saved products on customer profile + date/time (HIGH)</strong> &mdash; fixed<br>
-        <strong>&check; Showing someone else's save when logged in</strong> &mdash; fixed<br>
-        <strong>&check; Login / save signup flow</strong> &mdash; fixed<br>
-        <strong>&check; Favoriting / profiles</strong> &mdash; fixed<br>
-        <strong>&check; Shopify Integration</strong> &mdash; G&amp;Y customer data syncing (Apr 8)<br>
-        <strong>&check; Soberish Lightspeed Workaround</strong> &mdash; data syncing for pilot (Apr 9)<br>
-        <strong>&check; AI Search</strong> &mdash; floating persistent element shipped (Apr 5)<br>
-        <strong>&check; Tag-Based Product Display</strong> &middot; <strong>&check; Hide Rec Strategy</strong> &middot; <strong>&check; Product Preview clearer</strong><br>
-        <strong>&check; AI flow builder w/ auto-tag + routing (Mar 26)</strong><br>
+        <strong>&check; Shopify Integration</strong> &mdash; G&amp;Y customer data syncing (Tanmay, Apr 8)<br>
+        <strong>&check; Soberish Lightspeed Workaround</strong> &mdash; data syncing for pilot (Tanmay, Apr 9)<br>
+        <strong>&check; AI Search</strong> &mdash; implemented and ready (Tanmay, Apr 5)<br>
+        <strong>&check; Add Tag-Based Product Display Mode</strong> &mdash; type a tag &rarr; see all matching products<br>
+        <strong>&check; Hide Recommendation Strategy Logic</strong> &mdash; defaulting to "any match"<br>
+        <strong>&check; Make Product Preview Clearer</strong> &mdash; helper text for dynamic recs<br>
+        <strong>&check; AI flow builder with auto-tagging and routing</strong> &mdash; Tanmay (Mar 26)<br>
         <strong>&check; G&amp;Y auto-tag CSV</strong> &mdash; 3,063 products, 6 batches<br>
-        <strong>&check; Soberish product images</strong> &middot; <strong>&check; profile for users</strong> &middot; <strong>&check; analytics responses (object vs text)</strong><br>
-        <strong>&check; Scans in analytics</strong> &middot; <strong>&check; Preview vs live</strong> &middot; <strong>&check; Web vs mobile formatting</strong><br>
-        <strong>&check; Tags not routing</strong> &middot; <strong>&check; Pricing on preview</strong> &middot; <strong>&check; Images in product results</strong><br>
-        <strong>&check; Responses duplicating</strong> &middot; <strong>&check; Hide profile fields from customer view</strong>
+        <strong>&check; Soberish product images fix</strong> &mdash; was blocking pilot demo<br>
+        <strong>&check; profile for users</strong> &mdash; newly fixed<br>
+        <strong>&check; analytics page showing wrong responses (object vs text)</strong> &mdash; newly fixed<br>
+        <strong>&check; Not showing scans in analytics</strong> (High) &middot; <strong>&check; Preview vs live screen</strong> (High)<br>
+        <strong>&check; Back to customers button</strong> &middot; <strong>&check; New user screen</strong> &middot; <strong>&check; Web page vs mobile formatting</strong><br>
+        <strong>&check; Tags not routing to products</strong> &middot; <strong>&check; Pricing not working on preview</strong><br>
+        <strong>&check; Images not showing in product results</strong> &middot; <strong>&check; Start page removal</strong>
       </div>
     </div>
   </div>
@@ -1007,52 +1059,40 @@
 
   <!-- PILOTS -->
   <div class="section">
-    <div class="section-title">PILOTS + PAID &mdash; SOURCE: ASANA + MEETINGS</div>
+    <div class="section-title">PILOTS &mdash; SOURCE: ASANA + MEETINGS</div>
     <div class="card">
       <table class="bug-table">
         <thead><tr><th>Pilot</th><th>Category</th><th>Stage</th><th>Progress</th></tr></thead>
         <tbody>
           <tr>
-            <td><strong style="color: var(--green);">🎉 Brave + Kind Bookstore</strong></td>
-            <td>Indie Retail</td>
-            <td><span class="badge green">PAID — $99/mo</span></td>
-            <td>FIRST SALE (Apr 17). Onboarding this week. Bunnie also wants agency-side revenue growth discussion (Kelley looped in).</td>
-          </tr>
-          <tr>
             <td><strong>A Bag Concept</strong></td>
             <td>Bags</td>
-            <td><span class="badge green">LIVE (PILOT)</span></td>
-            <td>3/11 tasks done. QR flows live, posters printed. Pop-up model. Contract due Apr 20.</td>
+            <td><span class="badge green">LIVE</span></td>
+            <td>3/11 tasks done. QR flows live, posters printed. Pop-up &mdash; only live pilot.</td>
           </tr>
           <tr>
             <td><strong>Soberish</strong></td>
             <td>Non-alc beverages</td>
-            <td><span class="badge amber">CUSTOMER LAUNCH THIS WEEK</span></td>
-            <td>Employee testing complete. THC exclusion + archived-product cleanup still open. Lightspeed Phase 1 sync coming.</td>
+            <td><span class="badge amber">EMPLOYEE TESTING</span></td>
+            <td>Friday in-store visit COMPLETE. Employee testing underway; customer launch end of this week. THC exclusion + archived-product cleanup still open. CSV upload guarded until custom tags added.</td>
           </tr>
           <tr>
             <td><strong>Glad &amp; Young</strong></td>
             <td>Home / Gifts</td>
-            <td><span class="badge amber">BLOCKED (TAGGING)</span></td>
-            <td>Flows ready. BLOCKED: Loren + Kelley can't manually tag or add products. Soberish tags bleeding in. (Manual search fix shipped Apr 16 — retest required.)</td>
+            <td><span class="badge amber">BLOCKED</span></td>
+            <td>Flows ready (Apr 13). BLOCKED: Loren + Kelley can't manually tag or add products. Soberish tags bleeding in. Search broken.</td>
           </tr>
           <tr>
             <td><strong>One of Each (Tamburai)</strong></td>
-            <td>Bags / Scarves (ZA)</td>
-            <td><span class="badge amber">FLOWS ALMOST READY</span></td>
-            <td>Loren (Apr 18): flows "almost ready — 3x in stores within 2 weeks." Fundraiser ($200K rural campus) primary CTA, "find your scarf" secondary.</td>
+            <td>Bags / Scarves</td>
+            <td><span class="badge amber">SETUP DONE</span></td>
+            <td>Setup call held. Platform strategy locked: fundraiser ($200K rural campus) primary, "find your scarf" secondary. Loom walkthrough + high-res logo/pop-up photos pending from Info.</td>
           </tr>
           <tr>
             <td><strong>Just Add Honey</strong></td>
             <td>Tea</td>
             <td><span class="badge amber">NEXT</span></td>
-            <td>0/7 tasks. Square/Shopify. Loren re-pinging.</td>
-          </tr>
-          <tr>
-            <td><strong>Armada (Chelsea)</strong></td>
-            <td>Experiential / Event</td>
-            <td><span class="badge purple">QUOTE IN FLIGHT</span></td>
-            <td>150-person launch party June 23/30 at Luminarium. RSVP + QR data capture. Quote delivery by Fri.</td>
+            <td>0/7 tasks. Square/Shopify. Re-ping this week.</td>
           </tr>
         </tbody>
       </table>
@@ -1064,33 +1104,27 @@
     <div class="detail-label">Deep Dive &mdash; Bugs, Architecture, Technical State</div>
 
     <div class="section">
-      <div class="section-title">OPEN BUGS &mdash; 21 IN BUGS/QA</div>
+      <div class="section-title">OPEN BUGS &mdash; 11 IN SHAPE UP BUGS/QA</div>
       <div class="card">
-        <div class="bug-count-summary">4 new HIGH bugs surfaced Apr 17–18 around save/profile — 21 total open</div>
+        <div class="bug-count-summary">Pilot-blocking bugs surfaced Apr 13 — 20 total open</div>
         <table class="bug-table">
           <thead><tr><th>Bug</th><th>Owner</th><th>Priority</th></tr></thead>
           <tbody>
-            <tr><td><strong style="color: var(--red);">Saving items lagged + sign-up updates broken</strong> (Apr 17 NEW)</td><td>Tanmay</td><td><span class="badge red">HIGH</span></td></tr>
-            <tr><td><strong style="color: var(--red);">Saved items not showing</strong> (Apr 17 NEW)</td><td>Tanmay</td><td><span class="badge red">HIGH</span></td></tr>
-            <tr><td><strong style="color: var(--red);">Saved item / profile went weird</strong> (Apr 17 NEW)</td><td>Tanmay</td><td><span class="badge red">HIGH</span></td></tr>
-            <tr><td><strong style="color: var(--red);">Profile skip contact causing issues</strong></td><td>Tanmay</td><td><span class="badge red">HIGH</span></td></tr>
-            <tr><td><strong>Analytics not working</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
-            <tr><td><strong>Analytics simplification</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
-            <tr><td><strong>Analytics (see other notes)</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
-            <tr><td><strong>Customer profile — details issue</strong></td><td>&mdash;</td><td><span class="badge amber">MEDIUM</span></td></tr>
-            <tr><td><strong>Profile page issues</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong style="color: var(--red);">Manual tag search in flow not letting me search or add products</strong> (Apr 13 pilot blocker)</td><td>Tanmay</td><td><span class="badge red">HIGH</span></td></tr>
+            <tr><td><strong style="color: var(--red);">Customers not capturing responses / input</strong></td><td>Tanmay</td><td><span class="badge red">HIGH</span></td></tr>
+            <tr><td><strong style="color: var(--red);">Cross-pilot tag bleed — Soberish tags in G&amp;Y</strong> (Apr 13)</td><td>Tanmay</td><td><span class="badge red">HIGH</span></td></tr>
+            <tr><td><strong>Profile skip contact causing issues</strong></td><td>Tanmay</td><td><span class="badge red">HIGH</span></td></tr>
+            <tr><td><strong>Showing someone else's save when logged in</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Need to see saved products on customer profile</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Favoriting / profiles</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
             <tr><td><strong>Need T&amp;C line for contact capture / sign up</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
             <tr><td><strong>Preview spacing off (looks fine in builder)</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
-            <tr><td><strong>Remove perk from flows</strong></td><td>Tanmay</td><td><span class="badge green">LOW</span></td></tr>
-            <tr><td><strong>Can&rsquo;t reorder manual products</strong></td><td>Tanmay</td><td><span class="badge green">LOW</span></td></tr>
-            <tr><td><strong>Drag-and-drop image upload</strong></td><td>Tanmay</td><td><span class="badge green">LOW</span></td></tr>
-            <tr><td><strong>Not seeing title in main inventory unless zoomed out</strong></td><td>&mdash;</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
-            <tr><td><strong>Error page — 'manage tags'</strong></td><td>&mdash;</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
-            <tr><td><strong>Are we capturing this?</strong></td><td>&mdash;</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
-            <tr><td><strong>Flows / show profile created this flow</strong></td><td>&mdash;</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
-            <tr><td><strong>Why are we getting this error?</strong></td><td>&mdash;</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
-            <tr><td><strong>Responses abandon (maybe fixed, needs retest)</strong></td><td>&mdash;</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
-            <tr><td><strong>Notes inside profile</strong></td><td>&mdash;</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
+            <tr><td><strong>Analytics not working / simplification / notes</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Profile page issues / customer profile details</strong></td><td>Tanmay</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Not seeing title in main inventory unless zoomed out</strong></td><td>&mdash;</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Error page — 'manage tags'</strong></td><td>&mdash;</td><td><span class="badge amber">MEDIUM</span></td></tr>
+            <tr><td><strong>Can&rsquo;t reorder manual products · Drag-and-drop image upload · Remove perk from flows</strong></td><td>Tanmay</td><td><span class="badge green">LOW</span></td></tr>
+            <tr><td><strong style="color: var(--red);">Responses abandon · Notes inside profile</strong></td><td>&mdash;</td><td><span class="badge purple">UNTRIAGED</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -1176,16 +1210,16 @@
   <div class="goals-section">
     <div class="section-title">GROWTH TARGETS</div>
     <div class="goal-row">
-      <div class="goal-card">
+      <div class="goal-card editable" data-id="growth-brands-eoy">
         <div class="goal-label">100 Brands by EOY 2026</div>
         <div class="goal-header">
-          <div class="goal-value">1 / 100</div>
+          <div class="goal-value">0 / 100</div>
           <div class="goal-target">→ $100K+ revenue</div>
         </div>
-        <div class="goal-bar-wrap"><div class="goal-bar" style="width: 1%;"></div></div>
-        <div class="goal-status">🎉 1 paid (Brave + Kind) — 5 in setup, 36 total in pipeline.</div>
+        <div class="goal-bar-wrap"><div class="goal-bar" style="width: 0%;"></div></div>
+        <div class="goal-status">0 active — 5 in setup, 36 in pipeline. 100 to go in 8 months.</div>
       </div>
-      <div class="goal-card" style="background: var(--spacejam);">
+      <div class="goal-card editable" data-id="growth-pipeline-6mo">
         <div class="goal-label">Pipeline to 1,000 Brands (6 months)</div>
         <div class="goal-header">
           <div class="goal-value">36 / 1K</div>
@@ -1197,23 +1231,23 @@
     </div>
   </div>
 
-  <div class="notice">🎉 FIRST SALE — Brave + Kind @ $99/mo (Apr 17). Armada (experiential launch party, 150-person June 23/30) quote in flight. Soberish customer launch this week. One of Each flows "almost ready — 3x in stores within 2 weeks." G&amp;Y still blocked on manual tagging. 36 total in pipeline.</div>
+  <div class="notice">Soberish customer launch end of this week (employee testing complete). One of Each setup call held — Loom + assets pending. G&amp;Y still blocked on manual tagging bugs. Khanna/Icon NY validated retail-data + experiential bridge (interested in NY Tech Week panel). Mailchimp signup complete. 36 total in pipeline.</div>
 
   <div class="metrics">
-    <div class="metric good">
-      <div class="num">1</div>
-      <div class="label">Paid Brands</div>
-      <div class="sub">Brave + Kind @ $99/mo</div>
+    <div class="metric editable warn">
+      <div class="num">0</div>
+      <div class="label">Active Brands</div>
+      <div class="sub">5 in pilot setup, 0 live/paid</div>
     </div>
     <div class="metric">
       <div class="num">3</div>
       <div class="label">Late Stage</div>
       <div class="sub">Faced, Kula, Indiehouse</div>
     </div>
-    <div class="metric good">
+    <div class="metric editable good">
       <div class="num">11</div>
       <div class="label">Active Leads</div>
-      <div class="sub">ShopTalk + inbound + Armada + referrals</div>
+      <div class="sub">ShopTalk + inbound + referrals</div>
     </div>
     <div class="metric">
       <div class="num">17</div>
@@ -1222,78 +1256,83 @@
     </div>
   </div>
 
-  <!-- GROWTH KPIs (placeholder) -->
-  <div class="kpi-strip">
-    <div class="kpi-pill"><div class="kpi-dot green"></div>First paid brand: Brave + Kind 🎉</div>
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>Avg days to close: —</div>
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>Leads added this week: +1 (Armada)</div>
-    <div class="kpi-pill"><div class="kpi-dot amber"></div>Source: Asana (migrating to HubSpot)</div>
+  <!-- GROWTH KPIs -->
+  <div class="kpi-grid">
+    <div class="kpi-tracker editable" data-id="growth-conversion">
+      <div class="kpi-label">Paid Conversion Rate</div>
+      <div class="kpi-value">0%</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar red" style="width: 0%;"></div></div>
+      <div class="kpi-source">0 paid / 5 pilot setups</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="growth-days-close">
+      <div class="kpi-label">Avg Days to Close</div>
+      <div class="kpi-value empty">—</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 0%;"></div></div>
+      <div class="kpi-source">No closed deals yet</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="growth-leads-week">
+      <div class="kpi-label">Leads Added This Week</div>
+      <div class="kpi-value empty">—</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 0%;"></div></div>
+      <div class="kpi-source">Source: Asana → HubSpot soon</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="growth-source">
+      <div class="kpi-label">Data Source</div>
+      <div class="kpi-value empty">Asana</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar amber" style="width: 50%;"></div></div>
+      <div class="kpi-source">Migrating to HubSpot this week</div>
+    </div>
   </div>
 
   <!-- PILOT STATUS -->
   <div class="section">
-    <div class="section-title">PILOT &amp; PAID STATUS</div>
+    <div class="section-title">PILOT STATUS</div>
     <div class="pilots-grid">
-      <div class="pilot-card green">
-        <div class="pilot-card-header"><h4>🎉 Brave + Kind Bookstore</h4><div class="category">Indie Retail — PAID</div></div>
-        <div class="pilot-card-content">
-          <div class="pilot-progress">FIRST SALE — $99/mo (Apr 17)</div>
-          <div class="pilot-status">Bunnie. 20K email list, 38K followers. Also wants agency-side revenue growth discussion.</div>
-          <ul class="pilot-checklist">
-            <li>&check; Sale confirmed Apr 17</li>
-            <li>&#9203; Send info + pricing</li>
-            <li>&#9203; Onboarding call scheduled</li>
-            <li>&#9203; Newsletter sendoff from Index</li>
-            <li>&#9203; Kelley agency-side follow-up</li>
-          </ul>
-        </div>
-      </div>
       <div class="pilot-card green">
         <div class="pilot-card-header"><h4>A Bag Concept</h4><div class="category">Fashion / Accessories</div></div>
         <div class="pilot-card-content">
-          <div class="pilot-progress">LIVE (PILOT) &mdash; 3/11 tasks done</div>
-          <div class="pilot-status">QR flows active, posters printed. Pop-up model. Contract due Apr 20.</div>
+          <div class="pilot-progress">LIVE &mdash; 3/11 tasks done</div>
+          <div class="pilot-status">Only live pilot. QR flows active, posters printed. Pop-up store.</div>
           <ul class="pilot-checklist">
-            <li>&check; Pilot started</li><li>&check; Onboarding</li><li>&check; Posters with QR Codes</li>
-            <li>&#9203; Contract (due today), merch, content, case study</li>
+            <li>&check; Pilot started</li><li>&check; Onboarding complete</li><li>&check; Posters with QR Codes</li>
+            <li>&#9203; Contract, merch, content, case study</li>
           </ul>
         </div>
       </div>
       <div class="pilot-card amber">
         <div class="pilot-card-header"><h4>Soberish</h4><div class="category">Beverage / Alt-spirits (Lightspeed POS)</div></div>
         <div class="pilot-card-content">
-          <div class="pilot-progress">CUSTOMER LAUNCH THIS WEEK</div>
-          <div class="pilot-status">Employee testing complete. THC exclusion + archived-product cleanup still open. Lightspeed Phase 1 integration unlocking.</div>
+          <div class="pilot-progress">EMPLOYEE TESTING &mdash; CUSTOMER LAUNCH THIS WEEK</div>
+          <div class="pilot-status">Friday in-store visit complete. Employee testing phase underway. Customer launch end of this week.</div>
           <ul class="pilot-checklist">
-            <li>&check; Inventory synced (Apr 11)</li>
-            <li>&check; 3 flow skeletons live</li>
-            <li>&check; In-store visit + employee testing</li>
-            <li>&#9203; THC exclusion + archived products</li>
+            <li>&check; Inventory synced (Tanmay, Apr 11)</li>
+            <li>&check; 3 flow skeletons live (non-alc, adaptogen, show both)</li>
+            <li>&check; Friday in-store visit complete</li>
+            <li>&#9203; Fix THC exclusion + archived products</li>
             <li>&#9203; Fresh Lightspeed inventory pull</li>
-            <li>&#9203; Customer-facing launch</li>
+            <li>&#9203; Customer-facing launch end of this week</li>
           </ul>
         </div>
       </div>
       <div class="pilot-card amber">
         <div class="pilot-card-header"><h4>Glad &amp; Young</h4><div class="category">Home / Gifts (PCM) &mdash; Shopify</div></div>
         <div class="pilot-card-content">
-          <div class="pilot-progress">BLOCKED ON TAGGING</div>
-          <div class="pilot-status">Flows ready (Apr 13). Manual search fixed Apr 16 — retest needed. Cross-pilot tag bleed still open.</div>
+          <div class="pilot-progress">ONBOARDED APR 13 &mdash; BLOCKED ON TAGGING</div>
+          <div class="pilot-status">Flows ready. Manual tag add broken, Soberish tags bleeding in, search not working. Tanmay fixing.</div>
           <ul class="pilot-checklist">
-            <li>&check; Shopify integration (Apr 8)</li>
+            <li>&check; Shopify integration complete (Apr 8)</li>
             <li>&check; Onboarding walkthrough (Apr 13)</li>
-            <li>&check; Flows ready</li>
-            <li>&check; Manual tag search fix shipped Apr 16</li>
-            <li>&#9203; Retest manual tagging end-to-end</li>
+            <li>&check; Flows ready on Loren + Kelley's end</li>
+            <li>&#9203; Manual tagging bug (P0)</li>
             <li>&#9203; Paid contract post-launch</li>
           </ul>
         </div>
       </div>
       <div class="pilot-card amber">
-        <div class="pilot-card-header"><h4>One of Each (Tamburai)</h4><div class="category">Boutique / Scarves &mdash; Shopify (ZA)</div></div>
+        <div class="pilot-card-header"><h4>One of Each (Tamburai)</h4><div class="category">Boutique / Scarves &mdash; Shopify (South Africa)</div></div>
         <div class="pilot-card-content">
-          <div class="pilot-progress">FLOWS ALMOST READY &mdash; 2 WEEKS TO LIVE</div>
-          <div class="pilot-status">Loren (Apr 18): "3x in stores within 2 weeks." Primary CTA: fundraiser ($200K rural campus). Secondary: find-your-scarf. Walked through flows Apr 13.</div>
+          <div class="pilot-progress">SETUP CALL HELD &mdash; LOOM PENDING</div>
+          <div class="pilot-status">Platform strategy: fundraiser ($200K rural campus) = primary CTA; "find your scarf" secondary. Loom walkthrough + high-res logo/pop-up photos needed from Info.</div>
         </div>
       </div>
       <div class="pilot-card">
@@ -1301,13 +1340,6 @@
         <div class="pilot-card-content">
           <div class="pilot-progress">NEXT &mdash; 0/7 tasks</div>
           <div class="pilot-status">Loren re-pinging this week. "The tea lady."</div>
-        </div>
-      </div>
-      <div class="pilot-card" style="border-left:4px solid var(--sunstar);">
-        <div class="pilot-card-header"><h4>Armada</h4><div class="category">Experiential / Event (NEW)</div></div>
-        <div class="pilot-card-content">
-          <div class="pilot-progress">QUOTE IN FLIGHT (due Fri)</div>
-          <div class="pilot-status">150-person luxury-pirate launch party at Luminarium (June 23/30). RSVP + QR data capture. Reusable template wedge into experiential.</div>
         </div>
       </div>
     </div>
@@ -1320,53 +1352,48 @@
       <table class="pipeline-table">
         <thead><tr><th>Lead</th><th>Type</th><th>Next Step</th><th>Note</th></tr></thead>
         <tbody>
-          <tr><td class="lead-name">🎉 Brave + Kind Bookstore</td><td>Retail</td><td><span class="stage-badge" style="background:var(--green);color:#fff;">CLOSED $99/mo</span></td><td>FIRST SALE Apr 17 &mdash; onboarding this week</td></tr>
-          <tr><td class="lead-name">Armada (Chelsea)</td><td>Experiential</td><td><span class="stage-badge amber">Quote by Fri</span></td><td>150-person event June 23/30. RSVP + QR capture. New wedge.</td></tr>
-          <tr><td class="lead-name">Faced the Facial</td><td>Multi store</td><td><span class="stage-badge amber">Follow up email</span></td><td>WARM proposal &mdash; super interested in paid pilot</td></tr>
-          <tr><td class="lead-name">Indiehouse</td><td>&mdash;</td><td><span class="stage-badge amber">Follow up</span></td><td>At Proposal stage; awesomeness momentum (Kelley Apr 17)</td></tr>
+          <tr><td class="lead-name">Faced the Facial</td><td>Multi store</td><td><span class="stage-badge amber">Follow up email</span></td><td>WARM &mdash; super interested in paid pilot (Mar 31)</td></tr>
           <tr><td class="lead-name">Kula Coffee</td><td>&mdash;</td><td><span class="stage-badge amber">Follow up email</span></td><td>At Proposal stage</td></tr>
-          <tr><td class="lead-name">Ben @ deli</td><td>Agency</td><td><span class="stage-badge purple">Send partnerships deck</span></td><td>Newsletter signup included</td></tr>
+          <tr><td class="lead-name">Ben @ del</td><td>Agency</td><td><span class="stage-badge purple">Send partnerships deck</span></td><td></td></tr>
           <tr><td class="lead-name">Publicis Group</td><td>Agency</td><td><span class="stage-badge purple">Send partnerships deck</span></td><td>Client-ready solutions</td></tr>
-          <tr><td class="lead-name">Kohl&rsquo;s</td><td>Retailer</td><td><span class="stage-badge purple">Send sales deck</span></td><td>Requested demo at ShopTalk; newsletter yes</td></tr>
+          <tr><td class="lead-name">Kohl&rsquo;s</td><td>Enterprise</td><td><span class="stage-badge purple">Send sales deck</span></td><td>Requested demo at ShopTalk</td></tr>
           <tr><td class="lead-name">Phillip Morris Intl</td><td>Enterprise</td><td><span class="stage-badge amber">Follow up email</span></td><td>Heavy experiential</td></tr>
           <tr><td class="lead-name">Veronica Beard</td><td>Fashion</td><td><span class="stage-badge amber">Follow up email</span></td><td>Head of data interested</td></tr>
-          <tr><td class="lead-name">Highland Diamond</td><td>Retailer</td><td><span class="stage-badge amber">Follow up email</span></td><td></td></tr>
+          <tr><td class="lead-name">Highland Diamond</td><td>&mdash;</td><td><span class="stage-badge amber">Follow up email</span></td><td></td></tr>
           <tr><td class="lead-name">Jai Lyle</td><td>Pop up</td><td><span class="stage-badge amber">Follow up email</span></td><td></td></tr>
-          <tr><td class="lead-name">Aja</td><td>Agency</td><td><span class="stage-badge amber">Follow up email</span></td><td>Experiential partnership</td></tr>
-          <tr><td class="lead-name">ACE</td><td>Retail</td><td><span class="stage-badge amber">&mdash;</span></td><td>Go in-store to see STIHL iPad setup</td></tr>
-          <tr><td class="lead-name">Stellar Bodies (follow up)</td><td>&mdash;</td><td><span class="stage-badge amber">Follow up</span></td><td></td></tr>
+          <tr><td class="lead-name">Aja</td><td>&mdash;</td><td><span class="stage-badge amber">Follow up email</span></td><td></td></tr>
+          <tr><td class="lead-name">ACE</td><td>&mdash;</td><td><span class="stage-badge amber">&mdash;</span></td><td>Go in-store to see STIHL iPad setup (advisor suggestion)</td></tr>
+          <tr><td class="lead-name">Brave + Kind Bookstore</td><td>Retail</td><td><span class="stage-badge amber">Follow up</span></td><td>New active opportunity</td></tr>
         </tbody>
       </table>
     </div>
     <div class="card" style="margin-top: 12px;">
-      <h3 style="color: var(--text-light); font-size: 14px;">New Opportunities (17 &mdash; no next steps assigned yet)</h3>
+      <h3 style="color: var(--text-light); font-size: 14px;">New Opportunities (14 &mdash; no next steps assigned yet)</h3>
       <div style="font-size: 14px; color: var(--text-light); line-height: 1.7;">
-        Americas Mart &middot; Homegrown (Partnership) &middot; offline (Partnership) &middot; Bloomingdales &middot; Dillards &middot; Abbey Glass &middot; Mailchimp (Partnership &mdash; signup complete &check;) &middot; Creature Studio &middot; Sibley Creative &middot; Morrison Agency &middot; Stellar Bodies Pilates &middot; Foot Locker / Sarah Faith &middot; Perrines wine &middot; Greens &middot; JJ&rsquo;s Flower Shop &middot; Birdie &amp; Hale (Newsletter) &middot; Southern Exposure Media
+        Americas Mart &middot; Homegrown (Partnership) &middot; offline (Partnership) &middot; Bloomingdales &middot; Dillards &middot; Abbey Glass &middot; Mailchimp (Partnership &mdash; signup complete &check;) &middot; Creature Studio &middot; Sibley Creative &middot; Morrison Agency &middot; Stellar Bodies Pilates &middot; Foot Locker / Sarah Faith &middot; BRP &middot; Abbey Glass
       </div>
     </div>
     <div class="card" style="margin-top: 12px; border-left: 4px solid var(--sunstar);">
       <h3 style="color: var(--sunstar); font-size: 14px;">New Signals</h3>
       <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
-        <strong>🎉 First inbound sale closed</strong> &mdash; Brave + Kind Bookstore (Apr 17).<br>
-        <strong>Armada experiential deal</strong> &mdash; new event/activations wedge. Reusable template asset.<br>
-        <strong>Nisha / Tech Week ATL</strong> &mdash; wants Mirour to host or panel.
+        <strong>First inbound website lead</strong> &mdash; brand found Mirour organically, no prior connection (Apr 6).<br>
+        <strong>Nisha / Tech Week ATL</strong> &mdash; wants Mirour to host or panel. Not yet in Asana.
       </div>
     </div>
   </div>
 
   <!-- PATH TO REVENUE -->
   <div class="section">
-    <div class="section-title">PATH TO REVENUE — NEXT CONVERSIONS</div>
+    <div class="section-title">PATH TO FIRST REVENUE</div>
     <div class="card">
-      <div style="font-size: 14px; color: var(--text); font-weight: bold; margin-bottom: 12px;">🎉 First sale landed (Brave + Kind @ $99/mo). Model: Founding 10 at $99/mo or $999/yr (setup incl.); Standard $149/mo or $1,490/yr. Next 4 conversions tracked below.</div>
+      <div style="font-size: 14px; color: var(--text); font-weight: bold; margin-bottom: 12px;">No one is paying yet. Model: $1K setup + $99/mo. G&amp;Y + Soberish both tracking toward paid conversion after this week's bug fixes + customer launch.</div>
       <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-        <strong>Soberish:</strong> Customer launch this week. Fastest next-paid candidate. Founder called it "a big deal."<br>
-        <strong>Glad &amp; Young:</strong> Manual search fix shipped Apr 16 &mdash; retest end-to-end; convert to paid after launch.<br>
-        <strong>One of Each (Tamburai):</strong> "3x in stores within 2 weeks." Convertible multi-store pilot.<br>
-        <strong>Armada:</strong> Experiential scope &mdash; one-off revenue + reusable template asset. Quote by Fri.<br>
-        <strong>Faced Facial:</strong> At Proposal. Multi-store. Warm.<br>
-        <strong>Indiehouse + Kula:</strong> Both at Proposal.<br>
-        <strong>Signal:</strong> First paid at $99/mo validates Founding 10 tier. "Speed of yes" still a consideration (advisor Mairin, Apr 3).
+        <strong>Soberish:</strong> Best candidate for first paid. In-store employee test Friday. Customer launch end of next week.<br>
+        <strong>Glad &amp; Young:</strong> Onboarded Apr 13. Launch blocked by manual-tagging bug (P0). Second paid pilot target.<br>
+        <strong>One of Each (Tamburai):</strong> Flow walkthrough today. South Africa pilot — fundraiser angle is primary CTA.<br>
+        <strong>Faced Facial:</strong> "Likely first paid pilot" (team meeting Apr 2). Multi-store. Warm lead.<br>
+        <strong>Kula Coffee:</strong> At late-stage / proposal in pipeline.<br>
+        <strong>Signal:</strong> "Speed of yes" flagged as leaving money on the table &mdash; advisor Mairin (Apr 3). Consider higher pricing.
       </div>
     </div>
   </div>
@@ -1376,21 +1403,41 @@
 <!-- BRAND -->
 <div class="content pane" id="brand">
 
-  <div class="notice">Sales deck being split into 4 versions (brand / retailer / experiential-agency / investor — per GTM strategy). Kelley on brand deep-dive. Mirour In-Store Index (curated NRF / Census / Placer stats) anchoring newsletter + sales pitch. TrailblazHER rebrand deadline May 13.</div>
+  <div class="notice">Sales deck rework in progress (Courtney feedback Apr 3: less jargon, clearer value). Kelley working on brand alignment &mdash; visuals first, then voice. Social/blog/onboarding resources being built. TrailblazHER rebrand deadline May 13.</div>
 
   <div class="metrics">
-    <div class="metric good"><div class="num">DONE</div><div class="label">Visual Identity</div><div class="sub">Brand book finalized</div></div>
-    <div class="metric warn"><div class="num">NEXT</div><div class="label">Voice Guide</div><div class="sub">In Asana Ideas</div></div>
-    <div class="metric good"><div class="num">MVP</div><div class="label">Website</div><div class="sub">mirourmirour.com live</div></div>
-    <div class="metric warn"><div class="num">4x</div><div class="label">Deck Versions</div><div class="sub">Brand / Retailer / Exp-Agency / Investor</div></div>
+    <div class="metric editable good"><div class="num">DONE</div><div class="label">Visual Identity</div><div class="sub">Brand book finalized</div></div>
+    <div class="metric editable warn"><div class="num">NEXT</div><div class="label">Voice Guide</div><div class="sub">In Asana Ideas</div></div>
+    <div class="metric editable good"><div class="num">MVP</div><div class="label">Website</div><div class="sub">mirourmirour.com live</div></div>
+    <div class="metric editable warn"><div class="num">1</div><div class="label">Decks</div><div class="sub">Reworking per Courtney feedback</div></div>
   </div>
 
-  <!-- BRAND KPIs (placeholder) -->
-  <div class="kpi-strip">
-    <div class="kpi-pill"><div class="kpi-dot green"></div>Website: live</div>
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>Website visits/mo: —</div>
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>Inbound leads from site: —</div>
-    <div class="kpi-pill"><div class="kpi-dot amber"></div>Deck versions: 1 (reworking)</div>
+  <!-- BRAND KPIs -->
+  <div class="kpi-grid">
+    <div class="kpi-tracker editable" data-id="brand-website">
+      <div class="kpi-label">Website</div>
+      <div class="kpi-value">Live</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar green" style="width: 100%;"></div></div>
+      <div class="kpi-source">mirourmirour.com</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="brand-visits">
+      <div class="kpi-label">Website Visits / Mo</div>
+      <div class="kpi-value empty">—</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 0%;"></div></div>
+      <div class="kpi-source">Source: GA4</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="brand-inbound">
+      <div class="kpi-label">Inbound Leads from Site</div>
+      <div class="kpi-value empty">—</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 0%;"></div></div>
+      <div class="kpi-source">Source: HubSpot</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="brand-decks">
+      <div class="kpi-label">Deck Versions</div>
+      <div class="kpi-value">1</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar amber" style="width: 25%;"></div></div>
+      <div class="kpi-source">Reworking per Courtney feedback</div>
+    </div>
   </div>
 
   <div class="section">
@@ -1442,8 +1489,7 @@
       <table class="bug-table">
         <thead><tr><th>Asset</th><th>Owner</th><th>Status</th><th>Detail</th></tr></thead>
         <tbody>
-          <tr><td><strong>Sales Decks (4 versions)</strong></td><td>Loren + Kelley</td><td><span class="badge amber">SPLITTING</span></td><td>Splitting into brand / retailer / experiential-agency / investor decks (per GTM). Courtney feedback Apr 3: every slide needs clear value prop. Add advisor slide.</td></tr>
-          <tr><td><strong>Mirour In-Store Index</strong></td><td>Loren</td><td><span class="badge amber">BUILDING</span></td><td>Curated public-source stats (NRF / Census / Placer) for press / newsletter / pitches. Credibility anchor. Not pilot data.</td></tr>
+          <tr><td><strong>Sales Deck</strong></td><td>Loren + Kelley</td><td><span class="badge amber">REWORK</span></td><td>Courtney feedback (Apr 3): too jargony, every slide needs clear value prop. Pull experiential from retailer deck. Add advisor slide. Hannah's feedback pending discussion.</td></tr>
           <tr><td><strong>Tagging Best Practices Doc</strong></td><td>Kelley</td><td><span class="badge green">DONE</span></td><td>Published Apr 3 in Google Docs.</td></tr>
           <tr><td><strong>QR Signage Templates</strong></td><td>Kelley</td><td><span class="badge amber">IN PROGRESS</span></td><td>For Soberish and G&amp;Y.</td></tr>
           <tr><td><strong>Domain Migration</strong></td><td>&mdash;</td><td><span class="badge red">OVERDUE</span></td><td>Move cercie to mirour.me. Due Mar 9.</td></tr>
@@ -1458,21 +1504,41 @@
 <!-- MARKETING -->
 <div class="content pane" id="marketing">
 
-  <div class="notice">Industry-insight newsletter format locked: industry thing + how-to + Index link-out + brands doing it well + personal. Loren working on Index for newsletter = pipeline. Brave + Kind newsletter send from Index in flight. Summer intern starts May 18.</div>
+  <div class="notice">Content system designed but not launched. NEW: Khanna (Icon NY) validated the retail-data + experiential angle — interested in NY Tech Week panel. Kelley building social / blog / onboarding resources. Summer intern starts May 18.</div>
 
   <div class="metrics">
-    <div class="metric good"><div class="num">6+</div><div class="label">Social Posts</div><div class="sub">Designed + scheduled</div></div>
-    <div class="metric warn"><div class="num">0</div><div class="label">Newsletters Sent</div><div class="sub">Copy written, not published</div></div>
-    <div class="metric warn"><div class="num">0</div><div class="label">Blog Posts</div><div class="sub">Ideas in Asana</div></div>
-    <div class="metric good"><div class="num">8+</div><div class="label">Competitors</div><div class="sub">Tracked in #research</div></div>
+    <div class="metric editable good"><div class="num">6+</div><div class="label">Social Posts</div><div class="sub">Designed + scheduled</div></div>
+    <div class="metric editable warn"><div class="num">0</div><div class="label">Newsletters Sent</div><div class="sub">Copy written, not published</div></div>
+    <div class="metric editable warn"><div class="num">0</div><div class="label">Blog Posts</div><div class="sub">Ideas in Asana</div></div>
+    <div class="metric editable good"><div class="num">8+</div><div class="label">Competitors</div><div class="sub">Tracked in #research</div></div>
   </div>
 
-  <!-- MARKETING KPIs (placeholder) -->
-  <div class="kpi-strip">
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>Newsletter subscribers: —</div>
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>LinkedIn followers: —</div>
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>IG followers: —</div>
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>Inbound leads from content: —</div>
+  <!-- MARKETING KPIs -->
+  <div class="kpi-grid">
+    <div class="kpi-tracker editable" data-id="mktg-subs">
+      <div class="kpi-label">Newsletter Subscribers</div>
+      <div class="kpi-value empty">—</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 0%;"></div></div>
+      <div class="kpi-source">Source: Mailchimp</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="mktg-linkedin">
+      <div class="kpi-label">LinkedIn Followers</div>
+      <div class="kpi-value empty">—</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 0%;"></div></div>
+      <div class="kpi-source">Source: LinkedIn</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="mktg-ig">
+      <div class="kpi-label">IG Followers</div>
+      <div class="kpi-value empty">—</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 0%;"></div></div>
+      <div class="kpi-source">Source: Instagram</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="mktg-inbound">
+      <div class="kpi-label">Inbound from Content</div>
+      <div class="kpi-value empty">—</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 0%;"></div></div>
+      <div class="kpi-source">Source: HubSpot</div>
+    </div>
   </div>
 
   <div class="section">
@@ -1491,10 +1557,9 @@
     <div class="section-title">EVENTS &amp; CONFERENCES</div>
     <div class="card">
       <div style="font-size: 14px; color: var(--text); line-height: 1.8;">
-        <strong>Armada Launch Party</strong> &mdash; June 23 or 30 at Luminarium. 150 restaurant/bar owners. Mirour powering RSVP + QR data capture = paid scope + case study.<br>
         <strong>Tech Week ATL</strong> &mdash; Nisha wants Mirour to host or panel. "Using AI to make in-person better." Loren following up on dates.<br>
-        <strong>WEI Cohort 7</strong> &mdash; Kicked off Apr 6 at Georgia Tech Encore. Sales month.<br>
-        <strong>TrailblazHER Rebrand</strong> &mdash; Hard deadline May 13 launch event.<br>
+        <strong>WEI Cohort 7</strong> &mdash; Kicked off Apr 6 at Georgia Tech Encore. Sales month. Pitch workshop in April. Guest speaker Cara Brown on B2B lead gen next Tue.<br>
+        <strong>TrailblazHER Rebrand</strong> &mdash; Hard deadline May 13 launch event. Kelly (designer) receiving initial thoughts. Figma files to be shared.<br>
         <strong>ShopTalk Spring 2026</strong> &mdash; Happened Mar 24-26. Huge success. 5 solid leads.<br>
         <strong>ShopTalk Fall (Nashville)</strong> &mdash; On the radar<br>
         <strong>NRF January 2027</strong> &mdash; Biggest retail conference
@@ -1542,70 +1607,78 @@
 <!-- CUSTOMERS -->
 <div class="content pane" id="customers">
 
-  <div class="notice">🎉 FIRST PAID brand: Brave + Kind (Apr 17). Plus 5 pilots in setup: A Bag Concept LIVE, Soberish customer-launching this week, G&amp;Y blocked on tagging (retest after Apr 16 fix), One of Each flows almost ready (3x in stores within 2 weeks), JAH not started. Armada = new experiential scope (quote by Fri).</div>
+  <div class="notice">5 pilot setups. 0 live/customer-facing yet. 3 actively onboarding (Soberish employee testing, G&amp;Y blocked on tagging, One of Each setup call complete). 1 not started (JAH). Template flows close the empty basket gap. POS integration non-negotiable — Soberish validated.</div>
 
   <div class="metrics">
-    <div class="metric good"><div class="num">1</div><div class="label">Paid</div><div class="sub">Brave + Kind @ $99/mo 🎉</div></div>
     <div class="metric"><div class="num">5</div><div class="label">Pilot Setups</div><div class="sub">ABC, Soberish, G&amp;Y, OoE, JAH</div></div>
-    <div class="metric"><div class="num" style="color:var(--amber);">3</div><div class="label">Onboarding Active</div><div class="sub">Soberish, G&amp;Y, OoE</div></div>
-    <div class="metric"><div class="num">1</div><div class="label">Event Scope</div><div class="sub">Armada (June)</div></div>
+    <div class="metric editable warn"><div class="num">0</div><div class="label">Live</div><div class="sub">None customer-facing yet</div></div>
+    <div class="metric"><div class="num" style="color:var(--amber);">3</div><div class="label">Onboarding</div><div class="sub">Soberish, G&amp;Y, OoE</div></div>
+    <div class="metric"><div class="num">0</div><div class="label">Paid</div><div class="sub">Converting this month</div></div>
   </div>
 
-  <!-- CUSTOMER KPIs (placeholder — populate once pilots are live) -->
-  <div class="kpi-strip">
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>Total scans: —</div>
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>Profiles created: —</div>
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>Avg engaged scan rate: —</div>
-    <div class="kpi-pill"><div class="kpi-dot purple"></div>NPS / satisfaction: —</div>
+  <!-- CUSTOMER KPIs -->
+  <div class="kpi-grid">
+    <div class="kpi-tracker editable" data-id="cust-scans">
+      <div class="kpi-label">Total Scans</div>
+      <div class="kpi-value empty">—</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 0%;"></div></div>
+      <div class="kpi-source">Populates when pilots go live</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="cust-profiles">
+      <div class="kpi-label">Profiles Created</div>
+      <div class="kpi-value empty">—</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 0%;"></div></div>
+      <div class="kpi-source">Source: Mirour platform</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="cust-engaged">
+      <div class="kpi-label">Engaged Scan Rate</div>
+      <div class="kpi-value empty">—</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 0%;"></div></div>
+      <div class="kpi-source">Source: Mirour analytics</div>
+    </div>
+    <div class="kpi-tracker editable" data-id="cust-nps">
+      <div class="kpi-label">NPS / Satisfaction</div>
+      <div class="kpi-value empty">—</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar" style="width: 0%;"></div></div>
+      <div class="kpi-source">Not yet collected</div>
+    </div>
   </div>
 
   <div class="section">
     <div class="section-title">PILOT STATUS &amp; FEEDBACK</div>
     <div class="card">
     <table class="bug-table">
-      <thead><tr><th>Brand</th><th>Category</th><th>Status</th><th>Where They Are</th><th>Feedback / Needs</th></tr></thead>
+      <thead><tr><th>Pilot</th><th>Category</th><th>Status</th><th>Where They Are</th><th>Feedback / Needs</th></tr></thead>
       <tbody>
-        <tr style="background: rgba(212, 155, 41, 0.08);">
-          <td><strong>🎉 Brave + Kind</strong></td><td>Indie Retail</td>
-          <td><span style="color:var(--green); font-weight:600;">PAID $99/mo</span></td>
-          <td>First sale Apr 17. Decatur bookstore, 20K email list, 38K followers.</td>
-          <td>Wants consistent content (New Book Tuesdays, storytime, events). Also agency-side revenue-growth conversation with Kelley.</td>
-        </tr>
         <tr>
           <td><strong>A Bag Concept</strong></td><td>Fashion</td>
-          <td><span style="color:var(--green); font-weight:600;">LIVE (PILOT)</span></td>
-          <td>Live with 2 flows. QR codes printed. Pop-up model. Contract due today.</td>
-          <td>Want Shopify sync for real-time data push; image support on multi-select for visual voting.</td>
+          <td><span style="color:var(--green); font-weight:600;">LIVE</span></td>
+          <td>Live with 2 flows. QR codes printed. Only live pilot.</td>
+          <td>Want Shopify API for real-time sync.</td>
         </tr>
         <tr>
           <td><strong>Soberish</strong></td><td>Alt-spirits</td>
-          <td><span style="color:var(--amber); font-weight:600;">CUSTOMER LAUNCH THIS WEEK</span></td>
-          <td>Employee testing complete; customer launch this week. Lightspeed Phase 1 integration coming.</td>
-          <td>Mehrnush: "a big deal." THC drinks show in non-alc results (exclusion tagging still open). Archived-product cleanup required.</td>
+          <td><span style="color:var(--amber); font-weight:600;">EMPLOYEE TESTING</span></td>
+          <td>Friday in-store visit complete. Employee testing phase underway; customer launch end of this week.</td>
+          <td>Mehrnush: "a big deal." THC drinks show in non-alc results (exclusion tagging still open). Lightspeed still pulling archived/Squarespace data; fresh pull needed.</td>
         </tr>
         <tr>
           <td><strong>Glad &amp; Young</strong></td><td>Home/Gifts</td>
-          <td><span style="color:var(--red); font-weight:600;">TAGGING RETEST</span></td>
-          <td>Manual search bug fix shipped Apr 16 — needs end-to-end retest with Kelley + Loren. Cross-pilot tag bleed still open.</td>
-          <td>Auto-tagging test case (3,063 SKUs). Compound tags need split. Retest unlocks paid conversion.</td>
+          <td><span style="color:var(--red); font-weight:600;">BLOCKED</span></td>
+          <td>Onboarded Apr 13. Flows ready. Blocked on manual-tagging bug: can't add or tag products; search broken; Soberish tags bleeding in.</td>
+          <td>Auto-tagging test case (2K SKUs). Compound tags need split. Bug fix unlocks launch.</td>
         </tr>
         <tr>
-          <td><strong>One of Each (Tamburai)</strong></td><td>Boutique / Scarves</td>
-          <td><span style="color:var(--amber); font-weight:600;">FLOWS ALMOST READY</span></td>
-          <td>Loren (Apr 18): "3x in stores within 2 weeks." Walked through flows Apr 13.</td>
-          <td>Primary CTA = fundraiser ($200K rural campus); secondary = find-your-scarf. Loom + logo/photos pending from Info.</td>
+          <td><strong>One of Each (Tamburai)</strong></td><td>Boutique</td>
+          <td><span style="color:var(--amber); font-weight:600;">SETUP DONE</span></td>
+          <td>Setup call held. Platform strategy locked. Loom walkthrough + assets pending from Info.</td>
+          <td>Fundraiser ($200K rural campus) = primary CTA; "find your scarf" secondary. Customers love the scarves-as-art framing.</td>
         </tr>
         <tr style="color:var(--text-light);">
           <td><strong>Just Add Honey</strong></td><td>Tea</td>
           <td>NOT ACTIVE</td>
-          <td>Square/Shopify. All lifecycle tasks open. Loren re-pinging.</td>
+          <td>Square/Shopify. All lifecycle tasks open. Loren re-pinging this week.</td>
           <td>No feedback yet.</td>
-        </tr>
-        <tr style="background: rgba(173, 117, 178, 0.08);">
-          <td><strong>Armada (Chelsea)</strong></td><td>Experiential</td>
-          <td><span style="color:var(--nebula); font-weight:600;">EVENT SCOPE</span></td>
-          <td>Quote by Fri. Luminarium event June 23 or 30.</td>
-          <td>150 restaurant/bar owners — email/role capture + bench signups. QR flow for digital check-in.</td>
         </tr>
       </tbody>
     </table>
@@ -1636,41 +1709,41 @@
   <!-- FINANCIAL GOALS -->
   <div class="goals-section">
     <div class="section-title">FINANCIAL TARGETS</div>
-    <div class="goal-card" style="background: linear-gradient(135deg, var(--galaxy) 0%, var(--spacejam) 100%);">
+    <div class="goal-card primary editable" data-id="goal-arr-ops">
       <div class="goal-label">$1M ARR Goal</div>
       <div class="goal-header">
-        <div class="goal-value">$1,188</div>
-        <div class="goal-target">$1,188 / $1,000,000 ARR</div>
+        <div class="goal-value">$0</div>
+        <div class="goal-target">$0 / $1,000,000 ARR</div>
       </div>
-      <div class="goal-bar-wrap"><div class="goal-bar" style="width: 0.1%;"></div></div>
-      <div class="goal-status">🎉 First revenue — Brave + Kind @ $99/mo (Apr 17). Pricing: Founding 10 at $99/mo × 10 = $11.9K ARR. Standard $149/mo × 90 = $160K ARR. $1M ARR needs annual + upsell.</div>
+      <div class="goal-bar-wrap"><div class="goal-bar" style="width: 0%;"></div></div>
+      <div class="goal-status">Pre-revenue — converting first paid pilot this month. At $99/mo × 100 brands = $118K ARR. Need premium tier + annual deals to scale.</div>
     </div>
   </div>
 
-  <div class="notice">🎉 First revenue booked: Brave + Kind @ $99/mo (Apr 17). Pricing tweak proposed Apr 17: Founding 10 locked at $99/mo or $999/yr for 1 year (setup included); Standard $149/mo or $1,490/yr. Monthly customers pay setup on top. 3 co-founders. Delaware C-corp.</div>
+  <div class="notice">Pre-revenue. New 2-tier pricing model live. Stock grant paperwork to file with IRS (from Courtney meeting Apr 3). 3 co-founders.</div>
 
   <div class="metrics">
-    <div class="metric good"><div class="num">$99</div><div class="label">MRR</div><div class="sub">+$99 this month (Brave + Kind)</div></div>
-    <div class="metric good"><div class="num">$1,188</div><div class="label">ARR</div><div class="sub">Target: $1M</div></div>
-    <div class="metric good"><div class="num">1</div><div class="label">Paid Brands</div><div class="sub">5 in setup converting this month</div></div>
+    <div class="metric editable warn"><div class="num">$0</div><div class="label">MRR</div><div class="sub">Pre-revenue</div></div>
+    <div class="metric editable warn"><div class="num">$0</div><div class="label">ARR</div><div class="sub">Target: $1M</div></div>
+    <div class="metric editable warn"><div class="num">0</div><div class="label">Paid Brands</div><div class="sub">5 in setup, converting this month</div></div>
     <div class="metric"><div class="num">3</div><div class="label">Team</div><div class="sub">All co-founders</div></div>
   </div>
 
   <!-- PRICING -->
   <div class="section">
-    <div class="section-title">PRICING — 2-TIER</div>
+    <div class="section-title">PRICING</div>
     <div class="pricing-grid">
       <div class="pricing-card">
-        <div class="pricing-name">Founding 10 — Any remaining slots</div>
+        <div class="pricing-name">Standard — First 10 Brands Only</div>
         <div class="pricing-amount">$99<span class="pricing-period"> /mo</span></div>
-        <div class="pricing-annual">$999 /year — setup included (1-yr lock)</div>
-        <div class="pricing-note">Brave + Kind (first sale) @ $99/mo 🎉. 9 slots remaining; pilots count toward the 10.</div>
+        <div class="pricing-annual">$999 /year — setup fee included</div>
+        <div class="pricing-note">Intro rate for founding brands. Locks in at $99/mo.</div>
       </div>
       <div class="pricing-card featured">
-        <div class="pricing-name">Standard</div>
+        <div class="pricing-name">Premium</div>
         <div class="pricing-amount">$149<span class="pricing-period"> /mo</span></div>
-        <div class="pricing-annual">$1,490 /year — setup included</div>
-        <div class="pricing-note">Monthly customers can pay setup on top. Annual customers: setup baked in.</div>
+        <div class="pricing-annual">$1,490 /year — setup fee included</div>
+        <div class="pricing-note">Standard rate after first 10 brands.</div>
       </div>
     </div>
   </div>
@@ -1689,6 +1762,35 @@
     </div>
   </div>
 
+</div>
+
+<!-- EDIT POPOVER -->
+<div class="edit-overlay" id="editOverlay" onclick="closeEdit()"></div>
+<div class="edit-popover" id="editPopover">
+  <h3 id="editTitle">Edit Item</h3>
+  <label>Value</label>
+  <input type="text" id="editValue" placeholder="Current value...">
+  <label>Notes</label>
+  <textarea id="editNotes" placeholder="Add details, context, or corrections..."></textarea>
+  <label>Data Source</label>
+  <select id="editSource">
+    <option value="">— Select —</option>
+    <option value="Asana">Asana</option>
+    <option value="HubSpot">HubSpot</option>
+    <option value="Stripe">Stripe</option>
+    <option value="GA4">GA4</option>
+    <option value="Mirour Platform">Mirour Platform</option>
+    <option value="Mailchimp">Mailchimp</option>
+    <option value="LinkedIn">LinkedIn</option>
+    <option value="Instagram">Instagram</option>
+    <option value="Manual">Manual (Loren)</option>
+    <option value="Slack">Slack</option>
+    <option value="Granola">Granola</option>
+  </select>
+  <div class="edit-actions">
+    <button class="cancel" onclick="closeEdit()">Cancel</button>
+    <button class="save" onclick="saveEdit()">Save</button>
+  </div>
 </div>
 
 <!-- UPDATES PANEL -->
@@ -1728,10 +1830,161 @@
 <div class="toast" id="toast"></div>
 
 <footer>
-  Mirour Operating System · mirourmirour.com · Updated April 20, 2026
+  Mirour Operating System · mirourmirour.com · Updated April 19, 2026
 </footer>
 
 <script>
+/* ── INLINE EDIT SYSTEM ── */
+var currentEditEl = null;
+
+function getItemEdits() {
+  try { return JSON.parse(localStorage.getItem('mirour-os-edits') || '{}'); } catch(e) { return {}; }
+}
+function saveItemEdits(data) {
+  localStorage.setItem('mirour-os-edits', JSON.stringify(data));
+}
+
+// Attach click handlers to all editable elements
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.editable').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      openEdit(el);
+    });
+  });
+  // Apply any saved edits on load
+  applyStoredEdits();
+});
+
+function openEdit(el) {
+  currentEditEl = el;
+  var popover = document.getElementById('editPopover');
+  var overlay = document.getElementById('editOverlay');
+
+  // Get current label/title
+  var label = el.querySelector('.kpi-label, .label, .goal-label');
+  var value = el.querySelector('.kpi-value, .num, .goal-value');
+  var source = el.querySelector('.kpi-source, .goal-source, .sub');
+
+  document.getElementById('editTitle').textContent = label ? label.textContent : 'Edit Item';
+  document.getElementById('editValue').value = value ? value.textContent.trim() : '';
+  document.getElementById('editNotes').value = '';
+
+  // Check for existing edits
+  var id = el.getAttribute('data-id') || el.querySelector('.label, .kpi-label, .goal-label')?.textContent?.trim() || '';
+  var edits = getItemEdits();
+  if (edits[id]) {
+    document.getElementById('editNotes').value = edits[id].notes || '';
+    if (edits[id].source) {
+      document.getElementById('editSource').value = edits[id].source;
+    }
+  }
+
+  popover.classList.add('open');
+  overlay.classList.add('open');
+  document.getElementById('editValue').focus();
+}
+
+function closeEdit() {
+  document.getElementById('editPopover').classList.remove('open');
+  document.getElementById('editOverlay').classList.remove('open');
+  currentEditEl = null;
+}
+
+function saveEdit() {
+  if (!currentEditEl) return;
+
+  var newValue = document.getElementById('editValue').value.trim();
+  var notes = document.getElementById('editNotes').value.trim();
+  var source = document.getElementById('editSource').value;
+
+  // Update DOM
+  var valueEl = currentEditEl.querySelector('.kpi-value, .num, .goal-value');
+  if (valueEl && newValue) {
+    valueEl.textContent = newValue;
+    valueEl.classList.remove('empty');
+  }
+
+  var sourceEl = currentEditEl.querySelector('.kpi-source, .goal-source');
+  if (sourceEl && source) {
+    sourceEl.textContent = 'Source: ' + source;
+  }
+
+  // If notes provided, add a small visual indicator
+  if (notes) {
+    var existingNote = currentEditEl.querySelector('.edit-note');
+    if (!existingNote) {
+      existingNote = document.createElement('div');
+      existingNote.className = 'edit-note';
+      existingNote.style.cssText = 'font-size:11px;color:var(--nebula);margin-top:6px;padding-top:6px;border-top:1px dashed var(--border);';
+      currentEditEl.appendChild(existingNote);
+    }
+    existingNote.textContent = notes;
+  }
+
+  // Save to localStorage
+  var id = currentEditEl.getAttribute('data-id') || currentEditEl.querySelector('.label, .kpi-label, .goal-label')?.textContent?.trim() || 'unknown';
+  var edits = getItemEdits();
+  edits[id] = {
+    value: newValue,
+    notes: notes,
+    source: source,
+    updated: new Date().toISOString()
+  };
+  saveItemEdits(edits);
+
+  // Also push to the updates.json system so auto-refresh picks it up
+  var tabName = currentEditEl.closest('.pane')?.id || 'general';
+  var updateData = getUpdates();
+  if (!updateData[tabName]) updateData[tabName] = [];
+  updateData[tabName].push({
+    text: (document.getElementById('editTitle').textContent || 'Item') + ': ' + newValue + (notes ? ' — ' + notes : '') + (source ? ' [source: ' + source + ']' : ''),
+    time: new Date().toISOString(),
+    status: 'pending'
+  });
+  saveUpdatesLocal(updateData);
+  unsavedChanges = true;
+
+  // Show toast
+  showToast('Saved — hit "Updates → Save" to push to repo');
+
+  closeEdit();
+}
+
+function applyStoredEdits() {
+  var edits = getItemEdits();
+  Object.keys(edits).forEach(function(id) {
+    var el = document.querySelector('[data-id="' + id + '"]');
+    if (!el) return;
+    var edit = edits[id];
+    if (edit.value) {
+      var valueEl = el.querySelector('.kpi-value, .num, .goal-value');
+      if (valueEl) { valueEl.textContent = edit.value; valueEl.classList.remove('empty'); }
+    }
+    if (edit.source) {
+      var sourceEl = el.querySelector('.kpi-source, .goal-source');
+      if (sourceEl) sourceEl.textContent = 'Source: ' + edit.source;
+    }
+    if (edit.notes) {
+      var existingNote = el.querySelector('.edit-note');
+      if (!existingNote) {
+        existingNote = document.createElement('div');
+        existingNote.className = 'edit-note';
+        existingNote.style.cssText = 'font-size:11px;color:var(--nebula);margin-top:6px;padding-top:6px;border-top:1px dashed var(--border);';
+        el.appendChild(existingNote);
+      }
+      existingNote.textContent = edit.notes;
+    }
+  });
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 3000);
+}
+
 function show(tabName, element) {
   const panes = document.querySelectorAll('.pane');
   panes.forEach(p => p.classList.remove('active'));
