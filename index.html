@@ -748,112 +748,146 @@
 </header>
 
 <div class="tabs">
-  <div class="tab active" onclick="show('goals', this)">GOALS</div>
-  <div class="tab" onclick="show('plan', this)">THE PLAN</div>
+  <div class="tab active" onclick="show('goals', this)">HOME</div>
+  <div class="tab" onclick="show('plan', this)">DETAIL</div>
   <div class="tab" onclick="show('product', this)">PRODUCT</div>
   <div class="tab" onclick="show('growth', this)">GROWTH</div>
-  <div class="tab" onclick="show('brand', this)">BRAND</div>
-  <div class="tab" onclick="show('marketing', this)">MARKETING</div>
   <div class="tab" onclick="show('customers', this)">CUSTOMERS</div>
-  <div class="tab" onclick="show('ops', this)">OPS & FINANCE</div>
-  <div class="tab" onclick="show('advisors', this)">ADVISORS</div>
-  <div class="tab" onclick="show('future', this)">FUTURE</div>
+  <div class="tab" onclick="show('ops', this)">OPS</div>
 </div>
 
-<!-- GOALS — Backward Tracker -->
+<!-- GOALS — CEO View -->
 <div class="content pane active" id="goals">
 
+  <!-- WHERE WE'RE GOING -->
   <div class="goals-hero">
     <div class="big-number">10</div>
     <div class="big-label">paying customers @ $99/mo by May 31</div>
-    <div class="big-sub">$990 MRR &mdash; currently 0 paying, 5 pilots in setup</div>
+    <div class="big-sub">5 weeks left &mdash; 0 paying today</div>
     <div class="goals-progress-bar"><div class="fill" style="width: 0%;"></div></div>
   </div>
 
-  <div class="countdown-row">
-    <div class="countdown-card">
-      <div class="cd-num">5</div>
-      <div class="cd-label">Pilots in Setup</div>
+  <!-- THE SEQUENCE -->
+  <div style="display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 40px; flex-wrap: wrap;">
+    <div class="flow-step amber"><strong>Pilots Live</strong>5 in setup, 0 live</div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step red"><strong>Case Study</strong>Need 2–4 wks data</div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step purple"><strong>Outreach</strong>30–40 pipeline</div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step green"><strong>10 Paid</strong>$990 MRR</div>
+  </div>
+
+  <!-- RIGHT NOW -->
+  <div class="section-title">RIGHT NOW &mdash; WEEK OF APR 21</div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px;">
+    <div class="card" style="border-left: 4px solid var(--sunstar);">
+      <h3 style="color: var(--sunstar); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'Helvetica Neue', Arial, sans-serif;">This Week's Focus</h3>
+      <div style="font-size: 14px; color: var(--text); line-height: 1.9; margin-top: 12px;">
+        Get all 5 pilots customer-facing<br>
+        Soberish customer launch (post employee test)<br>
+        G&amp;Y tagging bugs fixed &rarr; live<br>
+        One of Each assets in &rarr; live<br>
+        Social calendar locked for 2 weeks<br>
+        Brand deck v1 locked
+      </div>
     </div>
-    <div class="countdown-card">
-      <div class="cd-num">0</div>
-      <div class="cd-label">Case Studies Measured</div>
-    </div>
-    <div class="countdown-card">
-      <div class="cd-num">0 / 10</div>
-      <div class="cd-label">Paying Customers</div>
+    <div class="card" style="border-left: 4px solid var(--red);">
+      <h3 style="color: var(--red); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'Helvetica Neue', Arial, sans-serif;">Blocked</h3>
+      <div style="font-size: 14px; color: var(--text); line-height: 1.9; margin-top: 12px;">
+        G&amp;Y manual tagging bug (Tanmay, P0)<br>
+        Cross-pilot tag bleed (Soberish &rarr; G&amp;Y)<br>
+        THC exclusion tag logic (Tanmay)<br>
+        Shopify custom app approval (10–15 days)<br>
+        One of Each waiting on logo/photos from Info
+      </div>
     </div>
   </div>
 
-  <div class="section-title">THE MATH</div>
-  <div class="card" style="margin-bottom: 32px; padding: 20px 24px;">
-    <div style="font-size: 14px; color: var(--text); line-height: 2;">
-      <strong>End goal:</strong> 10 paying brands @ $99/mo<br>
-      <strong>To get 10 paying</strong> → need ~30–40 in active pipeline (25–33% close rate)<br>
-      <strong>To close pipeline</strong> → need case study with measured results<br>
-      <strong>To get case study</strong> → need pilots fully onboarded + live for 2–4 weeks<br>
-      <strong>Right now:</strong> 5 pilots in setup, 0 live → <em>this is the bottleneck</em>
+  <!-- WHO'S DOING WHAT -->
+  <div class="section-title">WHO&rsquo;S ON WHAT</div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 32px;">
+    <div class="card" style="border-left: 4px solid var(--sunstar); padding: 16px;">
+      <h3 style="color: var(--sunstar); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'Helvetica Neue', Arial, sans-serif; margin-bottom: 8px;">Loren</h3>
+      <div style="font-size: 13px; color: var(--text); line-height: 1.8;">
+        Soberish customer launch<br>
+        Brand deck + outreach prep<br>
+        Social calendar<br>
+        Pipeline follow-ups
+      </div>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--green); padding: 16px;">
+      <h3 style="color: var(--green); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'Helvetica Neue', Arial, sans-serif; margin-bottom: 8px;">Tanmay</h3>
+      <div style="font-size: 13px; color: var(--text); line-height: 1.8;">
+        Fix tagging bug (P0)<br>
+        THC exclusion logic<br>
+        Cross-pilot bleed fix<br>
+        Lightspeed API
+      </div>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--nebula); padding: 16px;">
+      <h3 style="color: var(--nebula); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'Helvetica Neue', Arial, sans-serif; margin-bottom: 8px;">Kelley</h3>
+      <div style="font-size: 13px; color: var(--text); line-height: 1.8;">
+        Tagging best practices doc<br>
+        G&amp;Y flow polish<br>
+        Soberish flow content<br>
+        GTM support
+      </div>
     </div>
   </div>
 
-  <div class="section-title">WORK BACKWARD FROM MAY 31</div>
+  <!-- WORK BACKWARD -->
+  <div class="section-title">5-WEEK PATH TO 10 PAID</div>
 
   <div class="milestone-track">
-
     <div class="milestone-item active">
       <div class="milestone-date">Now — Apr 21–25</div>
-      <div class="milestone-title">Get Pilots Fully Live</div>
-      <div class="milestone-detail">Soberish customer launch. G&Y bugs fixed → live. One of Each assets received → live. All 5 pilots must be onboarded and running this week.</div>
+      <div class="milestone-title">Pilots Live</div>
+      <div class="milestone-detail">All 5 pilots onboarded and customer-facing. Fix blocking bugs. This is gate #1.</div>
     </div>
 
     <div class="milestone-item upcoming">
-      <div class="milestone-date">Apr 28 – May 9 (2 weeks)</div>
-      <div class="milestone-title">Measure Case Study</div>
-      <div class="milestone-detail">Pilots running for 2+ weeks. Pull engagement data — scans, dwell time, product discovery rate. Package 1 case study (likely Soberish: strongest signal). This is what sells.</div>
+      <div class="milestone-date">Apr 28 – May 9</div>
+      <div class="milestone-title">Case Study Measured</div>
+      <div class="milestone-detail">2+ weeks of live data. Pull engagement numbers. Package Soberish case study with real results.</div>
     </div>
 
     <div class="milestone-item upcoming">
       <div class="milestone-date">May 5–9</div>
-      <div class="milestone-title">Sales Engine Ready</div>
-      <div class="milestone-detail">Case study in hand. Brand deck updated with real numbers. Outreach templates locked. Pipeline outreach begins at volume — targeting 30–40 brands.</div>
+      <div class="milestone-title">Sales Engine On</div>
+      <div class="milestone-detail">Deck has real numbers. Outreach templates locked. Pipeline outreach at volume (30–40 brands).</div>
     </div>
 
     <div class="milestone-item upcoming">
-      <div class="milestone-date">May 12–23</div>
-      <div class="milestone-title">Pipeline → Paid Conversion</div>
-      <div class="milestone-detail">Close first paying customers from pipeline. Intern starts May 18 to support outreach volume. Target: 5+ paid by May 16, 10 by May 31.</div>
+      <div class="milestone-date">May 12–31</div>
+      <div class="milestone-title">Close 10 Paid</div>
+      <div class="milestone-detail">Convert pipeline. Intern starts May 18 for volume support. $990 MRR = fundraise proof point.</div>
     </div>
-
-    <div class="milestone-item upcoming">
-      <div class="milestone-date">May 26–31</div>
-      <div class="milestone-title">10 Paying Customers</div>
-      <div class="milestone-detail">$990 MRR. Proof of repeatable sales motion. Foundation for fundraise narrative.</div>
-    </div>
-
   </div>
 
-  <div class="section-title">ASSET READINESS</div>
-
+  <!-- ASSET READINESS -->
+  <div class="section-title">ASSETS &mdash; WHAT NEEDS TO BE READY</div>
   <div class="asset-grid">
     <div class="asset-card">
       <div class="asset-dot wip"></div>
-      <div class="asset-name">Pilots Fully Onboarded</div>
+      <div class="asset-name">Pilots Fully Live</div>
       <div class="asset-status">This week</div>
     </div>
     <div class="asset-card">
       <div class="asset-dot todo"></div>
-      <div class="asset-name">Case Study (measured data)</div>
-      <div class="asset-status">Due May 9</div>
+      <div class="asset-name">Case Study (real data)</div>
+      <div class="asset-status">May 9</div>
     </div>
     <div class="asset-card">
       <div class="asset-dot wip"></div>
       <div class="asset-name">Brand Deck (4 versions)</div>
-      <div class="asset-status">Due May 5</div>
+      <div class="asset-status">This week</div>
     </div>
     <div class="asset-card">
       <div class="asset-dot wip"></div>
-      <div class="asset-name">Social Calendar (2-wk lockout)</div>
-      <div class="asset-status">Due Apr 25</div>
+      <div class="asset-name">Social Calendar</div>
+      <div class="asset-status">This week</div>
     </div>
     <div class="asset-card">
       <div class="asset-dot ready"></div>
@@ -863,17 +897,17 @@
     <div class="asset-card">
       <div class="asset-dot todo"></div>
       <div class="asset-name">Outreach Templates</div>
-      <div class="asset-status">Due May 5</div>
+      <div class="asset-status">May 5</div>
     </div>
     <div class="asset-card">
       <div class="asset-dot blocked"></div>
-      <div class="asset-name">Shopify Custom App Approval</div>
-      <div class="asset-status">Pending (10–15 days)</div>
+      <div class="asset-name">Shopify App Approval</div>
+      <div class="asset-status">Waiting</div>
     </div>
     <div class="asset-card">
       <div class="asset-dot todo"></div>
-      <div class="asset-name">Intern Onboarding Materials</div>
-      <div class="asset-status">Due May 12</div>
+      <div class="asset-name">Intern Onboarding</div>
+      <div class="asset-status">May 12</div>
     </div>
   </div>
 
