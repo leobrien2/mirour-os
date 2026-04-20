@@ -570,6 +570,168 @@
     z-index: 2000; opacity: 0; transition: opacity 0.3s; pointer-events: none;
   }
   .toast.show { opacity: 1; }
+
+  /* Goals Backward Tracker */
+  .goals-hero {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 32px 0;
+  }
+  .goals-hero .big-number {
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--galaxy);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .goals-hero .big-label {
+    font-family: orpheuspro, Georgia, serif;
+    font-size: 18px;
+    color: var(--text-light);
+    margin-top: 8px;
+  }
+  .goals-hero .big-sub {
+    font-size: 14px;
+    color: var(--nebula);
+    margin-top: 12px;
+    font-weight: 500;
+  }
+  .goals-progress-bar {
+    max-width: 400px;
+    margin: 16px auto 0;
+    height: 8px;
+    background: #f0eae0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .goals-progress-bar .fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--nebula), var(--spacejam));
+  }
+  .countdown-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .countdown-card {
+    text-align: center;
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--border);
+  }
+  .countdown-card .cd-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--galaxy);
+  }
+  .countdown-card .cd-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+  .milestone-track {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 32px;
+  }
+  .milestone-track::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .milestone-item {
+    position: relative;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    border-left: 4px solid var(--border);
+  }
+  .milestone-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 22px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+    border: 2px solid #fff;
+  }
+  .milestone-item.done { border-left-color: var(--green); opacity: 0.7; }
+  .milestone-item.done::before { background: var(--green); }
+  .milestone-item.active { border-left-color: var(--sunstar); }
+  .milestone-item.active::before { background: var(--sunstar); }
+  .milestone-item.upcoming { border-left-color: var(--nebula); }
+  .milestone-item.upcoming::before { background: var(--nebula); }
+  .milestone-date {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+  .milestone-item.active .milestone-date { color: var(--sunstar); }
+  .milestone-item.upcoming .milestone-date { color: var(--nebula); }
+  .milestone-title {
+    font-family: orpheuspro, Georgia, serif;
+    font-size: 16px;
+    color: var(--galaxy);
+    margin-bottom: 4px;
+  }
+  .milestone-detail {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+  .asset-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .asset-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .asset-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .asset-dot.ready { background: var(--green); }
+  .asset-dot.wip { background: var(--amber); }
+  .asset-dot.blocked { background: var(--red); }
+  .asset-dot.todo { background: var(--border); }
+  .asset-name {
+    font-size: 14px;
+    color: var(--galaxy);
+    font-weight: 500;
+  }
+  .asset-status {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-left: auto;
+    white-space: nowrap;
+  }
 </style>
 </head>
 
@@ -586,7 +748,8 @@
 </header>
 
 <div class="tabs">
-  <div class="tab active" onclick="show('plan', this)">THE PLAN</div>
+  <div class="tab active" onclick="show('goals', this)">GOALS</div>
+  <div class="tab" onclick="show('plan', this)">THE PLAN</div>
   <div class="tab" onclick="show('product', this)">PRODUCT</div>
   <div class="tab" onclick="show('growth', this)">GROWTH</div>
   <div class="tab" onclick="show('brand', this)">BRAND</div>
@@ -597,8 +760,128 @@
   <div class="tab" onclick="show('future', this)">FUTURE</div>
 </div>
 
+<!-- GOALS — Backward Tracker -->
+<div class="content pane active" id="goals">
+
+  <div class="goals-hero">
+    <div class="big-number">100</div>
+    <div class="big-label">brands in pipeline by May 31</div>
+    <div class="big-sub">Currently at 36 &mdash; need 64 more in 5 weeks (≈13/week)</div>
+    <div class="goals-progress-bar"><div class="fill" style="width: 36%;"></div></div>
+  </div>
+
+  <div class="countdown-row">
+    <div class="countdown-card">
+      <div class="cd-num">36</div>
+      <div class="cd-label">In Pipeline Now</div>
+    </div>
+    <div class="countdown-card">
+      <div class="cd-num">64</div>
+      <div class="cd-label">Still Needed</div>
+    </div>
+    <div class="countdown-card">
+      <div class="cd-num">5</div>
+      <div class="cd-label">Weeks Left</div>
+    </div>
+  </div>
+
+  <div class="section-title">WORK BACKWARD FROM MAY 31</div>
+
+  <div class="milestone-track">
+
+    <div class="milestone-item done">
+      <div class="milestone-date">✓ Done — Apr 14–18</div>
+      <div class="milestone-title">Pilot Validation</div>
+      <div class="milestone-detail">Soberish in-store live, employee testing underway. One of Each walkthrough complete.</div>
+    </div>
+
+    <div class="milestone-item active">
+      <div class="milestone-date">This Week — Apr 21–25</div>
+      <div class="milestone-title">Sales Engine Lock</div>
+      <div class="milestone-detail">Brand deck final (all 4 versions). Social calendar locked for next 2 weeks. Mailchimp segments live. Pipeline outreach begins (13/week pace).</div>
+    </div>
+
+    <div class="milestone-item upcoming">
+      <div class="milestone-date">Apr 28 – May 2</div>
+      <div class="milestone-title">Outreach at Pace + Content Live</div>
+      <div class="milestone-detail">Newsletter #1 sent. Social posting active. First audit cycle complete on deck + landing page. Outreach volume: 13+ new brands contacted.</div>
+    </div>
+
+    <div class="milestone-item upcoming">
+      <div class="milestone-date">May 5–9</div>
+      <div class="milestone-title">Pipeline Momentum</div>
+      <div class="milestone-detail">Target: 60+ in pipeline. Pilot brands converting to paid. Second newsletter. Refine outreach based on Week 1–2 reply rates.</div>
+    </div>
+
+    <div class="milestone-item upcoming">
+      <div class="milestone-date">May 12–16</div>
+      <div class="milestone-title">Scale & Intern Onboard</div>
+      <div class="milestone-detail">Summer intern starts May 18 — onboarding materials ready. Target: 75+ pipeline. Double down on top-performing channels.</div>
+    </div>
+
+    <div class="milestone-item upcoming">
+      <div class="milestone-date">May 19–23</div>
+      <div class="milestone-title">Final Push + Intern Running</div>
+      <div class="milestone-detail">Target: 90+ pipeline. Intern handling outreach support. Third newsletter. Pipeline review — qualify/disqualify lagging leads.</div>
+    </div>
+
+    <div class="milestone-item upcoming">
+      <div class="milestone-date">May 26–31</div>
+      <div class="milestone-title">100 Brands — Goal Hit</div>
+      <div class="milestone-detail">Final outreach sprint. Pipeline clean-up and stage verification. Celebrate or adjust Q3 targets.</div>
+    </div>
+
+  </div>
+
+  <div class="section-title">ASSET READINESS</div>
+
+  <div class="asset-grid">
+    <div class="asset-card">
+      <div class="asset-dot wip"></div>
+      <div class="asset-name">Brand Deck (4 versions)</div>
+      <div class="asset-status">Due Apr 25</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-dot wip"></div>
+      <div class="asset-name">Social Calendar (2-week lockout)</div>
+      <div class="asset-status">Due Apr 25</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-dot ready"></div>
+      <div class="asset-name">Mailchimp Segments</div>
+      <div class="asset-status">Done</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-dot todo"></div>
+      <div class="asset-name">Newsletter #1 Draft</div>
+      <div class="asset-status">Due Apr 28</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-dot todo"></div>
+      <div class="asset-name">Landing Page Audit</div>
+      <div class="asset-status">Due Apr 28</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-dot blocked"></div>
+      <div class="asset-name">Shopify Custom App Approval</div>
+      <div class="asset-status">Pending (10–15 days)</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-dot wip"></div>
+      <div class="asset-name">Outreach Script/Templates</div>
+      <div class="asset-status">Due Apr 25</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-dot todo"></div>
+      <div class="asset-name">Intern Onboarding Materials</div>
+      <div class="asset-status">Due May 12</div>
+    </div>
+  </div>
+
+</div>
+
 <!-- THE PLAN -->
-<div class="content pane active" id="plan">
+<div class="content pane" id="plan">
 
   <!-- COMPANY GOALS -->
   <div class="goals-section">
